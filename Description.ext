@@ -2,6 +2,8 @@
 #include "sunday_system\dialogs\dialogs.hpp"
 #include "sunday_system\dialogs\dialogsMainMenu.hpp"
 #include "sunday_system\dialogs\dialogsLobby.hpp"
+#include "scripts\ASORVS\menu.hpp"
+#include "scripts\CHVD\dialog.hpp"
 
 enableDebugConsole = 1;
 allowFunctionsLog = 1;
@@ -203,3 +205,8 @@ class CfgDebriefing
 	};
 };
 
+class CfgFunctions 
+{
+	#include "Scripts\ASORVS\cfgfunctions.hpp"
+	#include "Scripts\CHVD\CfgFunctions.hpp"
+};

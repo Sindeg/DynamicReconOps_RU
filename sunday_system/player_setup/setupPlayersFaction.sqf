@@ -568,36 +568,19 @@ switch (insertType) do {
 				_vehicleRespawnMkr setMarkerShape "ICON";
 				_vehicleRespawnMkr setMarkerType "EmptyIcon";
 				
+				// Ящик с арсеналом
 				_boxLocation = _randomStartingLocation findEmptyPosition [0, 20, "B_supplyCrate_F"];
 				if (count _boxLocation > 0) then {				
-					_box = createVehicle ["B_supplyCrate_F", _boxLocation, [], 0, "NONE"];
-					_box = [_box] call sun_checkVehicleSpawn;
+					_box = arsenalBox;
 					clearWeaponCargoGlobal _box;
 					clearMagazineCargoGlobal _box;
 					clearItemCargoGlobal _box;
-
-					_box addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
-					_box addMagazineCargoGlobal ["DemoCharge_Remote_Mag", 4];
-					_box addItemCargoGlobal ["Medikit", 1];
-					_box addItemCargoGlobal ["FirstAidKit", 10];
-					_box addItemCargoGlobal ["Toolkit", 1];
-					_box addItemCargoGlobal ["MineDetector", 1];
-
-					{						
-						_magazines = magazinesAmmoFull _x;						
-						{
-							_box addMagazineCargoGlobal [(_x select 0), 2];
-						} forEach _magazines;	
-					} forEach (units (grpNetId call BIS_fnc_groupFromNetId));
 					
-					["AmmoboxInit", [_box, true]] spawn BIS_fnc_arsenal;
-					[_box] spawn {
-						waitUntil {(missionNameSpace getVariable ["playersReady", 0]) == 1};
-						[(_this select 0)] call sun_supplyBox;
-					};
-					
-				
+					_box setPos _boxLocation;
+					sleep 0.5;
+					_box setVectorUp [0,0,1];
 				};
+				
 				// FOB marker
 				deleteMarker "campMkr";				
 				_campName = format ["FOB %1", ([FOBNames] call sun_selectRemove)];
@@ -613,6 +596,44 @@ switch (insertType) do {
 					respawnFOB = [missionNamespace, "campMkr", _campName] call BIS_fnc_addRespawnPosition;
 				};
 				
+				// Установка места спавна техники
+				_spawnerPos = [_boxLocation, 45, 60, 11, 0, 10, 0] call BIS_fnc_findSafePos;
+				_heliPodPos = "Land_HelipadSquare_F" createVehicle _spawnerPos;
+				_markerSpawner = createMarker ["VVS_all_1", _spawnerPos];
+				"VVS_all_1" setmarkerpos _spawnerPos;
+				"VVS_all_1" setMarkerColor "ColorBrown";
+				"VVS_all_1" setMarkerType "mil_box";
+				"VVS_all_1" setMarkerText "Техника";
+				
+				// Установка арсенала техники
+				_workerPos = [_spawnerPos, 10, 10, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+				baseWorker setpos _workerPos;
+				
+				// Добавление пунктов меню действий для арсенала техники
+				[baseWorker, ["<t color='#11ff11'>Арсенал автомобилей</t>",{[["cars"], ["B_G_Offroad_01_F","B_G_Quadbike_01_F","LOP_CDF_KAMAZ_Transport","LOP_CDF_KAMAZ_Covered","rhsgref_cdf_b_reg_uaz_spg9","rhsgref_cdf_b_gaz66","rhsgref_cdf_b_gaz66_zu23","rhsgref_cdf_b_gaz66o","rhsgref_cdf_b_ural","rhsgref_cdf_b_ural_Zu23","rhsgref_cdf_b_zil131","rhsgref_cdf_b_zil131_open","rhsusf_mrzr4_d","rhsusf_M1084A1R_SOV_M2_D_fmtv_socom","rhsusf_M1078A1R_SOV_M2_D_fmtv_socom","rhsusf_m1043_w_s_m2","rhsusf_m1043_w_s_mk19","rhsusf_m1043_w_s","rhsusf_m1045_w_s","rhsusf_m998_w_s_2dr_halftop","rhsusf_m998_w_s_2dr","rhsusf_m998_w_s_2dr_fulltop","rhsusf_m998_w_s_4dr_halftop","rhsusf_m998_w_s_4dr","rhsusf_m998_w_s_4dr_fulltop","rhsusf_M1078A1P2_D_fmtv_usarmy","rhsusf_M1078A1P2_B_D_fmtv_usarmy","rhsusf_M1078A1P2_B_M2_D_fmtv_usarmy","rhsusf_M1083A1P2_B_M2_D_fmtv_usarmy","rhsusf_M1083A1P2_D_fmtv_usarmy","rhsusf_m1043_d_s_m2","rhsusf_m1043_d_s_mk19","rhsusf_m1043_d_s","rhsusf_m1045_d_s","rhsusf_m998_d_s_2dr_halftop","rhsusf_m998_d_s_2dr","rhsusf_m998_d_s_4dr_halftop","rhsusf_m998_d_s_4dr","rhsusf_m998_d_s_4dr_fulltop","rhsusf_m998_d_s_2dr_fulltop","rhsusf_M1078A1P2_WD_fmtv_usarmy","rhsusf_M1083A1P2_WD_fmtv_usarmy","rhsusf_M1078A1P2_B_WD_fmtv_usarmy","rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy","rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy","B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_MRAP_01_hmg_F","B_T_MRAP_01_gmg_F","B_LSV_01_unarmed_F","B_MRAP_01_F","B_MRAP_01_gmg_F","B_MRAP_01_hmg_F","rhsgref_tla_offroad_at","O_T_LSV_02_armed_F","rhsgref_tla_offroad_armed","O_T_MRAP_02_ghex_F","O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_MRAP_02_F","O_MRAP_02_gmg_F","O_MRAP_02_hmg_F","rhs_tigr_msv","O_LSV_02_armed_F","rhs_tigr_3camo_msv","rhs_tigr_m_msv","rhs_tigr_sts_msv","rhs_tigr_sts_3camo_msv","rhs_tigr_m_3camo_msv","LOP_ISTS_OPF_Landrover","LOP_ISTS_OPF_Landrover_M2","LOP_ISTS_OPF_Landrover_SPG9","LOP_US_UAZ_AGS","LOP_US_UAZ_DshKM","LOP_US_UAZ","LOP_US_UAZ_Open","LOP_BH_Landrover","LOP_BH_Landrover_M2","LOP_BH_Landrover_SPG9","I_C_Offroad_02_unarmed_F","I_C_Offroad_02_LMG_F","I_C_Offroad_02_AT_F","I_MRAP_03_F","I_MRAP_03_gmg_F","I_MRAP_03_hmg_F","I_E_Offroad_01_comms_F","I_E_Offroad_01_covered_F"], "VVS_all_1"] execvm "scripts\ASORVS\open.sqf";},[], 1.5, false, true, "", "true", 5]] remoteExec ["addAction",0,true];
+				[baseWorker, ["<t color='#11ff11'>Арсенал поддержки</t>",{[["cars"], ["B_Truck_01_ammo_F","B_Truck_01_fuel_F","B_Truck_01_Repair_F","O_Truck_02_Ammo_F","O_Truck_02_fuel_F","O_Truck_02_box_F","I_Truck_02_ammo_F","I_Truck_02_fuel_F","I_Truck_02_box_F"], "VVS_all_1"] execvm "scripts\ASORVS\open.sqf";},[], 1.5, false, true, "", "true", 5]] remoteExec ["addAction",0,true];
+                [baseWorker, ["<t color='#11ff11'>Арсенал бронемашин</t>",{[["cars","tanks"], ["LOP_AA_BMP1","LOP_AA_BMP2","LOP_AA_ZSU234","B_AFV_Wheeled_01_up_cannon_F","B_AFV_Wheeled_01_cannon_F","B_APC_Tracked_01_CRV_F","B_APC_Tracked_01_rcws_F","B_APC_Wheeled_01_cannon_F","B_UGV_01_F","B_UGV_01_rcws_F","B_T_APC_Wheeled_01_cannon_F","B_T_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_AFV_Wheeled_01_cannon_F","B_T_AFV_Wheeled_01_up_cannon_F","B_T_UGV_01_olive_F","B_T_UGV_01_rcws_olive_F","B_T_APC_Tracked_01_AA_F","B_APC_Tracked_01_AA_F","RHS_M2A2_wd","RHS_M2A2_BUSKI_WD","RHS_M2A3_wd","RHS_M2A3_BUSKI_wd","RHS_M2A3_BUSKIII_wd","RHS_M6_wd","rhsusf_stryker_m1126_m2_wd","rhsusf_m113_usarmy_MK19","rhsusf_m113_usarmy","rhsusf_m113_usarmy_M240","rhsusf_M1117_W","rhsusf_M1220_usarmy_wd","rhsusf_M1220_M153_M2_usarmy_wd","rhsusf_M1220_M2_usarmy_wd","rhsusf_M1220_M153_MK19_usarmy_wd","rhsusf_M1220_MK19_usarmy_wd","rhsusf_M1230_M2_usarmy_wd","rhsusf_M1230_MK19_usarmy_wd","rhsusf_M1230a1_usarmy_wd","rhsusf_M1232_usarmy_wd","rhsusf_M1237_M2_usarmy_wd","rhsusf_M1237_MK19_usarmy_wd","RHS_M2A2","RHS_M2A2_BUSKI","RHS_M2A3","RHS_M2A3_BUSKI","RHS_M2A3_BUSKIII","RHS_M6","rhsusf_m113d_usarmy_MK19","rhsusf_m113d_usarmy","rhsusf_m113d_usarmy_M240","rhsusf_m113d_usarmy_medical","rhsusf_m113d_usarmy_medical","rhsusf_M1117_D","rhsusf_M1220_usarmy_d","rhsusf_M1220_M153_M2_usarmy_d","rhsusf_M1220_M2_usarmy_d","rhsusf_M1220_M153_MK19_usarmy_d","rhsusf_M1220_MK19_usarmy_d","rhsusf_M1230_M2_usarmy_d","rhsusf_M1230_MK19_usarmy_d","rhsusf_M1230a1_usarmy_d","rhsusf_M1232_usarmy_d","rhsusf_M1237_M2_usarmy_d","rhsusf_M1237_MK19_usarmy_d","rhsusf_M1238A1_socom_d","rhsusf_M1238A1_M2_socom_d","rhsusf_M1238A1_Mk19_socom_d","rhsusf_M1239_socom_d","rhsusf_M1239_M2_socom_d","rhsusf_M1239_MK19_socom_d","rhsusf_M1239_M2_Deploy_socom_d","rhsusf_M1239_MK19_Deploy_socom_d","LOP_SLA_ZSU234","rhs_btr60_vdv","rhs_btr70_vdv","rhs_btr80_vdv","rhs_btr80a_vdv","rhs_bmp1_vdv","rhs_bmp1d_vdv","rhs_bmp1k_vdv","rhs_bmp1p_vdv","rhs_bmp2e_vdv","rhs_bmp2_vdv","rhs_bmp2d_vdv","rhs_bmp2k_vdv","rhs_bmd1","rhs_bmd1k","rhs_bmd1pk","rhs_bmd1p","rhs_bmd1r","rhs_bmd2k","rhs_bmd2m","rhs_bmd4_vdv","rhs_bmd4m_vdv","rhs_bmd4ma_vdv","rhs_brm1k_vdv","rhs_prp3_vdv","rhsgref_BRDM2_vdv","rhsgref_BRDM2_ATGM_vdv","rhsgref_BRDM2UM_vdv","rhsgref_BRDM2_HQ_vdv","rhs_pts_vmf","rhs_bmp3_msv","rhs_bmp3_late_msv","rhs_bmp3m_msv","rhs_bmp3mera_msv","rhs_Ob_681_2","LOP_ISTS_OPF_BTR60","LOP_TKA_BTR70","LOP_TKA_BMP2D","LOP_TKA_BMP1D","O_APC_Wheeled_02_rcws_v2_F","O_APC_Tracked_02_cannon_F","O_UGV_01_F","O_UGV_01_rcws_F","O_APC_Tracked_02_AA_F","O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_v2_ghex_F","O_T_UGV_01_ghex_F","O_T_UGV_01_rcws_ghex_F","O_T_APC_Tracked_02_AA_ghex_F","I_E_APC_tracked_03_cannon_F","I_E_UGV_01_F","I_E_UGV_01_rcws_F","LOP_IRAN_BTR80","rhsgref_cdf_bmp2k","rhsgref_cdf_bmp2","rhsgref_cdf_bmp1p","rhsgref_cdf_bmp1k","rhsgref_cdf_bmd1","rhsgref_cdf_bmd1k","rhsgref_cdf_bmd1pk","rhsgref_cdf_bmd1p","rhsgref_cdf_bmd2k","rhsgref_cdf_bmd2","rhs_bmd2","I_APC_tracked_03_cannon_F","I_APC_Wheeled_03_cannon_F","I_UGV_01_F","I_UGV_01_rcws_F","I_LT_01_AA_F"], "VVS_all_1"] execvm "scripts\ASORVS\open.sqf";},[], 1.5, false, true, "", "true", 5]] remoteExec ["addAction",0,true];
+				[baseWorker, ["<t color='#11ff11'>Арсенал танков</t>",{[["tanks"], ["LOP_AA_T72BB","LOP_AA_T55","LOP_AA_T34","LOP_AA_T72BA","B_MBT_01_TUSK_F","B_MBT_01_cannon_F","B_T_MBT_01_TUSK_F","B_T_MBT_01_cannon_F","rhsusf_m1a1aimwd_usarmy","rhsusf_m1a1aim_tuski_wd","rhsusf_m1a2sep1tuskiwd_usarmy","rhsusf_m1a2sep1tuskiiwd_usarmy","rhsusf_m1a1aimd_usarmy","rhsusf_m1a1aim_tuski_d","rhsusf_m1a2sep1d_usarmy","rhsusf_m1a2sep1tuskid_usarmy","rhsusf_m1a2sep1tuskiid_usarmy","rhsusf_m1a1fep_wd","rhsusf_m1a1fep_od","rhsusf_m1a1hc_wd","rhsusf_m1a1fep_d","rhsgref_cdf_b_t80bv_tv","rhsgref_cdf_b_t80b_tv","LOP_AFR_OPF_T34","LOP_US_T72BC","rhs_t72ba_tv","rhs_t72bb_tv","rhs_t72bd_tv","rhs_t72be_tv","rhs_t80a","rhs_t80bvk","rhs_t80bv","rhs_t80b","rhs_t80bk","rhs_t80ue1","rhs_t80um","rhs_t80u","rhs_t80u45m","rhs_t80","rhs_t90am_tv","rhs_t90a_tv","rhs_t90saa_tv","rhs_t90sm_tv","rhs_t90_tv","rhs_t14_tv","rhs_t80uk","O_MBT_04_command_F","O_MBT_04_cannon_F","O_MBT_02_cannon_F","O_T_MBT_04_command_F","O_T_MBT_04_cannon_F","O_T_MBT_02_cannon_ghex_F","I_MBT_03_cannon_F","I_LT_01_AT_F","I_LT_01_scout_F","I_LT_01_cannon_F"], "VVS_all_1"] execvm "scripts\ASORVS\open.sqf";},[], 1.5, false, true, "", "true", 5]] remoteExec ["addAction",0,true];
+				[baseWorker, ["<t color='#11ff11'>Арсенал вертолётов</t>",{[["helicopters"], ["LOP_AA_Mi8MT_Cargo","LOP_IA_Mi8MT_Cargo","LOP_IA_UH1Y_UN","B_Heli_Transport_03_F","B_Heli_Transport_03_unarmed_F","B_Heli_Light_01_F","B_Heli_Transport_01_F","RHS_CH_47F","RHS_UH60M","RHS_UH60M_ESSS","RHS_UH60M2","RHS_UH60M_MEV2","RHS_UH60M_MEV","RHS_CH_47F_light","rhsusf_CH53E_USMC","rhsusf_CH53E_USMC_GAU21","RHS_UH1Y_UNARMED","rhsgref_cdf_b_reg_Mi8amt","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F","rhs_uh1h_hidf","rhs_uh1h_hidf_unarmed","LOP_SLA_Mi8MT_Cargo","RHS_Mi8AMT_vvsc","RHS_Mi8mt_vvsc","RHS_Mi8mt_Cargo_vvsc","RHS_Mi8T_vvsc","rhs_ka60_c","RHS_Mi8AMT_vvs","RHS_Mi8mt_vvs","RHS_Mi8mt_Cargo_vvs","RHS_Mi8T_vvs","rhs_ka60_grey","rhssaf_airforce_o_ht40","rhssaf_airforce_o_ht48","LOP_ChDKZ_Mi8MT_Cargo","O_Heli_Light_02_unarmed_F","O_Heli_Transport_04_F","O_Heli_Transport_04_ammo_F","O_Heli_Transport_04_box_F","O_Heli_Transport_04_medevac_F","O_Heli_Transport_04_repair_F","O_Heli_Transport_04_bench_F","O_Heli_Transport_04_fuel_F","O_Heli_Transport_04_covered_F","I_E_Heli_light_03_unarmed_F","LOP_IRAN_Mi8MT_Cargo","LOP_IRAN_CH47F","LOP_IRAN_UH1Y_UN","LOP_UKR_Mi8MT_Cargo","LOP_RACS_MH9","LOP_RACS_UH60M","LOP_UN_Mi8MT_Cargo","LOP_UA_Mi8MT_Cargo","LOP_PMC_M900","LOP_PMC_Mi8AMT","LOP_PMC_MH9","I_Heli_Transport_02_F","I_Heli_light_03_unarmed_F","I_C_Heli_Light_01_civil_F","RHS_MELB_MH6M","RHS_MELB_H6M"], "VVS_all_1"] execvm "scripts\ASORVS\open.sqf";},[], 1.5, false, true, "", "true", 5]] remoteExec ["addAction",0,true];
+				
+				// Установка ящиков с колесами и гуслями
+				_repairPos = [_workerPos, 2, 2, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+				_repairBox = "Land_WoodenCrate_01_stack_x3_F" createVehicle _repairPos;
+				
+				_repairBox enableSimulation false;
+				_repairBox allowdamage false;
+				[_repairBox, 250] call ace_cargo_fnc_setSpace;
+				[_repairBox, 60, "ACE_Track", true] call ace_repair_fnc_addSpareParts; 
+				[_repairBox, 120, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;
+				
+				// Установка медика на базе
+				_medicPos = [_boxLocation, 6, 20, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+				baseMedic setpos _medicPos;
+				[baseMedic,"Получить <t color='#11ff11'>Медицинскую помощь","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","(player distance baseMedic) < 4","true",{},{},{[_this select 1,_this select 1] call ace_medical_treatment_fnc_fullHeal;[parseText format ["<t align='center' font='PuristaBold' size='1.6'>'Медицинская помощь завершена'</t>"],true,nil,2,0.7,0] spawn BIS_fnc_textTiles;},{},[],15,0,false,false] remoteExec ["BIS_fnc_holdActionAdd",0,true];
+				_markerMedic = createMarker ["markerMedic", _medicPos];
+				"markerMedic" setMarkerColor "ColorRed";
+				"markerMedic" setMarkerType "loc_Hospital";
+				"markerMedic" setMarkerText "Врач";
 			};		
 			
 			case "SEA": {				

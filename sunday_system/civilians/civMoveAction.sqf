@@ -1,11 +1,10 @@
-
 {
-	if ((side _x == civilian) && (!captive _x)) then {
+	if ((side _x == civilian) && (!captive _x) && (typeOf _x !="C_IDAP_Man_Paramedic_01_F") && (typeOf _x !="C_man_w_worker_F") && (typeOf _x !="C_man_pilot_F")) then {
 		_thisCiv = _x;
 		[
 			_thisCiv,
 			[
-				'"Move!"',  
+				"Уходи!",  
 				{  
 					_dir = [(_this select 1), (_this select 0)] call BIS_fnc_dirTo;  
 					_movePos = [(getPos (_this select 0)), 200, _dir] call dro_extendPos;  
@@ -27,4 +26,3 @@
 		] remoteExec ["addAction", 0, true];
 	};
 } forEach allUnits;
-
