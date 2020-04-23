@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1211;
+		nextID=1321;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14267.951,22.242687,13032.521};
-		dir[]={-0.61800456,-0.42449927,0.66180718};
-		up[]={-0.28975567,0.90540558,0.31029487};
-		aside[]={0.73092699,-1.4249235e-007,0.68255132};
+		pos[]={14264.188,17.009665,13030.655};
+		dir[]={-0.74732167,-0.48145407,0.45817125};
+		up[]={-0.41051602,0.87642115,0.25168186};
+		aside[]={0.52272606,-2.0736479e-007,0.85262245};
 	};
 };
 binarizationWanted=0;
@@ -3586,7 +3586,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=52;
+		items=53;
 		class Item0
 		{
 			dataType="Object";
@@ -4220,26 +4220,28 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=8;
+				items=23;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14316.122,3.3035188,13046.354};
+						position[]={14285.831,3.5623851,13049.186};
 						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
+						rank="COLONEL";
 						init="this disableAI ""MOVE""; this setCaptive true;";
 						name="u1";
-						description="Player 1";
+						description="Командир (медик)";
 						isPlayer=1;
 					};
 					id=1139;
 					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4288,19 +4290,19 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14314.656,3.2857015,13047.291};
-						angles[]={0,0.29051006,0};
+						position[]={14289.097,3.169487,13054.542};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this disableAI ""MOVE"";" \n "this setCaptive true;";
+						init="this disableAI ""MOVE""; this setCaptive true;";
 						name="u2";
-						description="Player 2";
+						description="Инженер";
 						isPlayable=1;
 					};
-					id=1141;
+					id=1276;
 					type="B_Soldier_F";
 					class CustomAttributes
 					{
@@ -4350,19 +4352,19 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14317.367,3.3234701,13045.105};
-						angles[]={0,0.80515528,0};
+						position[]={14288.274,3.1568453,13055.164};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u3";
-						description="Player 3";
+						name="u2_1";
+						description="Инженер";
 						isPlayable=1;
 					};
-					id=1143;
+					id=1278;
 					type="B_Soldier_F";
 					class CustomAttributes
 					{
@@ -4412,21 +4414,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14313.115,3.2707288,13048.111};
-						angles[]={0,0.22807962,0};
+						position[]={14287.494,3.1389227,13055.867};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u4";
-						description="Player 4";
+						name="u2_2";
+						description="Инженер";
 						isPlayable=1;
 					};
-					id=1145;
+					id=1280;
 					type="B_Soldier_F";
-					atlOffset=0.0020000935;
+					atlOffset=-2.3841858e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4475,21 +4477,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14318.363,3.365062,13043.901};
-						angles[]={0,0.77740455,0};
+						position[]={14283.087,3.144619,13056.21};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u5";
-						description="Player 5";
+						name="u3";
+						description="Медик";
 						isPlayable=1;
 					};
-					id=1147;
+					id=1282;
 					type="B_Soldier_F";
-					atlOffset=0.0050001144;
+					atlOffset=2.3841858e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4538,21 +4540,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14311.683,3.2852798,13048.375};
-						angles[]={0,6.0214734,0};
+						position[]={14281.271,3.181083,13055.609};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u6";
-						description="Player 6";
+						name="u3_2";
+						description="Медик";
 						isPlayable=1;
 					};
-					id=1149;
+					id=1286;
 					type="B_Soldier_F";
-					atlOffset=0.02699995;
+					atlOffset=4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4601,21 +4603,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14319.039,3.4007416,13042.62};
-						angles[]={0,0.82615155,0};
+						position[]={14281.928,3.0996745,13057.193};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u7";
-						description="Player 7";
+						name="u3_1";
+						description="Медик";
 						isPlayable=1;
 					};
-					id=1151;
+					id=1284;
 					type="B_Soldier_F";
-					atlOffset=0.0090000629;
+					atlOffset=-4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4664,21 +4666,962 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14310.102,3.3698413,13048.229};
-						angles[]={0,6.0278959,0};
+						position[]={14281.871,3.0439649,13058.519};
+						angles[]={0,0.5573709,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="this disableAI ""MOVE""; this setCaptive true;";
-						name="u8";
-						description="Player 8";
+						name="u3_4";
+						description="Медик";
 						isPlayable=1;
 					};
-					id=1153;
+					id=1290;
 					type="B_Soldier_F";
-					atlOffset=0.035946369;
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14283.908,3.0747783,13057.469};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_3";
+						description="Медик";
+						isPlayable=1;
+					};
+					id=1288;
+					type="B_Soldier_F";
+					atlOffset=-2.3841858e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14280.69,3.3615551,13051.611};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_5";
+						description="ПТ специалист";
+						isPlayable=1;
+					};
+					id=1294;
+					type="B_Soldier_F";
+					atlOffset=2.3841858e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item10
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14280.235,3.4228725,13050.245};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_6";
+						description="ПТ специалист";
+						isPlayable=1;
+					};
+					id=1296;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item11
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14279.109,3.394125,13051.003};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_7";
+						description="ПТ специалист";
+						isPlayable=1;
+					};
+					id=1298;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item12
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14280.606,3.7641785,13047.706};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_8";
+						description="ПВО специалист";
+						isPlayable=1;
+					};
+					id=1300;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14280.995,3.8591566,13047.042};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_9";
+						description="ПВО специалист";
+						isPlayable=1;
+					};
+					id=1302;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item14
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14281.621,3.9688685,13046.277};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_10";
+						description="ПВО специалист";
+						isPlayable=1;
+					};
+					id=1304;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item15
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14285.651,4.3297596,13043.8};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_11";
+						description="Инженер";
+						isPlayable=1;
+					};
+					id=1306;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item16
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14286.423,4.4376602,13043.051};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_12";
+						description="Инженер";
+						isPlayable=1;
+					};
+					id=1308;
+					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item17
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14287.47,4.486845,13042.722};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_13";
+						description="Стрелок";
+						isPlayable=1;
+					};
+					id=1310;
+					type="B_Soldier_F";
+					atlOffset=9.5367432e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item18
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14288.456,4.54599,13042.593};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_14";
+						description="Стрелок";
+						isPlayable=1;
+					};
+					id=1312;
+					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item19
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14289.558,4.5412588,13042.956};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_15";
+						description="Стрелок";
+						isPlayable=1;
+					};
+					id=1314;
+					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item20
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14290.387,4.4818225,13043.62};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_16";
+						description="Стрелок";
+						isPlayable=1;
+					};
+					id=1316;
+					type="B_Soldier_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item21
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14291.025,4.4116101,13044.304};
+						angles[]={0,0.5573709,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_17";
+						description="Стрелок";
+						isPlayable=1;
+					};
+					id=1318;
+					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item22
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14293.298,3.2516098,13051.023};
+						angles[]={0,4.3784471,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						init="this disableAI ""MOVE""; this setCaptive true;";
+						name="u3_18";
+						description="Пилот";
+						isPlayable=1;
+					};
+					id=1320;
+					type="B_Soldier_F";
+					atlOffset=2.3841858e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4727,6 +5670,7 @@ class Mission
 			{
 			};
 			id=1138;
+			atlOffset=4.7683716e-007;
 		};
 		class Item39
 		{
@@ -9270,6 +10214,20 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item52
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14249.778,3.4452722,13048.769};
+				angles[]={0.041311946,0,6.2631841};
+			};
+			name="SERVER";
+			init="call{null=[] execVM ""scripts\COS\cosInit.sqf"";}";
+			id=1217;
+			type="Logic";
+			atlOffset=-2.3841858e-007;
 		};
 	};
 };

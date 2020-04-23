@@ -46,20 +46,276 @@ fnc_missionText = {
 	[parseText format [ "<t font='EtelkaMonospaceProBold' color='#ffffff' size = '1.7'>%1</t>", toUpper _missionName], true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
 };
 
+fnc_addAction_AirportTp = {
+	arsenalbox addAction ["<t size='1.2' color='#E39325'>Переместиться в аэропорт</t>", {
+	if (isNil "airHelipad" || {isNull airHelipad }) then 
+	{
+		hint "Командир не назначил расположение аэропорта."
+	}
+	else {
+		3 fadeSound 0;
+		cutText["Перемещение в аэропорт...","BLACK OUT",3];
+		sleep 6;
+		player setpos getpos airportPos;
+		player setdir 280;
+		cutText["","BLACK IN",5]; 
+		2 fadeSound 1;
+	};
+	},[],1.5, true, true, "","player distance arsenalBox < 6", 0,false,"",""];
+};
+
+fnc_playerSetup = 
+{
+	sleep 1;
+	// Отключение каналов в игре
+	1 enableChannel false;
+	2 enableChannel false;
+	4 enableChannel false;
+	
+	enableTeamSwitch false;
+	0 fadeRadio 0;
+	enableRadio false;
+	enableSentences false;
+	
+	_playerRole = roleDescription player;
+	
+	// Специализация по ролям
+	_roleOn = "role_specialization" call BIS_fnc_getParamValue;
+	if (_roleOn == 1) then
+	{
+		// Изначально у всех нет специальностей
+		player setVariable ["ACE_IsEngineer", 0, true];
+		player setVariable ["ace_medical_medicclass", 0, true];
+		
+		_playerRole = roleDescription player;
+		
+		switch (_playerRole) do
+		{
+			case "Медик": 
+			{
+				player setVariable ["ace_medical_medicclass", 2, true];
+				hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
+			}; 
+			case "Инженер": 
+			{
+				player setVariable ["ACE_IsEngineer", 2, true];
+				hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#3855d6'>инженер.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование набора для инструментов.</t>"];
+			}; 
+			case "ПТ специалист": 
+			{
+				hint parsetext format ["<t size='1.1'>Ваша специальность - <t color='#08ff77'>ПТ специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование любых ПТ гранатомётов.</t>"];
+			}; 
+			case "ПВО специалист": 
+			{
+				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#fff705'>ПВО специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование ПЗРК.</t>"];
+			}; 
+			case "Командир (медик)": 
+			{
+				player setVariable ["ace_medical_medicclass", 2, true];
+				hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
+				choiceAirport = arsenalBox addAction 
+				[
+					"<t size='1.2' color='#E39325'>Выбрать место аэропорта</t>", 
+					"scripts\createAirport.sqf", 
+					[],
+					1.5, 
+					true, 
+					true, 
+					"",
+					"player distance arsenalBox < 8", // _target, _this, _originalTarget
+					7,
+					false,
+					"",
+					""
+				];
+				
+				[] call fnc_addAction_AirportTp;
+			};
+			case "Пилот":
+			{
+				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#0E86F7'>Пилот.</t></t><br/><br/><t align='center' t size='1.1'>Для перехода в аэропорт (если он установлен командиром) в меню действий, стоя рядом с арсеналом, выберите <t color = '#e6b53d'>Переместиться в аэропорт.</t></t>"];
+				[] call fnc_addAction_AirportTp;
+				player setVariable ["ACE_IsEngineer", 2, true];
+			}
+		};
+		
+		_nil = [] execVM "scripts\role_specialization.sqf";
+		
+	}
+	else
+	{
+		player setVariable ["ACE_IsEngineer", 2, true];
+		player setVariable ["ace_medical_medicclass", 2, true];
+	};
+	
+	addMissionEventHandler
+	[
+		"Draw3D",
+		{
+			if (player distance arsenalbox < 40) then {
+				alphaText = linearConversion[5, 40, player distance arsenalbox, 1, 0, true];
+				_pos = getPosWorld arsenalbox;
+				drawIcon3D ['\A3\ui_f\data\IGUI\Cfg\Actions\takeFlag_ca.paa', [1, 0.615, 0.121, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал", 1, 0.0315,"PuristaSemibold"];
+			};
+		}	
+	];
+	
+	player createDiarySubject ["Правила СЕРВЕРА", "Правила СЕРВЕРА"];
+	player createDiaryRecord ["Правила СЕРВЕРА", ["Правила СЕРВЕРА", "
+	При входе на сервер каждый игрок соглашается с данными правилами и обязуется им следовать.
+	<br/><br/>
+	Администрация оставляет за собой право после блокировки, не предоставлять игроку информации из серверных log файлов, доказательств нарушения в виде игровых скриншотов или видеозаписей.
+	<br/><br/>
+	ЗАПРЕЩЕНО:
+	<br/><br/>
+	1. ОБЩЕЕ
+	<br/><br/>
+	1.1 Оскорбление других игроков
+	<br/><br/>
+	1.2 Оскорбление администрации, поведение оскорбляющее администрацию или весь проект в целом,
+	сознательное лже-обвинение администрации в нарушениях правил сервера, как в прямой, так и в завуалированной форме.
+	<br/><br/>
+	1.3 Игровые ники, шевроны содержащие не нормативную лексику или оскорбительные изображения.
+	<br/><br/>
+	1.4 Использование читерских программ, аддонов, скриптов и тд.
+	<br/><br/>
+	1.5 Реклама серверов, игр, режимов и тд.
+	<br/><br/>
+	1.6 Намеренная стрельба по союзникам
+	<br/><br/>
+	1.7 Стрельба, установка мин и др. вредительство на базе
+	<br/><br/>
+	1.8 Флудить, шутки шутить, обсуждать не игровую обстановку, сообщать бесполезную информацию, засорять эфир КВ 150 и ДВ 50 раций(в игре на сервере).
+	<br/><br/>
+	<br/>
+	2. ВО ВРЕМЯ ОРГАНИЗОВАННОЙ ИГРЫ
+	<br/><br/>
+	2.1 Изменять своё местоположения без приказа командира.
+	<br/><br/>
+	2.2 Экипировать обмундирование не соответствующее цвету указанному командиром.
+	<br/><br/>
+	2.3 Занимать/вызывать технику без приказа командира.
+	<br/><br/>
+	2.4 Занимать слот пилота без приказа командира.
+	<br/><br/>
+	2.5 Использовать игровой чат для переговоров, координации, передачи боевой информации и тд.
+	<br/><br/>
+	2.6 Невыполнение приказов поставленных командиром.
+	<br/><br/>
+	2.7 Пререкаться и обсуждать приказы поставленные командиром.
+	<br/><br/>
+	2.8 Возрождаться без приказа командира.
+	<br/><br/>
+	<br/>
+	Разъяснения:
+	<br/><br/>
+	3.1 Вся коммуникация осуществляются ТОЛЬКО по средствам КВ/ДВ раций, если ваш собеседник не может слышать вас из-за расстояния или рельефа это НЕ повод использовать чат.
+	<br/><br/>
+	3.2 ВСЕ игроки, не зависимо от типа игры должны находиться на обще-серверных частотах КВ 150, ДВ 50.
+	<br/><br/>
+	3.3 Игроки могут настроить себе ДОПОЛНИТЕЛЬНУЮ частоту и флудить там сколько им угодно.
+	<br/><br/>
+	3.4 Игроки более высокого звания имеют приоритет в занятии слотов.
+	<br/><br/>
+	3.5 Во время КОМАНДНОЙ игры игроки могут занимать любые слоты, следовать своей стратегии, вызывать любую технику.
+	<br/><br/>
+	3.6 Любой из игроков может осуществлять командование операцией с одобрения офицеров на сервере.
+	<br/><br/>
+	3.7 Офицеры не могут изменять режим уже идущей игры. Если миссия началась как командная - она должна закончиться командной, и наоборот. Офицеры могут сменить режим, уведомив всех игроков об этом до начала миссии.
+	<br/><br/>
+	Правила могут быть дополнены.
+	"]];
+	
+	player createDiarySubject ["О миссии", "О миссии"];
+	
+	player createDiaryRecord ["О миссии", ["Советы",
+	" - Если вы остались без техники, доберитесь до ближайшего города. Во всех населенных пунктах вы найдете гражданский транспорт.<br/>
+	 - На метке <font color='#DEC034' size='14'>Снаряжение</font> можно найти медицину и другую амуницию.<br/>
+	 - Разведданные, которые можно подобрать с убитых бойцов, служат для того, чтобы раскрывать на карте местоположения врага, а так же уменьшать область поиска объектов заданий. Отмеченная область для поиска объекта будет сужаться, а затем вовсе станет конкретной меткой (например, местоположение ПВО которое необходимо уничтожить).
+	"]];
+	
+	player createDiaryRecord ["О миссии", ["Связь",
+	"Связь в игре осуществляется только через TFAR рацию, поэтому всем игрокам, во время игры на сервере, необходимо зайти в TeamSpeak нашего сервера.<br/><br/>
+	Используемая рация: <font color='#DEC034' size='14'>FADAK</font><br/><br/>
+	Используемые частоты: КВ <font color='#DEC034' size='14'>150</font>, ДВ <font color='#DEC034' size='14'>50</font>.<br/><br/>
+	Управление: <br/><br/>
+	<font color='#67ED24'>Caps Lock</font>	-	Разговор по рации.<br/>
+	<font color='#67ED24'>CTRL + Caps Lock</font>	-	Разговор по рации дальней связи.<br/>
+	<font color='#67ED24'>CTRL + P</font>	-	Открыть интерфейс личной рации (рация должна быть в слоте инвентаря). В том случае, если у вас имеются несколько раций - вы сможете выбрать требуемую. Также есть возможность установить рацию как активную (ту, которая будет использоваться для передачи.<br/>
+	<font color='#67ED24'>NUM[1-8]</font>	-	Быстрое переключение каналов коротковолновой рации.<br/>
+	<font color='#67ED24'>ALT + P</font>	-	Открыть интерфейс рации дальней связи (рация дальней связи должна быть одета на спину, либо вы должны быть в технике за водителя, стрелка, командира или помощника пилота). Если доступно несколько рации - вам будет предложено выбрать. Также одну из них можно установить как активную.<br/>
+	<font color='#67ED24'>CTRL + NUM[1-9]</font>	-	Быстрое переключение каналов рации дальней связи.<br/>
+	<font color='#67ED24'>CTRL + TAB</font>	-	Изменить громкость прямой речи. Можно говорить шепотом , нормально и кричать. Не влияет на кромкость сигнала в радио передаче.<br/>
+	<font color='#67ED24'>ESC</font>	-	Выход из интерфейса рации.<br/>
+	"]];
+
+	player createDiaryRecord ["О миссии", ["Штаб",
+	"Находясь на базе, все действия, кроме открытия арсенала, осуществляются с помощью меню действий (колесо мыши).<br/><br/>
+	В штабе находятся:<br/><br/>
+	<font color='#DEC034' size='15'>Арсенал</font> - чтобы открыть арсенал подойдите к ящику в центре штаба, и смотря на него, зажмите клавишу <font color='#D8D4C1' size='14'>WIN</font> для открытия ACE меню<br/><br/>
+	<font color='#DEC034' size='15'>Врач</font> - полностью восстанавливает ваше здоровье.<br/><br/>
+	<font color='#DEC034' size='15'>Арсенал техники</font> - создание транспорта, включая вертолеты. Рядом с ним находится ящик, в котором вы можете взять запасные колеса / гусеницы (ACE меню).<br/><br/>
+	В пределах штаба находится безопасная зона, внутри которой отключен урон.
+	"]];
+
+	player createDiaryRecord ["О миссии", ["Роли", 
+	"В зависимости от выбранного слота (специализации) вам могут быть доступны следущее снаряжение и доступные действия:<br/><br/>
+	<font color='#DA3B16' size='15'>Командир</font> - обязятельный слот при старте игры. Выбирает местоположение операций, штаба и настраивает задания. Так же может указать расположение аэропорта, куда могут перемещаться пилоты (Для выбора используйте соответствующее действие стоя на базе у арсенала).<br/><br/>
+	<font color='#2D88EF' size='15'>Инженер</font> - возможность ремонтировать технику с помощью набора инструментов.<br/><br/>
+	<font color='#7FFF00' size='15'>ПТ специалист</font> - использование ПТ установок.<br/><br/>
+	<font color='#FCFC0F' size='15'>ПВО специалист</font> - использование ПВО установок.<br/><br/>
+	<font color='#DA3B16' size='15'>Медик</font> - использование аптечек, дефибрилляторов, пакетов крови и хирургических наборов. Аптечки находятся в снаряжении ящика с арсеналом.<br/><br/>
+	<font color='#D8D4C1' size='15'>Пилот</font> - использование боевых вертолётов и самолётов (в случае, если командир выбрал местоположение аэропорта). Для перемещения в аэропорт выберите соответствующее действие стоя на базе у арсенала.<br/><br/>
+	Если вы не находитесь на слоте ПТ специалиста, вам доступны только одноразовые пусковые установки (отстрелы).<br/><br/>
+	Для простого опознавания специальности игрока на поле боя его ник выделяется цветом, соответствущим цвету, которым выделена специальность.
+	"]];
+	
+	//Если создано задание с взрывом вышки связи, оповестить игроков о механике глушения рации
+	// if ((missionNameSpace getVariable ["JamTFARMessage", 0]) == 1) then
+	// {
+		// [] spawn 
+		// {
+			// waitUntil {player distance getpos arsenalbox > 150};
+			// _time = [6,15] call BIS_fnc_randomInt;
+			// sleep _time;
+			// hint parsetext format ["<t size = '1.5' color = '#EE3D0D'>Внимание<br/><t/><t color = 'FFFFFF'size = '1.2'>Противник применяет РЭБ, возможны проблемы в работе связи.<t/><t/>"];
+		// };
+	// };
+	
+	// [player,["needMark",1,true]] remoteExec ['setVariable', player, TRUE]; // Отмечать игрока на карте
+	
+	arsenalbox addAction 
+	[
+		"<t size='1.2' color='#2099E7'>[Вкл/Выкл] свою метку на карте</t>", 
+		{
+			if (player getVariable "needMark" == 1) then 
+			{
+				[player,["needMark", 0, true]] remoteExec ['setVariable', player, TRUE]; 
+				"Ваша метка на карте выключена." remoteExec ["hint", player];
+			}
+			else 
+			{
+				[player,["needMark", 1 ,true]] remoteExec ['setVariable', player, TRUE]; 
+				"Ваша метка на карте включена." remoteExec ["hint", player];
+			};
+		},
+		[],
+		1.5, 
+		true, 
+		true, 
+		"",
+		"player distance arsenalBox < 6 && call BIS_fnc_admin == 2"
+	];
+	
+	systemchat("Загрузка завершена."); 
+	systemchat("Совет: откройте карту и выберете раздел 'О миссии', чтобы получить справочную информацию.");
+};
+
 // Turn on menu music
 0 fadeMusic 0;
 playMusic "LeadTrack01_F_Jets";
 5 fadeMusic 1;
 
-player createDiarySubject ["dro", "Dynamic Recon Ops"];
-player createDiaryRecord ["dro", ["Dynamic Recon Ops", "
-	<font image='images\recon_image_collection.jpg' width='350' height='175'></font><br /><br />
-	Dynamic Recon Ops is a randomised, replayable scenario that generates an enemy occupied AO with a selection of tasks to complete within.
-	Select your AO location, the factions you want to use and any supports available or leave them all randomised and see what mission you are sent on.<br /><br />
-	Designed to be simple to use but with plenty of options to customise your mission setup, the objective behind DRO is to create a way to quickly get playing a new scenario in singleplayer or co-op. With as few changes to the base game as possible, DRO aims to showcase the unique and varied gameplay that Arma 3 has to offer for smaller scale infantry combat.<br /><br />
-	Additionally, DRO has been designed from the ground up to take advantage of faction mods. If you have any mods that create new factions they will be selectable as player or enemy sides within the mission. However, the scenario itself requires no mods apart from specific terrains if you want to use them.<br /><br />
-	Thank you for playing!	
-"]];
 player setVariable ["respawnLoadout", (getUnitLoadout player), true];
 VAR_CAMERA_VIEW = playerCameraView;
 
@@ -126,7 +382,7 @@ if (_doJIP) exitWith {
 	cutText ["", "BLACK IN", 3];
 	playMusic "";
 	[] call fnc_missionText;
-	
+	[] call fnc_playerSetup;
 };
 
 sleep 0.1;
@@ -358,16 +614,7 @@ cutText ["", "BLACK IN", 3];
 
 // Mission info readout
 [] call fnc_missionText;
-
-player createDiarySubject ["dro", "Dynamic Recon Ops"];
-player createDiaryRecord ["dro", ["Dynamic Recon Ops", "
-	<font image='images\recon_image_collection.jpg' width='350' height='175'></font><br /><br />
-	Dynamic Recon Ops is a randomised, replayable scenario that generates an enemy occupied AO with a selection of tasks to complete within.
-	Select your AO location, the factions you want to use and any supports available or leave them all randomised and see what mission you are sent on.<br /><br />
-	Designed to be simple to use but with plenty of options to customise your mission setup, the objective behind DRO is to create a way to quickly get playing a new scenario in singleplayer or co-op. With as few changes to the base game as possible, DRO aims to showcase the unique and varied gameplay that Arma 3 has to offer for smaller scale infantry combat.<br /><br />
-	Additionally, DRO has been designed from the ground up to take advantage of faction mods. If you have any mods that create new factions they will be selectable as player or enemy sides within the mission. However, the scenario itself requires no mods apart from specific terrains if you want to use them.<br /><br />
-	Thank you for playing!	
-"]];
+[] call fnc_playerSetup;
 
 // Start saving player loadout periodically
 [] spawn {

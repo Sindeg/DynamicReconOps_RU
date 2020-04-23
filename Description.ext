@@ -37,6 +37,13 @@ class Params
 		texts[] = {"Both", "Starting location only", "Team only"};
 		default = 0;               
 	};
+	class role_specialization
+	{
+		title = "Специализации по ролям";
+		values[] = {1,0};
+		texts[] = {"Вкл","Выкл"};
+		default = 1;
+	};
 };
 
 class RscTitles {

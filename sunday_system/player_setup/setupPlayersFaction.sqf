@@ -1020,8 +1020,8 @@ sleep 1;
 // Add supports
 [_randomStartingLocation] execVM "sunday_system\player_setup\addSupports.sqf";
 
-(leader (grpNetId call BIS_fnc_groupFromNetId)) createDiarySubject ["reset", "Reset AI units"];
-(leader (grpNetId call BIS_fnc_groupFromNetId)) createDiaryRecord ["reset", ["Reset AI units", "<br /><font size='20' face='PuristaBold'>Reset AI Units</font><br /><br />Reset AI functions have moved! They can now be found by selecting the stuck unit using F1-10 and opening command menu 6."]];
+//(leader (grpNetId call BIS_fnc_groupFromNetId)) createDiarySubject ["reset", "Reset AI units"];
+//(leader (grpNetId call BIS_fnc_groupFromNetId)) createDiaryRecord ["reset", ["Reset AI units", "<br /><font size='20' face='PuristaBold'>Reset AI Units</font><br /><br />Reset AI functions have moved! They can now be found by selecting the stuck unit using F1-10 and opening command menu 6."]];
 
 playerGroup = _playerGroup;
 
