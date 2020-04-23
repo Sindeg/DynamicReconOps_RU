@@ -685,3 +685,95 @@ fnc_deleteVehicle =
 	
 	deleteVehicle _vehicle;
 };
+
+fnc_TFARjamRadios = 
+{
+	/* 
+	Параметры
+	0 - Массив объектов, подавляющих радиосообщения вокруг.
+	1 - (Необязательный, 1000) - радиус действия объектов, подавляющих радиосообщения.
+	2 - (Необязательный, 50) - сила объектов, подавляющих радиосообщения вокруг.
+	4 - Отладка
+
+	radioJammer = [[radio1], 1000, 50, TRUE] execVM "scripts\TFARjamRadios.sqf"; 
+	*/
+	if (!hasInterface) exitwith {};
+	waituntil {!isnull player};
+	
+	_jammers = param [0, [objNull], [[objNull]]];
+	_rad = param [1, 1000, [0]];
+	_strength = param [2, 50, [0]] - 1;
+	_debug = param [3, false, [true]];
+
+	_radB = 300; // Радиус полной блокировки радисообщений
+
+	//Ближайший объект
+	_jammerDist = {
+		_jammer = objNull;
+		_closestDist = 1000000;
+		{
+			if (_x distance player < _closestdist) then {
+				_jammer = _x;
+				_closestDist = _x distance player;
+			};
+		} foreach _jammers;
+		_jammer;
+	};
+	_jammer = call _jammerDist;
+
+	while {alive _jammer} do
+	{
+		// Set variables
+		_dist = player distance _jammer;
+		
+		 _distPercent = _dist / _rad;
+		_interference = 1;
+		_sendInterference = 1;
+
+		if (_dist < _rad) then {
+			_interference = _strength - (_distPercent * _strength) + 1;
+			_sendInterference = 1/_interference; 
+		};
+		
+		if (_dist < 150) then {
+			player setVariable ["tf_receivingDistanceMultiplicator", 1000];
+			player setVariable ["tf_sendingDistanceMultiplicator", 1/1000];
+		}
+		else
+		{
+			player setVariable ["tf_receivingDistanceMultiplicator", _interference];
+			player setVariable ["tf_sendingDistanceMultiplicator", _sendInterference];
+		};
+		
+		
+		if (_debug) then {
+			deletemarkerLocal "CIS_DebugMarker";
+			//deletemarkerLocal "CIS_DebugMarker2";
+			
+			_debugMarker = createmarkerLocal ["CIS_DebugMarker", position _jammer];
+			_debugMarker setMarkerShapeLocal "ELLIPSE";
+			_debugMarker setMarkerSizeLocal [_rad, _rad];
+			
+			//_debugMarker2 = createmarkerLocal ["CIS_DebugMarker2", position _jammer];
+			//_debugMarker2 setMarkerShapeLocal "ICON";
+			//_debugMarker2 setMarkerTypeLocal "mil_dot";
+			//_debugMarker2 setMarkerTextLocal format ["%1", _jammer];
+				
+			systemChat format ["Ближайшая вышка. Расстояние: %1, Процент дистанции %2, Помехи: %3, Помехи отправления: %4", _dist,  100 * _distPercent, _interference, _sendInterference];
+			systemChat format ["Активные: %1, Список всех: %2",_jammer, _jammers];
+		};
+		sleep 7.0;
+		
+		if (count _jammers > 1) then {
+			{
+				if (!alive _x AND count _jammers > 1) then {_jammers = _jammers - [_x]};
+			} foreach _jammers;
+			
+			_jammer = call _jammerDist;
+		};
+	};
+
+	// Установка значений в изначальное положение
+	player setVariable ["tf_receivingDistanceMultiplicator", 1];
+	player setVariable ["tf_sendingDistanceMultiplicator", 1];
+};

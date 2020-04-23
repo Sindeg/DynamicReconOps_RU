@@ -265,7 +265,7 @@ diag_log "DRO: Define player group";
 playerGroup = (units(group _topUnit));
 DROgroupPlayers = (group _topUnit);
 groupLeader = leader DROgroupPlayers;
-callsigns = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Lima", "Kilo", "Viper", "Scorpion", "Hunter"];
+callsigns = ["Альфа", "Вымпел", "Вулкан", "Дельта", "Святогор", "Ратник", "Меркурий"];
 playerCallsign = [callsigns] call sun_selectRemove; 
 publicVariable "playerCallsign";
 
@@ -303,7 +303,7 @@ diag_log format ["DRO: grpNetId = %1", grpNetId];
 
 // Prepare data for player lobby
 _scriptStartTime = time;
-[((findDisplay 888888) displayCtrl 8889), "EXTRACTING FACTION DATA"] remoteExecCall ["ctrlSetText", 0];
+[((findDisplay 888888) displayCtrl 8889), "Выгрузка данных фракций"] remoteExecCall ["ctrlSetText", 0];
 diag_log "DRO: Beginning faction extraction";
 [] call fnc_defineFactionClasses;
 
@@ -799,7 +799,7 @@ _scriptStartTime = time;
 // Get number of tasks
 _numObjs = 1;
 if (numObjectives == 0) then {
-	_numObjs = [1,3] call BIS_fnc_randomInt;
+	_numObjs = [1,4] call BIS_fnc_randomInt;
 } else {
 	_numObjs = numObjectives;
 };
@@ -1061,9 +1061,9 @@ if (stealthEnabled == 1) then {
 		_p = _p + 1;
 	};	
 }; 
-if (random 1 > 0.5) then {
+//if (random 1 > 0.4) then {
 	[] execVM "sunday_system\objectives\destroyCommsTower.sqf";
-};
+//};
 
 // Create intro sequence
 // Collect all possible camera targets
@@ -1134,42 +1134,6 @@ if (!isNil "DRO_simpleObjects") then {
 
 // Start message listener
 [] execVM "sunday_system\messageListener.sqf";
-
-// Create a few empty enemy vehicles for use in escape
-if (random 1 > 0.4) then {
-	_numEscapeVehicles = [1,2] call BIS_fnc_randomInt;
-	for "_i" from 1 to _numEscapeVehicles do {
-		_vehClass = "";
-		if (count eCarNoTurretClasses > 0) then {
-			_vehClass = selectRandom eCarNoTurretClasses;
-		} else {
-			if (count eCarClasses > 0) then {
-				_vehClass = selectRandom eCarClasses;
-			};
-		};
-		if (count _vehClass > 0) then {
-			if (count (((AOLocations select 0) select 2) select 0) > 0) then {
-				_pos = [(((AOLocations select 0) select 2) select 0)] call sun_selectRemove;
-				_veh = _vehClass createVehicle _pos;			
-				_roadList = _pos nearRoads 10;
-				if (count _roadList > 0) then {
-					_thisRoad = _roadList select 0;
-					_roadConnectedTo = roadsConnectedTo _thisRoad;
-					_direction = 0;
-					if (count _roadConnectedTo == 0) then {
-						_direction = 0; 
-					} else {
-						_connectedRoad = _roadConnectedTo select 0;
-						_direction = [_thisRoad, _connectedRoad] call BIS_fnc_DirTo;
-					};				
-					_veh setDir _direction;
-					_newPos = [_pos, 4, (_direction + 90)] call BIS_fnc_relPos;
-					_veh setPos _newPos;
-				};
-			};
-		};
-	};
-};
 
 // Ambient flyover setup
 _ambientFlyByChance = random 1;
