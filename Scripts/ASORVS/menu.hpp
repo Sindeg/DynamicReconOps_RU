@@ -348,7 +348,7 @@ class ASORVS_Main_Dialog {
 		class spawnVehicleButton : ASORVS_PlusButton {
 			idc = 26010;
 			textureNoShortcut =  "" ;
-			text = "<t size='2' align='center'>ISSUE VEHICLE</t>";
+			text = "<t size='2' align='center'>Создать транспорт</t>";
 			onButtonClick = "[] spawn ASORVS_fnc_SpawnVehicle; closeDialog 0;";
 			w = 0.5;
 			h = ITEM_HEIGHT*2;

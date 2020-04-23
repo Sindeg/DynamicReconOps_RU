@@ -1140,5 +1140,6 @@ if (random 1 > 0.35) then {
 	[([1,3] call BIS_fnc_randomInt), false] execVM "sunday_system\intel\revealIntel.sqf";	
 };
 
+["ace_captiveStatusChanged",{_this execVM "scripts\protectFromCaptive.sqf"}] call CBA_fnc_addEventHandler;
 missionNameSpace setVariable ["playersReady", 1, true];
 

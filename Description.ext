@@ -25,21 +25,28 @@ class Params
 {
 	class Respawn
 	{
-		title = "Respawn";
+		title = "Возрождение";
 		values[] = {0,1,2,3};
-		texts[] = {"20 Seconds", "45 Seconds", "90 Seconds", "Disabled"};
-		default = 1;
-	};		
+		texts[] = {"20 Секунд", "45 Секунд", "90 Секунд", "Выкл"};
+		default = 0;
+	};
 	class RespawnPositions
 	{
-		title = "Respawn Positions";
+		title = "Точки возрождения";
 		values[] = {0,1,2};
-		texts[] = {"Both", "Starting location only", "Team only"};
-		default = 0;               
+		texts[] = {"Все", "Только штаб", "Только команда"};
+		default = 1;
 	};
 	class role_specialization
 	{
 		title = "Специализации по ролям";
+		values[] = {1,0};
+		texts[] = {"Вкл","Выкл"};
+		default = 1;
+	};
+	class player_markers
+	{
+		title = "Отметки игроков на карте";
 		values[] = {1,0};
 		texts[] = {"Вкл","Выкл"};
 		default = 1;

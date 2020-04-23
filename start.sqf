@@ -1197,6 +1197,22 @@ if (minesEnabled == 1) then {
 };
 [] call sun_removeEnemyNVG;
 
+// Сейф зона вокруг базы
+[] spawn { 
+    while {true} do { 
+        { 
+			
+            if(_x distance (getMarkerPos "campMkr") < 120) then {[_x,false] remoteExec ["allowDamage",_x]} else {[_x,true] remoteExec ["allowDamage",_x]}; 
+        } forEach allPlayers + vehicles; 
+        sleep 20; 
+    }; 
+};
+
+// Отключения урона для всех объектов на базе
+{
+	[_x,false] remoteExec ["allowDamage",_x];
+} forEach nearestObjects [getMarkerPos "campMkr", [], 120];
+
 // *****
 // SEQUENCING
 // *****
@@ -1239,6 +1255,9 @@ waituntil {
 };
 
 reinforceChance = reinforceChance + 0.1;
+
+East setFriend [Resistance, 0];
+West setFriend [Resistance, 0];
 
 // Create extract task
 [] execVM "sunday_system\createExtractTask.sqf";

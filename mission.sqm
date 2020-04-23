@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14264.188,17.009665,13030.655};
-		dir[]={-0.74732167,-0.48145407,0.45817125};
-		up[]={-0.41051602,0.87642115,0.25168186};
-		aside[]={0.52272606,-2.0736479e-007,0.85262245};
+		pos[]={14251.539,17.009665,13069.544};
+		dir[]={0.032649267,-0.54638767,-0.83702403};
+		up[]={0.021297155,0.83748144,-0.54603183};
+		aside[]={-0.99934638,-7.3655247e-007,-0.038984112};
 	};
 };
 binarizationWanted=0;
@@ -6014,7 +6014,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={14245.231,4.4843988,13046.127};
-				angles[]={0.051953323,3.3194418,6.2525272};
+				angles[]={0.051958453,3.3194418,6.2525201};
 			};
 			side="Empty";
 			flags=4;
@@ -6058,7 +6058,7 @@ class Mission
 										};
 										class value
 										{
-											items=267;
+											items=294;
 											class Item0
 											{
 												class data
@@ -9797,6 +9797,384 @@ class Mission
 													value="B_FieldPack_ghex_F";
 												};
 											};
+											class Item267
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_2b14_carry";
+												};
+											};
+											class Item268
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_kordCarryTripod";
+												};
+											};
+											class Item269
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_kordCarryTripodLow";
+												};
+											};
+											class Item270
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_metis_carry";
+												};
+											};
+											class Item271
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_kornet_carry";
+												};
+											};
+											class Item272
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_ags30_carry";
+												};
+											};
+											class Item273
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_usf3_tow_carry";
+												};
+											};
+											class Item274
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_gref3_dshkm_carry";
+												};
+											};
+											class Item275
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_kord_carry";
+												};
+											};
+											class Item276
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_usf3_m2_carry";
+												};
+											};
+											class Item277
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_m220CarryTripod";
+												};
+											};
+											class Item278
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_usf3_m252_carry";
+												};
+											};
+											class Item279
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_m3CarryTripod";
+												};
+											};
+											class Item280
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_m3CarryTripodLow";
+												};
+											};
+											class Item281
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_dragon_super";
+												};
+											};
+											class Item282
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_usf3_mk19_carry";
+												};
+											};
+											class Item283
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_staticMortarCarry";
+												};
+											};
+											class Item284
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_carryMortarBaseplate";
+												};
+											};
+											class Item285
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_nsv_carry";
+												};
+											};
+											class Item286
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_sag30CarryTripod";
+												};
+											};
+											class Item287
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_spg9CarryTripod";
+												};
+											};
+											class Item288
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_spg9_carry";
+												};
+											};
+											class Item289
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_compat_rhs_afrf3_spg9m_carry";
+												};
+											};
+											class Item290
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_staticAACarry";
+												};
+											};
+											class Item291
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_staticATCarry";
+												};
+											};
+											class Item292
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_staticGMGCarry";
+												};
+											};
+											class Item293
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ace_csw_staticHMGCarry";
+												};
+											};
 										};
 									};
 								};
@@ -10220,14 +10598,13 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14249.778,3.4452722,13048.769};
-				angles[]={0.041311946,0,6.2631841};
+				position[]={14246.55,3.8371561,13041.688};
+				angles[]={0.038647637,0,6.2525272};
 			};
 			name="SERVER";
 			init="call{null=[] execVM ""scripts\COS\cosInit.sqf"";}";
 			id=1217;
 			type="Logic";
-			atlOffset=-2.3841858e-007;
 		};
 	};
 };

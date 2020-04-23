@@ -282,7 +282,7 @@ fnc_playerSetup =
 		// };
 	// };
 	
-	// [player,["needMark",1,true]] remoteExec ['setVariable', player, TRUE]; // Отмечать игрока на карте
+	[player,["needMark",1,true]] remoteExec ['setVariable', player, TRUE]; // Отмечать игрока на карте
 	
 	arsenalbox addAction 
 	[

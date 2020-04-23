@@ -571,11 +571,12 @@ dro_missionName = {
 };
 
 sun_addIntel = {
-	_intelObject = _this select 0;
-	_taskName = _this select 1;
-	_intelObject setVariable ["task", _taskName];	
-	_intelObject addAction [
-		"Collect Intel",
+	 _intelObject = _this select 0;
+	 _taskName = _this select 1;
+	 _intelObject setVariable ["task", _taskName];	
+	
+	[_intelObject,
+		["Подобрать разведданные",
 		{
 			[_this select 3, 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
 			missionNamespace setVariable [format ["%1Completed", (_this select 3)], 1, true];
@@ -589,7 +590,26 @@ sun_addIntel = {
 		"",
 		"true",
 		5
-	];	
+	]] remoteExec ['addAction', 0, true];
+	// _intelObject = _this select 0;
+	// _taskName = _this select 1;
+	// _intelObject setVariable ["task", _taskName];	
+	// _intelObject addAction [
+		// "Collect Intel",
+		// {
+			// [_this select 3, 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
+			// missionNamespace setVariable [format ["%1Completed", (_this select 3)], 1, true];
+			// deleteVehicle (_this select 0);
+			// [5, false, (_this select 1)] execVM "sunday_system\intel\revealIntel.sqf";			
+		// },
+		// _taskName,
+		// 6,
+		// true,
+		// true,
+		// "",
+		// "true",
+		// 5
+	// ];	
 };
 
 dro_initLobbyCam = {
@@ -656,4 +676,12 @@ dro_detectPosMP = {
 			};
 		};
 	};
+};
+
+fnc_deleteVehicle = 
+{
+    private _vehicle = (_this select 0);
+    private _uidPlay = (_this select 1);
+	
+	deleteVehicle _vehicle;
 };

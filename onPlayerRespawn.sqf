@@ -21,3 +21,28 @@ if (!isNil "droGroupIconsVisible") then {
 		setGroupIconsVisible [true, false];
 	};
 };
+
+player setVariable ["ACE_IsEngineer", 0, true];
+player setVariable ["ace_medical_medicclass", 0, true];
+
+_playerRole = roleDescription player;
+
+switch (_playerRole) do
+{
+	case "Медик": 
+	{
+		player setVariable ["ace_medical_medicclass", 2, true];
+	}; 
+	case "Инженер": 
+	{
+		player setVariable ["ACE_IsEngineer", 2, true];
+	}; 
+	case "Командир (медик)": 
+	{
+		player setVariable ["ace_medical_medicclass", 2, true];
+	};
+	case "Пилот": 
+	{
+		player setVariable ["ACE_IsEngineer", 2, true];
+	};
+};
