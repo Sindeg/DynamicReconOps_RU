@@ -55,7 +55,7 @@ if (('FORTIFY' in preferredObjectives) || ('DISARM' in preferredObjectives) || (
 
 hintSilent  "";
 closeDialog 1;				
-[toUpper "Please wait while mission is generated", "objectivesSpawned", 1, ""] call sun_callLoadScreen;					
+["Подождите, пока идёт процесс создания миссии (обычно это занимает 1 - 2 минуты).", "objectivesSpawned", 1, ""] call sun_callLoadScreen;					
 	
 
 

@@ -14,30 +14,30 @@ if (count "campMkr" > 0) then {
 	switch (insertType) do {
 		case "GROUND": {
 			if (AOLocType == "NameLocal") then {
-				_textLocation = format ["<br /><br />From their deployed position at <marker name=%4>%5</marker> fireteam %6 will perform a patrol into <marker name=%3>%1</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr",_markerText, playerCallsign];
+				_textLocation = format ["<br /><br />С местоположения <marker name=%4>%5</marker> команда %6 начинает свою спецоперацию в <marker name=%3>%1</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr",_markerText, playerCallsign];
 			} else {	
-				_textLocation = format ["<br /><br />From their deployed position at <marker name=%4>%5</marker> fireteam %6 will perform a patrol into the %2 of <marker name=%3>%1.</marker> Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr",_markerText, playerCallsign];
+				_textLocation = format ["<br /><br />С места развертывания полевого штаба <marker name=%4>%5</marker> команда %6 начинает движение в %2 <marker name=%3>%1.</marker> Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr",_markerText, playerCallsign];
 			};
 		};
 		case "SEA": {
 			if (AOLocType == "NameLocal") then {
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via boat starting from the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into %1 at <marker name=%3>this location</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 начинает операцию на лодке с указанного <marker name=%4>места</marker>. С этого места они начинают движение в %1 <marker name=%3>локация</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			} else {	
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via boat starting from the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into the %2 of <marker name=%3>%1</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 начинает операцию на лодке с указанного <marker name=%4>места</marker>.С этого места они начинают движение в %2 <marker name=%3>%1</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			};
 		};
 		case "HELI": {
 			if (AOLocType == "NameLocal") then {
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via heli at the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into %1 at <marker name=%3>this location</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 прибывает на вертолете в отмеченное <marker name=%4>место</marker>. С этого места они начинают движение в %1 <marker name=%3>локация</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			} else {	
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via heli at the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into the %2 of <marker name=%3>%1</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 прибывает на вертолете в отмеченное <marker name=%4>место</marker>. С этого места они начинают движение в %2 <marker name=%3>%1</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			};
 		};
 		case "HALO": {
 			if (AOLocType == "NameLocal") then {
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via HALO at the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into %1 at <marker name=%3>this location</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 будет сброшен на парашутах в указанном <marker name=%4>месте</marker>. С этого места они начинают движение в %1 <marker name=%3>локация</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			} else {	
-				_textLocation = format ["<br /><br />Fireteam %5 will insert via HALO at the marked <marker name=%4>drop point</marker>. From there they will perform a patrol into the %2 of <marker name=%3>%1</marker>. Check task list for objectives.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
+				_textLocation = format ["<br /><br />Отряд %5 будет сброшен на парашутах в указанном <marker name=%4>месте</marker>. С этого места они начинают движение в %2 <marker name=%3>%1</marker>. Проверьте список своих задач.", aoName, AOBriefingLocType, "centerMkr","campMkr", playerCallsign];
 			};
 		};
 	};	
@@ -53,13 +53,13 @@ _numEnemies = 0;
 } forEach allUnits;
 
 if (_numEnemies < 60) then {
-	_textEnemies = format ["<br /><br />%1 have a weak occupying force in the region. ", enemyFactionName];
+	_textEnemies = format ["<br /><br />Разведка сообщает, что %1 имеет небольшое количество войск в этом регионе. ", enemyFactionName];
 };
 if (_numEnemies >= 60 && _numEnemies < 80) then {
-	_textEnemies = format ["<br /><br />%1 have a moderate occupying force in the region. ", enemyFactionName];
+	_textEnemies = format ["<br /><br />Разведка сообщает, что в этом регионе находится довольно большое количество войск %1.", enemyFactionName];
 };
 if (_numEnemies >= 80) then {
-	_textEnemies = format ["<br /><br />%1 have a strong occupying force in the region; expect heavy resistance. ", enemyFactionName];
+	_textEnemies = format ["<br /><br />Известно, что %1 сконцетрировало в этом регионе большое число войск; ожидайте сильного сопротивления. ", enemyFactionName];
 };
 
 _textSecondaryLocs = "";
@@ -76,11 +76,11 @@ if (count AOLocations > 1) then {
 	} forEach AOLocations;
 	if (count _aoNames > 0) then {
 		_aoNamesFull = [_aoNames] call sun_stringCommaList;			
-		_reportText = selectRandom ["received reports of", "detected", "been made aware of"];
+		_reportText = selectRandom ["получили сообщения о присутствии сил", "обнаружили присутствие ", "были проинформированы о войсках"];
 		if (count _aoNames > 1) then {		
-			_textSecondaryLocs = format ["We have also %3 %1 occupying forces in %2.", enemyFactionName, _aoNamesFull, _reportText];
+			_textSecondaryLocs = format [" Мы так же %3 %1 в %2.", enemyFactionName, _aoNamesFull, _reportText];
 		} else {
-			_textSecondaryLocs = format ["We have also %3 a %1 occupying force in %2.", enemyFactionName, _aoNamesFull, _reportText];
+			_textSecondaryLocs = format [" Мы так же %3 %1 в %2.", enemyFactionName, _aoNamesFull, _reportText];
 		};
 	};
 } else {
@@ -91,30 +91,30 @@ if (count AOLocations > 1) then {
 _textCivs = "";
 if (!isNil "civTrue") then {	
 	if (civTrue) then {
-		_textCivs = "As well as that you can expect to encounter civilians in the area of operations so check your targets and exercise extreme caution before using ordnance. Command considers any collateral damage to be unacceptable and ROE violations may result in severe punishment.";		
+		_textCivs = "Кроме того, командование ожидает присутствие гражданских лиц в районе операций, поэтому будьте предельно осторожны, прежде чем открывать огонь. Командование считает любой сопутствующий ущерб неприемлемым, а нарушение прав собственности может привести к суровому наказанию.";		
 		if (!isNil "hostileCivIntel") then {
 			_randHostileCivs = selectRandom [
-				"<br /><br />We have reason to believe that a hostile militia is operating in the region and are hiding themselves among the civilian population.",
-				"<br /><br />Intel shows that a number of civilians have banded together to form a militia hostile to our forces.",
-				"<br /><br />Recent reports show that a hostile militia has sprung up to support the enemy forces."
+				"<br /><br />У нас есть основания полагать, что в регионе действуют враждебные ополченцы, которые прячутся среди гражданского населения.",
+				"<br /><br />Наш информатор сообщает, что ряд мирных жителей объединились, чтобы сформировать ополчение, враждебное нашим силам.",
+				"<br /><br />Недавние сообщения показывают, что в городе располагается враждебное ополчение, которое поддерживает противника."
 			];
-			_textCivs = format [" %1%2 %3 You will be going into a complex situation that will require close attention to apparent non-combatants. Keep this in mind and ensure collateral damage is kept to a bare minimum.", _textCivs, _randHostileCivs, hostileCivIntel];
+			_textCivs = format [" %1%2 %3 Вы попадете в сложную ситуацию, которая потребует пристального внимания к окружению. Имейте это в виду и убедитесь, что сопутствующий ущерб сведен к минимуму.", _textCivs, _randHostileCivs, hostileCivIntel];
 		};
 	} else {
-		_textCivs = " The area of operations is clear of civilians. You are cleared to use any tools at your disposal to complete objectives.";
+		_textCivs = " Район операции свободен от мирных жителей. Вы можете использовать любую технику и вооружение для выполнения поставленных задач.";
 	};	
 };
 
 _textResupply = if (getMarkerColor "resupplyMkr" == "") then {
 	""
 } else {
-	"<br /><br />A <marker name='resupplyMkr'>resupply point</marker> has been prepared by a guerilla element. It contains a basic selection of arms for you to use in the field including explosives to deal with any objectives that may require them.";
+	"<br /><br />Местные ополченцы подготовили для вас <marker name='resupplyMkr'>снаряжение</marker>, в котором содержится базовый набор для использования в полевых условиях, включая медицину и взрывчатые вещества для решения любых задач, которые могут вам потребоваться.";
 };
 
-_textCancel = "<br /><br />If at any time you find yourself unable to complete an objective you have the option to cancel that task under its task listing.";
+_textCancel = "<br /><br />Если вы не можете выполнить одну из задач, у вас есть возможность отменить её.";
 
 _textStealth = if (stealthEnabled == 1) then {
-	format ["<br /><br />The %1 forces will not be expecting %2 operations near %3, a fact which you can use to your advantage. Keep a low profile and eliminate enemies before they can raise the alarm and you'll stay undetected.", enemyFactionName, playersFactionName, aoName]
+	format ["<br /><br />Войска %1 не будут ожидать появления %2 рядом с %3, чем вы можете воспользоваться. Действуйте скрытно и уничтожайте врагов, прежде чем они смогут поднять тревогу, тогда вы останетесь незамеченными.", enemyFactionName, playersFactionName, aoName]
 } else {
 	""
 };
@@ -132,6 +132,6 @@ publicVariable "briefingString";
 //[_briefingString] remoteExec ["sun_briefingJIP", 0, true];
 
 //player createDiaryRecord ["Diary", ["Briefing", _briefingString]];
-[briefingString, {player createDiaryRecord ["Diary", ["Briefing", _this]]}] remoteExec ["call", 0, true];
+[briefingString, {player createDiaryRecord ["Diary", ["Инструктаж", _this]]}] remoteExec ["call", 0, true];
 
 ["BRIEFING"] spawn dro_sendProgressMessage;

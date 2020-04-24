@@ -174,31 +174,15 @@ switch (_vehStyle) do {
 _vehicleName = ((configFile >> "CfgVehicles" >> _vehicleType >> "displayName") call BIS_fnc_GetCfgData);
 
 _taskType = "truck";
-_taskTitle = "Steal Vehicle";
+_taskTitle = "Украсть технику";
 _taskDesc = selectRandom [
-	(format ["Important assets are currently being moved through the %3 region and command is anxious to recover them for our own examination. Locate the %2 %1 and steal it. Once it is out of the AO we can recover it safely.", _vehicleName, enemyFactionName, aoLocationName]),
-	(format ["A %2 %1 was reported operating in the %3 early late last night. %4 intelligence believe the %1 contains important information regarding %2 positions and wants you to locate and steal it. Once the %1 is out of the AO we can recover it safely.", _vehicleName, enemyFactionName, aoLocationName, playersFactionName]),
-	(format ["Shortages within the %4 operation have forced us to take measures to acquire more supplies. Hitting the %2 forces at %3 will not only help resupply our operation but will significantly impact the ability of %2 to control the area. Reports suggest there is a %2 %1 that we would like you to steal. Once it is out of the AO we can recover it safely.", _vehicleName, enemyFactionName, aoLocationName, playersFactionName])
+	(format ["Важные транспортные средства в настоящее время перемещаются через регион %3, и наше командование стремится заполучить их для нашего собственного использования. Найдите %1, украдите его и доставьте в штаб.", _vehicleName, enemyFactionName, aoLocationName]),
+	(format ["Сообщается, что %1 использовался противником в районе %3 поздно вечером. Разведка %4 полагает, что %1 содержит важную информацию о позициях %2 и хочет, чтобы вы нашли и украли эту технику. Доставьте в штаб транспорт, как только захватите его.", _vehicleName, enemyFactionName, aoLocationName, playersFactionName])
 ];
+
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 _thisVeh setVariable ["thisTask", _taskName, true];
-
-// Add steal trigger
-_trgSteal = [objNull, "mkrAOC"] call BIS_fnc_triggerToMarker;
-_trgSteal setTriggerActivation ["ANY", "PRESENT", false];
-_trgSteal setTriggerStatements [
-	"
-		(alive (thisTrigger getVariable 'thisVeh')) && 
-		!((thisTrigger getVariable 'thisVeh') in thisList)				
-	",
-	"					
-		[(thisTrigger getVariable 'thisTask'), 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
-		
-	", 
-	""];
-_trgSteal setVariable ["thisVeh", _thisVeh];				
-_trgSteal setVariable ["thisTask", _taskName];
 
 if (isMultiplayer) then {
 	_thisVeh addMPEventHandler ["MPKilled", {
@@ -213,8 +197,8 @@ if (isMultiplayer) then {
 };	
 
 // Create locate subtask
-_subTaskDesc = format ["Locate the target %1.", _vehicleName];
-_subTaskTitle = "Locate vehicle";
+_subTaskDesc = format ["Провести разведку и определить местоположение %1.", _vehicleName];
+_subTaskTitle = "Обнаружить";
 _subTasks pushBack [_locateSubTaskName, _subTaskDesc, _subTaskTitle, "truck"];
 missionNamespace setVariable [(format ["%1_taskType", _locateSubTaskName]), "truck", true];
 
@@ -224,16 +208,39 @@ missionNamespace setVariable [(format ["%1_taskType", _locateSubTaskName]), "tru
 		({vehicle _x == (_this select 0)} count (units (grpNetId call BIS_fnc_groupFromNetId))) > 0								
 	};
 	[(_this select 1), "SUCCEEDED", true] spawn BIS_fnc_taskSetState;
-	'mkrAOC' setMarkerAlpha 1;			
+	//'mkrAOC' setMarkerAlpha 1;			
 };		
+
+// Собственный триггер, срабатывающий когда игроки отвозят технику на базу
+[_thisVeh, _taskName] spawn {
+	waitUntil {sleep 5; _this select 0 distance (getMarkerPos "campMkr") < 100};
+	[_this select 1, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 	
+};
+
+// Add steal trigger
+// _trgSteal = [objNull, "mkrAOC"] call BIS_fnc_triggerToMarker;
+// _trgSteal setTriggerActivation ["ANY", "PRESENT", false];
+// _trgSteal setTriggerStatements [
+	// "
+		// (alive (thisTrigger getVariable 'thisVeh')) && 
+		// !((thisTrigger getVariable 'thisVeh') in thisList)				
+	// ",
+	// "					
+		// [(thisTrigger getVariable 'thisTask'), 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
+		
+	// ", 
+	// ""];
+// _trgSteal setVariable ["thisVeh", _thisVeh];				
+// _trgSteal setVariable ["thisTask", _taskName];
+
 // Marker
 _markerName = format["vehMkr%1", floor(random 10000)];
 [_thisVeh, _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 400] execVM "sunday_system\objectives\followingMarker.sqf";
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may reduce the size of your search radius and locate any positions they're moving through. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 
 allObjectives pushBack _taskName;

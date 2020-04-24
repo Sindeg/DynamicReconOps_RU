@@ -139,7 +139,7 @@ if (hostileCivsEnabled) then {
 		["V_Pocketed_black_F", "V_Pocketed_coyote_F", "V_Pocketed_olive_F"]
 	];	
 	DRO_C_HWearables = selectRandom _wearables;
-	hostileCivIntel = "Some of the civilian militia may be wearing similar clothing. Check and ID your targets visually.";	
+	hostileCivIntel = "Некоторые из мирных жителей могут быть враждебно настроены. Будьте внимательны.";	
 	publicVariable "hostileCivIntel";
 };
 

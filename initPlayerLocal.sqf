@@ -270,17 +270,17 @@ fnc_playerSetup =
 	Для простого опознавания специальности игрока на поле боя его ник выделяется цветом, соответствущим цвету, которым выделена специальность.
 	"]];
 	
-	//Если создано задание с взрывом вышки связи, оповестить игроков о механике глушения рации
-	// if ((missionNameSpace getVariable ["JamTFARMessage", 0]) == 1) then
-	// {
-		// [] spawn 
-		// {
-			// waitUntil {player distance getpos arsenalbox > 150};
-			// _time = [6,15] call BIS_fnc_randomInt;
-			// sleep _time;
-			// hint parsetext format ["<t size = '1.5' color = '#EE3D0D'>Внимание<br/><t/><t color = 'FFFFFF'size = '1.2'>Противник применяет РЭБ, возможны проблемы в работе связи.<t/><t/>"];
-		// };
-	// };
+	Если создано задание с взрывом вышки связи, оповестить игроков о механике глушения рации
+	if ((missionNameSpace getVariable ["JamTFARMessage", 0]) == 1) then
+	{
+		[] spawn 
+		{
+			waitUntil {player distance getpos arsenalbox > 150};
+			_time = [6,15] call BIS_fnc_randomInt;
+			sleep _time;
+			hint parsetext format ["<t size = '1.5' color = '#EE3D0D'>Внимание<br/><t/><t color = 'FFFFFF'size = '1.2'>Противник применяет РЭБ, возможны проблемы в работе связи.<t/><t/>"];
+		};
+	};
 	
 	[player,["needMark",1,true]] remoteExec ['setVariable', player, TRUE]; // Отмечать игрока на карте
 	

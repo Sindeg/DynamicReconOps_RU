@@ -1061,9 +1061,10 @@ if (stealthEnabled == 1) then {
 		_p = _p + 1;
 	};	
 }; 
-//if (random 1 > 0.4) then {
+
+if (random 1 > 0.5) then {
 	[] execVM "sunday_system\objectives\destroyCommsTower.sqf";
-//};
+};
 
 // Create intro sequence
 // Collect all possible camera targets
