@@ -9,7 +9,7 @@ _buildingPos = getPos _building;
 _buildingPositions = [_building] call BIS_fnc_buildingPositions;
 
 // Populate building				
-_intelClasses = ["Land_MetalCase_01_medium_F", "Land_MetalCase_01_small_F", "Land_Suitcase_F"];
+_intelClasses = ["Land_MetalCase_01_medium_F", "Land_MetalCase_01_small_F", "Land_Suitcase_F","Land_Laptop_03_black_F","Land_PortableCabinet_01_closed_olive_F","Land_PlasticCase_01_medium_F"];
 _intelClass = selectRandom _intelClasses;
 
 _validIntel = [];
@@ -78,13 +78,14 @@ _buildingName = ((configFile >> "CfgVehicles" >> _buildingClass >> "displayName"
 _intelName = ((configFile >> "CfgVehicles" >> _intelClass >> "displayName") call BIS_fnc_GetCfgData);			
 			
 _taskName = format ["task%1", floor(random 100000)];
-_taskTitle = "Retrieve Intel";
-_taskDesc = format ["Retrieve the %1 intelligence from a %2 located at the marked <marker name='%4'>%3</marker>. As well as containing important information desired by high command this intel package may contain useful information about troop placement in the AO.",enemyFactionName, _intelName,_buildingName, _markerName];
+_taskTitle = "Найти разведданные";
+_taskDesc = format ["Найдите %2 %1 на расположенной на метке <marker name='%4'>%3</marker>. Помимо того, что там содержится важная информация, требуемая штабом, эти разведданные могут содержать данные о нахождении войск в этом регионе.",enemyFactionName, _intelName,_buildingName, _markerName];
 _taskType = "documents";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 
-[_thisIntel, _taskName] remoteExec ["sun_addIntel", 0, true];
+//[_thisIntel, _taskName] remoteExec ["sun_addIntel", 0, true];
+[_thisIntel, _taskName] call sun_addIntel;
 	
 allObjectives pushBack _taskName;
 objData pushBack [

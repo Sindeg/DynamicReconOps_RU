@@ -43,18 +43,18 @@ _markerFortify = createMarker [_markerName, _thisPos];
 _markerFortify setMarkerShape "ICON";
 _markerFortify setMarkerType "loc_Bunker";
 _markerFortify setMarkerSize [2.5, 2.5];
-_markerText = format ["OP %1", ([FOBNames] call sun_selectRemove)];
+_markerText = "Баррикада";
 _markerFortify setMarkerText _markerText;
 _markerFortify setMarkerColor markerColorPlayers;		
 _markerFortify setMarkerAlpha 0;
 	
 _taskDesc = selectRandom [
-	(format ["As we prepare to make a move into %2 you are tasked with constructing an operating post in the area. Move to the marked location and fortify it.", enemyFactionName, aoLocationName]),
-	(format ["With increased %1 activity we can expect them to move into %2 at some point in the future. Fortify this location in preparation.", enemyFactionName, aoLocationName])	
+	(format ["Так как мы готовимся к передислокации в зону %2, вам поручено построить укрепления в этом районе. Переместитесь в отмеченное место и сделайте это.", enemyFactionName, aoLocationName]),
+	(format ["С увеличением активности %1 мы ожидаем, что в будущем они переместятся в %2. Укрепите это место.", enemyFactionName, aoLocationName])	
 ];	
 
 // Create task
-_taskTitle = "Construct Fortifications";
+_taskTitle = "Построить укрепления";
 _taskType = "use";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
@@ -71,8 +71,8 @@ missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, tr
 	_allGroups = [];
 	_messageSent = false;
 	_defendTaskName = format ["task%1", floor(random 100000)];
-	_defendTaskDesc = (format ["Hold and defend %2 from the attacking %1 force.", enemyFactionName, (_this select 3)]);
-	_defendTaskTitle = "Defend";
+	_defendTaskDesc = (format ["Удержите и защищайте %2 от атакующих сил %1.", enemyFactionName, (_this select 3)]);
+	_defendTaskTitle = "Защищать область";
 	_defendTaskType = "defend";
 	
 	_spawnPos = [];		

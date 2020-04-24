@@ -34,7 +34,7 @@ if (count _heliTransports > 0) then {
 	_markerLZ setMarkerShape "ICON";		
 	_markerLZ setMarkerColor "ColorBlack";
 	_markerLZ setMarkerType "mil_pickup_noShadow";
-	_markerLZ setMarkerText "Extract LZ";
+	_markerLZ setMarkerText "Точка эвакуации";
 	
 	// Spawn vehicle
 	_cargoWeights = [];

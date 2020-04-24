@@ -1087,14 +1087,16 @@ missionNamespace setVariable ["dro_introCamReady", 1, true];
 
 // Generate chances
 //_friendlyChance = if (count AOLocations > 1) then {random 1} else {0};
-_friendlyChance = if (missionPreset == 3) then {1} else {0};
+//_friendlyChance = if (missionPreset == 3) then {1} else {0};
+_friendlyChance = 0;
 //_friendlyChance = 1; // DEBUG
 /*
 _ambFriendlyChance = if (count AOLocations > 1 || stealthEnabled == 2) then {
 	if (_friendlyChance > 0.75) then {random 1.2} else {random 1};
 } else {0};
 */
-_ambFriendlyChance = if (missionPreset == 3) then {1} else {0};
+//_ambFriendlyChance = if (missionPreset == 3) then {1} else {0};
+_ambFriendlyChance = 0;
 //if (missionPreset == 3) then {_ambFriendlyChance = 1};
 
 if (_friendlyChance > 0.8 || _ambFriendlyChance > 0.8) then {
@@ -1138,7 +1140,7 @@ if (!isNil "DRO_simpleObjects") then {
 
 // Ambient flyover setup
 _ambientFlyByChance = random 1;
-if (_ambientFlyByChance > 0.65) then {
+if (_ambientFlyByChance > 0.6) then {
 	_flyerClasses = (eHeliClasses + ePlaneClasses);
 	if (count _flyerClasses > 0) then {
 		[centerPos, _flyerClasses] execVM "sunday_system\generate_ao\ambientFlyBy.sqf";

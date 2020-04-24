@@ -59,8 +59,8 @@ for "_i" from 0 to 1 do {
 
 // Create Task
 _taskName = format ["task%1", floor(random 100000)];
-_taskTitle = "Clear Area";
-_taskDesc = format ["Clear <marker name='%1'>marked area</marker> held by %2 troops.", _markerName, enemyFactionName];
+_taskTitle = "Зачистить область";
+_taskDesc = format ["Зачистите <marker name='%1'>отмеченную область</marker>, которую заняли войска %2.", _markerName, enemyFactionName];
 _taskType = "attack";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 	

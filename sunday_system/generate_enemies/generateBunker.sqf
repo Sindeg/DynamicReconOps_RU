@@ -131,7 +131,7 @@ if (count (((AOLocations select _AOIndex) select 2) select 5) > 0) then {
 		_markerBunker = createMarker [_markerName, _bunkerPos];			
 		_markerBunker setMarkerShape "ICON";
 		_markerBunker setMarkerType "hd_warning";
-		_markerBunker setMarkerText "Bunker";			
+		_markerBunker setMarkerText "Бункер";			
 		_markerBunker setMarkerColor markerColorEnemy;
 		_markerBunker setMarkerAlpha 0;
 		enemyIntelMarkers pushBack _markerBunker;			

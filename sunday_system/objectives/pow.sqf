@@ -213,7 +213,7 @@ if (_spawnStationary) then {
 	_powChar setVariable["taskName", "", true];
 	[
 		_powChar,
-		"Unbind Hostage",
+		"Развязать руки",
 		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_unbind_ca.paa",
 		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_unbind_ca.paa",
 		"(alive _target) && (_target getVariable['hostageBound', false]) && ((_this distance _target) < 3)",
@@ -286,27 +286,27 @@ _markerName = format["powMkr%1", floor(random 10000)];
 
 // Create Task		
 _powName = ((configFile >> "CfgVehicles" >> powClass >> "displayName") call BIS_fnc_GetCfgData);
-_taskTitle = format ["Captive: %1", _lastName];
+_taskTitle = format ["Освободить пленника: %1", _lastName];
 _taskDesc = switch (powClass) do {
 	case "C_scientist_F": {
 		selectRandom [
-			(format ["One of the science team behind an experimental %1 weapons project is being held in the area. It's possible that they have turned against %1 interests and command has ordered his capture and extraction for questioning.", enemyFactionName]),
-			(format ["While performing routine checks on a military installation, one of our scientists, %1 %2, was taken captive by %3 and is being held somewhere in the AO.", _firstName, _lastName, enemyFactionName]),
-			(format ["A civilian scientist named %1 %2 was abducted by %3 from his home a week ago. Intelligence sources in the region have pointed to him currently being moved through the area.", _firstName, _lastName, enemyFactionName])
+			(format ["Один из членов научной группы, стоящей за экспериментальным проектом оружия %1, находится в этом районе. Возможно, он решили пойти против %1, и командование приказало захватить его и доставить для допроса.", enemyFactionName]),
+			(format ["Выполняя обычное ТО военной установки, один из наших ученых, %1 %2, был взят в плен %3 и находится где-то в районе операции.", _firstName, _lastName, enemyFactionName]),
+			(format ["Гражданский ученый по имени %1 %2 был похищен %3 из своего дома неделю назад. Разведывательные источники в регионе указали на то, что он в настоящее время находится в этой области.", _firstName, _lastName, enemyFactionName])
 		];
 	};
 	case "C_journalist_F": {
 		selectRandom [
-			(format ["A journalist, %1 %2, was abducted by %3 forces late last night. They are being held on invented charges and it is our belief that they face interrogation or execution if not quickly located.", _firstName, _lastName, enemyFactionName]),
-			(format ["The current conflict has brought a number of war reporters to the region and one of them, %1 %2, has been detained by %3 forces. Threats against his life have been made and it is important that they do not become a focus for enemy propaganda.", _firstName, _lastName, enemyFactionName]),
-			(format ["An incendiary article by %1 %2 has brought %3 him to %3 attention after they travelled to the %4 region against military advice. We believe that factions within the %3 command would like to use %2 as a propaganda device and command is intent on that not happening.", _firstName, _lastName, enemyFactionName, aoLocationName])
+			(format ["Журналист %1 %2 был похищен %3 поздно вечером. Его держат по выдуманным обвинениям, и мы считаем, что его ждёт с допросом или казнью, если его не обнаружат быстро.", _firstName, _lastName, enemyFactionName]),
+			(format ["Нынешний конфликт привел в регион ряд военных журналистов, и один из них, %1 %2, был задержан силами %3. Есть угрозы против его жизни, и необходимо, чтобы он не стал центром вражеской пропаганды.", _firstName, _lastName, enemyFactionName]),
+			(format ["Разгромная статья %1 %2 привлекла внимание %3 к нему после того, как они отправились в регион %4 вопреки военным советам. Мы считаем, что %3 хотели бы использовать %2 в качестве пропагандиста, и штаб намерен этого избежать.", _firstName, _lastName, enemyFactionName, aoLocationName])
 		];
 	};
 	default {
 		selectRandom [
-			(format ["Late last night a %1 by the name of %2 %3 disappeared from his post. It is unknown at this time whether they left voluntarily or were captured by %4 elements, but intelligence within the last hour places him in the %5 region.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName]),
-			(format ["After nearly a year in captivity we have new intelligence on the location of missing %1 %2 %3. He is being moved through the %5 area by %4, possibly for a handoff in the near future, so the timing of this mission is critical.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName]),
-			(format ["Command has word that there was a survivor from a recent recon team that were caught behind %4 lines. %1 %2 %3 is being held somewhere in the %5 area and today presents our first opportunity to retrieve him.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName])
+			(format ["Поздно вечером %1 по имени %2 %3 исчез с его рабочего места. В настоящее время неизвестно, ушел ли они добровольно или был захвачен %4, но разведка в течение последнего часа наблюдала его в районе %5.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName]),
+			(format ["После года в плену у нас есть новые сведения о местонахождении пропавшего без вести %1 %2 %3. Его перевозят %4 через область %5, возможно, для передачи другой стороне, поэтому время этой миссии имеет решающее значение.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName]),
+			(format ["Штабу известно, что в недавней разведывательной команде был выживший, который оказался за линией %4. %1 %2 %3 находится где-то в области %5 и сегодня есть возможность найти его.", _powName, _firstName, _lastName, enemyFactionName, aoLocationName])
 		];
 	};
 };
@@ -329,14 +329,14 @@ _powChar setVariable ["joinTask", _joinSubTaskName, true];
 powJoinTasks pushBack _joinSubTaskName;
 
 // Create extraction subtask
-_extractSubtaskDesc = format ["Once %1 is under your control get him out of the AO.", _lastName];
-_extractSubtaskTitle = format ["Extract %1", _lastName];
+_extractSubtaskDesc = format ["Как только %1 будет под вашим контролем, вывезите его из зоны конфликта.", _lastName];
+_extractSubtaskTitle = format ["Спасти %1", _lastName];
 _subTasks pushBack [_extractSubTaskName, _extractSubtaskDesc, _extractSubtaskTitle, "exit"];
 _powChar setVariable ["extractTask", _extractSubTaskName, true];
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may reduce the size of your search radius and locate any positions they're being moved through. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 
 // Add triggers

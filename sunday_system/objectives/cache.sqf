@@ -48,19 +48,19 @@ _markerName = format["cacheMkr%1", floor(random 10000)];
 [(_spawnedObjects select 0), _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 400] execVM "sunday_system\objectives\followingMarker.sqf";
 
 // Create task
-_taskTitle = "Destroy Cache";
+_taskTitle = "Уничтожить тайник";
 _taskDesc = selectRandom [
-	(format ["%1 is hiding a weapons cache somewhere in the %2 region. Intelligence given to us by local contacts implies that these weapons are going to arm an independent insurgent group willing to carry out attacks on the civilian population. Destroy the cache.", enemyFactionName, aoLocationName]),
-	(format ["A %2 local recently stumbled on a hidden %1 ammunition dump in the %2 region. You are tasked with locating and destroying that cache before it can be moved again.", enemyFactionName, aoLocationName, playersFactionName]),
-	(format ["Since the beginning of the %3 offensive we have been unable to make serious headway against the %1 supply operation, however recent information provided to us by a guerilla element places a %1 weapons cache in this area. Find and destroy it.", enemyFactionName, aoLocationName, playersFactionName])
+	(format ["%1 прячет тайник с оружием где-то в области %2. Информация, предоставленная нам местными контактами, сообщает, что этим оружием собираются вооружить одну из повстанческих групп, готовую совершать нападения на гражданское население. Уничтожьте тайник.", enemyFactionName, aoLocationName]),
+	(format ["Один из местных %2 недавно наткнулся на скрытый склад боеприпасов %1 в регионе %2. Перед вами стоит задача найти и уничтожить этот тайник, прежде чем его можно будет снова переместить.", enemyFactionName, aoLocationName, playersFactionName]),
+	(format ["С начала наступления %3 мы не смогли серьезно продвинуться против операции снабжения %1, однако недавняя информация, предоставленная нам партизанским отрядом, сообщает нам о тайнике с оружием %1 в этой области. Найди и уничтожьте его.", enemyFactionName, aoLocationName, playersFactionName])
 ];
 _taskType = "destroy";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Collecting intel will reduce the size of your search radius. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 

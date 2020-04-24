@@ -29,7 +29,7 @@ _markerPower setMarkerShape "ICON";
 _markerPower setMarkerType  "mil_triangle_noShadow";
 _markerPower setMarkerSize [0.65, 0.65];
 _markerPower setMarkerColor "ColorBlack";
-_markerPower setMarkerText "Power";
+_markerPower setMarkerText "Подстанция";
 _markerPower setMarkerAlpha 1;
 
 waitUntil {(missionNameSpace getVariable ["playersReady", 0]) == 1};
@@ -39,17 +39,17 @@ _taskName = format ["task%1", floor(random 100000)];
 _powerName = ((configFile >> "CfgVehicles" >> (typeOf _powerUnit) >> "displayName") call BIS_fnc_GetCfgData);
 if (["powerTask"] call BIS_fnc_taskExists) then {
 	// Create this subtask	
-	_taskTitle = format ["Sabotage %1", _powerName];
-	_taskDesc = format ["Destroy or sabotage the %1 to disrupt power in the immediate area.", _powerName];
+	_taskTitle = "Уничтожить энергогенератор";
+	_taskDesc = format ["Уничтожьте %1 чтобы нарушить энергосеть в городе.", _powerName];
 	_task = [[_taskName, "powerTask"], true, [_taskDesc, _taskTitle, _markerName], _powerUnit, "CREATED", 0, false, true, "danger", true] call BIS_fnc_setTask;
 } else {
 	// Create parent task
-	_taskTitle = "Optional: Sabotage Power Grid";
-	_taskDesc = format ["Take out the %1 power grid in the %2 region. Each power unit you destroy will help reduce the enemy's ability to locate your team. Consider taking a toolkit to sabotage the power units silently.", enemyFactionName, aoLocationName];
+	_taskTitle = "(Доп.) Саботировать энергосеть";
+	_taskDesc = format ["Выведите из строя энергосеть %1 в %2. Каждый генератор, который вы уничтожаете, поможет вам уменьшить способность противника определять местонахождение вашей команды. Подумайте о том, чтобы взять подрыв заряды, чтобы тихо саботировать силовые установки.", enemyFactionName, aoLocationName];
 	_task = ["powerTask", true, [_taskDesc, _taskTitle, ""], objNull, "CREATED", 0, true, true, "danger", true] call BIS_fnc_setTask;	
 	// Create this subtask		
-	_taskTitle = format ["Sabotage %1", _powerName];
-	_taskDesc = format ["Destroy or sabotage the %1 to disrupt power in the immediate area.", _powerName];
+	_taskTitle = "Уничтожить энергогенератор";
+	_taskDesc = format ["Уничтожьте %1 чтобы нарушить энергосеть в городе.", _powerName];
 	_task = [[_taskName, "powerTask"], true, [_taskDesc, _taskTitle, _markerName], _powerUnit, "CREATED", 0, false, true, "danger", true] call BIS_fnc_setTask;
 	// Listen for all subtasks to be completed
 	[] spawn {

@@ -242,12 +242,12 @@ switch (_vehStyle) do {
 // Create Task		
 _vehicleName = ((configFile >> "CfgVehicles" >> _vehicleType >> "displayName") call BIS_fnc_GetCfgData);
 
-_taskTitle = "Destroy Vehicle";
+_taskTitle = "Уничтожить транспорт";
 _taskType = "destroy";
 _taskDesc = selectRandom [
-	(format ["Today's tasking will see you sabotaging enemy assets in the region. We have reports that a %2 %1 can be found somewhere in the area and command would like to see it taken out of action.", _vehicleName, enemyFactionName, aoLocationName]),
-	(format ["Late last night %2 started moving assets into the %3 area, presenting us with a prime opportunity for a small force to damage their operations. The target is a %1 which will need to be located and destroyed.", _vehicleName, enemyFactionName, aoLocationName]),
-	(format ["A guerilla element has provided us with information that a %2 %1 carrying important cargo has been sighted in the %3 region. Destroying the %1 along with its cargo will hamper %2 resupply efforts and assist the general %4 offensive.", _vehicleName, enemyFactionName, aoLocationName, playersFactionName])	
+	(format ["Вам необходимо саботировать противника в регионе. У нас есть информация, что где-то в этом районе находится %2 %1, и штаб хотел бы, чтобы он был выведен из строя.", _vehicleName, enemyFactionName, aoLocationName]),
+	(format ["Поздно прошлой ночью %2 начал перемещать свой транспорт в область %3, что дало нам небольшую возможность нанести им урон. Наша цель - это %1, который нужно найти и уничтожить.", _vehicleName, enemyFactionName, aoLocationName]),
+	(format ["Разведка предоставила нам информацию о том, что %2 %1, перевозящий важные грузы, обнаружен в регионе %3. Уничтожение %1 вместе с его грузом значительно ударит по снабжению %2 и поможет общему наступлению %4.", _vehicleName, enemyFactionName, aoLocationName, playersFactionName])	
 ];
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
@@ -276,8 +276,8 @@ _markerName = format["vehMkr%1", floor(random 10000)];
 [_thisVeh, _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 400] execVM "sunday_system\objectives\followingMarker.sqf";
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may reduce the size of your search radius and locate any positions they're moving through. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 

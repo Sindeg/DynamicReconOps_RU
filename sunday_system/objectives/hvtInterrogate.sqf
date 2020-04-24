@@ -252,11 +252,11 @@ if (random 1 > 0.3) then {
 // Create Task
 _hvtName = ((configFile >> "CfgVehicles" >> _hvtType >> "displayName") call BIS_fnc_GetCfgData);
 _taskDescriptions = [
-	(format ["We believe that the high value target codenamed '%1' is active somewhere in the AO. It is believed that he holds important information regarding the overall strategy of %3 forces in the region. Command wants him captured and brought back alive for further questioning.", _hvtCodename, toLower _hvtName, enemyFactionName])	
+	(format ["Мы полагаем, что где-то в районе находится объект высокого значения с кодовым названием "%1". Предполагается, что он обладает важной информацией относительно общей стратегии сил %3 в регионе. Командование хочет, чтобы его схватили и доставили живым для дальнейшего допроса.", _hvtCodename, toLower _hvtName, enemyFactionName])	
 ];
 
 _taskDesc = (selectRandom _taskDescriptions);
-_taskTitle = format ["HVT: %1", _hvtCodename];
+_taskTitle = format ["Ликвидировать цель: %1", _hvtCodename];
 _taskType = "help";
 _hvtChar setVariable ["thisTask", _taskName];
 _hvtChar setVariable ["markerName", _markerName];
@@ -265,15 +265,15 @@ missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 
 // Create capture subtask
-_captureSubtaskDesc = format ["Capture and interrogate the %1 %2 codenamed '%4'. Target is believed to be in the <marker name='%3'>marked area</marker>. Do not allow the target to be killed and eliminate his guards to force his surrender.", enemyFactionName, toLower _hvtName, _markerName, _hvtCodename];
-_captureSubtaskTitle = format ["Capture %1", _hvtCodename];
+_captureSubtaskDesc = format ["Захватить и допросить %1 %2 под кодовым названием «%4». Предполагается, что цель находится в <marker name='%3'>отмеченной области</marker>. Не допустите убийства цели и устраните его охранников, чтобы заставить его сдаться.", enemyFactionName, toLower _hvtName, _markerName, _hvtCodename];
+_captureSubtaskTitle = format ["Захватить в плен %1", _hvtCodename];
 _subTasks pushBack [_captureSubtaskName, _captureSubtaskDesc, _captureSubtaskTitle, "help"];
 _hvtChar setVariable ["captureTask", _captureSubtaskName, true];
 missionNamespace setVariable [(format ["%1_taskType", _captureSubtaskName]), "help", true];
 
 // Create extract subtask
-_extractSubtaskDesc = format ["Once under your control extract %1 from the AO for further questioning by our intelligence services.", toLower _hvtName, _markerName, _hvtCodename];
-_extractSubtaskTitle = format ["Extract %1", _hvtCodename];
+_extractSubtaskDesc = format ["После захвата цели, доставьте %1 из региона для дальнейшего допроса нашими спецслужбами.", toLower _hvtName, _markerName, _hvtCodename];
+_extractSubtaskTitle = format ["Вывезти из зоны конфликта %1", _hvtCodename];
 _subTasks pushBack [_extractSubTaskName, _extractSubtaskDesc, _extractSubtaskTitle, "exit"];
 _hvtChar setVariable ["extractTask", _extractSubTaskName, true];
 missionNamespace setVariable [(format ["%1_taskType", _extractSubTaskName]), "exit", true];
@@ -295,8 +295,8 @@ if (_reconChance >= baseReconChance) then {
 	taskIntel pushBack [_taskName, name _hvtChar, _intelSubTaskName, "NAME"];
 	
 	// Create intel subtasks	
-	_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may include information on the target's appearance, their aliases and may reduce the size of your search radius. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-	_subTaskTitle = "Optional: Collect Intel";
+	_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+	_subTaskTitle = "Найти разведданные";
 	_subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 	missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 	// Following marker
@@ -328,7 +328,7 @@ if (dynamicSim == 0) then {
 
 [
 	_hvtChar,
-	"Capture",
+	"Захватить",
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
 	"(alive _target) && ((_this distance _target) < 3)",

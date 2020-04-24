@@ -83,7 +83,7 @@ if (_artyChance > _supplyChance) then {
 			_markerSupports setMarkerShape "ICON";
 			_markerSupports setMarkerColor markerColorPlayers;
 			_markerSupports setMarkerType "mil_marker";
-			_markerSupports setMarkerText "Artillery Position";
+			_markerSupports setMarkerText "Артиллерия";
 			_markerSupports setMarkerSize [0.6, 0.6];				
 			_artyVeh = createVehicle [_artyClass, _artyPos, [], 0, "NONE"];
 			_artyVeh setDir ([_artyPos, trgAOC] call BIS_fnc_dirTo);			

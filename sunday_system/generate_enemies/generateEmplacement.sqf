@@ -35,7 +35,7 @@ if (count (((AOLocations select _AOIndex) select 2) select 4) > 0) then {
 	_markerEmplace = createMarker [_markerName, _pos];			
 	_markerEmplace setMarkerShape "ICON";
 	_markerEmplace setMarkerType "hd_warning";
-	_markerEmplace setMarkerText "Emplacement";			
+	_markerEmplace setMarkerText "Аванпост";			
 	_markerEmplace setMarkerColor markerColorEnemy;
 	_markerEmplace setMarkerAlpha 0;
 	enemyIntelMarkers pushBack _markerEmplace;		

@@ -100,8 +100,8 @@ switch (_taskStyle) do {
 		};
 		if (count _roadPoints == 0) exitWith {[(AOLocations call BIS_fnc_randomIndex)] call fnc_selectObjective};
 		_taskName = format ["task%1", floor(random 100000)];
-		_taskDesc = format ["Perform recon patrol on route in %1 territory.", enemyFactionName];
-		_taskTitle = "Recon Patrol";		
+		_taskDesc = format ["Выполните разведывательный патруль по маршруту в %1.", enemyFactionName];
+		_taskTitle = "Патрулировать область";		
 		_taskType = "walk";
 		_taskPos = [_roadPoints] call sun_avgPos;
 		if (_taskPos isEqualTo [0,0,0]) exitWith {[(AOLocations call BIS_fnc_randomIndex)] call fnc_selectObjective};
@@ -169,8 +169,8 @@ switch (_taskStyle) do {
 		};
 
 		_taskName = format ["task%1", floor(random 100000)];
-		_taskDesc = format ["Travel to grid %1 and recon the area.", (mapGridPosition _taskPos)];
-		_taskTitle = "Point Recon";
+		_taskDesc = format ["Переместитесь в район %1 и разведайте область.", (mapGridPosition _taskPos)];
+		_taskTitle = "Точка патрулирования";
 		_taskType = "move";
 		
 		_markerName = format["reconMkr%1", floor(random 100000)];

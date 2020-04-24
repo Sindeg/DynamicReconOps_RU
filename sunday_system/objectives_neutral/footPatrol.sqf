@@ -88,8 +88,8 @@ for "_n" from 0 to _numPoints do {
 };
 if (count _roadPoints == 0) exitWith {[(AOLocations call BIS_fnc_randomIndex)] call fnc_selectObjective};
 _taskName = format ["task%1", floor(random 100000)];
-_taskDesc = format ["Perform recon patrol on route in %1 territory.", enemyFactionName];
-_taskTitle = "Recon Patrol";		
+_taskDesc = format ["Провести разведывательное патрулирование на территории %1.", enemyFactionName];
+_taskTitle = "Патрулировать область";		
 _taskType = "walk";
 _taskPos = [_roadPoints] call sun_avgPos;
 if (_taskPos isEqualTo [0,0,0]) exitWith {[(AOLocations call BIS_fnc_randomIndex)] call fnc_selectObjective};
@@ -110,7 +110,7 @@ _subtasks = [];
 {
 	_subTaskName = format ["task%1", floor(random 100000)];
 	_subTaskDesc = format ["Patrol point %1", _forEachIndex+1];
-	_subTaskTitle = format ["Point %1", _forEachIndex+1];	
+	_subTaskTitle = format ["Точка маршрута %1", _forEachIndex+1];	
 	_subTaskType = format ["move%1",_forEachIndex+1];
 	[(grpNetId call BIS_fnc_groupFromNetId), [_subTaskName, _taskName], [_subTaskDesc, _subTaskTitle, ""], _x, "CREATED", 10, false, _subTaskType, false] call BIS_fnc_taskCreate;	
 	_subtasks pushBack _subTaskName;	

@@ -28,10 +28,10 @@ _markerBuilding setMarkerColor "ColorCivilian";
 _markerBuilding setMarkerAlpha 0;
 
 // Create task
-_taskTitle = "Construct Barricade";
+_taskTitle = "Построить баррикаду";
 _taskDesc = selectRandom [
-	(format ["%1 forces have been transporting troops and supplies through %2 and command has tasked you with impeding their progress by building a blockade across one of the roads.", enemyFactionName, aoLocationName]),
-	(format ["We have intelligence that %1 may consider moving into %2 soon. With that in mind we need road barricades built to better defend the area. Use what you find to build a blockade.", enemyFactionName, aoLocationName])	
+	(format ["Войска %1 перебрасывают войска и припасы через %2, и штаб поставил перед вами задачу помешать их продвижению путем строительства блокады на одной из дорог.", enemyFactionName, aoLocationName]),
+	(format ["У нас есть сведения, что %1 может перебросить свои войска в %2 в ближайшее время. Имея это в виду, нам нужны дорожные баррикады, чтобы лучше защитить территорию. Используйте всё, что вы найдете, чтобы построить блокаду.", enemyFactionName, aoLocationName])	
 ];
 
 _taskType = "use";

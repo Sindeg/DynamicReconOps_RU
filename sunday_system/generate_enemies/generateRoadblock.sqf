@@ -71,7 +71,7 @@ if (count (((AOLocations select _AOIndex) select 2) select 1) > 0) then {
 	_markerRoadblock = createMarker [_markerName, _roadPosition];			
 	_markerRoadblock setMarkerShape "ICON";
 	_markerRoadblock setMarkerType "hd_warning";
-	_markerRoadblock setMarkerText "Checkpoint";		
+	_markerRoadblock setMarkerText "Блокпост";		
 	_markerRoadblock setMarkerColor markerColorEnemy;
 	_markerRoadblock setMarkerAlpha 0;
 	enemyIntelMarkers pushBack _markerRoadblock;

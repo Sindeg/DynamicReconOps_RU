@@ -78,11 +78,11 @@ _markerDisarm setMarkerAlpha 0.5;
 };
 
 // Create task
-_taskTitle = "Locate and Disarm";
+_taskTitle = "Найти и обезвредить";
 _taskType = "mine";
 _taskDesc = selectRandom [
-	(format ["The civilian population of %2 is living with the danger of unexploded ordnance from the %1 campaign. If we're going to win the support of the local populace and take the area ourselves we need to make it safe. Locate and make safe any ordnance you can find in the marked area.", enemyFactionName, aoLocationName]),
-	(format ["Reports have come to us that there is unexploded ordnance in the %2 region. If we're going to win the support of the local populace and take the area ourselves we need to make it safe. Locate and make safe any ordnance you can find in the marked area.", enemyFactionName, aoLocationName])	
+	(format ["Гражданское население %2 живет в опасности из - за невзорвавшихся боеприпасов %1. Если мы собираемся заручиться поддержкой местного населения и самостоятельно взять район, нам нужно сделать его безопасным. Найдите и обезопасьте любые боеприпасы, которые вы можете найти в отмеченной области.", enemyFactionName, aoLocationName]),
+	(format ["Нам пришли сообщения о том, что в регионе %2 есть неразорвавшиеся боеприпасы. Если мы собираемся заручиться поддержкой местного населения и самостоятельно взять район, нам нужно сделать его безопасным. Найдите и обезопасьте любые боеприпасы, которые вы можете найти в отмеченной области.", enemyFactionName, aoLocationName])	
 ];
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];

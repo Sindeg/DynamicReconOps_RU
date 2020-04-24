@@ -138,6 +138,10 @@ if (count eCarClasses > 0) then {
 			if (count _indexes > 0) then {			
 				_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
 				_vehType = selectRandom eCarClasses;
+				if (random 1 > 0.75 and count eTankClasses > 0) then
+				{
+					_vehType = selectRandom eTankClasses;
+				};
 				_veh = createVehicle [_vehType, _vehPos, [], 0, "NONE"];		
 				[_veh] call sun_createVehicleCrew;
 				//createVehicleCrew _veh;
@@ -199,7 +203,7 @@ if (count eCarClasses > 0) then {
 					_markerCamp = createMarker [_markerName, _campPos];			
 					_markerCamp setMarkerShape "ICON";
 					_markerCamp setMarkerType "hd_warning";
-					_markerCamp setMarkerText "Camp";			
+					_markerCamp setMarkerText "Лагерь";			
 					_markerCamp setMarkerColor markerColorEnemy;
 					_markerCamp setMarkerAlpha 0;				
 					travelPosPOIMil pushBack _campPos;	

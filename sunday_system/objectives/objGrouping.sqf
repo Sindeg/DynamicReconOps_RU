@@ -460,4 +460,3 @@ if (count _intelTaskIndexes > 0) then {
 		} forEach objData;		
 	};
 };
-

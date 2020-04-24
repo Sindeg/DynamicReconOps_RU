@@ -44,11 +44,11 @@ _markerName = format["disarmMkr%1", floor(random 10000)];
 };
 
 // Create task
-_taskTitle = "Locate and Disarm";
+_taskTitle = "Найти и обезвредить СВУ";
 _taskType = "mine";
 _taskDesc = selectRandom [
-	(format ["A recently captured bomb maker revealed that roadside IEDs are being used in the %2 region. We know at least one is present in the area and we need to ensure it is made safe to reduce the potential for friendly and civilian casualties.", enemyFactionName, aoLocationName]),
-	(format ["%1 have been employing the use of roadside IEDs in the %2 region for some time and we need the area made safe to reduce the potential for friendly and civilian casualties.", enemyFactionName, aoLocationName])	
+	(format ["Недавно захваченный террорист, который являлся изготовителем СВУ рассказал, что эти бомбы используются в регионе %2. Мы знаем, что по крайней мере одно из таких СВУ присутствует в этом районе, и мы должны обезвредить его, чтобы уменьшить вероятность жертв и потерь среди гражданского населения.", enemyFactionName, aoLocationName]),
+	(format ["%1 уже продолжительное время использует СВУ в регионе %2, и нам нужно, чтобы этот район был безопасным, чтобы уменьшить вероятность гражданских жертв.", enemyFactionName, aoLocationName])	
 ];
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
@@ -86,8 +86,8 @@ if (hostileCivsEnabled) then {
 		//_triggerMan setSkill ["courage", 1];
 		
 		// Create subtasks	
-		_subTaskDesc = "Considering the hostility of the local population we expect that any IEDs will be live and operated by a triggerman. Search the area for anyone suspicious and neutralise them if you see hostile intent. They will probably be waiting somewhere with a line of sight on the IED.";
-		_subTaskTitle = "Neutralise Triggerman";
+		_subTaskDesc = "Учитывая враждебность местного населения, мы ожидаем, что СВУ будут контролироваться подрывником. Обыщите в зоне подозрительных людей и нейтрализуйте их, если увидите враждебные намерения. Они, вероятно, будут находится в прямой видимости от СВУ.";
+		_subTaskTitle = "Нейтрализовать подрывника";
 		_subTasks pushBack [_subTaskName, _subTaskDesc, _subTaskTitle, "kill"];
 				
 		// Trigger

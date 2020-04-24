@@ -31,11 +31,11 @@ _markerProtect setMarkerColor "ColorCivilian";
 _markerProtect setMarkerAlpha 0;
 
 // Create task
-_taskTitle = "Protect Civilian";
+_taskTitle = "Спасти гражданского";
 _taskDesc = selectRandom [
-	(format ["%3 is a journalist in the %2 region who has been under house arrest for the last year. Based on intelligence gathered in a previous operation we believe that there is now a credible threat on his life from %1. Move to %3's location and protect him.", enemyFactionName, aoLocationName, name _thisCiv]),
-	(format ["We've received a communication that a local civilian is willing to give us detailed information on %1 troop movements but that his life is currently threatened. Find him and protect him from harm.", enemyFactionName, aoLocationName, name _thisCiv]),
-	(format ["%1 has begun cracking down on protestors in the %2 region. A vocal campaigner named %3 has called for aid after receiving credible threats on his life. Get to him and protect him from harm.", enemyFactionName, aoLocationName, name _thisCiv])
+	(format ["%3 - журналист в регионе %2, который был под арестом в течение последнего года. Основываясь на сведениях, собранных в предыдущей операции, мы считаем, что в настоящее время его жизни угрожает реальная угроза со стороны %1. Переместитесь в область %3 и защитите его.", enemyFactionName, aoLocationName, name _thisCiv]),
+	(format ["Мы получили сообщение о том, что местное гражданское население готово предоставить нам подробную информацию о передвижениях войск %1, но в настоящее время одному из информаторов угрожает опасность. Найдите его и защитите.", enemyFactionName, aoLocationName, name _thisCiv]),
+	(format ["%1 начал расправляться с протестующими в регионе %2. Активный участник операции по имени %3 обратился за помощью после получения серьезных угроз его жизни. Доберись до него и защитите его от вреда.", enemyFactionName, aoLocationName, name _thisCiv])
 ];
 
 _taskType = "defend";
@@ -43,13 +43,13 @@ missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 
 // Create subtasks	
-_subTaskDesc = format ["Make contact with %1.", name _thisCiv];
-_subTaskTitle = "Contact";
+_subTaskDesc = format ["Найдите %1.", name _thisCiv];
+_subTaskTitle = "Найти";
 _subTasks pushBack [_subTaskName, _subTaskDesc, _subTaskTitle, "help"];
 missionNamespace setVariable [(format ["%1_taskType", _subTaskName]), "help", true];
 
-_subTaskDesc2 = format ["Protect %1 from harm.", name _thisCiv];
-_subTaskTitle2 = "Protect";
+_subTaskDesc2 = format ["Защитите %1 от противника, эвакуируйте его за пределы зоны операции и доставьте в штаб.", name _thisCiv];
+_subTaskTitle2 = "Защитить";
 _subTasks pushBack [_subTaskName2, _subTaskDesc2, _subTaskTitle2, "defend"];
 missionNamespace setVariable [(format ["%1_taskType", _subTaskName2]), "defend", true];
 

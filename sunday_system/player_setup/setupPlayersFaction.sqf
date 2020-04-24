@@ -100,7 +100,7 @@ if (_resupplyValid) then {
 		markerResupply setMarkerShape "ICON";
 		markerResupply setMarkerColor markerColorPlayers;
 		markerResupply setMarkerType "mil_flag";
-		markerResupply setMarkerText "Resupply";
+		markerResupply setMarkerText "Снаряжение";
 		markerResupply setMarkerSize [0.6, 0.6];
 	};
 };
@@ -719,7 +719,7 @@ switch (insertType) do {
 					markerPlayerStart setMarkerShape "ICON";
 					markerPlayerStart setMarkerColor markerColorPlayers;
 					markerPlayerStart setMarkerType "mil_start";
-					markerPlayerStart setMarkerText "Sea Insert";
+					markerPlayerStart setMarkerText "Точка начала операции";
 					
 					{
 						_x addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
@@ -992,7 +992,7 @@ if (count _waterPositions > 0) then {
 	_markerBoat setMarkerShape "ICON";
 	_markerBoat setMarkerType "mil_pickup";							
 	_markerBoat setMarkerColor markerColorPlayers;						
-	_markerBoat setMarkerText "Sea transport";	
+	_markerBoat setMarkerText "Лодка";	
 };		
 
 

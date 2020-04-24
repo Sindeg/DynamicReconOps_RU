@@ -50,8 +50,8 @@ switch (_selectedTask) do {
 					
 		_hvtName = ((configFile >> "CfgVehicles" >> _hvtType >> "displayName") call BIS_fnc_GetCfgData);		
 		_taskName = format ["task%1", floor(random 100000)];
-		_taskDesc = format ["We have reports that a %1 %2 is entering the AO from the <marker name='%3'>marked direction</marker>. Eliminate him before you extract.", enemyFactionName, _hvtName, _arrowMarkerName];
-		_taskTitle = "Eliminate HVT";
+		_taskDesc = format ["Мы установили что %1 %2 прибывает с <marker name='%3'>указанного направления</marker>. Устраните его, пока он не ушел.", enemyFactionName, _hvtName, _arrowMarkerName];
+		_taskTitle = "Устранить офицера";
 		_taskType = "target";
 		_hvtChar setVariable ["thisTask", _taskName, true];		
 		missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];		
@@ -66,7 +66,7 @@ switch (_selectedTask) do {
 		// Add killed event handler
 		_hvtChar addEventHandler ["Killed", {[((_this select 0) getVariable ("thisTask")), "SUCCEEDED", true] spawn BIS_fnc_taskSetState; missionNamespace setVariable [format ["%1Completed", ((_this select 0) getVariable ("thisTask"))], 1, true];}];		
 		
-		_radioDesc = format ["We have reports that a %1 %2 is entering the AO. Eliminate him before mission completion.", enemyFactionName, _hvtName];
+		_radioDesc = format ["Мы установили что %1 %2 прибывает в район. Устраните его до конца спецоперации.", enemyFactionName, _hvtName];
 		
 		taskIDs pushBack _id;
 		diag_log ["DRO: taskIDs is now: %1", taskIDs];
@@ -138,8 +138,8 @@ switch (_selectedTask) do {
 			
 			_vehicleName = ((configFile >> "CfgVehicles" >> _vehicleType >> "displayName") call BIS_fnc_GetCfgData);		
 			_taskName = format ["task%1", floor(random 100000)];
-			_taskDesc = format ["We have reports that a %1 %2 is entering the AO from the <marker name='%3'>marked direction</marker>. The %2 is carrying important cargo and must be destroyed before extraction.", enemyFactionName, _vehicleName, _arrowMarkerName];
-			_taskTitle = "Destroy vehicle";		
+			_taskDesc = format ["Мы установили что %1 %2 прибывает с <marker name='%3'>указанного направления</marker>. %2 перевозит важный груз и должен быть уничтожен до конца спецоперации.", enemyFactionName, _vehicleName, _arrowMarkerName];
+			_taskTitle = "Уничтожить транспорт";		
 			_taskType = "destroy";			
 			missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, true];
 			_id = [_taskName, true, [_taskDesc, _taskTitle, ""], _vehSpawnPos, "CREATED", 10, true, true, _taskType, true] call BIS_fnc_setTask;
@@ -157,7 +157,7 @@ switch (_selectedTask) do {
 				missionNamespace setVariable [format ["%1Completed", ((_this select 0) getVariable ("thisTask"))], 1, true];
 			} ];
 			
-			_radioDesc = format ["We have reports that a %1 %2 is entering the AO. The %2 is carrying important cargo and must be destroyed before the mission is complete.", enemyFactionName, _vehicleName];
+			_radioDesc = format ["Мы установили что %1 %2 прибывает в а район. %2 перевозит важный груз и должен быть уничтожен до конца спецоперации.", enemyFactionName, _vehicleName];
 			
 			taskIDs pushBack _id;
 			diag_log ["DRO: taskIDs is now: %1", taskIDs];

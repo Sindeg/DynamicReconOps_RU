@@ -33,16 +33,16 @@ _vehicleType = switch (_artyType) do {
 _artyName = ((configFile >> "CfgVehicles" >> _vehicleType >> "displayName") call BIS_fnc_GetCfgData);
 _taskTitle = switch (_artyType) do {
 	case "ARTY": {
-		"Destroy Artillery"
+		"Уничтожить артиллерию"
 	};
 	case "AA": {
-		"Destroy AA"
+		"Уничтожить ПВО"
 	};
 };
 _taskDesc = selectRandom [
-	(format ["A %2 %1 emplacement is stopping effective %3 operations in the %4 region. It is vital these targets are taken out before the main %3 force can safely engage the enemy and commit to a sustained attack. Destroy the %1.", _artyName, enemyFactionName, playersFactionName, aoLocationName]),
-	(format ["%2 have moved a %1 into the %4 area and %3 command has placed a halt on major operations in the area until it is taken out. We believe a small unit should be able to infiltrate and destroy the %1.", _artyName, enemyFactionName, playersFactionName, aoLocationName]),
-	(format ["With only hours until a major %3 offensive it is vital that the %2 %1 located near %4 is destroyed. Command has requested a small unit to infiltrate and destroy the %1 before the main force arrives.", _artyName, enemyFactionName, playersFactionName, aoLocationName])
+	(format ["Артиллерия %2 %1 мешает проводить операции %3 в регионе %4. Крайне важно, чтобы эта цель была уничтожена до того, как основные силы %3 смогут безопасно атаковать противника и полномасштабную атаку. Уничтожить %1.", _artyName, enemyFactionName, playersFactionName, aoLocationName]),
+	(format ["%2 переместили %1 на территорию %4, после чего силы %3 приостановили все операции в этой области, до тех пор, пока цель не будет уничтожена. Мы считаем, вашему отряду под силу проникнуть на территорию и уничтожить %1.", _artyName, enemyFactionName, playersFactionName, aoLocationName]),
+	(format ["За несколько часов до наступления %3 необходимо, чтобы %2 %1, расположенный рядом с %4, был уничтожен. Командование попросило ваш отряд проникнуть и уничтожить %1 до прибытия основных сил.", _artyName, enemyFactionName, playersFactionName, aoLocationName])
 ];
 _taskType = "destroy";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
@@ -129,8 +129,8 @@ _markerName = format["artyMkr%1", floor(random 10000)];
 [_thisVeh, _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 600] execVM "sunday_system\objectives\followingMarker.sqf";	
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Collecting intel will reduce the size of your search radius. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 

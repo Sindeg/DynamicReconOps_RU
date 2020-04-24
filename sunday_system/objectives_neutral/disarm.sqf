@@ -48,8 +48,8 @@ if ((random 1) > 0 && !UXOUsed) then {
 };
 
 _taskDesc = selectRandom [
-	(format ["The civilian population of %2 is living with the danger of unexploded ordnance from the %1 campaign. If we're going to win the support of the local populace and take the area ourselves we need to make it safe. Locate and make safe any ordnance you can find in the marked area.", enemyFactionName, aoLocationName]),
-	(format ["Reports have come to us that there is unexploded ordnance in the %2 region. If we're going to win the support of the local populace and take the area ourselves we need to make it safe. Locate and make safe any ordnance you can find in the marked area.", enemyFactionName, aoLocationName])	
+	(format ["Гражданское население %2 живет в опасности из - за невзорвавшихся боеприпасов %1. Если мы собираемся заручиться поддержкой местного населения и самостоятельно взять район, нам нужно сделать его безопасным. Найдите и обезопасьте любые боеприпасы, которые вы можете найти в отмеченной области.", enemyFactionName, aoLocationName]),
+	(format ["Нам пришли сообщения о том, что в регионе %2 есть неразорвавшиеся боеприпасы. Если мы собираемся заручиться поддержкой местного населения и самостоятельно взять район, нам нужно сделать его безопасным. Найдите и обезопасьте любые боеприпасы, которые вы можете найти в отмеченной области.", enemyFactionName, aoLocationName])	
 ];
 
 // Marker
@@ -86,9 +86,9 @@ if (count _disarmTargetsUXO > 0) then {
 	[(_disarmTargetsIED select 0), _taskName, _markerName, _intelSubTaskName, "ColorRed", 150, "Cross"] execVM "sunday_system\objectives\staticMarker.sqf";
 	
 	_taskDesc = selectRandom [
-		(format ["A recently captured bomb maker revealed that roadside IEDs are being used in the %2 region. We know at least one is present in the area and we need to ensure it is made safe to reduce the potential for friendly and civilian casualties.", enemyFactionName, aoLocationName]),
-		(format ["%1 have been employing the use of roadside IEDs in the %2 region for some time and we need the area made safe to reduce the potential for friendly and civilian casualties.", enemyFactionName, aoLocationName])	
-	];	
+		(format ["Недавно захваченный террорист, который являлся изготовителем СВУ рассказал, что эти бомбы используются в регионе %2. Мы знаем, что по крайней мере одно из таких СВУ присутствует в этом районе, и мы должны обезвредить его, чтобы уменьшить вероятность жертв и потерь среди гражданского населения.", enemyFactionName, aoLocationName]),
+		(format ["%1 уже продолжительное время использует СВУ в регионе %2, и нам нужно, чтобы этот район был безопасным, чтобы уменьшить вероятность гражданских жертв.", enemyFactionName, aoLocationName])	
+	];		
 };
 // Create task
 _taskTitle = "Locate and Disarm";

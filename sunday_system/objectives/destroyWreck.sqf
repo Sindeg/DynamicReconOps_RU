@@ -67,11 +67,11 @@ _markerWreck setMarkerAlpha 0;
 // Create Task				
 _wreckName = ((configFile >> "CfgVehicles" >> _wreckType >> "displayName") call BIS_fnc_GetCfgData);
 
-_taskTitle = "Destroy Wreck";
+_taskTitle = "Взорвать выведенную из строя технику";
 _taskDesc = selectRandom [
-	(format ["Deny the enemy use of a wrecked %4 %1 located in the %3 region. Destroy the wreck by any means available.", _wreckName, enemyFactionName, aoLocationName, playersFactionName]),
-	(format ["An artillery strike 8 hours ago disabled a %4 %1 in the %3 region. Perform a bomb damage assessment and destroy the vehicle by any means available.", _wreckName, enemyFactionName, aoLocationName, playersFactionName]),
-	(format ["A %4 operation in the %3 area has left behind a disabled %1 and command is keen not to let it come of use to %2 forces. Destroy the vehicle by any means available.", _wreckName, enemyFactionName, aoLocationName, playersFactionName])	
+	(format ["Не дать врагу воспользоваться подбитым %4 %1 расположенным в %3. Уничтожить транспорт любым способом.", _wreckName, enemyFactionName, aoLocationName, playersFactionName]),
+	(format ["Артиллерийский обстрел 8 часов назад подбил %4 %1 в регионе %3. Проведите оценку ущерба от бомбы и уничтожьте транспорт любым доступным способом.", _wreckName, enemyFactionName, aoLocationName, playersFactionName]),
+	(format ["Спецоперация %4 в области %3 оставила после себя подбитый %1, и штаб стремится не допустить его использования для сил %2. Уничтожить транспорт любым доступным способом.", _wreckName, enemyFactionName, aoLocationName, playersFactionName])	
 ];
 _taskType = "destroy";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];

@@ -13,8 +13,8 @@ _taskPosFakeTemp = getMarkerPos _markerName;
 _taskPosFake = _taskPos getPos [random 60, random 360];//[(_taskPosFakeTemp select 0), (_taskPosFakeTemp select 1), 0];
 
 _reconTaskName = format ["task%1", floor(random 100000)];
-_reconTaskDesc = format ["Recon the area at grid %1 from a safe observation distance.", (mapGridPosition _taskPosFake)];
-_reconTaskTitle = "Observe";		
+_reconTaskDesc = format ["Разведайте и понаблюдайте за областью в квадрате %1 с безопасного расстояния.", (mapGridPosition _taskPosFake)];
+_reconTaskTitle = "Разведать область";			
 
 _reconMarkerName = format["reconMkr%1", floor(random 100000)];		
 _reconMarker = createMarker [_reconMarkerName, _taskPosFake];

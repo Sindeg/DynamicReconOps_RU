@@ -21,7 +21,7 @@ if (count (((AOLocations select _AOIndex) select 2) select 8) > 0) then {
 	
 // Create Task		
 _heliName = ((configFile >> "CfgVehicles" >> _vehicleType >> "displayName") call BIS_fnc_GetCfgData);
-_taskTitle = "Destroy Helicopter";
+_taskTitle = "Уничтожить вертолёт";
 _taskDesc = "";
 _taskType = "destroy";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
@@ -136,14 +136,14 @@ if (count _travelPositions > 0) then {
 		taskIntel pushBack [_taskName, _thisPos, _intelSubTaskName, "WAYPOINT"];
 	};
 	_taskDesc = selectRandom [
-		(format ["%2 air assets are stationed in the %3 region. We have intelligence that a %1 is present for drills and destroying it would be a significantly reduce %2 offensive capabilities.", _heliName, enemyFactionName, aoLocationName]),		
-		(format ["%2 have been attacking %4 forces from hidden airbases at a number of locations. Intelligence has identified one of these locations are your team is tasked with destroying the %2 air asset.", _heliName, enemyFactionName, aoLocationName, playersFactionName]),
-		(format ["Allied local militias have requested %4 help to destroy a %2 %1 that has been impeding their progress in the region. Locate and destroy the helicopter to give the militias further security from air attack.", _heliName, enemyFactionName, aoLocationName, playersFactionName])	
+		(format ["Воздушные силы %2 размещены в регионе %3. У нас есть сведения, что %1 присутствует в этом районе, и его уничтожение значительно уменьшит атакующие способности %2.", _heliName, enemyFactionName, aoLocationName]),		
+		(format ["%2 атаковали войска %4 из скрытых авиабаз в нескольких местах. Разведка определила одно из этих мест, где вашей команде поручено уничтожить %2.", _heliName, enemyFactionName, aoLocationName, playersFactionName]),
+		(format ["Войска союзников попросили %4 помочь уничтожить %2 %1, который препятствует их прогрессу в регионе. Найдите и уничтожьте вертолет, чтобы обеспечить ополченцам дополнительную безопасность от воздушного нападения.", _heliName, enemyFactionName, aoLocationName, playersFactionName])	
 	];
 } else {
 	_taskDesc = selectRandom [
-		(format ["Intelligence reports a target of opportunity in the %3 region: a %1 may have been forced down for repairs. Search the area, locate and destroy the %1.", _heliName, enemyFactionName, aoLocationName]),
-		(format ["%3 is hosting a %2 %1 that we believe will be within reach of a small recon team. Enter the %3 region and destroy the helicopter.", _heliName, enemyFactionName, aoLocationName])		
+		(format ["Разведка сообщает о возможной цели в регионе %3: возможно, %1 был вынужден отказаться от ремонта и до сих пор находится там. Обыщите область, найдите и уничтожьте %1.", _heliName, enemyFactionName, aoLocationName]),
+		(format ["В %3 размещается %2 %1, который, по нашему мнению, будет доступен для уничтожения. Войдите в регион %3 и уничтожьте вертолет.", _heliName, enemyFactionName, aoLocationName])		
 	];
 };
 
@@ -152,8 +152,8 @@ _markerName = format["heliMkr%1", floor(random 10000)];
 [_thisVeh, _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 800] execVM "sunday_system\objectives\followingMarker.sqf";
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may reduce the size of your search radius and locate any positions they're moving through. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 
 allObjectives pushBack _taskName;

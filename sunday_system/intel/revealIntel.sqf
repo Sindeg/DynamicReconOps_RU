@@ -119,7 +119,7 @@ if (count taskIntel > 0) then {
 						_markerWP = createMarker [_markerName, _taskData];						
 						_markerWP setMarkerShape "ICON";
 						_markerWP setMarkerType "hd_flag";
-						_markerWP setMarkerText "Vehicle waypoint";
+						_markerWP setMarkerText "Маршрутная точка";
 						_markerWP setMarkerColor markerColorEnemy;						
 						_radioTaskIntel = format ["Intel shows a target vehicle will drive through %1. Marked it on the map.", mapGridPosition _taskData];
 					};
@@ -129,7 +129,7 @@ if (count taskIntel > 0) then {
 						_markerWP = createMarker [_markerName, _taskData];						
 						_markerWP setMarkerShape "ICON";
 						_markerWP setMarkerType "hd_flag";
-						_markerWP setMarkerText "Heli landing zone";
+						_markerWP setMarkerText "Точка приземления вертолёта";
 						_markerWP setMarkerColor markerColorEnemy;						
 						_radioTaskIntel = format ["Intel shows a target helicopter will land at %1. Marked it on the map.", mapGridPosition _taskData];
 					};	

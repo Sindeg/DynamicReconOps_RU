@@ -107,7 +107,7 @@ travelPosPOIMil = [];
 
 if (count AO_POITypes > 0) then {
 	AO_POIs = [];
-	for "_p" from 1 to (([2,4] call BIS_fnc_randomInt) min (count AO_POITypes)) step 1 do {
+	for "_p" from 1 to (([2,5] call BIS_fnc_randomInt) min (count AO_POITypes)) step 1 do {
 		AO_POIs pushBack ([AO_POITypes] call sun_selectRemove);
 	};	
 	{
@@ -131,7 +131,7 @@ if (count AO_POITypes > 0) then {
 									_markerMarket = createMarker [_markerName,  selectRandom _thisMarketPositions];			
 									_markerMarket setMarkerShape "ICON";
 									_markerMarket setMarkerType "mil_flag_noShadow";
-									_markerMarket setMarkerText "Market";			
+									_markerMarket setMarkerText "Рынок";			
 									_markerMarket setMarkerColor "ColorBlack";
 									_markerMarket setMarkerAlpha 1;				
 									_markerMarket setMarkerSize [0.65, 0.65];				

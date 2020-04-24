@@ -13,9 +13,9 @@ _mortarType = selectRandom eMortarClasses;
 // Create Task
 _mortarName = ((configFile >> "CfgVehicles" >> _mortarType >> "displayName") call BIS_fnc_GetCfgData);
 
-_taskTitle = "Destroy Mortar Emplacement";
+_taskTitle = "Уничтожить артиллерию";
 _taskDesc = selectRandom [
-	(format ["%1 is operating a %2 emplacement in the %3 region. Command has ordered the emplacement neutralized in advance of a %4 offensive.", enemyFactionName, _mortarName, aoLocationName, playersFactionName])	
+	(format ["%1 использует %2 в районе %3. Командование приказало уничтожить артиллерию и зачистить этот район перед наступлением %4.", enemyFactionName, _mortarName, aoLocationName, playersFactionName])	
 ]; 
 _taskType = "destroy";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
@@ -119,8 +119,8 @@ _markerName = format["mortarMkr%1", floor(random 10000)];
 [_mortar, _taskName, _markerName, _intelSubTaskName, markerColorEnemy, 500] execVM "sunday_system\objectives\followingMarker.sqf";
 
 // Create intel subtasks	
-_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Collecting intel will reduce the size of your search radius. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-_subTaskTitle = "Optional: Collect Intel";
+_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+_subTaskTitle = "Найти разведданные";
 _subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 

@@ -72,7 +72,7 @@ for "_i" from 0 to ([0,2] call BIS_fnc_randomInt) step 1 do {
 				_markerName = format["intelMkr%1", floor(random 10000)];
 				_markerBuilding = createMarker [_markerName, getPos _thisBuilding];			
 				_markerBuilding setMarkerShape "ICON";
-				_markerBuilding setMarkerText "Possible Intel";
+				_markerBuilding setMarkerText "Возможные разведданные";
 				_markerBuilding setMarkerType "mil_box_noShadow";
 				_markerBuilding setMarkerColor "ColorBlack";		
 				_markerBuilding setMarkerSize [0.65, 0.65];		

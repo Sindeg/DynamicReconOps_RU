@@ -281,25 +281,24 @@ if (random 1 > 0.3) then {
 // Create Task
 _hvtName = ((configFile >> "CfgVehicles" >> _hvtType >> "displayName") call BIS_fnc_GetCfgData);
 _taskDescriptions = [
-	(format ["We believe that the high value target codenamed '%1' is active somewhere in the AO. This target has been on our kill list for a long time and recent intelligence reports from an undercover source puts him here. It goes without saying that neutralizing this %2 would be a great blow to %3 efforts in the region.", _hvtCodename, toLower _hvtName, enemyFactionName]),
-	(format ["'%1' has recently resurfaced in the region after a prolonged absence from our surveillance. Command is anxious not to let this target disappear again and resume covert operations against %2 forces.", _hvtCodename, playersFactionName]),
-	(format ["Reports have come in that our target is responsible for a number of atrocities in the %1 area. Despite his willingness to use civilians as shields for his operations, he still commands great influence with the local populace. While alive, %2 represents a large threat to both civilian and the nearby %3 forces.", aoLocationName, _hvtCodename, playersFactionName]),
-	(format ["A little known %1 commander has begun to make a name for himself with attacks on civilian targets in the %2 region. Though the casualty count from his operations remains thankfully low, recent intelligence points to his involvement in a planned attempt to overthrow the governing civilian body, a destabilising risk we cannot allow.", enemyFactionName, aoLocationName]),
-	(format ["From his base of operations at %1 our target codenamed '%2' commands a fierce guerilla operation. Other information related to his past and planned actions are currently classified, just make sure that whatever those plans might be never come to fruition.", aoLocationName, _hvtCodename])
+	(format ["Мы полагаем, что где-то в этом районе находится объект высокого значения с кодовым названием '%1'. Эта цель находится в нашем списке в течение долгого времени, и последние отчеты разведки из тайного источника сообщают о том, что он здесь. Разумеется, что нейтрализация этого %2 будет большим ударом по %3 в регионе.", _hvtCodename, toLower _hvtName, enemyFactionName]),
+	(format ["'%1' недавно появился в регионе после длительного отсутствия в нашем наблюдении. Командование стремится не позволить этой цели снова исчезнуть и возобновить наши операции против %2 сил.", _hvtCodename, playersFactionName]),
+	(format ["Поступила информация, что наш объект ответствен за ряд операций в районе %1. Несмотря на его готовность использовать гражданских лиц в качестве живой силы для своих операций, он по-прежнему пользуется большим влиянием среди местного населения. Пока жив %2, он представляет большую угрозу как гражданским, так и %3.", aoLocationName, _hvtCodename, playersFactionName]),
+	(format ["Никому не известный командир %1 начал делать себе имя, нападая на гражданские цели в регионе %2. Хотя число жертв от его операций, к счастью, остается низким, последние разведданные указывают на его причастность к запланированной попытке свергнуть действующее руководство, что является большим дестабилизирующим шагом, который мы не можем допустить.", enemyFactionName, aoLocationName])
 ];
 
 _evidenceDescriptions = [];
 if (_evidenceChance > 0.6) then {
 	_evidenceDescriptions = [
-		(format ["Our most recent photographic records of %1 are over two decades old at this point. We are going to need DNA confirmation that our intelligence is correct and you'll be required to collect that after neutralizing the target.", _hvtCodename]),
-		(format ["Intelligence is shaky where the identity of %1 is concerned. We'll need you to take DNA evidence from the body once the target is down.", _hvtCodename]),
-		(format ["High command requires this mission to go by the book. With the current conflict playing out on on the global stage there is no room for error and we'll need you to confirm with DNA evidence that we have our man.", _hvtCodename]),
-		(format ["Command expects the elimination of this target to be immediately denied by %1 and will need proof to use against their propaganda machine. Once down, take DNA evidence from the target.", enemyFactionName])
+		(format ["Нашим самым последним фотографическим записям %1 уже более двух десятилетий. Нам понадобится подтверждение ДНК, что наши данные верны; вам нужно будет собрать образцы ДНК после нейтрализации цели.", _hvtCodename]),
+		(format ["У нас нет конкретных данных экспертиз, что касается личности %1. Нам нужно, чтобы вы взяли доказательства ДНК из тела, как только цель будет нейтрализована.", _hvtCodename]),
+		(format ["Штаб требует, чтобы эта миссия проходила без какого - либо освещения в СМИ. В связи с тем, что текущий конфликт разворачивается на мировой арене, нет места для ошибки, и нам нужно, чтобы вы подтвердили с помощью ДНК, что это именно этот человек.", _hvtCodename]),
+		(format ["Штаб ожидает, что %1 начнет утверждать о том, что цель до сих пор жива, и понадобятся доказательства для использования против их пропагандистской машины. После того ,как нейтрализуете цель, возьмите ДНК в качестве доказательства.", enemyFactionName])
 	];
 };
 
 _taskDesc = format ["%1<br /><br />%2", (selectRandom _taskDescriptions), (selectRandom _evidenceDescriptions)];
-_taskTitle = format ["HVT: %1", _hvtCodename];
+_taskTitle = format ["Ликвидировать цель: %1", _hvtCodename];
 _taskType = "kill";
 _hvtChar setVariable ["thisTask", _taskName];
 _hvtChar setVariable ["markerName", _markerName];
@@ -308,8 +307,8 @@ removeFromRemainsCollector [_hvtChar];
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 
 // Create elimination subtask
-_elimSubtaskDesc = format ["Eliminate the %1 %2 codenamed '%4'. Target is believed to be in the <marker name='%3'>marked area</marker>. Use caution and do not allow the target to escape.", enemyFactionName, toLower _hvtName, _markerName, _hvtCodename];
-_elimSubtaskTitle = format ["Eliminate %1", _hvtCodename];
+_elimSubtaskDesc = format ["Устраните %1 %2 под кодовым названием «%4». Предполагается, что цель находится в <marker name='%3'>отмеченной области</marker>. Будьте осторожны и не позволяйте цели сбежать.", enemyFactionName, toLower _hvtName, _markerName, _hvtCodename];
+_elimSubtaskTitle = format ["Устранить %1", _hvtCodename];
 _subTasks pushBack [_elimSubtaskName, _elimSubtaskDesc, _elimSubtaskTitle, "target"];
 missionNamespace setVariable [(format ["%1_taskType", _elimSubtaskName]), "target", true];
 _hvtChar setVariable ["elimTask", _elimSubtaskName, true];
@@ -331,8 +330,9 @@ if (_reconChance >= baseReconChance) then {
 	taskIntel pushBack [_taskName, name _hvtChar, _intelSubTaskName, "NAME"];
 
 	// Create intel subtasks	
-	_subTaskDesc = format ["Collect all intelligence on the target to narrow down your search. Intel may include information on the target's appearance, their aliases and may reduce the size of your search radius. Check the bodies of %1 team leaders, search marked intel locations and complete any intel tasks.", enemyFactionName];
-	_subTaskTitle = "Optional: Collect Intel";
+	// Create intel subtasks	
+	_subTaskDesc = format ["Соберите всю информацию, что сможете. Разведданные могут помочь уменьшить область вашего поиска и определить всё местоположения, где располагается противник. Проверяйте тела убитых %1, ищите отмеченные места разведданных и выполняйте любые задания по их поиску.", enemyFactionName];
+	_subTaskTitle = "Найти разведданные";
 	_subTasks pushBack [_intelSubTaskName, _subTaskDesc, _subTaskTitle, "documents"];
 	missionNamespace setVariable [(format ["%1_taskType", _intelSubTaskName]), "documents", true];
 	// Following marker
@@ -342,14 +342,14 @@ if (_reconChance >= baseReconChance) then {
 // Evidence gathering subtask
 if (_evidenceChance > 0.6) then {
 	_subTaskName = format ["subtask%1", floor(random 100000)];
-	_subTaskDesc = format ["Once eliminated we need proof of the target's identity. Get close and take a DNA sample for the intelligence team.", _hvtCodename];
-	_subTaskTitle = "Collect Evidence";
+	_subTaskDesc = format ["После устранения нам нужно подтверждение личности цели. Подойдите ближе и возьмите образец ДНК для доказательства.", _hvtCodename];
+	_subTaskTitle = "Собрать улики";
 	_subTasks pushBack [_subTaskName, _subTaskDesc, _subTaskTitle, "use"];
 	missionNamespace setVariable [(format ["%1_taskType", _subTaskName]), "use", true];
 	_hvtChar setVariable ["evidenceTask", _subTaskName, true];
 	[
 		_hvtChar,
-		"Collect Evidence",
+		"Собрать улики",
 		"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
 		"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
 		"(!alive _target) && ((_this distance _target) < 3)",
