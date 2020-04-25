@@ -1,5 +1,5 @@
-_taskDesc = "Maintain stealth by avoiding enemies or taking them out before they can alert other squads.";
-_taskTitle = "Optional: Maintain Stealth";
+_taskDesc = "Поддерживайте скрытность, избегая врагов или уничтожая их, прежде чем они смогут предупредить другие отряды.";
+_taskTitle = "Не привлекать к себе внимание";
 _taskID = ["taskStealth", true, [_taskDesc, _taskTitle, ""], nil, "CREATED", 0, true, true, "listen"] call BIS_fnc_setTask;
 stealthActive = true;
 
@@ -46,9 +46,9 @@ while {stealthActive} do {
 						diag_log format ["DRO: %1 detected by leader %2 with value %3 - waiting for %4", _target, _thisLeader, _knowsAbout, _sleepTime];
 						
 						_sentence = selectRandom [
-							"I've been spotted, we need to take these guys out fast!",
-							"They've seen me! We need to take them out now!",
-							"I'm compromised, we've got to eliminate these guys before they raise the alarm!"
+							"Меня заметили, нам нужно быстро убрать этих парней, пока они не сообщили остальным!",
+							"Они видели меня! Нам нужно сейчас же их убрать!",
+							"Кажется меня заметили, мы должны устранить этих парней, прежде чем они поднимут тревогу!"
 						];
 						[_target, _sentence] remoteExec ["groupChat", 0];
 						

@@ -490,20 +490,21 @@ switch (insertType) do {
 									};
 								};
 							};
-						}; 						
-						_spawnPos1 = _randomStartingLocation findEmptyPosition [10, 50];
-						if (count _spawnPos1 > 0) then {
-							_spawnedSquad1 = [_spawnPos1, playersSide, pInfClassesForWeights, pInfClassWeights, [2, 4]] call dro_spawnGroupWeighted;						
-							waitUntil {!isNil "_spawnedSquad1"};
-							{							
-								_x disableAI "TARGET";
-								_x disableAI "AUTOTARGET";
-								_x disableAI "FSM";
-								_x disableAI "WEAPONAIM";
-								_x disableAI "AUTOCOMBAT";
-							} forEach (units _spawnedSquad1);						
-							[_spawnedSquad1, _randomStartingLocation, 30] call BIS_fnc_taskPatrol;
-						};						
+						};
+						// Отключены патрули на базе
+						// _spawnPos1 = _randomStartingLocation findEmptyPosition [10, 50];
+						// if (count _spawnPos1 > 0) then {
+							// _spawnedSquad1 = [_spawnPos1, playersSide, pInfClassesForWeights, pInfClassWeights, [2, 4]] call dro_spawnGroupWeighted;						
+							// waitUntil {!isNil "_spawnedSquad1"};
+							// {							
+								// _x disableAI "TARGET";
+								// _x disableAI "AUTOTARGET";
+								// _x disableAI "FSM";
+								// _x disableAI "WEAPONAIM";
+								// _x disableAI "AUTOCOMBAT";
+							// } forEach (units _spawnedSquad1);						
+							// [_spawnedSquad1, _randomStartingLocation, 30] call BIS_fnc_taskPatrol;
+						// };						
 					};					
 				};
 								
@@ -629,7 +630,7 @@ switch (insertType) do {
 				// Установка медика на базе
 				_medicPos = [_boxLocation, 6, 20, 3, 0, 20, 0] call BIS_fnc_findSafePos;
 				baseMedic setpos _medicPos;
-				[baseMedic,"Получить <t color='#11ff11'>Медицинскую помощь","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","(player distance baseMedic) < 4","true",{},{},{[_this select 1,_this select 1] call ace_medical_treatment_fnc_fullHeal;[parseText format ["<t align='center' font='PuristaBold' size='1.6'>'Медицинская помощь завершена'</t>"],true,nil,2,0.7,0] spawn BIS_fnc_textTiles;},{},[],15,0,false,false] remoteExec ["BIS_fnc_holdActionAdd",0,true];
+				[baseMedic,"Получить <t color='#11ff11'>Медицинскую помощь","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_revive_ca.paa","(player distance baseMedic) < 4","true",{},{},{[_this select 1,_this select 1] call ace_medical_treatment_fnc_fullHeal;[parseText format ["<t align='center' font='PuristaBold' size='1.6'>'Медицинская помощь завершена'</t>"],true,nil,2,0.7,0] spawn BIS_fnc_textTiles;},{},[],12,0,false,false] remoteExec ["BIS_fnc_holdActionAdd",0,true];
 				_markerMedic = createMarker ["markerMedic", _medicPos];
 				"markerMedic" setMarkerColor "ColorRed";
 				"markerMedic" setMarkerType "loc_Hospital";
@@ -664,7 +665,7 @@ switch (insertType) do {
 					[
 						_boat,
 						[
-							"Nudge",  
+							"Толкнуть",  
 							{  
 								_dir = [(_this select 1), (_this select 0)] call BIS_fnc_dirTo;  
 								_nudgePos = [(getPos (_this select 0)), 2, _dir] call dro_extendPos;  

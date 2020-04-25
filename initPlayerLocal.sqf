@@ -56,7 +56,7 @@ fnc_addAction_AirportTp = {
 		3 fadeSound 0;
 		cutText["Перемещение в аэропорт...","BLACK OUT",3];
 		sleep 6;
-		player setpos getpos airportPos;
+		player setpos getpos airHelipad;
 		player setdir 280;
 		cutText["","BLACK IN",5]; 
 		2 fadeSound 1;
@@ -270,7 +270,7 @@ fnc_playerSetup =
 	Для простого опознавания специальности игрока на поле боя его ник выделяется цветом, соответствущим цвету, которым выделена специальность.
 	"]];
 	
-	Если создано задание с взрывом вышки связи, оповестить игроков о механике глушения рации
+	//Если создано задание с взрывом вышки связи, оповестить игроков о механике глушения рации
 	if ((missionNameSpace getVariable ["JamTFARMessage", 0]) == 1) then
 	{
 		[] spawn 

@@ -27,7 +27,7 @@ arsenalBox removeAction choiceAirport;
 {deleteVehicle _x} forEach nearestObjects [getMarkerPos "markerAirport", ["all"], 25];
 sleep 2;
 
-[getMarkerPos "markerAirport", 0, _airport] remoteExecCall ["BIS_fnc_objectsMapper", 2, false];
+[getMarkerPos "markerAirport", 0, _airport] remoteExec ["BIS_fnc_objectsMapper", 2, false];
 sleep 1;
 airStand setpos getpos pilotPos;
 airStand setdir 10;
