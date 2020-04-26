@@ -194,7 +194,7 @@ class AddonsMetaData
 randomSeed=15722855;
 class ScenarioData
 {
-	author="mbrdmn";
+	author="m0zarellaa, VladimirFry";
 	overviewText="Выполняйте различные спецоперации во всех уголках света";
 	overViewPicture="images\recon_image.jpg";
 	overViewPictureLocked="images\recon_image.jpg";

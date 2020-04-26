@@ -63,11 +63,23 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 	_subTasks = (_this select 2);
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	
-	waitUntil {
-		sleep 3;
-		if (_taskName call BIS_fnc_taskCompleted) exitWith {true};		
-		(((leader (grpNetId call BIS_fnc_groupFromNetId)) distance _thisCiv) < 6)
+	_findCiv = false;
+	while {!(_findCiv)} do {
+		sleep 6;
+		_players = allPlayers;
+		
+		waitUntil { count _players > 0 };
+		if (_taskName call BIS_fnc_taskCompleted) exitWith {_findCiv = true;};		
+		{
+			if ((_x distance _thisCiv) < 6) exitWith {
+			_str = parsetext format ["<t size='1.2'>Вы нашли <t color='#FFBF00'>%1</t>.</t>",name _thisCiv];
+			["ace_captives_setHandcuffed",[_thisCiv,true]] call CBA_fnc_globalEvent;
+			_str remoteExec ["hint", _x];
+			_findCiv = true;
+			};
+		} forEach _players;
 	};
+	
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	["PROTECT_CIV_MEET", (name (leader (grpNetId call BIS_fnc_groupFromNetId))), [name _thisCiv], false] spawn dro_sendProgressMessage;
 	

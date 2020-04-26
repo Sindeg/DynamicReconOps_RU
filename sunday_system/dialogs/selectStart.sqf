@@ -24,7 +24,7 @@ player switchCamera "INTERNAL";
 		markerPlayerStart setMarkerColor markerColorPlayers;
 		markerPlayerStart setMarkerType "mil_end";
 		markerPlayerStart setMarkerSize [1, 1];
-		markerPlayerStart setMarkerText "Insert Position";
+		markerPlayerStart setMarkerText "Точка старта";
 		publicVariable "markerPlayerStart";			
 	},
 	[]

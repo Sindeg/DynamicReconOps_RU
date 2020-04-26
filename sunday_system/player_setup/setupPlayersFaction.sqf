@@ -517,7 +517,8 @@ switch (insertType) do {
 				_whileAttempts = 0;
 				_select = 0;
 				_vehLocation = [];
-				if (count startVehicles > 0) then {
+				startVehicles = ["", ""]; // Отключение спавна дружественной техники
+			/* 	if (count startVehicles > 0) then {
 					{
 						_vehRoles = (count([_x] call BIS_fnc_vehicleRoles));
 						_vehLocation = _randomStartingLocation findEmptyPosition [10, 60, _x];
@@ -558,7 +559,7 @@ switch (insertType) do {
 					if (_whileAttempts >= 8) exitWith {
 						diag_log "DRO: spawning insert vehicle while attempts exceeded";
 					};
-				};
+				}; */
 				
 				_mkrName = switch (playersSide) do {
 					case west: {"respawn_vehicle_west"};
@@ -584,7 +585,8 @@ switch (insertType) do {
 				
 				// FOB marker
 				deleteMarker "campMkr";				
-				_campName = format ["FOB %1", ([FOBNames] call sun_selectRemove)];
+				//_campName = format ["ШТАБ", ([FOBNames] call sun_selectRemove)];
+				_campName = format ["ШТАБ"];
 				missionNameSpace setVariable ["publicCampName", _campName];
 				publicVariable "publicCampName";
 				markerPlayerStart = createMarker ["campMkr", _randomStartingLocation];
@@ -972,7 +974,7 @@ if (count _waterPositions > 0) then {
 		[
 			_boat,
 			[
-				"Nudge",  
+				"Толкнуть",  
 				{  
 				   _dir = [(_this select 1), (_this select 0)] call BIS_fnc_dirTo;  
 				   _nudgePos = [(getPos (_this select 0)), 2, _dir] call dro_extendPos;  
