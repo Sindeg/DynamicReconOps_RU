@@ -7,7 +7,7 @@ objNull spawn {
 	{
 		_left = _left - _tick;
 		_done = (1 - _left / _time) * 100;
-		hint parsetext format ["<t size = '1.2'>Готовность транспорта<br/><t color = '#E39325'>%1 %2<t/><t/>",_done tofixed 0, "%"];
+		hintsilent parsetext format ["<t size = '1.2'>Готовность транспорта<br/><t color = '#E39325'>%1 %2<t/><t/>",_done tofixed 0, "%"];
 		sleep _tick;
 	};
 	//sleep _time; //wait for client to be able to check vehicles positions properly again.

@@ -61,9 +61,9 @@ _lineHeight = 2.25 * pixelGridNoUIScale * pixelH;
 } forEach _allHPs;
 
 menuSliderArray = [	
-	["SQUAD LOADOUT", 6060],
-	["INSERTION", 6070],
-	["SUPPORTS", 6080]	
+	["Снаряжение отряда", 6060],
+	["Расположение штаба", 6070],
+	["Поддержка", 6080]	
 ];
 menuSliderCurrent = 0;
 
@@ -114,10 +114,10 @@ if (player getVariable ['startReady', false]) then {
 	
 } forEach playerGroup;
 
-lbAdd [6009, "Random"];
-lbAdd [6009, "Ground"];
-lbAdd [6009, "Air - HALO"];
-lbAdd [6009, "Air - Helicopter"];
+lbAdd [6009, "Случайно"];
+lbAdd [6009, "На земле"];
+lbAdd [6009, "HALO прыжок"];
+lbAdd [6009, "Выброска с вертолёта"];
 if (player == _dialogPlayer) then {
 	lbSetCurSel [6009, insertType];
 };

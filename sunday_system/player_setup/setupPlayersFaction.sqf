@@ -765,7 +765,7 @@ switch (insertType) do {
 		markerPlayerStart setMarkerShape "ICON";
 		markerPlayerStart setMarkerColor markerColorPlayers;
 		markerPlayerStart setMarkerType "mil_end";
-		markerPlayerStart setMarkerText "Drop point";		
+		markerPlayerStart setMarkerText "Точка сброса";		
 						
 		//[_airStartPos] remoteExec ["sun_newUnits", s1];
 		[_airStartPos] call sun_setPlayerGroup;
@@ -885,7 +885,7 @@ switch (insertType) do {
 		markerPlayerStart setMarkerShape "ICON";
 		markerPlayerStart setMarkerColor markerColorPlayers;
 		markerPlayerStart setMarkerType "mil_end";
-		markerPlayerStart setMarkerText "Drop point";
+		markerPlayerStart setMarkerText "Точка сброса";
 		
 		//[getPos logicStartPos] remoteExec ["sun_newUnits", s1];
 		[getPos logicStartPos] call sun_setPlayerGroup;

@@ -72,7 +72,7 @@ for "_i" from 0 to ([0,2] call BIS_fnc_randomInt) step 1 do {
 				_markerName = format["intelMkr%1", floor(random 10000)];
 				_markerBuilding = createMarker [_markerName, getPos _thisBuilding];			
 				_markerBuilding setMarkerShape "ICON";
-				_markerBuilding setMarkerText "Возможные разведданные";
+				_markerBuilding setMarkerText "Разведданные";
 				_markerBuilding setMarkerType "mil_box_noShadow";
 				_markerBuilding setMarkerColor "ColorBlack";		
 				_markerBuilding setMarkerSize [0.65, 0.65];		
@@ -80,7 +80,7 @@ for "_i" from 0 to ([0,2] call BIS_fnc_randomInt) step 1 do {
 				_thisIntel setVariable ["markerName", _markerName, true];				
 				[
 					_thisIntel,
-					"Search for Intel",
+					"Проверить разведданные",
 					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 					"((_this distance _target) < 3)",
@@ -110,7 +110,7 @@ for "_i" from 0 to ([0,2] call BIS_fnc_randomInt) step 1 do {
 				// Add interaction to the surface as well in case occlusion prevents intel object action				
 				[
 					_thisSurface,
-					"Search for Intel",
+					"Проверить разведданные",
 					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 					"((_this distance _target) < 3)",

@@ -97,7 +97,7 @@ dro_addConstructPoint = {
 	_box setDir (random 360);
 	[
 		_box,
-		"Construct Barricade",
+		"Построить баррикаду",
 		"\A3\ui_f\data\igui\cfg\actions\repair_ca.paa",
 		"\A3\ui_f\data\igui\cfg\actions\repair_ca.paa",
 		"((_this distance _target) < 4)",
@@ -164,7 +164,7 @@ dro_addConstructAction = {
 	params ["_obj", "_objsToDelete", "_createPos", "_createDir", "_taskName"];		
 	[
 		_obj,
-		"Construct Barricade",
+		"Построить баррикаду",
 		"\A3\ui_f\data\igui\cfg\actions\repair_ca.paa",
 		"\A3\ui_f\data\igui\cfg\actions\repair_ca.paa",
 		"((_this distance _target) < 4)",
@@ -456,7 +456,7 @@ dro_addSabotageAction = {
 	{
 		[
 			_x,
-			"Sabotage",
+			"Саботаж",
 			"\A3\ui_f\data\igui\cfg\actions\ico_OFF_ca.paa",
 			"\A3\ui_f\data\igui\cfg\actions\ico_OFF_ca.paa",
 			"(alive _target) && !(_target getVariable ['sabotaged', false]) && ((_this distance _target) < 4) && ('ToolKit' in (items _this + assignedItems _this))",

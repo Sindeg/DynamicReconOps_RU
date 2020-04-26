@@ -11,7 +11,7 @@ _leaders = [];
 {		
 	[
 		_x,
-		"Search for Intel",
+		"Искать разведданные",
 		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
 		"(!alive _target) && ((_this distance _target) < 3)",

@@ -532,7 +532,7 @@ _mapOpen = openMap [true, false];
 mapAnimAdd [0, 0.05, markerPos "centerMkr"];
 mapAnimCommit;
 cutText ["", "BLACK IN", 1];
-hintSilent "Close map when ready to access loadout menu";
+hintSilent "Закройте карту с помощью ESC когда будете готовы";
 diag_log format ["DRO: Player %1 map initialised", player];
 
 waitUntil {!visibleMap};
@@ -549,7 +549,7 @@ diag_log format ["DRO: Player %1 created DRO_lobbyDialog: %2", player, _handle];
 sleep 0.5;
 cutText ["", "BLACK IN", 1];
 
-_actionID = player addAction ["Open Team Planning", 
+_actionID = player addAction ["Открыть планирование команды", 
 	{
 		_handle = CreateDialog "DRO_lobbyDialog";
 		[] execVM "sunday_system\dialogs\populateLobby.sqf";
@@ -561,9 +561,9 @@ while {
 } do {
 	sleep 0.2;	
 	if ((getMarkerColor "campMkr" == "")) then {
-		((findDisplay 626262) displayCtrl 6006) ctrlSetText "Insertion position: RANDOM";
+		((findDisplay 626262) displayCtrl 6006) ctrlSetText "Точка старта: Случ";
 	} else {
-		((findDisplay 626262) displayCtrl 6006) ctrlSetText format ["Insertion position: %1", (mapGridPosition (getMarkerPos 'campMkr'))];			
+		((findDisplay 626262) displayCtrl 6006) ctrlSetText format ["Точка старта: %1", (mapGridPosition (getMarkerPos 'campMkr'))];			
 	};
 	{
 		if (_x getVariable ["startReady", false] OR !isPlayer _x) then {

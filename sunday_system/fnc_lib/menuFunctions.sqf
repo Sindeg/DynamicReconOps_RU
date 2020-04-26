@@ -47,62 +47,62 @@ sun_switchLookup = {
 				case 2020: {
 					_return pushBack "aoOptionSelect";
 					_return pushBack aoOptionSelect;			
-					_return pushBack ["ENABLED", "DISABLED"];			
+					_return pushBack ["ВКЛ", "ВЫКЛ"];			
 				};
 				case 2030: {
 					_return pushBack "aiSkill";
 					_return pushBack aiSkill;			
-					_return pushBack ["NORMAL", "HARD", "REALISM"];			
+					_return pushBack ["Стандарт", "Сложно", "Реализм"];			
 				};
 				case 2050: {
 					_return pushBack "minesEnabled";
 					_return pushBack minesEnabled;			
-					_return pushBack ["DISABLED", "ENABLED"];			
+					_return pushBack ["Выкл", "Вкл"];			
 				};
 				case 2060: {
 					_return pushBack "civiliansEnabled";
 					_return pushBack civiliansEnabled;			
-					_return pushBack ["RANDOM", "ENABLED", "ENABLED & HOSTILE", "DISABLED"];			
+					_return pushBack ["Случ", "Вкл", "Мирные & враги", "Выкл"];			
 				};
 				case 2070: {
 					_return pushBack "stealthEnabled";
 					_return pushBack stealthEnabled;			
-					_return pushBack ["RANDOM", "ENABLED", "DISABLED"];			
+					_return pushBack ["Случ", "Вкл", "Выкл"];			
 				};
 				case 2080: {
 					_return pushBack "reviveDisabled";
 					_return pushBack reviveDisabled;			
-					_return pushBack ["300 SECONDS", "120 SECONDS", "60 SECONDS", "DISABLED"];			
+					_return pushBack ["300 секунд", "120 секунд", "60 секунд", "Выкл"];			
 				};
 				case 2090: {
 					_return pushBack "missionPreset";
 					_return pushBack missionPreset;
-					_return pushBack ["CURRENT SETTINGS", "RECON OPS", "SNIPER OPS", "COMBINED ARMS"];					
+					_return pushBack ["Текущие настройки", "RECON OPS", "SNIPER OPS", "COMBINED ARMS"];					
 				};
 				case 2400: {
 					_return pushBack "dynamicSim";
 					_return pushBack dynamicSim;			
-					_return pushBack ["ENABLED", "DISABLED"];					
+					_return pushBack ["Вкл", "Выкл"];					
 				};
 				case 3010: {
 					_return pushBack "timeOfDay";
 					_return pushBack timeOfDay;			
-					_return pushBack ["RANDOM", "DAWN", "DAY", "DUSK", "NIGHT"];					
+					_return pushBack ["Случ", "Рассвет", "День", "Сумерки", "Ночь"];					
 				};
 				case 3020: {
 					_return pushBack "weatherOvercast";
 					_return pushBack weatherOvercast;			
-					_return pushBack ["RANDOM", "CUSTOM"];					
+					_return pushBack ["Случ", "Своя"];					
 				};
 				case 3030: {
 					_return pushBack "animalsEnabled";
 					_return pushBack animalsEnabled;			
-					_return pushBack ["ENABLED", "DISABLED"];					
+					_return pushBack ["Вкл", "Выкл"];					
 				};
 				case 4010: {
 					_return pushBack "numObjectives";
 					_return pushBack numObjectives;			
-					_return pushBack ["RANDOM", "1", "2", "3"];					
+					_return pushBack ["Случ", "1", "2", "3", "4", "5"];					
 				};
 			};			
 		};
@@ -197,7 +197,7 @@ sun_lobbyReadyButton = {
 sun_clearInsert = {
 	deleteMarker 'campMkr';
 	{
-		[626262, 6006, "Insertion position: RANDOM"] remoteExec ["sun_lobbyChangeLabel", _x];	
+		[626262, 6006, "Точка старта: Случ"] remoteExec ["sun_lobbyChangeLabel", _x];	
 	} forEach allPlayers;
 };
 
@@ -322,8 +322,8 @@ dro_menuMap = {
 		_map ctrlSetPosition [safezoneX + (27 * pixelGridNoUIScale * pixelW), safezoneY + (8 * pixelGridNoUIScale * pixelH), safezoneW - (27 * pixelGridNoUIScale * pixelW), safezoneH - (13 * pixelGridNoUIScale * pixelH)];		
 		_map ctrlCommit 0.2;
 		mapOpen = true;
-		_button ctrlSetText "CLOSE MAP";
-		_text = composeText ["Select the Area of Operations:", lineBreak, lineBreak, "Click on the map to select the closest AO location.", lineBreak, "Alternatively ALT-click on the map to select an exact custom location."];
+		_button ctrlSetText "Закрыть карту";
+		_text = composeText ["Выберите район операции:", lineBreak, lineBreak, "Нажмите ЛКМ для выбора ближайшей зоны.", lineBreak, "Либо нажмите ALT-ЛКМ для выбора собственной зоны."];
 		((findDisplay 52525) displayCtrl 1053) ctrlSetStructuredText _text;
 		[] spawn {
 			disableSerialization;
@@ -370,7 +370,7 @@ dro_menuMap = {
 					selectedLocMarker = _nearestMarker;
 					_nearestMarker setMarkerColor "ColorGreen";
 				};				
-				((findDisplay 52525) displayCtrl 2010) ctrlSetText format ["AO Location: %1", aoName];
+				((findDisplay 52525) displayCtrl 2010) ctrlSetText format ["Зона операции: %1", aoName];
 				publicVariableServer "markerPlayerStart";
 				publicVariable "aoName";
 				publicVariableServer "selectedLocMarker";
@@ -386,7 +386,7 @@ dro_menuMap = {
 			_map ctrlSetPosition [safezoneX + (27 * pixelGridNoUIScale * pixelW), safezoneY + (8 * pixelGridNoUIScale * pixelH), 0, 0];		
 			_map ctrlCommit 0;
 			mapOpen = false;
-			_button ctrlSetText "OPEN MAP";
+			_button ctrlSetText "Открыть карту";
 			[] spawn {
 				disableSerialization;
 				{
@@ -402,8 +402,8 @@ dro_menuMap = {
 			_map ctrlSetPosition [safezoneX + (27 * pixelGridNoUIScale * pixelW), safezoneY + (8 * pixelGridNoUIScale * pixelH), safezoneW - (27 * pixelGridNoUIScale * pixelW), safezoneH - (13 * pixelGridNoUIScale * pixelH)];		
 			_map ctrlCommit 0.2;
 			mapOpen = true;
-			_button ctrlSetText "CLOSE MAP";
-			_text = composeText ["Select the Area of Operations:", lineBreak, lineBreak, "Click on the map to select the closest AO location.", lineBreak, "Alternatively ALT-click on the map to select an exact custom location."];
+			_button ctrlSetText "Закрыть карту";
+			_text = composeText ["Выберите район операции:", lineBreak, lineBreak, "Нажмите ЛКМ для выбора ближайшей зоны.", lineBreak, "Либо нажмите ALT-ЛКМ для выбора собственной зоны."];
 			((findDisplay 52525) displayCtrl 1053) ctrlSetStructuredText _text;
 			[] spawn {
 				disableSerialization;
@@ -449,7 +449,7 @@ dro_menuMap = {
 						selectedLocMarker = _nearestMarker;
 						_nearestMarker setMarkerColor "ColorGreen";
 					};				
-					((findDisplay 52525) displayCtrl 2010) ctrlSetText format ["AO Location: %1", aoName];
+					((findDisplay 52525) displayCtrl 2010) ctrlSetText format ["Зона операции: %1", aoName];
 					publicVariableServer "markerPlayerStart";
 					publicVariable "aoName";
 					publicVariableServer "selectedLocMarker";
@@ -639,7 +639,7 @@ dro_clearData = {
 	
 	deleteMarker 'aoSelectMkr';
 	aoName = nil;	
-	ctrlSetText [2300, 'AO location: RANDOM'];
+	ctrlSetText [2300, 'День'];
 	selectedLocMarker setMarkerColor 'ColorPink';
 	
 	{
@@ -663,7 +663,7 @@ sun_missionPreset = {
 		case 1: {					
 			["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*10];
-			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Enemy force size multiplier: x1.0";				
+			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.0";				
 			["MAIN", 2050, 0] call sun_switchButtonSet;
 			["MAIN", 2060, 0] call sun_switchButtonSet;
 			["MAIN", 2070, 0] call sun_switchButtonSet;
@@ -679,7 +679,7 @@ sun_missionPreset = {
 		case 2: {					
 			["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 0.5*10];
-			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Enemy force size multiplier: x0.5";	
+			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x0.5";	
 			["MAIN", 2050, 0] call sun_switchButtonSet;			
 			["MAIN", 2060, 0] call sun_switchButtonSet;					
 			["MAIN", 2070, 1] call sun_switchButtonSet;	
@@ -695,7 +695,7 @@ sun_missionPreset = {
 		case 3: {					
 			["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*12.5];	
-			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Enemy force size multiplier: x1.25";	
+			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.25";	
 			["MAIN", 2050, 0] call sun_switchButtonSet;
 			["MAIN", 2060, 0] call sun_switchButtonSet;
 			["MAIN", 2070, 0] call sun_switchButtonSet;

@@ -799,7 +799,7 @@ _scriptStartTime = time;
 // Get number of tasks
 _numObjs = 1;
 if (numObjectives == 0) then {
-	_numObjs = [1,4] call BIS_fnc_randomInt;
+	_numObjs = [1,5] call BIS_fnc_randomInt;
 } else {
 	_numObjs = numObjectives;
 };

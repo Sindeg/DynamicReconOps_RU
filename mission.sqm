@@ -195,10 +195,10 @@ randomSeed=15722855;
 class ScenarioData
 {
 	author="mbrdmn";
-	overviewText="Perform recon operations around a random location";
+	overviewText="Выполняйте различные спецоперации во всех уголках света";
 	overViewPicture="images\recon_image.jpg";
 	overViewPictureLocked="images\recon_image.jpg";
-	onLoadMission="Perform recon operations around a random location";
+	onLoadMission="Выполняйте различные спецоперации во всех уголках света";
 	loadScreen="images\recon_image.jpg";
 	briefing=0;
 	aIKills=1;
@@ -3567,7 +3567,7 @@ class Mission
 	class Intel
 	{
 		briefingName="Dynamic Recon Ops";
-		overviewText="Perform recon operations around a random location.";
+		overviewText="СЛОТ КОМАНДИРА ДОЛЖЕ БЫТЬ ЗАНЯТ ОБЯЗАТЕЛЬНО.";
 		resistanceWest=0;
 		startWeather=0.21619803;
 		startWind=0.099999994;

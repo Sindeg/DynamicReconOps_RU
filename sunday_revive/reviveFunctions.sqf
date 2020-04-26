@@ -289,7 +289,7 @@ rev_reviveUnit = {
 rev_reviveActionAdd = {	
 	private _id = [
 		(_this select 0),
-		"Revive",
+		"Оживить",
 		"\A3\Ui_f\data\IGUI\Cfg\Revive\overlayIcons\u100_ca.paa",
 		"\A3\Ui_f\data\IGUI\Cfg\Revive\overlayIcons\r100_ca.paa",
 		"((_this distance _target) < 3) && (alive _target) && (_target getVariable ['rev_downed', false]) && !(_target getVariable ['rev_dragged', false])",
@@ -359,7 +359,7 @@ rev_suicideActionAdd = {
 	private ["_id"];
 	_id = [
 		(_this select 0),
-		"Suicide",
+		"Умереть",
 		"\A3\Ui_f\data\IGUI\Cfg\Revive\overlayIcons\d50_ca.paa",
 		"\A3\Ui_f\data\IGUI\Cfg\Revive\overlayIcons\d100_ca.paa",
 		"alive _target",

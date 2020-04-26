@@ -2,11 +2,11 @@ disableSerialization;
 menuComplete = false;
 
 menuSliderArray = [
-	["INFO", 1140],
-	["SCENARIO", 2000],
-	["ENVIRONMENT", 3000],	
-	["OBJECTIVES", 4000],
-	["ADVANCED FACTIONS", 5000]
+	["Инфо", 1140],
+	["Сценарий", 2000],
+	["Окружение", 3000],	
+	["Задания", 4000],
+	["Доп. фракции", 5000]
 ];
 menuSliderCurrent = 0;
 
@@ -49,10 +49,12 @@ lbAdd [2104, "December"];
 lbAdd [2116, "Random"];
 lbAdd [2116, "Custom"];
 */
-_index = lbAdd [2106, "Random"];
+_index = lbAdd [2106, "Случ"];
 _index = lbAdd [2106, "1"];
 _index = lbAdd [2106, "2"];
 _index = lbAdd [2106, "3"];
+_index = lbAdd [2106, "4"];
+_index = lbAdd [2106, "5"];
 
 ["MAIN", 2020, false] call sun_switchButton;
 ["MAIN", 2030, false] call sun_switchButton;
@@ -83,7 +85,7 @@ lbSetCurSel [2301, day];
 // Slider items
 sliderSetRange [2041, 5, 17];
 sliderSetPosition [2041, aiMultiplier*10];
-((findDisplay 52525) displayCtrl 2041) ctrlSetText format ["Enemy force size multiplier: x%1", profileNamespace getVariable ['DRO_aiMultiplier', 1]];
+((findDisplay 52525) displayCtrl 2041) ctrlSetText format ["Количество противника: x%1", profileNamespace getVariable ['DRO_aiMultiplier', 1]];
 
 
 sliderSetRange [2109, 0, 10];
@@ -97,7 +99,7 @@ if (weatherOvercast isEqualType "") then {
 };
 
 if (!isNil "aoName") then {
-	ctrlSetText [2202, format ["AO location: %1", aoName]];
+	ctrlSetText [2202, format ["Зона операции: %1", aoName]];
 };
 
 // Objective preferences

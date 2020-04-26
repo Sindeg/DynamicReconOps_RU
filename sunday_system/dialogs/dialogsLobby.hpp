@@ -15,7 +15,7 @@ class DRO_lobbyDialog {
 		class teamPlanningTitle: sundayHeading
 		{
 			idc = 1098;			
-			text = "TEAM PLANNING";
+			text = "Планирование команды";
 			x = "safezoneX + (0 * pixelGridNoUIScale * pixelW)";
 			y = "safezoneY + (0 * pixelGridNoUIScale * pixelH)";
 			w = "40 * pixelGridNoUIScale * pixelW";	
@@ -26,7 +26,7 @@ class DRO_lobbyDialog {
 		{
 			idc = 1101;			
 			style = ST_CENTER;
-			text = "SQUAD LOADOUT";
+			text = "Снаряжение отряда";
 			x = "safezoneX + (0 * pixelGridNoUIScale * pixelW)";
 			y = "safezoneY + (15.5 * pixelGridNoUIScale * pixelH)";
 			w = "40 * pixelGridNoUIScale * pixelW";	
@@ -104,7 +104,7 @@ class DRO_lobbyDialog {
 			class Controls {
 				class lobbySelectStartText: sundayText {
 					idc = 6006;
-					text = "Insertion position: RANDOM";
+					text = "Точка старта: Случ";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "0 * pixelGridNoUIScale * pixelH";
 					w = "33 * pixelGridNoUIScale * pixelW";	
@@ -113,7 +113,7 @@ class DRO_lobbyDialog {
 				class lobbySelectStartClear: DROBasicButton
 				{			
 					idc = 6005;
-					text = "Clear Insert Location";
+					text = "Очистить точку старта";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "2.5 * pixelGridNoUIScale * pixelH";
 					w = "16.75 * pixelGridNoUIScale * pixelW";	
@@ -123,7 +123,7 @@ class DRO_lobbyDialog {
 				class lobbySelectStart: DROBasicButton
 				{			
 					idc = 6004;
-					text = "Set Insert Location";
+					text = "Выбрать расположение штаба";
 					x = "20 * pixelGridNoUIScale * pixelW";
 					y = "2.5 * pixelGridNoUIScale * pixelH";
 					w = "16.75 * pixelGridNoUIScale * pixelW";	
@@ -132,7 +132,7 @@ class DRO_lobbyDialog {
 				};					
 				class lobbySelectInsertText: sundayText {
 					idc = 6007;
-					text = "Insertion type";
+					text = "Настройка расположения штаба";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "7 * pixelGridNoUIScale * pixelH";
 					w = "33 * pixelGridNoUIScale * pixelW";	
@@ -149,7 +149,7 @@ class DRO_lobbyDialog {
 				};
 				class lobbySelectVehText: sundayText {
 					idc = 6020;
-					text = "Starting ground vehicle(s)";
+					text = "Начальный транспорт";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "12 * pixelGridNoUIScale * pixelH";
 					w = "33 * pixelGridNoUIScale * pixelW";	
@@ -199,7 +199,7 @@ class DRO_lobbyDialog {
 				class lobbySupportSupply: DROBasicButton
 				{			
 					idc = 6011;
-					text = "Supply Drop";
+					text = "Сброс снаряжения";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "5 * pixelGridNoUIScale * pixelH";	
 					w = "34 * pixelGridNoUIScale * pixelW";	
@@ -212,7 +212,7 @@ class DRO_lobbyDialog {
 				class lobbySupportArty: DROBasicButton
 				{			
 					idc = 6012;
-					text = "Artillery";
+					text = "Артиллерия";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "8.25 * pixelGridNoUIScale * pixelH";	
 					w = "34 * pixelGridNoUIScale * pixelW";	
@@ -253,7 +253,7 @@ class DRO_lobbyDialog {
 		class sundayStartButton: DROBigButton
 		{
 			idc = 1601;
-			text = "READY";
+			text = "Готов";
 			x = "(safezoneX + safezoneW) - (23 * pixelGridNoUIScale * pixelW)";
 			y = "(safezoneY + safezoneH) - (4 * pixelGridNoUIScale * pixelH)";			
 			w = "23 * pixelGridNoUIScale * pixelW";

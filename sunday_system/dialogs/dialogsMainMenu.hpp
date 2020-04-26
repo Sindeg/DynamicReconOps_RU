@@ -69,7 +69,7 @@ class sundayDialog {
 		{
 			idc = 1101;			
 			style = ST_CENTER;
-			text = "INFO"; //--- ToDo: Localize;						
+			text = "Описание"; //--- ToDo: Localize;						
 			x = "safezoneX + (0 * pixelGridNoUIScale * pixelW)";
 			y = "safezoneY + (15.5 * pixelGridNoUIScale * pixelH)";
 			w = "26 * pixelGridNoUIScale * pixelW";	
@@ -105,7 +105,7 @@ class sundayDialog {
 		class sundayTitlePlayer: sundayText
 		{
 			idc = 1300;
-			text = "Player faction"; //--- ToDo: Localize;
+			text = "Фракция игроков"; //--- ToDo: Localize;
 			x = "(safezoneX + safezoneW) - ((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.5) - ((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.4)";
 			y = "safezoneY + (1 * pixelGridNoUIScale * pixelH)";
 			w = "((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.25)";
@@ -126,7 +126,7 @@ class sundayDialog {
 		class sundayTitleEnemy: sundayText
 		{
 			idc = 1310;
-			text = "Enemy faction"; //--- ToDo: Localize;
+			text = "Фракция противника"; //--- ToDo: Localize;
 			x = "(safezoneX + safezoneW) - ((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.5) - (((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.25) * 0.5)";
 			y = "safezoneY + (1 * pixelGridNoUIScale * pixelH)";
 			w = "((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.25)";
@@ -149,7 +149,7 @@ class sundayDialog {
 		class sundayTitleCivilians: sundayText
 		{
 			idc = 1320;
-			text = "Civilian faction"; //--- ToDo: Localize;
+			text = "Фракция гражданских"; //--- ToDo: Localize;
 			x = "(safezoneX + safezoneW) - ((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.5) + ((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.15)";
 			y = "safezoneY + (1 * pixelGridNoUIScale * pixelH)";
 			w = "((safezoneW - (27 * pixelGridNoUIScale * pixelW)) * 0.25)";
@@ -170,7 +170,7 @@ class sundayDialog {
 		class sundayStartButton: DROBigButton
 		{
 			idc = 1601;
-			text = "START";
+			text = "Начать";
 			x = "(safezoneX + safezoneW) - (23 * pixelGridNoUIScale * pixelW)";
 			y = "(safezoneY + safezoneH) - (4 * pixelGridNoUIScale * pixelH)";
 			w = "23 * pixelGridNoUIScale * pixelW";
@@ -190,7 +190,7 @@ class sundayDialog {
 				class welcomeHeading: sundayHeading
 				{
 					idc = 1141;
-					text = "Welcome";
+					text = "Добро пожаловать";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "0 * pixelGridNoUIScale * pixelH";
 					w = "20 * pixelGridNoUIScale * pixelW";	
@@ -199,7 +199,7 @@ class sundayDialog {
 				class welcomeText: sundayTextMT
 				{
 					idc = 1142;
-					text = "Dynamic Recon Ops is a randomised, replayable scenario that generates an enemy occupied area with a selection of tasks to complete within.\n\nYou can press the START button at the bottom right to immediately play a random scenario or use the arrow buttons above to scroll through the available customisation options.\n\nThanks for playing and have fun!";
+					text = "Dynamic Recon Ops - это всегда случайно создаваемый сценарий, с занятой врагом областью и выбором задач, которые необходимо выполнить.\n\nВы можете нажать кнопку СТАРТ в правом нижнем углу, чтобы немедленно создать случайный сценарий, или использовать кнопки со стрелками выше, чтобы настроить миссию более детально.\n\nПриятной игры!";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "3 * pixelGridNoUIScale * pixelH";
 					w = "20 * pixelGridNoUIScale * pixelW";	
@@ -208,7 +208,7 @@ class sundayDialog {
 				class clearData: DROBasicButton
 				{			
 					idc = 1143;
-					text = "Reset Default Options";
+					text = "Сбросить все настройки";
 					x = "3 * pixelGridNoUIScale * pixelW";
 					y = "safezoneH - (24 * pixelGridNoUIScale * pixelH)";
 					w = "20 * pixelGridNoUIScale * pixelW";	
@@ -238,7 +238,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2092;	
-							text = "PRESET";								
+							text = "Предустановки";								
 							
 						};
 						class SwitchText: sundaySelButtonSelect
@@ -269,7 +269,7 @@ class sundayDialog {
 				class droSelectAOText: sundayText {
 					idc = 2010;
 					style = ST_CENTER;
-					text = "AO Location: RANDOM";
+					text = "Зона операции: СЛУЧАЙНО";
 					font = "PuristaMedium";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "5 * pixelGridNoUIScale * pixelH";
@@ -287,18 +287,18 @@ class sundayDialog {
 						class droSelectAOClear: DROBasicButton
 						{			
 							idc = 2012;
-							text = "CLEAR";
+							text = "Сбросить";
 							x = "0 * pixelGridNoUIScale * pixelW";
 							y = 0;
 							w = "11.75 * pixelGridNoUIScale * pixelW";	
 							h = "3 * pixelGridNoUIScale * pixelH";
 							sizeEx = "((pixelH * (pixelGridNoUIScale) * 2) * 1.25) * 0.5";
-							action = "deleteMarker 'aoSelectMkr'; aoName = nil; ctrlSetText [2010, 'AO Location: RANDOM']; selectedLocMarker setMarkerColor 'ColorPink';";		
+							action = "deleteMarker 'aoSelectMkr'; aoName = nil; ctrlSetText [2010, 'Зона операции: СЛУЧАЙНО']; selectedLocMarker setMarkerColor 'ColorPink';";		
 						};
 						class droSelectAONew: DROBasicButton
 						{			
 							idc = 2011;
-							text = "OPEN MAP";
+							text = "Открыть карту";
 							x = "12.25 * pixelGridNoUIScale * pixelW";
 							y = 0;
 							w = "11.75 * pixelGridNoUIScale * pixelW";	
@@ -320,7 +320,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2022;	
-							text = "EXTENDED AO";
+							text = "Доп. зоны";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -351,7 +351,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2032;	
-							text = "AI SKILL";
+							text = "Уровень AI";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -378,7 +378,7 @@ class sundayDialog {
 				class sundayTitleAISize: sundayText
 				{
 					idc = 2040;
-					text = "Enemy force size multiplier: x1.0";
+					text = "Количество противника: x1.0";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "20 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -395,7 +395,7 @@ class sundayDialog {
 					y = "23.5 * pixelGridNoUIScale * pixelH";	
 					w = "23 * pixelGridNoUIScale * pixelW";	
 					h = "1.5 * pixelGridNoUIScale * pixelH";					
-					onSliderPosChanged = "_mult = ((_this select 1)/10); _rounded = round (_mult * (10 ^ 1)) / (10 ^ 1); ((findDisplay 52525) displayCtrl 2040) ctrlSetText format ['Enemy force size multiplier: x%1', _rounded]; aiMultiplier = _rounded; publicVariable 'aiMultiplier'; profileNamespace setVariable ['DRO_aiMultiplier', _rounded];";
+					onSliderPosChanged = "_mult = ((_this select 1)/10); _rounded = round (_mult * (10 ^ 1)) / (10 ^ 1); ((findDisplay 52525) displayCtrl 2040) ctrlSetText format ['Количество противника: x%1', _rounded]; aiMultiplier = _rounded; publicVariable 'aiMultiplier'; profileNamespace setVariable ['DRO_aiMultiplier', _rounded];";
 				};
 				class Spacer2: sundaySpacer {
 					idc = 2043;					
@@ -413,7 +413,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2052;	
-							text = "MINEFIELDS";
+							text = "Минные поля";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -439,7 +439,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2062;	
-							text = "CIVILIANS";		
+							text = "Гражданские в городах";		
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -465,7 +465,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2072;	
-							text = "STEALTH";
+							text = "Скрытность";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -491,7 +491,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2082;	
-							text = "REVIVE";
+							text = "Мед. система";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -554,7 +554,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 3012;	
-							text = "TIME OF DAY";
+							text = "Время суток";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -580,7 +580,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 3022;	
-							text = "WEATHER";
+							text = "Погода";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -606,7 +606,7 @@ class sundayDialog {
 				class sundaySliderWeatherFair: sundayText
 				{
 					idc = 1113;
-					text = "FAIR";
+					text = "Хорошая";
 					x = "2.5 * pixelGridNoUIScale * pixelW";
 					y = "6.5 * pixelGridNoUIScale * pixelH";	
 					w = "4 * pixelGridNoUIScale * pixelW";	
@@ -619,7 +619,7 @@ class sundayDialog {
 				{
 					idc = 1114;
 					style = ST_RIGHT;
-					text = "BAD";
+					text = "Плохая";
 					x = "20 * pixelGridNoUIScale * pixelW";
 					y = "6.5 * pixelGridNoUIScale * pixelH";	
 					w = "4 * pixelGridNoUIScale * pixelW";	
@@ -644,7 +644,7 @@ class sundayDialog {
 				class sundayTitleMonth: sundayText
 				{
 					idc = 1106;
-					text = "MONTH";
+					text = "Месяц";
 					x = "1 * pixelGridNoUIScale * pixelW";	
 					y = "14 * pixelGridNoUIScale * pixelH";	
 					w = "10 * pixelGridNoUIScale * pixelW";	
@@ -664,7 +664,7 @@ class sundayDialog {
 				class sundayTitleDay: sundayText
 				{
 					idc = 2300;
-					text = "DAY";
+					text = "День";
 					x = "1 * pixelGridNoUIScale * pixelW";	
 					y = "17 * pixelGridNoUIScale * pixelH";	
 					w = "10 * pixelGridNoUIScale * pixelW";	
@@ -697,7 +697,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 3032;	
-							text = "ANIMALS";
+							text = "Животные";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -734,7 +734,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 4012;
-							text = "NO. OF OBJECTIVES";	
+							text = "Количество заданий";	
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -750,7 +750,7 @@ class sundayDialog {
 				class objPrefTitle: sundayText
 				{
 					idc = 4020;
-					text = "Objective preferences";
+					text = "Предпочтения в заданиях";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "4 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -759,7 +759,7 @@ class sundayDialog {
 				class objPrefText: sundayTextMT
 				{
 					idc = 4021;			
-					text = "Please note that it may not always be possible to give the selected preferences depending on the location and available faction assets.";
+					text = "Имейте ввиду, что не всегда возможно создать задания только исходя из ваших предпочтений, это зависит от выбранного места и фракций.";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "6 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -769,7 +769,7 @@ class sundayDialog {
 				class objPrefHVT: DROBasicButton
 				{			
 					idc = 2200;
-					text = "Eliminate HVT";
+					text = "Устранить цель";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "11 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -782,7 +782,7 @@ class sundayDialog {
 				class objPrefPOW: DROBasicButton
 				{			
 					idc = 2201;
-					text = "Rescue Hostage";
+					text = "Спасти заложника";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "14.25 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -795,7 +795,7 @@ class sundayDialog {
 				class objPrefIntel: DROBasicButton
 				{			
 					idc = 2202;
-					text = "Retrieve Intel";
+					text = "Получить разведданные";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "17.5 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -808,7 +808,7 @@ class sundayDialog {
 				class objPrefCache: DROBasicButton
 				{			
 					idc = 2203;
-					text = "Destroy Cache";
+					text = "Уничтожить тайник";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "20.75 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -821,7 +821,7 @@ class sundayDialog {
 				class objPrefDestroyAsset: DROBasicButton
 				{			
 					idc = 2204;
-					text = "Destroy Asset";
+					text = "Уничтожить объекты";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "24 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -834,7 +834,7 @@ class sundayDialog {
 				class objPrefVehicleSteal: DROBasicButton
 				{			
 					idc = 2207;
-					text = "Steal Vehicle";
+					text = "Украсть технику";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "27.25 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -847,7 +847,7 @@ class sundayDialog {
 				class objPrefClear: DROBasicButton
 				{			
 					idc = 2210;
-					text = "Clear Area";
+					text = "Зачистить область";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "30.5 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -860,7 +860,7 @@ class sundayDialog {
 				class objPrefFortify: DROBasicButton
 				{			
 					idc = 2211;
-					text = "Fortify";
+					text = "Построить укрепления";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "33.75 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -873,7 +873,7 @@ class sundayDialog {
 				class objPrefDisarm: DROBasicButton
 				{			
 					idc = 2212;
-					text = "Disarm";
+					text = "Разминировать";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "37 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -886,7 +886,7 @@ class sundayDialog {
 				class objPrefProtect: DROBasicButton
 				{			
 					idc = 2213;
-					text = "Protect Civilian";
+					text = "Защита гражданских";
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "40.25 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -909,7 +909,7 @@ class sundayDialog {
 				class sundayTextAdvPlayer: sundayTextMT
 				{
 					idc = 3712;			
-					text = "These options allow you to add additional factions to your currently selected side. Each extra selection made will add that faction's full complement of units and vehicles to the usable pool."; //--- ToDo: Localize;
+					text = "Эти настройки позволяют вам добавить дополнительные фракции в выбранные стороны. Каждый дополнительный выбор добавляет возможности использовать все отряды а так же технику этой фракции."; //--- ToDo: Localize;
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "0 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -918,7 +918,7 @@ class sundayDialog {
 				class sundayTitleAdvPlayer: sundayText
 				{
 					idc = 3704;
-					text = "Player faction"; //--- ToDo: Localize;
+					text = "Фракции игроков"; //--- ToDo: Localize;
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "7 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
@@ -954,7 +954,7 @@ class sundayDialog {
 				class sundayTitleAdvEnemy: sundayText
 				{
 					idc = 3708;
-					text = "Enemy faction"; //--- ToDo: Localize;
+					text = "Фракции противника"; //--- ToDo: Localize;
 					x = "1 * pixelGridNoUIScale * pixelW";
 					y = "15 * pixelGridNoUIScale * pixelH";	
 					w = "24 * pixelGridNoUIScale * pixelW";	
