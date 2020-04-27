@@ -10,8 +10,8 @@ allowFunctionsLog = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 1;
-corpseRemovalMinTime = 900;
-corpseRemovalMaxTime = 3600;
+corpseRemovalMinTime = 360;
+corpseRemovalMaxTime = 600;
 
 respawn = 3;
 respawnButton = 1;
@@ -19,7 +19,7 @@ respawnDelay = 45;
 respawnVehicleDelay = 30;
 respawnDialog = 0;
 respawnOnStart = 0;
-respawnTemplates[] = {"MenuPosition", "Tickets", "Spectator", "EndMission"};
+respawnTemplates[] = {"MenuPosition", "Tickets", "EndMission"};
 
 class Params
 {
@@ -99,7 +99,7 @@ class CfgCommunicationMenu
 {   
 	class heliExtract
     {
-        text = "Request extraction"; // Text displayed in the menu and in a notification
+        text = "Запросить эвакуацию"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation (expression is ignored when submenu is not empty.)
         expression = "[_pos] execVM 'sunday_system\heliExtract.sqf'"; // Code executed upon activation
         icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\transport_ca.paa"; // Icon displayed permanently next to the command menu
@@ -109,7 +109,7 @@ class CfgCommunicationMenu
     };
 	class extractLeave
     {
-        text = "Extract"; // Text displayed in the menu and in a notification
+        text = "Эвакуация"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation (expression is ignored when submenu is not empty.)
         expression = "extractLeave = true; publicVariable 'extractLeave'"; // Code executed upon activation
         icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\transport_ca.paa"; // Icon displayed permanently next to the command menu
@@ -174,45 +174,45 @@ class CfgDebriefing
 {  
 	class DROEnd_Full
 	{
-		title = "Mission Completed";
+		title = "Миссия выполнена";
 		subtitle = "";
-		description = "With all objectives completed the mission was a success and a stepping stone to further control of the region.";
+		description = "Все задачи были полностью выполнены, что послужит дальнейшим шагом к контролю над регионом.";
 		pictureBackground = "images\recon_image_notext.jpg";
 		picture = "";
 		pictureColor[] = {0.0,0.3,0.6,1};
 	};
 	class DROEnd_Partial
 	{
-		title = "Mission Completed";
+		title = "Миссия выполнена";
 		subtitle = "";
-		description = "The mission did not go to plan and further operations had to be rethought to accommodate an appropriate response.";
+		description = "Спецоперация прошла успешно, хотя не все задачи были выполнены.";
 		pictureBackground = "images\recon_image_notext.jpg";
 		picture = "";
 		pictureColor[] = {0.0,0.3,0.6,1};
 	};
 	class DROEnd_Fail
 	{
-		title = "Mission Failed";
+		title = "Миссия провалена";
 		subtitle = "";
-		description = "With none of the objectives completed the mission was considered a failure and your team was reassigned. Unchecked, the enemy expanded their influence on the region.";
+		description = "Ни одна из задач не была выполнена, операция признана неудачной, и ваша команда была расформирована. Без контроля над этой территорией противник расширил свое влияние на регион.";
 		pictureBackground = "images\recon_image_notext.jpg";
 		picture = "";
 		pictureColor[] = {0.5,0.4,0.4,1};
 	};
 	class DROEnd_FailCiv1
 	{
-		title = "Mission Failed";
-		subtitle = "Unacceptable Civilian Casualties";
-		description = "Following the end of your mission and debriefing difficult questions were asked about the role your unit played. Though ultimately everyone related to the operation escaped punishment the civilian deaths made progress in the region harder and the conflict would continue.";
+		title = "Миссия провалена";
+		subtitle = "Недопустимые жертвы среди гражданского населения";
+		description = "После окончания вашей операции и подведения итогов были заданы сложные вопросы о роли вашего подразделения. Хотя в конечном итоге все, кто имел отношение к операции, избежали наказания, гибель мирного населения усложнила прогресс в регионе, и конфликт будет продолжаться.";
 		pictureBackground = "images\recon_image_notext.jpg";
 		picture = "";
 		pictureColor[] = {0.5,0.4,0.4,1};
 	};
 	class DROEnd_FailCiv2
 	{
-		title = "Mission Failed";
-		subtitle = "Unacceptable Civilian Casualties";		
-		description = "The actions of your team on this day were widely condemned by the media and authorities. With the civilian deaths the enemy gained a powerful propaganda tool and the ranks of their army grew. Progress towards a peaceful solution became harder and the conflict was prolonged further than anyone expected. The families who lost loved ones would spend years struggling to be acknowledged.";
+		title = "Миссия провалена";
+		subtitle = "Недопустимые жертвы среди гражданского населения";
+		description = "Действия вашей команды в этот день были широко осуждены средствами массовой информации и властями. С гибелью мирных жителей противник получил мощный инструмент пропаганды, и ряды их армии выросли. Прогресс в направлении мирного урегулирования стал более трудным, и конфликт продлился дольше, чем кто-либо ожидал. Семьи, которые потеряли близких, потратили годы на борьбу за признание.";
 		pictureBackground = "images\recon_image_notext.jpg";
 		picture = "";
 		pictureColor[] = {0.5,0.4,0.4,1};

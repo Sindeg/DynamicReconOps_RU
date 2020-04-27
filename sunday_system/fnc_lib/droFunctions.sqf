@@ -15,10 +15,10 @@ dro_civDeathHandler = {
 				if (isNil "civDeathCounter") then {
 					civDeathCounter = 1;
 					publicVariable "civDeathCounter";			
-					_text = format["%1 has been responsible for a civilian casualty. Command will not accept collateral damage, adjust your approach to ensure civilians are kept out of the line of fire.", name ((_this select 0) select 1)];
+					_text = format["%1 ответственный за жертвы среди гражданского населения. Командование не расчитывает на подобное, недопустимо чтобы гражданские лица попадали на линию огня.", name ((_this select 0) select 1)];
 					//["Command", _text] spawn BIS_fnc_showSubtitle;
 					//[] spawn sun_playSubtitleRadio;				
-					dro_messageStack pushBack [[["Command", _text, 0]], true];
+					dro_messageStack pushBack [[["Командование", _text, 0]], true];
 				} else {
 					civDeathCounter = civDeathCounter + 1;
 					publicVariable "civDeathCounter";			
@@ -27,28 +27,28 @@ dro_civDeathHandler = {
 						case 1: {
 							[_this] spawn {
 								sleep 2;							
-								_text = format["%1 has caused a civilian casualty. Command will not accept collateral damage, adjust your approach to ensure civilians are kept out of the line of fire.", name ((_this select 0) select 1)];
+								_text = format["%1 ответственный за жертвы среди гражданского населения. Командование не расчитывает на подобное, недопустимо чтобы гражданские лица попадали на линию огня.", name ((_this select 0) select 1)];
 								//["Command", _text] spawn BIS_fnc_showSubtitle;
 								//[] spawn sun_playSubtitleRadio;
-								dro_messageStack pushBack [[["Command", _text, 0]], true];
+								dro_messageStack pushBack [[["Командование", _text, 0]], true];
 							};
 						};
 						case 2: {
 							[_this] spawn {
 								sleep 2;
-								_text = format["%1 has caused a civilian casualty. This is your second warning! If you cannot complete your objectives without causing collateral damage you must withdraw.", name ((_this select 0) select 1)];
+								_text = format["%1 причастен к жертвам среди гражданского населения. Это ваше второе предупреждение! Если вы не можете выполнить свои цели, не избежав жертв среди гражданского населения, вас отзовут.", name ((_this select 0) select 1)];
 								//["Command", _text] spawn BIS_fnc_showSubtitle;
 								//[] spawn sun_playSubtitleRadio;
-								dro_messageStack pushBack [[["Command", _text, 0]], true];
+								dro_messageStack pushBack [[["Командование", _text, 0]], true];
 							};
 						};
 						case 3: {
 							[_this] spawn {
 								sleep 2;
-								_text = format["Your team are responsible for excessive civilian casualties! Pull out immediately, the mission is over!", name ((_this select 0) select 1)];
+								_text = format["Ваша команда несет ответственность за чрезмерные жертвы среди гражданского населения!", name ((_this select 0) select 1)];
 								//["Command", _text] spawn BIS_fnc_showSubtitle;
 								//[] spawn sun_playSubtitleRadio;
-								dro_messageStack pushBack [[["Command", _text, 0]], true];
+								dro_messageStack pushBack [[["Командование", _text, 0]], true];
 								//if (player == leader group player) then {
 									{
 										[_x, 'FAILED', true] spawn BIS_fnc_taskSetState;
@@ -75,7 +75,7 @@ dro_civDeathHandler = {
 						};
 						default {
 							[_this] spawn {
-								_text = format["%1 has caused a civilian casualty. Command will not accept collateral damage, adjust your approach to ensure civilians are kept out of the line of fire.", name ((_this select 0) select 1)];
+								_text = format["%1 ответственный за жертвы среди гражданского населения. Командование не расчитывает на подобное, недопустимо чтобы гражданские лица попадали на линию огня.", name ((_this select 0) select 1)];
 								//["Command", _text] spawn BIS_fnc_showSubtitle;
 								//[] spawn sun_playSubtitleRadio;
 								dro_messageStack pushBack [[["Command", _text, 0]], true];
@@ -228,8 +228,8 @@ dro_sendProgressMessage = {
 		case "HOSTILECIVS": {
 			dro_messageStack pushBack [
 				[
-					[_sender, "This is a reminder to check your targets, we believe that some of the civilian population may react with hostility to your presence. Move carefully and assess any contact as a potential threat.", 0],
-					[_sender, "Even though you're going into a situation with unknown combatants hold fire until you see clear signs of hostile intent. Civilian casualties are still considered unacceptable.", 10]
+					[_sender, "Напоминаем вам, что часть гражданского населения может враждебно отреагировать на ваше присутствие. Двигайтесь осторожно и оцените любой контакт как потенциальную угрозу.", 0],
+					[_sender, "Даже если вы попадаете в ситуацию с неопределенными целями, не стреляйте, пока не увидите явных признаков враждебного намерения. Жертвы среди гражданского населения по-прежнему считаются неприемлемыми.", 10]
 				],
 				_playAudio
 			];			
@@ -237,8 +237,8 @@ dro_sendProgressMessage = {
 		case "AMBUSH": {
 			dro_messageStack pushBack [
 				[
-					[_sender, "Command here, looks like your activities have been noticed, we show enemies moving to investigate.", 0],
-					[_sender, "Find cover, hold and defend your position.", 7]
+					[_sender, "Это командование, похоже, что ваши действия были замечены, мы обнаружили новых врагов, двигающихся прямо к вам.", 0],
+					[_sender, "Найдите укрытие, удерживайте и защищайте свою позицию", 7]
 				],
 				_playAudio
 			];				
@@ -246,8 +246,8 @@ dro_sendProgressMessage = {
 		case "AMBUSHOP": {
 			dro_messageStack pushBack [
 				[
-					[_sender, "Heads up, we're showing incoming enemies headed to your position. Good thing you got that OP set up in time.", 0],
-					[_sender, "Take cover and defend the OP.", 7]
+					[_sender, "Это командование, мы наблюдаем приближающихся врагов на вашу позицию.", 0],
+					[_sender, "Займите позиции и удерживайте точку.", 7]
 				],
 				_playAudio
 			];			
@@ -255,8 +255,8 @@ dro_sendProgressMessage = {
 		case "AMBUSHCIV": {	
 			dro_messageStack pushBack [
 				[
-					[_sender, (format ["Just as we expected, enemy forces are moving to your position now.", (_data select 0)]), 0],
-					[_sender, (format ["Take cover and protect %1!", (_data select 0)]), 7]
+					[_sender, (format ["Как мы и ожидали, силы противника сейчас движутся к вашей позиции.", (_data select 0)]), 0],
+					[_sender, (format ["Укрепитесь и защищайте %1!", (_data select 0)]), 7]
 				],
 				_playAudio
 			];			
@@ -264,9 +264,8 @@ dro_sendProgressMessage = {
 		case "PROTECT_CIV_MEET": {
 			dro_messageStack pushBack [
 				[
-					[_sender, (format ["Are you %1? We know of a threat to your life and we're here to keep you safe.", (_data select 0)]), 0],
-					[_sender, (format ["Keep your head down and we'll do the rest.", (_data select 0)]), 7],
-					[(_data select 0), (format ["You got it, I'll try and stay out of your way.", (_data select 0)]), 12]
+					[_sender, (format ["Вы %1? Мы знаем об угрозе вашей жизни, и мы здесь, чтобы защитить вас.", (_data select 0)]), 0],
+					[_sender, (format ["Следуйте за нами, а мы сделаем всё остальное.", (_data select 0)]), 7]
 				],
 				_playAudio
 			];				
@@ -274,35 +273,35 @@ dro_sendProgressMessage = {
 		case "PROTECT_CIV_CLEAR": {	
 			dro_messageStack pushBack [
 				[
-					[_sender, (format ["That should be the last of them, I suggest you leave the area as soon as possible.", (_data select 0)]), 0],
-					[(_data select 0), (format ["Thank God you arrived when you did. Don't worry, I've got no intention of sticking around.", (_data select 0)]), 7]				
+					[_sender, (format ["Это должно быть последний из них, я предлагаю покинуть район как можно скорее.", (_data select 0)]), 0],
+					[(_data select 0), (format ["Слава Богу, что вы приехали. Не волнуйтесь, я не собираюсь торчать здесь.", (_data select 0)]), 7]				
 				],
 				_playAudio
 			];					
 		};
 		case "BRIEFING": {	
-			_greeting = (format ["Good day %1, Command here.", playerCallsign]);
+			_greeting = (format ["Добрый день %1, это Главное управление.", playerCallsign]);
 			_hour = (date select 3);
 			if (_hour >= 0 && _hour < 8) then {
-				_greeting = (format ["Good morning %1, Command here.", playerCallsign]);
+				_greeting = (format ["Утро доброе %1, это Главное управление.", playerCallsign]);
 			} else {
 				if (_hour >= 8 && _hour < 18) then {
-					_greeting = (format ["Good day %1, Command here.", playerCallsign]);
+					_greeting = (format ["Добрый день %1, это Главное управление.", playerCallsign]);
 				} else {
 					if (_hour >= 18) then {
-						_greeting = (format ["Good evening %1, Command here.", playerCallsign]);
+						_greeting = (format ["Добрый вечер %1, это Главное управление.", playerCallsign]);
 					};
 				};
 			};
 			_sendOff = selectRandom [
-				format ["Good luck out there, stay alert and let's ensure %1 is a success.", (missionNameSpace getVariable ["mName", "the operation"])],
-				format ["%1 will be an important mission for us, we're looking to you for a clean execution. Good luck.", (missionNameSpace getVariable ["mName", "the operation"])],
-				format ["Keep your head on a swivel and take your time. We don't want any mistakes today.", (missionNameSpace getVariable ["mName", "the operation"])]
+				format ["Удачи, будьте бдительны, и давайте обеспечим успешное выполнение %1.", (missionNameSpace getVariable ["mName", "the operation"])],
+				format ["%1 будет важной миссией для нас, мы надеемся на успешное выполнение. Удачи.", (missionNameSpace getVariable ["mName", "the operation"])],
+				format ["Будьте наготове. Мы не хотим допустить ошибок сегодня.", (missionNameSpace getVariable ["mName", "the operation"])]
 			];
 			dro_messageStack pushBack [
 				[
 					[_sender, _greeting, 0],
-					[_sender, "We've prepared a full briefing which is available under your briefing notes.", 6],
+					[_sender, "Мы подготовили полный инструктаж, который доступен в ваших заметках.", 6],
 					[_sender, _sendOff, 14]
 				],
 				_playAudio
@@ -313,10 +312,10 @@ dro_sendProgressMessage = {
 			if (({_x call BIS_fnc_taskCompleted} count taskIDs) < (count taskIDs)) then {				
 				_phrases = if (isNil "oneTaskCompleted") then {
 					oneTaskCompleted = true;
-					[(format ["Good job %1, keep the momentum up.", playerCallsign]), "Good work. Let's keep it moving.", (format ["Good work %1, maintain your pace and let's finish the job.", playerCallsign])];				
+					[(format ["Хорошая работа %1, двигайтесь в том же темпе.", playerCallsign]), "Хорошая работа. Продолжайте в том же духе.", (format ["Хорошая работа %1, сохраняйте темп и давайте закончим это.", playerCallsign])];				
 				} else {
 					if (oneTaskCompleted) then {
-						[(format ["Another one down, %1. You're doing well.", playerCallsign]), (format ["Good job again %1. Keep it moving.", playerCallsign]), (format ["Alright %1, stay frosty.", playerCallsign]), (format ["Good work %1, maintain your pace and let's finish the job.", playerCallsign])];
+						[(format ["Еще одна цель, %1. Вы хорошо справляетесь.", playerCallsign]), (format ["Отличная работа, %1. Вы хорошо справляетесь.", playerCallsign]), (format ["Отлично %1.", playerCallsign]), (format ["Хорошая работа %1, сохраняйте темп и давайте закончим работу", playerCallsign])];
 					};
 				};
 				dro_messageStack pushBack [
@@ -337,9 +336,9 @@ dro_sendProgressMessage = {
 		};
 		case "FRIENDLY_START": {
 			_phrase = selectRandom [
-				(format ["%1, this is %2. We're beginning our move now.", playerCallsign, _sender]),
-				(format ["%1, %2 here. We're going to begin our assault.", playerCallsign, _sender]),
-				(format ["%1, we're heading to our objective now. See you on the other side.", playerCallsign])
+				(format ["%1, это %2. Мы начинаем движение.", playerCallsign, _sender]),
+				(format ["%1, %2 здесь. Мы готовимся начать наш штурм.", playerCallsign, _sender]),
+				(format ["%1, мы начинаем движение к нашей цели. Увидимся на месте.", playerCallsign])
 			];
 			dro_messageStack pushBack [
 				[
@@ -368,8 +367,8 @@ dro_sendProgressMessage = {
 		};		
 		case "END_LEAVE": {			
 			_phrase = selectRandom [
-				(format ["Alright %1, time to get yourselves out of there.", playerCallsign]),
-				(format ["That's everything %1. Get clear of the AO.", playerCallsign])				
+				(format ["Хорошо %1, время выбираться.", playerCallsign]),
+				(format ["Это всё, %1. Пора уходить.", playerCallsign])				
 			];
 			dro_messageStack pushBack [
 				[
@@ -380,8 +379,8 @@ dro_sendProgressMessage = {
 		};
 		case "END_RTB": {			
 			_phrase = selectRandom [
-				(format ["Alright %1, get yourselves back to %2.", playerCallsign, markerText "campMkr"]),
-				(format ["That's everything %1, return to %2 ASAP.", playerCallsign, markerText "campMkr"])
+				(format ["Хорошо %1, вернитесь к %2.", playerCallsign, markerText "campMkr"]),
+				(format ["Это всё, %1, возвращайтесь к %2 прямо сейчас.", playerCallsign, markerText "campMkr"])
 			];
 			dro_messageStack pushBack [
 				[
@@ -392,8 +391,8 @@ dro_sendProgressMessage = {
 		};
 		case "END_RENDEZVOUS": {			
 			_phrase = selectRandom [
-				(format ["Alright %1, rendezvous with %2 then make your way out of the AO.", playerCallsign, groupId friendlySquad]),
-				(format ["That's everything %1, rendezvous with %2 before you leave the AO.", playerCallsign, groupId friendlySquad])
+				(format ["Хорошо %1, вам необходимо встретиться с %2, а затем покинуть зону операции.", playerCallsign, groupId friendlySquad]),
+				(format ["На этом всё, %1, вам необходимо встретиться с %2 до того, как вы покинете зону операции.", playerCallsign, groupId friendlySquad])
 			];
 			dro_messageStack pushBack [
 				[
@@ -404,7 +403,7 @@ dro_sendProgressMessage = {
 		};
 		case "END_RENDEZVOUS_FAIL": {			
 			_phrase = selectRandom [
-				(format ["We've lost contact with %1! Proceed to extraction and we'll send a recovery team to find them.", groupId friendlySquad])				
+				(format ["Мы потеряли контакт с %1! Вам необходимо покинуть зону операции, а затем мы оправим спецгруппу для их поиска.", groupId friendlySquad])				
 			];
 			dro_messageStack pushBack [
 				[
@@ -415,22 +414,22 @@ dro_sendProgressMessage = {
 		};
 		case "END_HOLD": {			
 			_phrase = selectRandom [
-				(format ["Alright %1, we need you to assist taking and holding %2. All units are go and the command has been given to secure the area.", playerCallsign, (text (holdAO select 5))]),
-				(format ["Tasking complete %1. Your orders are now to assist the push to take and hold %2. All units are moving to secure the area.", playerCallsign, (text (holdAO select 5))])
+				(format ["%1, нам нужно, чтобы вы захватили и удерживали %2. Все отряды уже начали выдвигаться туда.", playerCallsign, (text (holdAO select 5))]),
+				(format ["Задача выполнена %1. Теперь ваша задача помочь в штурме и удержании %2. Все отряды уже в пути, чтобы зачистить территорию.", playerCallsign, (text (holdAO select 5))])
 			];
 			dro_messageStack pushBack [
 				[
 					[_sender, _phrase, 0],		
-					[_sender, "However, if you're too damaged to assist in the assault then pull out and extract from the AO.", 8]		
+					[_sender, "Однако, если вы не способны поддержать штурм, отступайте и покиньте зону спецоперации.", 8]	
 				],
 				_playAudio
 			];			
 		};
 		case "OBSERVE_SUCCEED": {			
 			_phrase = selectRandom [
-				(format ["Alright %1, %2", playerCallsign, (_data select 0)]),
-				(format ["Good spotting %1, %2", playerCallsign, (_data select 0)]),
-				(format ["Nice work %1, %2", playerCallsign, (_data select 0)])
+				(format ["Хорошая работа %1, %2", playerCallsign, (_data select 0)]),
+				(format ["Отличная разведка %1, %2", playerCallsign, (_data select 0)]),
+				(format ["Отличная работа %1, %2", playerCallsign, (_data select 0)])
 			];
 			dro_messageStack pushBack [
 				[
@@ -550,12 +549,12 @@ dro_missionName = {
 			} else {
 				["Garrotte", "Castle", "Tower", "Sword", "Moat", "Traveller", "Headwind", "Fountain", "Taskmaster", "Tulip", "Carnation", "Gaunt", "Goshawk", "Jasper", "Flashbulb", "Banker", "Piano", "Rook", "Knight", "Bishop", "Pyrite", "Granite", "Hearth", "Staircase"];
 			};			
-			format ["Operation %1", selectRandom _nameArray];
+			format ["Операция %1", selectRandom _nameArray];
 		};
 		case "DoubleWord": {
 			_name1Array = ["Dust", "Swamp", "Red", "Green", "Black", "Gold", "Silver", "Lion", "Bear", "Dog", "Tiger", "Eagle", "Fox", "North", "Moon", "Watch", "Under", "Key", "Court", "Palm", "Fire", "Fast", "Light", "Blind", "Spite", "Smoke", "Castle"];
 			_name2Array = ["bowl", "catcher", "fisher", "claw", "house", "master", "man", "fly", "market", "cap", "wind", "break", "cut", "tree", "woods", "fall", "force", "storm", "blade", "knife", "cut", "cutter", "taker", "torch"];
-			format ["Operation %1%2", selectRandom _name1Array, selectRandom _name2Array];
+			format ["Операция %1%2", selectRandom _name1Array, selectRandom _name2Array];
 		};
 		case "TwoWords": {		
 			_name1Array = ["Awoken", "Warning", "Wakeful", "Bonded", "Sweeping", "Watching", "Bladed", "Crushing", "Arcane", "Midnight", "Fallen", "Turbulent", "Nesting", "Daunting", "Dogged", "Darkened", "Shallow", "Blank", "Absent", "Parallel", "Restless"];					
@@ -564,7 +563,7 @@ dro_missionName = {
 			} else {
 				["Sky", "Moon", "Sun", "Hand", "Monk", "Priest", "Viper", "Snake", "Boon", "Cannon", "Market", "Rook", "Knight", "Bishop", "Command", "Mirror", "Spider", "Charter", "Court", "Hearth"]
 			};		
-			format ["Operation %1 %2", selectRandom _name1Array, selectRandom _name2Array];
+			format ["Операция %1 %2", selectRandom _name1Array, selectRandom _name2Array];
 		};
 	};
 	_missionName

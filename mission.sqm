@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14244.501,15.112812,13060.093};
-		dir[]={0.097458974,-0.49201357,-0.86523944};
-		up[]={0.055077311,0.8705349,-0.48899236};
-		aside[]={-0.99382091,-5.2456744e-007,-0.1119457};
+		pos[]={14274.862,15.112812,13055.137};
+		dir[]={0.65605247,-0.61133105,-0.4428165};
+		up[]={0.50674462,0.79132533,-0.34204033};
+		aside[]={-0.55951363,-9.4342977e-007,-0.82895035};
 	};
 };
 binarizationWanted=0;
@@ -201,13 +201,15 @@ class ScenarioData
 	onLoadMission="Выполняйте различные спецоперации во всех уголках света";
 	loadScreen="images\recon_image.jpg";
 	briefing=0;
+	saving=0;
 	aIKills=1;
+	disabledAI=1;
 	respawnDelay=10;
 	class Header
 	{
 		gameType="Coop";
 		minPlayers=1;
-		maxPlayers=8;
+		maxPlayers=23;
 	};
 	wreckRemovalMaxTime=3600;
 };
@@ -3564,6 +3566,7 @@ class CustomAttributes
 };
 class Mission
 {
+	assetType="Free";
 	class Intel
 	{
 		briefingName="Dynamic Recon Ops";
