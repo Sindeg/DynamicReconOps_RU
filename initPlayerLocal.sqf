@@ -56,7 +56,7 @@ fnc_addAction_AirportTp = {
 		3 fadeSound 0;
 		cutText["Перемещение в аэропорт...","BLACK OUT",3];
 		sleep 6;
-		player setpos getpos airHelipad;
+		player setpos getpos airportPos;
 		player setdir 280;
 		cutText["","BLACK IN",5]; 
 		2 fadeSound 1;
@@ -432,7 +432,7 @@ _rscLayer cutFadeOut 2;
 //diag_log format ["DRO: Player %1 received serverReady", player];
 
 if (player != topUnit) then {
-	[toUpper "Please wait while mission is generated", "objectivesSpawned", 1, ""] spawn sun_callLoadScreen;
+	[toUpper "Подождите, пока идёт процесс создания миссии (обычно это занимает 1 - 2 минуты)", "objectivesSpawned", "objectivesSpawned", 1, ""] spawn sun_callLoadScreen;
 };
 
 [] spawn {
@@ -575,7 +575,9 @@ while {
 	if (player == topUnit) then {
 		_allHCs = entities "HeadlessClient_F";
 		_allHPs = allPlayers - _allHCs;
-		if (({(_x getVariable ["startReady", false])} count _allHPs) >= count _allHPs) then {
+		// Только командиру достаточно нажать кнопку "Готов"
+		//if (({(_x getVariable ["startReady", false])} count _allHPs) >= count _allHPs) then {
+		if (player getVariable ['startReady', false]) then {
 			missionNameSpace setVariable ['lobbyComplete', 1, true];	
 		};	
 	};

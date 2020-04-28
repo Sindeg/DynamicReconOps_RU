@@ -559,7 +559,7 @@ switch (insertType) do {
 					if (_whileAttempts >= 8) exitWith {
 						diag_log "DRO: spawning insert vehicle while attempts exceeded";
 					};
-				}; */
+				}; 
 				
 				_mkrName = switch (playersSide) do {
 					case west: {"respawn_vehicle_west"};
@@ -569,6 +569,7 @@ switch (insertType) do {
 				_vehicleRespawnMkr = createMarker [_mkrName, _vehLocation];
 				_vehicleRespawnMkr setMarkerShape "ICON";
 				_vehicleRespawnMkr setMarkerType "EmptyIcon";
+				*/
 				
 				// Ящик с арсеналом
 				_boxLocation = _randomStartingLocation findEmptyPosition [0, 20, "B_supplyCrate_F"];
@@ -579,7 +580,7 @@ switch (insertType) do {
 					clearItemCargoGlobal _box;
 					
 					_box setPos _boxLocation;
-					sleep 0.5;
+					sleep 2;
 					_box setVectorUp [0,0,1];
 				};
 				

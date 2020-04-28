@@ -19,6 +19,7 @@ missionNameSpace setVariable ["aoLocationName", "", true];
 missionNameSpace setVariable ["aoLocation", "", true];
 missionNameSpace setVariable ["lobbyComplete", 0, true];
 missionNameSpace setVariable ["JamTFARMessage", 0, true];
+missionNameSpace setVariable ["airportChosen", false, true];
 
 [] execVM "start.sqf";
 

@@ -1171,7 +1171,7 @@ if (minesEnabled == 1) then {
 			
             if(_x distance (getMarkerPos "campMkr") < 120) then {[_x,false] remoteExec ["allowDamage",_x]} else {[_x,true] remoteExec ["allowDamage",_x]}; 
         } forEach allPlayers + vehicles; 
-        sleep 20; 
+        sleep 12; 
     }; 
 };
 
