@@ -515,6 +515,9 @@ cam camCommitPrepared 50;
 	false
 ] spawn BIS_fnc_typeText2;
 sleep 7;
+
+if ((missionNameSpace getVariable ["lobbyComplete", 0]) == 0) then { removeAllWeapons player;}; // Удаление оружия для тех кто зашел во время создания миссии
+
 cutText ["", "BLACK OUT", 1];
 10 fademusic 0;
 sleep 1;
@@ -550,12 +553,16 @@ diag_log format ["DRO: Player %1 created DRO_lobbyDialog: %2", player, _handle];
 sleep 0.5;
 cutText ["", "BLACK IN", 1];
 
-_actionID = player addAction ["Открыть планирование команды", 
-	{
-		_handle = CreateDialog "DRO_lobbyDialog";
-		[] execVM "sunday_system\dialogs\populateLobby.sqf";
-	}, nil, 6
-];
+_actionID = nil;
+
+if (roleDescription player == 'Командир') then {
+	_actionID = player addAction ["Открыть планирование команды", 
+		{
+			_handle = CreateDialog "DRO_lobbyDialog";
+			[] execVM "sunday_system\dialogs\populateLobby.sqf";
+		}, nil, 6
+	];
+};
 
 while {
 	((missionNameSpace getVariable ["lobbyComplete", 0]) == 0)
@@ -595,7 +602,9 @@ closeDialog 1;
 
 1 fadeSound 0;
 
-player removeAction _actionID;
+if (roleDescription player == 'Командир') then {
+	player removeAction _actionID;
+};
 
 (format ["DRO: Player %1 lobby closed", player]) remoteExec ["diag_log", 2, false];
 

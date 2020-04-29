@@ -31,8 +31,9 @@ diag_log format ["DRO: Lobby cam created: %1", camLobby];
 	sleep 0.2;
 	_target = _this select 0;
 	_class = (configfile >> "CfgVehicles" >> (_target getVariable "unitClass") >> "displayName") call BIS_fnc_getCfgData;
-	_weapon	= (configfile >> "CfgWeapons" >> primaryWeapon _target >> "displayName") call BIS_fnc_getCfgData;
-	_string = format ["%2%1%3%1%4%1%5", "\n", name _target, rank _target, _class, _weapon];
+	//_weapon	= (configfile >> "CfgWeapons" >> primaryWeapon _target >> "displayName") call BIS_fnc_getCfgData;
+	//_string = format ["%2%1%3%1%4%1%5", "\n", name _target, rank _target, _class, _weapon];
+	_string = format ["%2%1%3%1%4%1", "\n", name _target, rank _target, _class];
 	((findDisplay 626262) displayCtrl 1160) ctrlSetText _string;
 };
 

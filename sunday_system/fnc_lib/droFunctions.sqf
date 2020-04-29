@@ -214,7 +214,7 @@ dro_addConstructAction = {
 
 
 dro_sendProgressMessage = {
-	params ["_message", ["_sender", "Command"], ["_data", []], ["_playAudio", true]];	
+	params ["_message", ["_sender", "Командование"], ["_data", []], ["_playAudio", true]];	
 	//sleep (random [1, 2, 1.5]);
 	/*
 	if (!isNil "bis_fnc_showsubtitle_subtitle") then {

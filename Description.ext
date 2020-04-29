@@ -15,7 +15,7 @@ corpseRemovalMaxTime = 600;
 
 respawn = 3;
 respawnButton = 1;
-respawnDelay = 45;
+respawnDelay = 2;
 respawnVehicleDelay = 30;
 respawnDialog = 0;
 respawnOnStart = 0;

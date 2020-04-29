@@ -11,7 +11,7 @@ _debug = false; // Отладка
 
 while {true} do {
 	if (_debug) then {systemChat "Новый цикл";};
-    sleep ([round(_timeToSpawn / 2), _timeToSpawn] call BIS_fnc_randomInt); // Каждые [_timeToSpawn / 2, _timeToSpawn] секунд отправляем новую авиацию
+    sleep ([_timeToSpawn - 300, _timeToSpawn + 300] call BIS_fnc_randomInt); // Каждые [_timeToSpawn / 2, _timeToSpawn] секунд отправляем новую авиацию
 	if (_debug) then {systemChat "Авиа заспавнено";};
 	
 	_center = [_center, 200, 600, 0, 1, 60, 0] call BIS_fnc_findSafePos;

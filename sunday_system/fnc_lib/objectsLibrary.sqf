@@ -659,8 +659,7 @@ _fobAddon3 = [
 ];
 
 _fobAddon4 = [
-	["Land_Sacks_heap_F",[-0.345581,-0.855949,0],340.357,1,0,[0,0],"","",true,false], 
-	["Land_CanvasCover_02_F",[-0.395142,0.21254,0],0,1,0,[0,0],"","",true,false], 
+	["Land_Sacks_heap_F",[-0.345581,-0.855949,0],340.357,1,0,[0,0],"","",true,false],  
 	["Land_CratesWooden_F",[-2.63281,-0.939842,0],0,1,0,[0,0],"","",true,false], 
 	["Land_PaperBox_open_full_F",[2.29272,1.71435,0],0,1,0,[0,0],"","",true,false]
 ];
