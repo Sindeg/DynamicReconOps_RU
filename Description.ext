@@ -26,8 +26,8 @@ class Params
 	class Respawn
 	{
 		title = "Возрождение";
-		values[] = {0,1,2,3};
-		texts[] = {"20 Секунд", "45 Секунд", "90 Секунд", "Выкл"};
+		values[] = {0,1,2,3,4};
+		texts[] = {"Сразу", "20 Секунд", "45 Секунд", "90 Секунд", "Выкл"};
 		default = 0;
 	};
 	class RespawnPositions

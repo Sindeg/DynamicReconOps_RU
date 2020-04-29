@@ -77,7 +77,8 @@ sun_switchLookup = {
 				case 2090: {
 					_return pushBack "missionPreset";
 					_return pushBack missionPreset;
-					_return pushBack ["Текущие настройки", "RECON OPS", "SNIPER OPS", "COMBINED ARMS"];					
+					//_return pushBack ["Текущие настройки", "RECON OPS", "SNIPER OPS", "COMBINED ARMS"];
+					_return pushBack ["Текущие настройки", "Стандарт", "Снайперы", "Много техники"];	
 				};
 				case 2400: {
 					_return pushBack "dynamicSim";
@@ -602,7 +603,7 @@ dro_clearData = {
 	["MAIN", 2070, 0] call sun_switchButtonSet;
 	["MAIN", 2080, 0] call sun_switchButtonSet;
 	["MAIN", 2090, 0] call sun_switchButtonSet;
-	["MAIN", 2400, 0] call sun_switchButtonSet;
+	["MAIN", 2400, 1] call sun_switchButtonSet;
 	["MAIN", 3010, 0] call sun_switchButtonSet;
 	['MAIN', 3020, false, 0] call sun_switchButtonWeather;
 	["MAIN", 3030, 0] call sun_switchButtonSet;

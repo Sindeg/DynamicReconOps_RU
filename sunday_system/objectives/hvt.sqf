@@ -403,9 +403,9 @@ if (_evidenceChance > 0.6) then {
 	};
 };
 
-if (dynamicSim == 0) then {
-	_hvtChar enableDynamicSimulation true;
-};
+// if (dynamicSim == 0) then {
+	// _hvtChar enableDynamicSimulation true;
+// };
 
 // Spawn patrols
 if (_hvtStyle == "INSIDE" OR _hvtStyle == "OUTSIDE") then {

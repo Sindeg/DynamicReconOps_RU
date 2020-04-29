@@ -303,9 +303,9 @@ if (_reconChance >= baseReconChance) then {
 	[_hvtChar, _taskName, _markerName, _intelSubTaskName] execVM "sunday_system\objectives\followingMarker.sqf";
 };
 
-if (dynamicSim == 0) then {
-	_hvtChar enableDynamicSimulation true;
-};
+// if (dynamicSim == 0) then {
+	// _hvtChar enableDynamicSimulation true;
+// };
 
 // Listen for surrender conditions
 [_hvtChar] spawn {

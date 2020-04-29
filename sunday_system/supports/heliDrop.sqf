@@ -53,7 +53,7 @@ while {_heli distance _posAir > 110} do {
 if (_fail) exitWith {
 	dro_messageStack pushBack [
 		[
-			["Command", format ["We've lost contact with %1, supply drop cancelled.", driver _heli], 0]		
+			["Командование", format ["Мы только что потеряли контакт с %1, сброс снаряжения отменен.", driver _heli], 0]		
 		],
 		true
 	];	

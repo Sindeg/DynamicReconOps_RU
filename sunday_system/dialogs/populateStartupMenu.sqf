@@ -32,19 +32,19 @@ _index = lbAdd [2103, "Day"];
 _index = lbAdd [2103, "Dusk"];
 _index = lbAdd [2103, "Night"];
 */
-lbAdd [2104, "Random"];
-lbAdd [2104, "January"];
-lbAdd [2104, "February"];
-lbAdd [2104, "March"];
-lbAdd [2104, "April"];
-lbAdd [2104, "May"];
-lbAdd [2104, "June"];
-lbAdd [2104, "July"];
-lbAdd [2104, "August"];
-lbAdd [2104, "September"];
-lbAdd [2104, "October"];
-lbAdd [2104, "November"];
-lbAdd [2104, "December"];
+lbAdd [2104, "Случ"];
+lbAdd [2104, "Январь"];
+lbAdd [2104, "Февраль"];
+lbAdd [2104, "Март"];
+lbAdd [2104, "Апрель"];
+lbAdd [2104, "Май"];
+lbAdd [2104, "Июнь"];
+lbAdd [2104, "Июль"];
+lbAdd [2104, "Август"];
+lbAdd [2104, "Сентябрь"];
+lbAdd [2104, "Октябрь"];
+lbAdd [2104, "Ноябрь"];
+lbAdd [2104, "Декабрь"];
 /*
 lbAdd [2116, "Random"];
 lbAdd [2116, "Custom"];
@@ -63,7 +63,7 @@ _index = lbAdd [2106, "5"];
 ["MAIN", 2070, false] call sun_switchButton;
 ["MAIN", 2080, false] call sun_switchButton;
 ["MAIN", 2090, false] call sun_switchButton;
-["MAIN", 2400, false] call sun_switchButton;
+["MAIN", 2400, true] call sun_switchButton;
 ["MAIN", 3010, false, "TIME"] call sun_switchButton;
 ['MAIN', 3020, false] call sun_switchButtonWeather;
 ["MAIN", 3030, false] call sun_switchButton;
@@ -266,15 +266,16 @@ lbSetCurSel [3803, (enemyFactionAdv select 0)];
 lbSetCurSel [3804, (enemyFactionAdv select 1)];
 lbSetCurSel [3805, (enemyFactionAdv select 2)];
 
+//_return pushBack ["Текущие настройки", "Стандарт", "Снайперы", "Много техники"]
 // Add multiline tooltips
 _tooltip = str composeText [
-	"Mission Presets",
+	"Предустановки",
 	toString [13, 10],
-	"Recon: The classic gamemode. As a small squad, conduct a recon mission into a randomised AO. Your selection of vehicles will be limited to those appropriate for a small operation.",
+	"Стандарт: Классический режим. Выполняйте задания своим отрядом в зоне операции.",
 	toString [13, 10],
-	"Sniper Ops: Eliminate a single HVT in a more sparsely populated AO while remaining undetected.",
+	"Снайперы: Устраните определенную цель в малонаселенном регионе, оставаясь незамеченым.",
 	toString [13, 10],
-	"Combined Arms: As part of a larger force, and with more vehicle options at your disposal, take on a densely populated AO with potential enemy armour to contend with.",
+	"Много техники: в отличии от 'стандарта', в этом режиме у противника будет большое количество техники.",
 	toString [13, 10]
 ];
 ((findDisplay 52525) displayCtrl 2094) ctrlSetTooltip _tooltip;
@@ -303,7 +304,7 @@ _warningList = "";
 if (isClass (configfile >> "CfgPatches" >> "ace_medical")) then {	
 	if (!isNil "ace_medical_enableRevive") then {
 		if (ace_medical_enableRevive > 0) then {
-			_warningList = composeText [lineBreak, "ACE medical revive is enabled, DRO revive will be automatically disabled."];
+			_warningList = composeText [lineBreak, "ACE медицина включена, DRO система оживления будет автоматически отключена."];
 		};
 	};
 };
@@ -312,7 +313,7 @@ if ((configfile >> "CfgPatches" >> "C2_CORE") call BIS_fnc_getCfgIsClass) then {
 	_modList = composeText [_modList, lineBreak, "C2 - Command And Control"];
 };
 if (!(_modList isEqualType "") || !(_warningList isEqualType "")) then {
-	_text = composeText ["Warning!", lineBreak, "The following mods may cause compatibility issues with this scenario:", lineBreak, _modList, _warningList];
+	_text = composeText ["Warning!", lineBreak, "Данные моды могут привести к ошибкам в миссии:", lineBreak, _modList, _warningList];
 	((findDisplay 52525) displayCtrl 1053) ctrlSetStructuredText _text;
 	[] spawn {
 		disableSerialization;

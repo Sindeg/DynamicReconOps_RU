@@ -10,10 +10,11 @@ diag_log "DRO: Main DRO script started";
 diag_log "DRO: Libraries included";
 
 respawnTime = switch (paramsArray select 0) do {
-	case 0: {20};
-	case 1: {45};
-	case 2: {90};
-	case 3: {nil};
+	case 0: {2};
+	case 1: {20};
+	case 2: {45};
+	case 3: {90};
+	case 4: {nil};
 };
 publicVariable "respawnTime";
 
@@ -225,9 +226,9 @@ waitUntil {(missionNameSpace getVariable ["factionsChosen", 0]) == 1};
 diag_log "DRO: Factions chosen";
 
 // Disable dynamic simulation if desired
-if (dynamicSim == 1) then {
-	enableDynamicSimulationSystem false;
-};
+// if (dynamicSim == 1) then {
+	// enableDynamicSimulationSystem false;
+// };
 
 if (isClass (configfile >> "CfgPatches" >> "ace_medical")) then {	
 	if (!isNil "ace_medical_enableRevive") then {
@@ -328,7 +329,7 @@ if (count eCarTurretClasses > 0) then {
 };
 enemyHeliPool = [];
 if (count eHeliClasses > 0) then {	
-	for "_h" from 1 to ([1,3] call BIS_fnc_randomInt) step 1 do {
+	for "_h" from 1 to ([2,3] call BIS_fnc_randomInt) step 1 do {
 		enemyHeliPool pushBack (selectRandom eHeliClasses);
 	};	
 };
@@ -1139,8 +1140,8 @@ if (!isNil "DRO_simpleObjects") then {
 [] execVM "sunday_system\messageListener.sqf";
 
 // Ambient flyover setup
-_ambientFlyByChance = random 1;
-if (_ambientFlyByChance > 0.6) then {
+_ambientFlyByChance = 1;//random 1;
+if (_ambientFlyByChance > 0.5) then {
 	_flyerClasses = (eHeliClasses + ePlaneClasses);
 	if (count _flyerClasses > 0) then {
 		[centerPos, _flyerClasses] execVM "sunday_system\generate_ao\ambientFlyBy.sqf";

@@ -330,7 +330,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2024;
 							action = "['MAIN', 2020] call sun_switchButton";
-							tooltip = "When enabled up to three extra locations will be chosen in addition to the selected AO location to make a larger area for the mission.";
+							tooltip = "Когда включено, будет добавлено до 3 дополнительных мест в район операции, чтобы сделать общую задействованную площадь больше.";
 						};
 						
 					};		
@@ -386,7 +386,7 @@ class sundayDialog {
 					colorText[] = {0.75,0.75,0.75,1};
 					sizeEx = "((pixelH * (pixelGridNoUIScale) * 2) * 1.25) * 0.5";	
 					font = "PuristaMedium";
-					tooltip = "Allows you to fine tune the size of the force you'll be facing.";
+					tooltip = "Позволяет настроить количество противника с которым вы столкнетесь.";
 				};
 				class sundaySliderAISize: sundaySlider
 				{
@@ -423,7 +423,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2054;
 							action = "['MAIN', 2050] call sun_switchButton";
-							tooltip = "Enable the possibility for minefields to be present or disable them altogether";
+							tooltip = "Включает возможность присутствия минных полей.";
 						};
 					};		
 				};
@@ -449,7 +449,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2064;
 							action = "['MAIN', 2060] call sun_switchButton";
-							tooltip = "Enable the possibility for civilians to be present or disable them altogether.";
+							tooltip = "Включает возможность присутствия гражданских в районе операций.";
 						};
 					};		
 				};
@@ -475,7 +475,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2074;
 							action = "['MAIN', 2070] call sun_switchButton";
-							tooltip = "Enable or disable player stealth tracking throughout the mission. 'Random' only has a chance to enable stealth on dusk or night starts.";
+							tooltip = "Включает или отключает режим скрытности во время игры.";
 						};
 					};		
 				};
@@ -501,7 +501,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2084;
 							action = "['MAIN', 2080] call sun_switchButton";
-							tooltip = "Set the revive bleedout time or disable the built in revive script.";
+							tooltip = "Встроеная мед. система при отстутствии других.";
 						};
 					};		
 				};
@@ -527,7 +527,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2404;
 							action = "['MAIN', 2400] call sun_switchButton";
-							tooltip = "Enable or disable the Arma dynamic simulation system. Can improve performance when enabled but will disable AI on units outside the player's immediate area.";
+							tooltip = "Включает или отключает Arma dynamic simulation system. Может повысить производительность когда включена, но 'отключает' AI когда игроки находятся далеко от них.";
 						};
 					};		
 				};
@@ -564,7 +564,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 3014;
 							action = "['MAIN', 3010, true, 'TIME'] call sun_switchButton";
-							tooltip = "Set the mission start time.";
+							tooltip = "Устанавливает начальное время.";
 						};
 					};		
 				};
@@ -590,7 +590,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 3024;
 							action = "['MAIN', 3020] call sun_switchButtonWeather";
-							tooltip = "Set the mission start weather.";
+							tooltip = "Устанавливает начальную погоду.";
 						};
 					};		
 				};
@@ -707,7 +707,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 3034;
 							action = "['MAIN', 3030] call sun_switchButton";
-							tooltip = "Enabled or disable the presence of ambient animals.";
+							tooltip = "Включает или отключает присутствие животных.";
 						};
 					};		
 				};				

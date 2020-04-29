@@ -109,10 +109,11 @@ fnc_playerSetup =
 			{
 				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#fff705'>ПВО специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование ПЗРК.</t>"];
 			}; 
-			case "Командир (медик)": 
+			case "Командир": 
 			{
 				player setVariable ["ace_medical_medicclass", 2, true];
-				hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
+				player setVariable ["ACE_IsEngineer", 2, true];
+				//hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
 				choiceAirport = arsenalBox addAction 
 				[
 					"<t size='1.2' color='#E39325'>Выбрать место аэропорта</t>", 

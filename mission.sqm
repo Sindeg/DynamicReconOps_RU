@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1321;
+		nextID=1322;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14286.068,35.606785,13113.063};
-		dir[]={-0.33270541,-0.52214426,-0.78543109};
-		up[]={-0.2036873,0.85279232,-0.48085058};
-		aside[]={-0.92089921,-9.641517e-007,0.39008763};
+		pos[]={14248.828,12.137601,13053.624};
+		dir[]={0.23108427,-0.51908427,-0.82303226};
+		up[]={0.14033608,0.85465807,-0.49982607};
+		aside[]={-0.96287978,-8.6807995e-007,-0.27035084};
 	};
 };
 binarizationWanted=0;
@@ -3527,7 +3527,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=16;
+		items=17;
 		class Item0
 		{
 			dataType="Logic";
@@ -3563,7 +3563,7 @@ class Mission
 						rank="COLONEL";
 						init="this disableAI ""MOVE""; this setCaptive true;";
 						name="u1";
-						description="Командир (медик)";
+						description="Командир";
 						isPlayer=1;
 						class Inventory
 						{
@@ -5574,12 +5574,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14246.453,4.0853434,13035.452};
+				position[]={14243.461,4.063374,13038.396};
 				angles[]={0.039979152,2.5922849,6.251195};
 			};
 			id=1200;
 			type="tfar_ModuleTaskForceRadioEnforceUsage";
-			atlOffset=3.8146973e-006;
+			atlOffset=3.6716461e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10247,8 +10247,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14244.744,4.2015295,13034.07};
-				angles[]={0.046631888,0,6.2511969};
+				position[]={14245.001,4.3300962,13030.516};
+				angles[]={0.031988446,0,6.2658563};
 			};
 			id=1208;
 			type="ModuleCurator_F";
@@ -10338,7 +10338,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14243.122,4.3004203,13032.462};
+				position[]={14243.379,4.4096909,13028.907};
 				angles[]={0.031988446,0,6.2658563};
 			};
 			id=1209;
@@ -10436,6 +10436,97 @@ class Mission
 			init="call{null=[] execVM ""scripts\COS\cosInit.sqf"";}";
 			id=1217;
 			type="Logic";
+		};
+		class Item16
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14243.157,4.3221254,13031.764};
+				angles[]={0.031988446,0,6.2658563};
+			};
+			id=1321;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="76561198022748285";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=3;
+						};
+					};
+				};
+				nAttributes=4;
+			};
 		};
 	};
 };

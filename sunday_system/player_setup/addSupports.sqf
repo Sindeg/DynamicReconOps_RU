@@ -40,7 +40,7 @@ if (_dropChance > _supplyChance) then {
 			sleep 10;
 			dro_messageStack pushBack [
 				[
-					["Command", "We don't have any supply drop resources available.", 0]		
+					["Командование", "У нас нет доступного снаряжения для сброса.", 0]		
 				],
 				true
 			];	
@@ -93,7 +93,7 @@ if (_artyChance > _supplyChance) then {
 			
 			dro_messageStack pushBack [
 				[
-					[str group ((crew _artyVeh) select 0), "Artillery ready to receive strike coordinates.", 0]		
+					[str group ((crew _artyVeh) select 0), "Артиллерия готова выполнять ваши указания.", 0]		
 				],
 				true
 			];	
@@ -109,7 +109,7 @@ if (_artyChance > _supplyChance) then {
 				sleep 10;
 				dro_messageStack pushBack [
 					[
-						["Command", "We don't have any artillery positions available.", 0]		
+						["Командование", "У нас нет доступных позиций с артиллерией.", 0]		
 					],
 					true
 				];	
@@ -120,7 +120,7 @@ if (_artyChance > _supplyChance) then {
 			sleep 10;
 			dro_messageStack pushBack [
 				[
-					["Command", "We don't have any artillery positions available.", 0]		
+					["Командование", "У нас нет доступных позиций с артиллерией.", 0]		
 				],
 				true
 			];	
@@ -179,7 +179,8 @@ if (_casChance > _supplyChance) then {
 			
 	};
 };
-
+/* 
 if (_uavChance >_supplyChance) then {
 	[] execVM "sunday_system\player_setup\uavPatrol.sqf";
 };	
+ */

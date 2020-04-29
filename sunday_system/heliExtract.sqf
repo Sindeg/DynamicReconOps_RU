@@ -57,14 +57,14 @@ if (count _heliTransports > 0) then {
 	[_heli] spawn {
 		waitUntil {sleep 5; (!alive (_this select 0)) || !([(_this select 0)] call sun_helicopterCanFly) || (((getPos (_this select 0)) select 2) < 3)};
 		if ((!alive (_this select 0)) || !([(_this select 0)] call sun_helicopterCanFly)) then {
-			_text = format ["We've just lost contact with %1, you'll need to extract on your own.", (_this select 0)];
-			dro_messageStack pushBack [[["Command", _text, 0]], true];
+			_text = format ["Мы только что потеряли связь с %1, вам придется выбираться самостоятельно.", (_this select 0)];
+			dro_messageStack pushBack [[["Командование", _text, 0]], true];
 			//["Command", _text] spawn BIS_fnc_showSubtitle;
 			//[] remoteExec ["sun_playSubtitleRadio", 0];
 		};
 	};
 	
-	_text = format ["This is %1, request received. Proceeding to grid %2.", _heli, mapGridPosition _lzPos];
+	_text = format ["Это %1, запрос на эвакуацию получен. Двигаемся в квадрат %2.", _heli, mapGridPosition _lzPos];
 	dro_messageStack pushBack [[[(str (driver _heli)), _text, 0]], true];
 	//[(str (driver _heli)), _text] spawn BIS_fnc_showSubtitle;
 	//[] remoteExec ["sun_playSubtitleRadio", 0];

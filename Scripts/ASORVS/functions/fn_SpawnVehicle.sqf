@@ -30,9 +30,13 @@ objNull spawn {
 	if (ASORVS_VehicleTypes select 0 == "planes"  || ASORVS_VehicleTypes select 1 == "helicopters") then {
 		[_veh, 0] remoteExec ["setVehicleAmmo", 0, true];
 		[_veh, 0.05] remoteExec ["setFuel", 0, true];
-	};
-	
-	Stz_Atv = _veh;
+		_airVehicleDir = missionNamespace getVariable "airportDir";
+		_veh setDir _airVehicleDir;
+	}
+	else {
+		_veh setDir 20;
+		
+		Stz_Atv = _veh;
 	[
 		Stz_Atv,
 		"<t color='#11ff11'>Удалить технику",
@@ -50,4 +54,5 @@ objNull spawn {
 		false,
 		false
 	] remoteExec ["BIS_fnc_holdActionAdd",0,true]; // было Stz_Atv вместо true
+	};
 };

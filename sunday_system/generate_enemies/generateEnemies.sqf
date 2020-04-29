@@ -54,7 +54,7 @@ if (_numCompounds > 0) then {
 _numInf = round ((([1,3] call BIS_fnc_randomInt) * aiMultiplier) * _sizeMod);	
 _numInf = _numInf + (floor(_numPlayers/2));
 diag_log format ["DRO: AO %1, Generate enemies - infantry patrols = %2", _AOIndex, _numInf];
-if (missionPreset == 3) then {_numInf = _numInf min 1};
+//if (missionPreset == 3) then {_numInf = _numInf min 1};
 if (_numInf > 0) then {
 	for "_infIndex" from 1 to _numInf step 1 do {
 		_infPosition = [];
@@ -76,69 +76,68 @@ if (_numInf > 0) then {
 };
 
 if (missionPreset == 3) then {
-	// Combined Arms tanks
-	// Vehicle patrol
-	if (count eAPCClasses > 0) then {
-		_numVeh = round ([2,3] call BIS_fnc_randomInt);
-		for "_x" from 1 to _numVeh do {
-			_indexes = [[0, 1]] call dro_checkAOIndexes;
-			if (count _indexes > 0) then {			
-				_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
-				_vehType = selectRandom eAPCClasses;
-				_veh = createVehicle [_vehType, _vehPos, [], 0, "NONE"];		
-				[_veh] call sun_createVehicleCrew;
-				//createVehicleCrew _veh;
-				waitUntil {!isNull (driver _veh)};				
-				_vehSlots = [_vehType] call sun_getTrueCargo;
-				if (_vehSlots > 2) then {					
-					_minAI = (_vehSlots/2) * aiMultiplier;							
-					_reinfGroup = [_vehPos, enemySide, eInfClassesForWeights, eInfClassWeights, [_minAI, _vehSlots]] call dro_spawnGroupWeighted;				
-					waitUntil {!isNil "_reinfGroup"};
-					[_reinfGroup, _veh, true] spawn sun_groupToVehicle;					
-				};				
-				_patrolGroups pushBack (group (driver _veh));
-				//[(group(driver _veh)), _vehPos, 800] call BIS_fnc_taskPatrol;		
-				_vehPos = selectRandom (((AOLocations select _AOIndex) select 2) select 0);
-			};			
+		// Combined Arms tanks
+		// Vehicle patrol
+		if (count eAPCClasses > 0) then {
+			_numVeh = round ([1,3] call BIS_fnc_randomInt); 
+			for "_x" from 1 to _numVeh do {
+				_indexes = [[0, 1]] call dro_checkAOIndexes;
+				if (count _indexes > 0) then {			
+					_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
+					_vehType = selectRandom eAPCClasses;
+					_veh = createVehicle [_vehType, _vehPos, [], 0, "NONE"];		
+					[_veh] call sun_createVehicleCrew;
+					//createVehicleCrew _veh;
+					waitUntil {!isNull (driver _veh)};				
+					_vehSlots = [_vehType] call sun_getTrueCargo;
+					if (_vehSlots > 2) then {					
+						_minAI = (_vehSlots/2) * aiMultiplier;							
+						_reinfGroup = [_vehPos, enemySide, eInfClassesForWeights, eInfClassWeights, [_minAI, _vehSlots]] call dro_spawnGroupWeighted;				
+						waitUntil {!isNil "_reinfGroup"};
+						[_reinfGroup, _veh, true] spawn sun_groupToVehicle;					
+					};				
+					_patrolGroups pushBack (group (driver _veh));
+					//[(group(driver _veh)), _vehPos, 800] call BIS_fnc_taskPatrol;		
+					_vehPos = selectRandom (((AOLocations select _AOIndex) select 2) select 0);
+				};			
+			};
 		};
-	};
-	if (count eTankClasses > 0) then {
-		_numVeh = ([1,3] call BIS_fnc_randomInt);
-		for "_x" from 1 to _numVeh do {
-			_indexes = [[0, 1]] call dro_checkAOIndexes;
-			if (count _indexes > 0) then {			
-				_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
-				_vehType = selectRandom eTankClasses;
-				_veh = createVehicle [_vehType, _vehPos, [], 0, "NONE"];		
-				[_veh] call sun_createVehicleCrew;
-				//createVehicleCrew _veh;
-				waitUntil {!isNull (driver _veh)};				
-				_vehSlots = [_vehType] call sun_getTrueCargo;
-				if (_vehSlots > 2) then {					
-					_minAI = (_vehSlots/2) * aiMultiplier;							
-					_reinfGroup = [_vehPos, enemySide, eInfClassesForWeights, eInfClassWeights, [_minAI, _vehSlots]] call dro_spawnGroupWeighted;				
-					waitUntil {!isNil "_reinfGroup"};
-					[_reinfGroup, _veh, true] spawn sun_groupToVehicle;					
-				};				
-				_patrolGroups pushBack (group (driver _veh));
-				//[(group(driver _veh)), _vehPos, 800] call BIS_fnc_taskPatrol;		
-				_vehPos = selectRandom (((AOLocations select _AOIndex) select 2) select 0);
-				[[(group (driver _veh)), "TANK"]] call dro_unitTaskObjective;
-			};			
-		};
-	};	
+		if (count eTankClasses > 0) then {
+			_numVeh = ([1,2] call BIS_fnc_randomInt);
+			for "_x" from 1 to _numVeh do {
+				_indexes = [[0, 1]] call dro_checkAOIndexes;
+				if (count _indexes > 0) then {			
+					_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
+					_vehType = selectRandom eTankClasses;
+					_veh = createVehicle [_vehType, _vehPos, [], 0, "NONE"];		
+					[_veh] call sun_createVehicleCrew;
+					//createVehicleCrew _veh;
+					waitUntil {!isNull (driver _veh)};				
+					_vehSlots = [_vehType] call sun_getTrueCargo;
+					if (_vehSlots > 2) then {					
+						_minAI = (_vehSlots/2) * aiMultiplier;							
+						_reinfGroup = [_vehPos, enemySide, eInfClassesForWeights, eInfClassWeights, [_minAI, _vehSlots]] call dro_spawnGroupWeighted;				
+						waitUntil {!isNil "_reinfGroup"};
+						[_reinfGroup, _veh, true] spawn sun_groupToVehicle;					
+					};				
+					_patrolGroups pushBack (group (driver _veh));
+					//[(group(driver _veh)), _vehPos, 800] call BIS_fnc_taskPatrol;		
+					_vehPos = selectRandom (((AOLocations select _AOIndex) select 2) select 0);
+					[[(group (driver _veh)), "TANK"]] call dro_unitTaskObjective;
+				};			
+			};
+		};	
 };
 
 // Vehicle patrol
 if (count eCarClasses > 0) then {
-	if (random 1 > 0.4) then {
-		_numVeh = round (([1,2] call BIS_fnc_randomInt) * _sizeMod);
+		_numVeh = round (([1,3] call BIS_fnc_randomInt) * _sizeMod);
 		for "_x" from 1 to _numVeh do {
 			_indexes = [[0, 1]] call dro_checkAOIndexes;
 			if (count _indexes > 0) then {			
 				_vehPos = [(((AOLocations select _AOIndex) select 2) select (selectRandom _indexes))] call sun_selectRemove;			
 				_vehType = selectRandom eCarClasses;
-				if (random 1 > 0.75 and count eTankClasses > 0) then
+				if (random 1 > 0.7 and count eTankClasses > 0) then
 				{
 					_vehType = selectRandom eTankClasses;
 				};
@@ -158,7 +157,6 @@ if (count eCarClasses > 0) then {
 				_vehPos = selectRandom (((AOLocations select _AOIndex) select 2) select 0);
 			};			
 		};
-	};
 };
 
 // Generate military POIs

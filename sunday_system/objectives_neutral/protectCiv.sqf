@@ -100,7 +100,7 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 		if (!_messageSent && !isNull _spawnGroup) then {
 			_messageSent = true;
 			if (_taskName call BIS_fnc_taskCompleted) exitWith {};
-			["AMBUSHCIV", "Command", [name _thisCiv]] spawn dro_sendProgressMessage;			
+			["AMBUSHCIV", "Командование", [name _thisCiv]] spawn dro_sendProgressMessage;			
 		};
 		sleep 40;		
 	};

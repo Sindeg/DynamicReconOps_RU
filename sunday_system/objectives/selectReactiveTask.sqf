@@ -167,4 +167,4 @@ switch (_selectedTask) do {
 };
 
 sleep 5;
-["REACTIVE_TASK", "Command", [_radioDesc]] spawn dro_sendProgressMessage;
+["REACTIVE_TASK", "Командование", [_radioDesc]] spawn dro_sendProgressMessage;

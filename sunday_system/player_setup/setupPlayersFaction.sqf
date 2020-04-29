@@ -84,14 +84,31 @@ if (_resupplyValid) then {
 		clearItemCargoGlobal _resupply;
 		_resupply addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
 		_resupply addMagazineCargoGlobal ["DemoCharge_Remote_Mag", 4];
-		_resupply addItemCargoGlobal ["Medikit", 1];
-		_resupply addItemCargoGlobal ["FirstAidKit", 10];
-		{		
-			_magazines = magazinesAmmoFull _x;			
-			{
-				_resupply addMagazineCargoGlobal [(_x select 0), 2];
-			} forEach _magazines;	
-		} forEach units (grpNetId call BIS_fnc_groupFromNetId);		
+		
+		_resupply addItemCargoGlobal ["ACE_fieldDressing", 15];
+		_resupply addItemCargoGlobal ["ACE_elasticBandage", 15];
+		_resupply addItemCargoGlobal ["ACE_quikclot", 15];
+		_resupply addItemCargoGlobal ["ACE_bloodIV", 2];
+		_resupply addItemCargoGlobal ["ACE_bloodIV_500", 2];
+		_resupply addItemCargoGlobal ["ACE_bloodIV_250", 3];
+		_resupply addItemCargoGlobal ["ACE_morphine", 10];
+		_resupply addItemCargoGlobal ["ACE_epinephrine", 10];
+		_resupply addItemCargoGlobal ["ACE_tourniquet", 15];
+		_resupply addItemCargoGlobal ["ACE_personalAidKit", 2];
+		
+		_resupply addItemCargoGlobal ["ACE_EntrenchingTool", 2];
+		_resupply addItemCargoGlobal ["ACE_CableTie", 5];
+		
+		_resupply addItemCargoGlobal ["SmokeShell", 8];
+		_resupply addItemCargoGlobal ["SmokeShellBlue", 2];
+		_resupply addItemCargoGlobal ["SmokeShellOrange", 2];
+		_resupply addItemCargoGlobal ["Item_MineDetector", 1];
+		{    
+		  _magazines = magazinesAmmoFull _x;      
+		  {
+			_resupply addMagazineCargoGlobal [(_x select 0), 2];
+		  } forEach _magazines;  
+		} forEach units (grpNetId call BIS_fnc_groupFromNetId);	
 		[_resupply] spawn {
 			waitUntil {sleep 5; (missionNameSpace getVariable ["playersReady", 0]) == 1};
 			[(_this select 0)] call sun_supplyBox;

@@ -78,7 +78,7 @@ dro_civDeathHandler = {
 								_text = format["%1 ответственный за жертвы среди гражданского населения. Командование не расчитывает на подобное, недопустимо чтобы гражданские лица попадали на линию огня.", name ((_this select 0) select 1)];
 								//["Command", _text] spawn BIS_fnc_showSubtitle;
 								//[] spawn sun_playSubtitleRadio;
-								dro_messageStack pushBack [[["Command", _text, 0]], true];
+								dro_messageStack pushBack [[["Командование", _text, 0]], true];
 							};
 						};
 					};
