@@ -24,6 +24,7 @@ _airport = [
 	["Land_HelipadEmpty_F",[1.646,10.9175,0],0,1,0,[0,0],"airHelipad_srv","",true,false], 
 	["Land_AirConditioner_03_F",[2.41357,-11.9164,0],180.12,1,0,[0,0],"","",true,false]
 ];
+
 // Добавление первой точки - расположения аэропорта
 openMap [true, true]; // Opens map
 _str = parsetext format ["<t size = '1.1'>Выберите один из <t color='#E39325'>аэропортов</t> на карте, в котором будет расположен арсенал самолётов для использования пилотами.<br/><br/> Желательно выбрать место в <t color='#E39325'>крайней южной</t> части аэропорта, так как созданная техника будет смотреть на север. <br/><br/>  Не выбирайте аэропорт вблизи противника</t>, чтобы избежать жертв."]; 
@@ -72,13 +73,20 @@ _dir = getMarkerPos "markerAirport" getDir getMarkerPos "markerDIR";
 missionNamespace setVariable ["airportDir", _dir, true];
 
 // Создание объектов в аэропорту
-[getMarkerPos "markerAirport", _dir, _airport] remoteExec ["BIS_fnc_objectsMapper", 2, false];
-sleep 3;
+//[getMarkerPos "markerAirport", _dir, _airport] remoteExec ["BIS_fnc_objectsMapper", 2, false];
+[getMarkerPos "markerAirport", _dir, _airport] call BIS_fnc_ObjectsMapper;
+sleep 1;
+
+/* _object1 = missionNamespace getVariable ["pilotPos_srv", objNull];
+_object2 = missionNamespace getVariable ["airportPos_srv", objNull];
+_object3 = missionNamespace getVariable ["airHelipad_srv", objNull]; */
 
 // Назначение глоабльных имен
 [pilotPos_srv, "pilotPos"] call fnc_setVehicleName;
 [airportPos_srv, "airportPos"] call fnc_setVehicleName;
 [airHelipad_srv, "airHelipad"] call fnc_setVehicleName;
+
+sleep 1;
 
 // Перенос рабочего на его место
 airStand setpos getpos pilotPos;
