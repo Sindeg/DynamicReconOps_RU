@@ -20,7 +20,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14273.296,24.964592,13081.482};
+		pos[]={14248.306,11.54818,13013.563};
 		dir[]={0.04354937,-0.43673816,-0.89866245};
 		up[]={0.021142475,0.89952379,-0.43631175};
 		aside[]={-0.99893993,-8.0064274e-007,-0.048409671};
@@ -13676,11 +13676,6 @@ class Mission
 			class Attributes
 			{
 			};
-<<<<<<< HEAD
-			id=1203;
-			type="I_E_CargoNet_01_ammo_F";
-			atlOffset=-1.1444092e-005;
-=======
 			id=1204;
 			atlOffset=-9.5367432e-007;
 		};
@@ -13779,7 +13774,6 @@ class Mission
 			id=1208;
 			type="ModuleCurator_F";
 			atlOffset=-4.7683716e-007;
->>>>>>> f36091a29b45767a26ad43af78e9dd7f08b4ee3e
 			class CustomAttributes
 			{
 				class Attribute0
@@ -14167,7 +14161,7 @@ class Mission
 				name="arsenalBox";
 			};
 			id=1323;
-			type="O_CargoNet_01_ammo_F";
+			type="B_CargoNet_01_ammo_F";
 			class CustomAttributes
 			{
 				class Attribute0
