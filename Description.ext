@@ -223,6 +223,7 @@ class CfgFunctions
 {
 	#include "Scripts\ASORVS\cfgfunctions.hpp"
 	#include "Scripts\CHVD\CfgFunctions.hpp"
+	#include "furniture\func.hpp"
 };
 
 class CfgDiscordRichPresence {
