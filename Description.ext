@@ -227,7 +227,7 @@ class CfgFunctions
 
 class CfgDiscordRichPresence {
     applicationID = "615348713933504523";             // Provided by discord
-    defaultDetails = "discord.gg/8sQcbcy";            // Upper text
+    defaultDetails = "discord.gg/B9Z8wBC";            // Upper text
     defaultState = "91.122.15.41";              // Lower text
     defaultLargeImageKey="img2";      // Large image
     defaultLargeImageText = "";     // Large image hover text
