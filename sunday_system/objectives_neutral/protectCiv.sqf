@@ -63,15 +63,21 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 	_subTasks = (_this select 2);
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	
+	// waitUntil {
+		// sleep 3;
+		// if (_taskName call BIS_fnc_taskCompleted) exitWith {true};		
+		// (((leader (grpNetId call BIS_fnc_groupFromNetId)) distance _thisCiv) < 6)
+	// };
+	
 	_findCiv = false;
 	while {!(_findCiv)} do {
-		sleep 6;
+		sleep 7;
 		_players = allPlayers;
 		
 		waitUntil { count _players > 0 };
 		if (_taskName call BIS_fnc_taskCompleted) exitWith {_findCiv = true;};		
 		{
-			if ((_x distance _thisCiv) < 6) exitWith {
+			if ((_x distance _thisCiv) < 5) exitWith {
 			_str = parsetext format ["<t size='1.2'>Вы нашли <t color='#FFBF00'>%1</t>.</t>",name _thisCiv];
 			["ace_captives_setHandcuffed",[_thisCiv,true]] call CBA_fnc_globalEvent;
 			_str remoteExec ["hint", _x];
@@ -79,6 +85,10 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 			};
 		} forEach _players;
 	};
+	
+	_result = {
+		if(_x isEqualTo 3) exitWith {"Hello"}
+	} forEach [1,2,3,4,5];
 	
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	["PROTECT_CIV_MEET", (name (leader (grpNetId call BIS_fnc_groupFromNetId))), [name _thisCiv], false] spawn dro_sendProgressMessage;
@@ -105,13 +115,18 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 		sleep 40;		
 	};
 	
-	if (count _allGroups > 0) then {
+	waitUntil {
+		sleep 4;
+		(_thisCiv distance (getMarkerPos "campMkr")) < 50
+	};
+	
+	/* if (count _allGroups > 0) then {
 		waitUntil {
 			sleep 5;
 			if (_taskName call BIS_fnc_taskCompleted) exitWith {true};
 			[_allGroups] call sun_checkAllDeadFleeing
 		};
-	};
+	}; */
 	
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	["PROTECT_CIV_CLEAR", (name (leader (grpNetId call BIS_fnc_groupFromNetId))), [name _thisCiv], false] spawn dro_sendProgressMessage;
@@ -121,8 +136,7 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 	missionNamespace setVariable [format ['%1Completed', _taskName], 1, true];
 	
 	sleep 30;
-	_thisCiv enableAI "PATH";
-	_thisCiv setUnitPos "UP";
+	deleteVehicle _thisCiv;
 };
 
 // Create triggers
