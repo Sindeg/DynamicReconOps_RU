@@ -82,11 +82,11 @@ switch (_extractStyle) do {
 	};
 	case "RTB": {		
 		if (((count _heliTransports) > 0) && !extractHeliUsed) then {	
-			_taskCreated = ["taskExtract", true, ["Extract from the AO and return to base. A helicopter transport is available to support. Alternatively leave the AO by any means available.", "RTB", ""], objNull, "CREATED", 5, true, true, "exit", true] call BIS_fnc_setTask;	
+			_taskCreated = ["taskExtract", true, ["Вернитесь в штаб. Доступна эвакуация вертолётом.", "Вернуться в штаб", ""], objNull, "CREATED", 5, true, true, "exit", true] call BIS_fnc_setTask;	
 			diag_log format ["DRO: Extract task created: %1", _taskCreated];
 			[(leader (grpNetId call BIS_fnc_groupFromNetId)), "heliExtract"] remoteExec ["BIS_fnc_addCommMenuItem", (leader (grpNetId call BIS_fnc_groupFromNetId)), true];	
 		} else {	
-			_taskCreated = ["taskExtract", true, ["Leave the AO by any means to extract. Helicopter transport is unavailable.", "RTB", ""], objNull, "CREATED", 5, true, true, "exit", true] call BIS_fnc_setTask;	
+			_taskCreated = ["taskExtract", true, ["Вернитесь в штаб. Эвакуация вертолётом недоступна.", "Вернуться в штаб", ""], objNull, "CREATED", 5, true, true, "exit", true] call BIS_fnc_setTask;	
 			diag_log format ["DRO: Extract task created: %1", _taskCreated];
 		};
 		

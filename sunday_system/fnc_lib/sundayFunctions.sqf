@@ -603,6 +603,46 @@ sun_newUnits = {
 
 sun_jipNewUnit = {
 params ["_oldUnit", "_newPos"];	
+	_newGroup = createGroup playersSide;	
+	private _face = face _oldUnit;
+	private _speaker = speaker _oldUnit;
+	private _class = _oldUnit getVariable ["unitClass", ""];
+	if (count _class == 0) then {
+		_class = ((selectRandom unitList) select 0);
+	};	
+	private _loadout = getUnitLoadout _class;
+	private _newUnit = _newGroup createUnit [_class, _newPos, [], 0, "NONE"];
+	setPlayable _newUnit;
+	addSwitchableUnit _newUnit;	
+	selectPlayer _newUnit;	
+	private _varName = format ["u%1", ((vehicleVarName _oldUnit) select [1,1])];
+	[_newUnit, _varName] remoteExec ["setVehicleVarName", 0, true];
+	missionNamespace setVariable [_varName, _newUnit, true];
+	waitUntil {!isNull (missionNamespace getVariable _varName)};	
+	_newUnit setUnitLoadout _loadout;
+	private _identity = (_oldUnit getVariable ["respawnIdentity", []]);	
+	if (count _identity > 0) then {
+		_newUnit setVariable ["respawnIdentity", [_newUnit,  _identity select 1, _identity select 2, _speaker, _face], true];
+		[_newUnit, _identity select 1, _identity select 2, _speaker, _face] remoteExec ["sun_setNameMP", 0, true];		
+	};
+	diag_log format ["DRO: New unit %1 created for %2 with class %3", _newUnit, _oldUnit, _class];
+	deleteVehicle _oldUnit;
+	sleep 2;
+	[_newUnit] joinSilent (grpNetId call BIS_fnc_groupFromNetId);
+	_newUnit setVariable ["respawnLoadout", (getUnitLoadout _newUnit), true];
+	_newUnit setVariable ["respawnPWeapon", [(primaryWeapon  _newUnit), primaryWeaponItems _newUnit], true];	
+	if (reviveDisabled < 3) then {
+		[_newUnit] call rev_addReviveToUnit;	
+	};	
+	_newUnit setUnitTrait ["Medic", true];
+	_newUnit setUnitTrait ["engineer", true];
+	_newUnit setUnitTrait ["explosiveSpecialist", true];
+	_newUnit setUnitTrait ["UAVHacker", true];		
+};
+
+// Бэкап новой версии.
+sun_jipNewUnit2 = {
+params ["_oldUnit", "_newPos"];	
 	
 	private _class = player getVariable ["unitClass", ""];
 	if (count _class == 0) then {
@@ -635,7 +675,13 @@ params ["_oldUnit", "_newPos"];
 	diag_log format ["DRO: New unit %1 created for %2 with class %3", _newUnit, _oldUnit, _class];
 	//deleteVehicle _oldUnit;
 	*/	
+	sleep 0.5;
+	_tempGroup = createGroup playersSide;
+	[player] joinSilent (_tempGroup);
+	sleep 0.5;
 	[player] joinSilent (grpNetId call BIS_fnc_groupFromNetId);
+	deleteGroup _tempGroup;
+	
 	player setPos _newPos;
 	player setVariable ["respawnLoadout", (getUnitLoadout player), true];
 	player setVariable ["respawnPWeapon", [(primaryWeapon  player), primaryWeaponItems player], true];	

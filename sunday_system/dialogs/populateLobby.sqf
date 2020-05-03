@@ -56,7 +56,8 @@ _lineHeight = 2.25 * pixelGridNoUIScale * pixelH;
 	// Create VA button
 	_VAControl = (findDisplay 626262) ctrlCreate ["DROVAButton", (_x getVariable "unitArsenalIDC"), ((findDisplay 626262) displayCtrl 6060)];		
 	_VAControl ctrlSetPosition [35.25 * pixelGridNoUIScale * pixelW, ((_forEachIndex) * _lineSpacing), 2.25 * pixelGridNoUIScale * pixelW, _lineHeight];	
-	_VAControl ctrlSetEventHandler ["ButtonClick", (format ["if (!isNil '%1') then {_nil=[%1]ExecVM 'sunday_system\dialogs\openArsenal.sqf'}", _x])];	
+	//_VAControl ctrlSetEventHandler ["ButtonClick", (format ["if (!isNil '%1') then {_nil=[%1]ExecVM 'sunday_system\dialogs\openArsenal.sqf'}", _x])];	
+	_VAControl ctrlSetEventHandler ["ButtonClick", (format ["if (!isNil '%1') then {}", _x])];
 	_VAControl ctrlCommit 0;		
 } forEach _allHPs;
 

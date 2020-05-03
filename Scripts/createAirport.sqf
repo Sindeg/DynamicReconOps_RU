@@ -90,6 +90,7 @@ sleep 1;
 
 // Перенос рабочего на его место
 airStand setpos getpos pilotPos;
+sleep 1.5;
 airStand setdir _dir;
 
 // Делаем все объекты неуязвимыми

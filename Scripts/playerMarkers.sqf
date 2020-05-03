@@ -59,6 +59,7 @@ while {true} do
 				};
 			};
 		};
+		_x setVariable ["respawnLoadout", (getUnitLoadout _x), true];
 	} forEach allPlayers;
 	
 	sleep 1.5;

@@ -204,12 +204,12 @@ if (!isNull _caller) then {
 	if (((count _radioDescZone) > 0) || ((count _radioDescIcon) > 0) || ((count _radioDescTroops) > 0) || ((count _radioTaskIntel) > 0)) then {
 		_firstSentence = if (!isNull _intelSource) then {
 			if (_intelSource isKindOf "Man") then {
-				format ["%1 has given us some information.", name _intelSource];
+				format ["%1 дал нам новые сведения.", name _intelSource];
 			} else {
-				selectRandom ["I've got some intel here.", "Heads up, found some intel.", "This might be useful."]
+				selectRandom ["Я нашел разведданные.", "Нашел кое - что интересное, отмечу это на карте.", "Это может быть полезно."]
 			};
 		} else {
-			selectRandom ["I've got some intel here.", "Heads up, found some intel.", "This might be useful."]
+			selectRandom ["Я нашел разведданные.", "Нашел кое - что интересное, отмечу это на карте.", "Это может быть полезно."]
 		};
 		_radioDesc = format ["%1%2%3", _radioDescZone, _radioDescIcon, _radioDescTroops];
 		[_caller, _firstSentence, _radioDesc, _radioTaskIntel] spawn {
@@ -224,9 +224,9 @@ if (!isNull _caller) then {
 		};
 	} else {
 		_phrase = selectRandom [
-			"Nothing important here.",
-			"I can't find anything interesting here.",
-			"Nothing here we don't already know."				
+			"Ничего интересного.",
+			"Не нашел здесь ничего интересного.",
+			"Здесь ничего нового, что мы бы еще не знали."				
 		];
 		dro_messageStack pushBack [
 			[
