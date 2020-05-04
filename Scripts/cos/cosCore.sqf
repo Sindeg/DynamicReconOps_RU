@@ -162,34 +162,35 @@ null =[_veh] execVM "scripts\cos\addScript_Vehicle.sqf";
 				
 // SPAWN PARKED VEHICLES
 for "_i" from 1 to _parked do {
+	if (!(server getvariable _trigID)) exitwith {
+		_isActive=false;
+	};
 
-if (!(server getvariable _trigID)) exitwith {_isActive=false;};
-
-		if (_i >= _countVehPool) 
-			then {
-				if (_v >= _countVehPool) then {_v=0;};
-					_tempVeh=_vehList select _v;
-					_v=_v+1;
-				};
-		if (_i < _countVehPool) 
-			then {
-			_tempVeh=_vehList select _i;
-				};
+	if (_i >= _countVehPool) then {
+		if (_v >= _countVehPool) then {
+			_v=0;
+		};
+		_tempVeh=_vehList select _v;
+		_v=_v+1;
+	};
 	
-		_tempPos=_roadPosArray select _rdCount;
-		_rdCount=_rdCount+1;
-		_roadConnectedTo = roadsConnectedTo _tempPos;
-		_connectedRoad = _roadConnectedTo select 0;
-		_direction = [_tempPos, _connectedRoad] call BIS_fnc_DirTo;
-			
-			_veh = createVehicle [_tempVeh, _tempPos, [], 0, "NONE"];
-			_veh setdir _direction;
-			_veh setPos [(getPos _veh select 0)-6, getPos _veh select 1, getPos _veh select 2];
-								
-		_ParkedArray set [count _ParkedArray,_veh];
-
+	if (_i < _countVehPool) then {
+		_tempVeh=_vehList select _i;
+	};
+	
+	_tempPos=_roadPosArray select _rdCount;
+	_rdCount=_rdCount+1;
+	_roadConnectedTo = roadsConnectedTo _tempPos;
+	_connectedRoad = _roadConnectedTo select 0;
+	_direction = [_tempPos, _connectedRoad] call BIS_fnc_DirTo;
 		
-null =[_veh] execVM "scripts\cos\addScript_Vehicle.sqf";
+	_veh = createVehicle [_tempVeh, _tempPos, [], 0, "NONE"];
+	_veh setdir _direction;
+	_veh setPos [(getPos _veh select 0)-6, getPos _veh select 1, getPos _veh select 2];
+							
+	_ParkedArray set [count _ParkedArray,_veh];
+
+	null =[_veh] execVM "scripts\cos\addScript_Vehicle.sqf";
 
 	IF (debugCOS) then {
 		_txt=format["Park%1,mkr%2",_i,_mkr];
@@ -197,8 +198,8 @@ null =[_veh] execVM "scripts\cos\addScript_Vehicle.sqf";
 		_debugMkr setMarkerShape "ICON";
 		_debugMkr setMarkerType "hd_dot";
 		_debugMkr setMarkerText "Park Spawn";
-					};
-			};
+	};
+};
 
 			
 // Apply Patrol script to all units

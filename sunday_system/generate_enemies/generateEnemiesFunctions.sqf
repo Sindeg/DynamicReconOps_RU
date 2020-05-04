@@ -74,9 +74,9 @@ dro_unitTaskObjective = {
 				_vehicleStrings pushBack ((configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName") call BIS_fnc_GetCfgData);
 			} forEach _groupVehicles;
 			switch (true) do {
-				case ((_groupVehicles select 0) isKindOf "Helicopter"): {_taskTitle = format ["Eliminate helicopter%1", (if (count _groupVehicles > 1) then {"s"} else {""})]};
-				case ((_groupVehicles select 0) isKindOf "Plane"): {_taskTitle = format ["Eliminate plane%1", (if (count _groupVehicles > 1) then {"s"} else {""})]};
-				case ((_groupVehicles select 0) isKindOf "LandVehicle"): {_taskTitle = format ["Eliminate vehicle%1", (if (count _groupVehicles > 1) then {"s"} else {""})]};				
+				case ((_groupVehicles select 0) isKindOf "Helicopter"): {_taskTitle = format ["Уничтожить вертолет%1", (if (count _groupVehicles > 1) then {"ы"} else {""})]};
+				case ((_groupVehicles select 0) isKindOf "Plane"): {_taskTitle = format ["Уничтожить самолет%1", (if (count _groupVehicles > 1) then {"ы"} else {""})]};
+				case ((_groupVehicles select 0) isKindOf "LandVehicle"): {_taskTitle = format ["Уничтожить транспорт%1", (if (count _groupVehicles > 1) then {""} else {""})]};				
 			};
 			_taskDesc = format ["Eliminate the %1", ([_vehicleStrings] call sun_stringCommaList)];	
 		};

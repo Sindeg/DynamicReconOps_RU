@@ -156,7 +156,7 @@ fnc_playerSetup =
 			if (player distance arsenalbox < 40) then {
 				alphaText = linearConversion[5, 40, player distance arsenalbox, 1, 0, true];
 				_pos = getPosWorld arsenalbox;
-				drawIcon3D ['\A3\ui_f\data\IGUI\Cfg\Actions\takeFlag_ca.paa', [1, 0.615, 0.121, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал", 1, 0.0315,"PuristaSemibold"];
+				drawIcon3D ['\A3\ui_f\data\IGUI\Cfg\Actions\takeFlag_ca.paa', [1, 0.615, 0.121, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал (Ctrl + WIN) ", 1, 0.0315,"PuristaSemibold"];
 			};
 		}	
 	];

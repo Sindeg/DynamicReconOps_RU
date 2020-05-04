@@ -1083,29 +1083,6 @@ for "_c" from 0 to 2 do {
 missionNamespace setVariable ["dro_introCamReady", 1, true];
 
 // *****
-// GENERATE FRIENDLIES
-// *****
-
-// Generate chances
-//_friendlyChance = if (count AOLocations > 1) then {random 1} else {0};
-//_friendlyChance = if (missionPreset == 3) then {1} else {0};
-_friendlyChance = 0;
-//_friendlyChance = 1; // DEBUG
-/*
-_ambFriendlyChance = if (count AOLocations > 1 || stealthEnabled == 2) then {
-	if (_friendlyChance > 0.75) then {random 1.2} else {random 1};
-} else {0};
-*/
-//_ambFriendlyChance = if (missionPreset == 3) then {1} else {0};
-_ambFriendlyChance = 0;
-//if (missionPreset == 3) then {_ambFriendlyChance = 1};
-
-if (_friendlyChance > 0.8 || _ambFriendlyChance > 0.8) then {
-	[_friendlyChance, _ambFriendlyChance] execVM "sunday_system\player_setup\generateFriendlies.sqf";	
-};
-
-
-// *****
 // WAIT FOR LOBBY COMPLETION
 // *****
 _scriptStartTime = time;
@@ -1151,7 +1128,6 @@ if (_ambientFlyByChance > 0.5) then {
 if (animalsEnabled == 0) then {
 	[centerPos] execVM "sunday_system\generate_ao\generateAnimals.sqf";
 };
-[] execVM "sunday_system\civilians\civMoveAction.sqf";
 
 // Add intel items
 [] execVM "sunday_system\intel\addEnemyIntel.sqf";

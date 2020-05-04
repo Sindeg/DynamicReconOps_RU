@@ -99,12 +99,12 @@ if (_houses <= 70 and _houses > 30) then {
 		
 if (_houses <= 140 and _houses > 70) then {
 	_civilians=30+ round(random _randomisation);// Civilians spawned
-	_vehicles=4;// Moving Vehicles Spawned
+	_vehicles=3;// Moving Vehicles Spawned
 	_parked=4;// Parked Vehicles Spawned
 };
 if (_houses > 140) then {
 	_civilians=40+ round(random _randomisation);// Civilians spawned
-	_vehicles=5;// Moving Vehicles Spawned
+	_vehicles=4;// Moving Vehicles Spawned
 	_parked=6;// Parked Vehicles Spawned
 };
 		
