@@ -8,7 +8,7 @@ class EditorData
 	toggles=577;
 	class ItemIDProvider
 	{
-		nextID=1437;
+		nextID=1457;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14279.461,31.795847,13096.276};
-		dir[]={0.1233004,-0.45714748,-0.88094115};
-		up[]={0.063377768,0.88932121,-0.45281905};
-		aside[]={-0.9904629,-3.1427771e-007,-0.13863401};
+		pos[]={14276.231,16.532692,13008.313};
+		dir[]={-0.93765616,-0.34736493,-0.014127529};
+		up[]={-0.34734923,0.93771857,-0.0052330904};
+		aside[]={-0.015065775,-1.2496457e-007,0.99991286};
 	};
 };
 binarizationWanted=0;
@@ -4362,7 +4362,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=1;
+														value=1.2;
 													};
 												};
 												class Item1
@@ -11202,7 +11202,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=10;
+														value=15;
 													};
 												};
 												class Item1
@@ -11247,7 +11247,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -12192,7 +12192,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -13902,7 +13902,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=480;
+														value=420;
 													};
 												};
 												class Item1
@@ -17366,7 +17366,7 @@ class Mission
 										};
 										class value
 										{
-											items=294;
+											items=319;
 											class Item0
 											{
 												class data
@@ -21481,6 +21481,356 @@ class Mission
 														};
 													};
 													value="ace_csw_staticHMGCarry";
+												};
+											};
+											class Item294
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_ViperLightHarness_hex_F";
+												};
+											};
+											class Item295
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_ViperLightHarness_ghex_F";
+												};
+											};
+											class Item296
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_ViperLightHarness_oli_F";
+												};
+											};
+											class Item297
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_ViperLightHarness_khk_F";
+												};
+											};
+											class Item298
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_ViperLightHarness_blk_F";
+												};
+											};
+											class Item299
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_Messenger_IDAP_F";
+												};
+											};
+											class Item300
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_Messenger_Black_F";
+												};
+											};
+											class Item301
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_Messenger_Gray_F";
+												};
+											};
+											class Item302
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_Messenger_Olive_F";
+												};
+											};
+											class Item303
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_Messenger_Coyote_F";
+												};
+											};
+											class Item304
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="C_UAV_06_backpack_F";
+												};
+											};
+											class Item305
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="C_IDAP_UAV_06_backpack_F";
+												};
+											};
+											class Item306
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="C_UAV_06_medical_backpack_F";
+												};
+											};
+											class Item307
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="I_Mortar_01_support_F";
+												};
+											};
+											class Item308
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="O_Mortar_01_support_F";
+												};
+											};
+											class Item309
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="I_Mortar_01_weapon_F";
+												};
+											};
+											class Item310
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="O_Mortar_01_weapon_F";
+												};
+											};
+											class Item311
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_RadioBag_01_hex_F";
+												};
+											};
+											class Item312
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_RadioBag_01_eaf_F";
+												};
+											};
+											class Item313
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_RadioBag_01_ghex_F";
+												};
+											};
+											class Item314
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="B_RadioBag_01_digi_F";
+												};
+											};
+											class Item315
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="I_E_Mortar_01_support_F";
+												};
+											};
+											class Item316
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="I_E_Mortar_01_Weapon_F";
+												};
+											};
+											class Item317
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="LOP_US_Sidor_SVD";
+												};
+											};
+											class Item318
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="LOP_AM_FalconII_Enfield";
 												};
 											};
 										};

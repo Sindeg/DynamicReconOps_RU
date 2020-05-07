@@ -73,7 +73,7 @@ publicVariable "hostileCivilians";
 neutralTasksChosen = false;
 noNeutralTasksChosen = false;
 taskCreationInProgress = false;
-insertType = 0;
+insertType = 1;
 friendlySquad = nil;
 reactiveChance = random 1;
 holdAO = [];
@@ -631,7 +631,7 @@ if (count _enemyFactionFlag == 0) then {
 };
 
 if (aoOptionSelect == 0) then {
-	aoOptionSelect = [1,3] call BIS_fnc_randomInt;
+	aoOptionSelect = [2, 4] call BIS_fnc_randomInt;
 };
 
 
@@ -1116,14 +1116,12 @@ if (!isNil "DRO_simpleObjects") then {
 // Start message listener
 [] execVM "sunday_system\messageListener.sqf";
 
-// Ambient flyover setup
-_ambientFlyByChance = 1;//random 1;
-if (_ambientFlyByChance > 0.5) then {
-	_flyerClasses = (eHeliClasses + ePlaneClasses);
-	if (count _flyerClasses > 0) then {
-		[centerPos, _flyerClasses] execVM "sunday_system\generate_ao\ambientFlyBy.sqf";
-	};
+// Авиация врага
+_flyerClasses = (eHeliClasses + ePlaneClasses);
+if (count _flyerClasses > 0) then {
+	[centerPos, eHeliClasses, ePlaneClasses] execVM "sunday_system\generate_ao\ambientFlyBy.sqf";
 };
+
 
 if (animalsEnabled == 0) then {
 	[centerPos] execVM "sunday_system\generate_ao\generateAnimals.sqf";

@@ -1,4 +1,4 @@
-timeOfDay = profileNamespace getVariable ["DRO_timeOfDay", 0];
+timeOfDay = 2;
 publicVariable "timeOfDay";
 month = profileNamespace getVariable ["DRO_month", 0];
 publicVariable "month";
@@ -28,7 +28,7 @@ reviveDisabled = profileNamespace getVariable ["DRO_reviveDisabled", 0];
 publicVariable "reviveDisabled";
 missionPreset = profileNamespace getVariable ["DRO_missionPreset", 0];
 publicVariable "missionPreset";
-insertType = profileNamespace getVariable ["DRO_insertType", 0];
+insertType = 1;
 publicVariable "insertType";
 randomSupports = profileNamespace getVariable ["DRO_randomSupports", 0];
 publicVariable "randomSupports";

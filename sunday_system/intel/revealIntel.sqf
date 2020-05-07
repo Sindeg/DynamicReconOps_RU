@@ -193,13 +193,13 @@ if (!isNull _caller) then {
 	_radioDescIcon = "";
 	_radioDescTroops = "";
 	if (_markerZoneShrunk) then {
-		_radioDescZone = selectRandom ["This will help narrow our search area a bit. ", "These documents rule out some of our search area. ", "Looks like this message narrows our search area. "];
+		_radioDescZone = selectRandom ["Это поможет нам сузить круг поиска. ", "Эти документы исключают некоторые позиции из нашей области поиска. ", "Похоже, это разведданные помогут сузить нашу область поиска. "];
 	};
 	if (_markerRevealUsed == 1) then {
-		_radioDescIcon = selectRandom ["Found some points of interest and marked them on the map. ", "Interesting, I've marked some positions to watch for. "];
+		_radioDescIcon = selectRandom ["Нашел разведданные и отметил их на карте.", "Интересно, отметил новые точки на карте. "];
 	};
 	if (_unitRevealUsed) then {
-		_radioDescTroops = selectRandom ["Some of these communications reveal troop placements. They've been marked on the map.", "This map shows where some enemy units should be, I've copied their positions across to ours."];
+		_radioDescTroops = selectRandom ["Некоторые из этих документов показывают размещение войск врага. Отметил их на карте. ", "Эта карта показывает, где должны быть некоторые вражеские подразделения, я отметил их позиции на карте. "];
 	};	
 	if (((count _radioDescZone) > 0) || ((count _radioDescIcon) > 0) || ((count _radioDescTroops) > 0) || ((count _radioTaskIntel) > 0)) then {
 		_firstSentence = if (!isNull _intelSource) then {

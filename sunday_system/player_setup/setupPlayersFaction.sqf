@@ -227,7 +227,10 @@ switch (insertType) do {
 			};
 			if (_randomStartingLocation isEqualTo [0,0,0]) then {
 				_randomStartingLocation = [_center, (aoSize+500), (aoSize+3000), 2, 0, 0.6, 0, [trgAOC], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;				
-			};			
+			};		
+			if (_randomStartingLocation isEqualTo [0,0,0]) then {
+				_randomStartingLocation = [_center, (aoSize+500), (aoSize+4500), 2, 0, 0.6, 0, [trgAOC], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;				
+			};	
 			if (_forceSeaStart == 1) then {
 				_groundStylesAvailable = ["SEA"];
 			} else {
@@ -330,6 +333,8 @@ switch (insertType) do {
 							};
 						};
 						
+						// Случайный отряд патрулирования
+						/*
 						_spawnPos1 = _randomStartingLocation findEmptyPosition [10, 30];
 						_spawnedSquad1 = [_spawnPos1, playersSide, pInfClassesForWeights, pInfClassWeights, [2, 4]] call dro_spawnGroupWeighted;						
 						waitUntil {!isNil "_spawnedSquad1"};
@@ -341,7 +346,7 @@ switch (insertType) do {
 							_x disableAI "AUTOCOMBAT";
 						} forEach (units _spawnedSquad1);						
 						[_spawnedSquad1, _randomStartingLocation, 30] call BIS_fnc_taskPatrol;						
-					
+						*/
 					};
 					case 2: {
 						// Big FOB
@@ -535,58 +540,6 @@ switch (insertType) do {
 				_select = 0;
 				_vehLocation = [];
 				startVehicles = ["", ""]; // Отключение спавна дружественной техники
-			/* 	if (count startVehicles > 0) then {
-					{
-						_vehRoles = (count([_x] call BIS_fnc_vehicleRoles));
-						_vehLocation = _randomStartingLocation findEmptyPosition [10, 60, _x];
-						diag_log format ["DRO: spawning insert vehicle %1 at %2 with %3 roles", _x, _vehLocation, _vehRoles];
-						if (!isNil "_vehLocation" && count _vehLocation > 0) then {
-							_veh = createVehicle [_x, _vehLocation, [], 0, "NONE"];
-							_veh respawnVehicle	[30];							
-							_rolesFilled = _rolesFilled + _vehRoles;
-						};
-					} forEach startVehicles;
-				};
-				while {(_rolesFilled < (count(units (grpNetId call BIS_fnc_groupFromNetId))))} do {
-					_vehClass = "";
-					diag_log format ["DRO: startVehicles = %1", startVehicles];
-					if ((count startVehicles > 0) && _whileAttempts == 0) then {
-						_vehClass = (startVehicles select _select);
-						if (_select < ((count startVehicles)-1)) then {
-							_select = _select + 1;
-						} else {
-							_select = 0;
-						}; 
-					} else {
-						_vehClass = _carClasses selectRandomWeighted _carWeights;
-					};					
-					_vehRoles = (count([_vehClass] call BIS_fnc_vehicleRoles));
-					_vehLocation = _randomStartingLocation findEmptyPosition [10, 60, _vehClass];
-					diag_log format ["DRO: spawning insert vehicle %1 at %2 with %3 roles", _vehClass, _vehLocation, _vehRoles];
-						if (!isNil "_vehLocation" && count _vehLocation > 0) then {
-							if (_vehClass isKindOf "Helicopter") then {
-								_padTypes = ["Land_HelipadCircle_F", "Land_HelipadCivil_F", "Land_HelipadSquare_F"];
-								_veh = createVehicle [(selectRandom _padTypes), _vehLocation, [], 0, "NONE"];
-							};
-							_veh = createVehicle [_vehClass, _vehLocation, [], 0, "NONE"];
-							_veh respawnVehicle	[30];														
-							_rolesFilled = _rolesFilled + _vehRoles;
-						};
-					_whileAttempts = _whileAttempts + 1;
-					if (_whileAttempts >= 8) exitWith {
-						diag_log "DRO: spawning insert vehicle while attempts exceeded";
-					};
-				}; 
-				
-				_mkrName = switch (playersSide) do {
-					case west: {"respawn_vehicle_west"};
-					case east: {"respawn_vehicle_east"};
-					case resistance: {"respawn_vehicle_guerilla"};
-				};
-				_vehicleRespawnMkr = createMarker [_mkrName, _vehLocation];
-				_vehicleRespawnMkr setMarkerShape "ICON";
-				_vehicleRespawnMkr setMarkerType "EmptyIcon";
-				*/
 				
 				// Ящик с арсеналом
 				_boxLocation = _randomStartingLocation findEmptyPosition [0, 20, "B_supplyCrate_F"];

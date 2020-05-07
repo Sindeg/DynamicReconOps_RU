@@ -1,3 +1,9 @@
+ctrlEnable [1601, false];
+
+for '_i' from 1 to 7 do {
+	sleep 1; 
+}; 
+
 _playersIndex = lbCurSel 1301;
 _enemyIndex = lbCurSel 1311;
 _civIndex = lbCurSel 1321;

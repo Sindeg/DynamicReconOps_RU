@@ -248,6 +248,26 @@ if (count _select == 0) then {
 diag_log format ["DRO: New task will be %1", _select];
 _scriptHandle = nil;
 
+_HVT = false;
+_destroyMortar = false;
+_destroyWreck = false;
+_destroyCache = false;
+_destroyPower = false;
+_POW = false;
+_VEHICLE = false;
+_VEHICLESTEAL = false;
+_ARTY = false;
+_CACHEBUILDING = false;
+_HELI = false;
+_CLEARLZ = false;
+_INTEL = false;
+_RECON = false;
+_FOOTPATROL = false;
+_DISARM = false;
+_FORTIFY = false;
+_PROTECTCIV = false;
+_SEARCHHOUSES = false;
+
 switch (_select select 1) do {
 	case "HVT": {
 		_hvtInterrogate = "HVTREGULAR";

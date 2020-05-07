@@ -1,13 +1,14 @@
-_markerList = [];
-_markerUnits = [];
+_countPlayers = 0; // Число отмеченных игроков
 
 _Color = markerColorPlayers;
 
 _createMarker = {
 	params ["_x", "_xSize", "_ySize","_markerText"];	
 
-	_markerName = str(format ["%1", name _x]);
-	_mName = "m" + _markerName;
+	_markerName = str(format ["player_mrk_%1", _countPlayers]);
+	_countPlayers = _countPlayers + 1;
+	
+	_mName = _markerName;
 	_mName = createMarker [_markerName, position _x]; 
 	
 	_mName setMarkerSize [_xSize, _ySize];
@@ -16,14 +17,11 @@ _createMarker = {
 	_mName setMarkerColor _Color;
 	_mName setMarkerText _markerText;
 	_mName setMarkerDir (direction _x);
-	
-	_markerList = _markerList + [_mName];
-	_markerUnits = _markerUnits + [_x];
 };
 
 while {true} do
 {
-
+	_countPlayers = 0;
 	{
 		if (_x getVariable "needMark" == 1) then
 		{
@@ -62,12 +60,11 @@ while {true} do
 		_x setVariable ["respawnLoadout", (getUnitLoadout _x), true];
 	} forEach allPlayers;
 	
-	sleep 1.5;
+	sleep 2;
 	
-	{
-		deleteMarker _x;
-	} forEach _markerList;
+	for "_i" from 0 to _countPlayers do {
+		_name = str(format ["player_mrk_%1", _i]);
+		deleteMarker _name;
+	};
 	
-	_markerUnits = [];
-	_markerList = [];
 };

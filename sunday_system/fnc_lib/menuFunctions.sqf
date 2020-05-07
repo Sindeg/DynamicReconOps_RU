@@ -596,17 +596,17 @@ dro_clearData = {
 	lbSetCurSel [2104, 0];		
 	lbSetCurSel [2106, 0];
 	//lbSetCurSel [2116, 0];
-	["MAIN", 2020, 2] call sun_switchButtonSet;
+	["MAIN", 2020, 0] call sun_switchButtonSet;
 	["MAIN", 2030, 0] call sun_switchButtonSet;
 	["MAIN", 2050, 0] call sun_switchButtonSet;		
-	["MAIN", 2060, 0] call sun_switchButtonSet;
-	["MAIN", 2070, 0] call sun_switchButtonSet;
-	["MAIN", 2080, 0] call sun_switchButtonSet;
+	//["MAIN", 2060, 0] call sun_switchButtonSet;
+	//["MAIN", 2070, 0] call sun_switchButtonSet;
+	//["MAIN", 2080, 0] call sun_switchButtonSet;
+	//["MAIN", 2400, 1] call sun_switchButtonSet;
 	["MAIN", 2090, 0] call sun_switchButtonSet;
-	["MAIN", 2400, 1] call sun_switchButtonSet;
-	["MAIN", 3010, 0] call sun_switchButtonSet;
+	["MAIN", 3010, 2] call sun_switchButtonSet; // Погода день
 	['MAIN', 3020, false, 0] call sun_switchButtonWeather;
-	["MAIN", 3030, 0] call sun_switchButtonSet;
+	["MAIN", 3030, 1] call sun_switchButtonSet;
 	["MAIN", 4010, 0] call sun_switchButtonSet;
 	sliderSetPosition [2041, 1*10];
 	sliderSetPosition [2109, 3];
@@ -662,12 +662,12 @@ sun_missionPreset = {
 	*/
 	switch (_preset) do {
 		case 1: {					
-			["MAIN", 2020, 0] call sun_switchButtonSet;
+			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*10];
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.0";				
 			["MAIN", 2050, 0] call sun_switchButtonSet;
-			["MAIN", 2060, 0] call sun_switchButtonSet;
-			["MAIN", 2070, 0] call sun_switchButtonSet;
+			//["MAIN", 2060, 0] call sun_switchButtonSet;
+			//["MAIN", 2070, 0] call sun_switchButtonSet;
 			["MAIN", 4010, 0] call sun_switchButtonSet;				
 			lbSetCurSel [2103, 0];							
 			lbSetCurSel [2106, 0];
@@ -678,12 +678,12 @@ sun_missionPreset = {
 			} forEach [2200, 2201, 2202, 2203, 2204, 2207, 2210, 2211, 2212, 2213];			
 		};
 		case 2: {					
-			["MAIN", 2020, 0] call sun_switchButtonSet;
+			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 0.5*10];
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x0.5";	
 			["MAIN", 2050, 0] call sun_switchButtonSet;			
-			["MAIN", 2060, 0] call sun_switchButtonSet;					
-			["MAIN", 2070, 1] call sun_switchButtonSet;	
+			//["MAIN", 2060, 0] call sun_switchButtonSet;					
+			//["MAIN", 2070, 1] call sun_switchButtonSet;	
 			lbSetCurSel [2103, (selectRandom [3, 4])];		
 			["MAIN", 4010, 1] call sun_switchButtonSet;	
 			preferredObjectives = ["HVT"];
@@ -694,12 +694,12 @@ sun_missionPreset = {
 			} forEach [2201, 2202, 2203, 2204, 2207, 2210, 2211, 2212, 2213];			
 		};
 		case 3: {					
-			["MAIN", 2020, 0] call sun_switchButtonSet;
+			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*12.5];	
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.25";	
 			["MAIN", 2050, 0] call sun_switchButtonSet;
-			["MAIN", 2060, 0] call sun_switchButtonSet;
-			["MAIN", 2070, 0] call sun_switchButtonSet;
+			//["MAIN", 2060, 0] call sun_switchButtonSet;
+			//["MAIN", 2070, 0] call sun_switchButtonSet;
 			["MAIN", 4010, 0] call sun_switchButtonSet;				
 			lbSetCurSel [2103, 0];							
 			lbSetCurSel [2106, 0];

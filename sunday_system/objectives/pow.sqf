@@ -322,8 +322,8 @@ _powChar setVariable["taskName", _taskName, true];
 } forEach ("true" configClasses (configFile / "CfgTaskTypes"));
 */
 // Create join subtasks	
-_joinSubTaskDesc = format ["Locate  and retrieve %1.", _lastName];
-_joinSubTaskTitle = format ["Locate %1", _lastName];
+_joinSubTaskDesc = format ["Найдите и освободите %1.", _lastName];
+_joinSubTaskTitle = format ["Найти %1", _lastName];
 _subTasks pushBack [_joinSubTaskName, _joinSubTaskDesc, _joinSubTaskTitle, "help"];
 _powChar setVariable ["joinTask", _joinSubTaskName, true];
 powJoinTasks pushBack _joinSubTaskName;

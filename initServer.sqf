@@ -25,6 +25,7 @@ missionNamespace setVariable ["airportDir", 0, true];
 [] execVM "start.sqf";
 
 // Отключение тепловизоров в технике
+/* 
 [] spawn 
 {
 	while {TRUE} do
@@ -34,12 +35,13 @@ missionNamespace setVariable ["airportDir", 0, true];
 			_x disableTIEquipment true;
 		} foreach vehicles;
 	};
-};
+}; 
+*/
 
 waituntil {!( isNil "markerColorPlayers")};
 waituntil {markerColorPlayers != "ColorBlack"};
 
-// Отметки игроков на карте
+// Скрипт отметок игроков на карте
 _markers = "player_markers" call BIS_fnc_getParamValue;
 if (_markers == 1) then {
 	_nil = [] execVM "scripts\playerMarkers.sqf"

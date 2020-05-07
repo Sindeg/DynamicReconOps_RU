@@ -176,7 +176,7 @@ class sundayDialog {
 			w = "23 * pixelGridNoUIScale * pixelW";
 			h = "4 * pixelGridNoUIScale * pixelH";	
 			sizeEx = "((pixelH * (pixelGridNoUIScale) * 2) * 2.5) * 0.5";	
-			action = "_nil=[]ExecVM 'sunday_system\dialogs\okAO.sqf';";
+			action = "_nil=[]ExecVM 'sunday_system\dialogs\okAO.sqf'";
 		};	
 		
 		// INFO

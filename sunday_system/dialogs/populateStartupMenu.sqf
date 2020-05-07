@@ -63,11 +63,19 @@ _index = lbAdd [2106, "5"];
 ["MAIN", 2070, false] call sun_switchButton;
 ["MAIN", 2080, false] call sun_switchButton;
 ["MAIN", 2090, false] call sun_switchButton;
-["MAIN", 2400, true] call sun_switchButton;
+["MAIN", 2400, false] call sun_switchButton;
 ["MAIN", 3010, false, "TIME"] call sun_switchButton;
 ['MAIN', 3020, false] call sun_switchButtonWeather;
-["MAIN", 3030, false] call sun_switchButton;
+["MAIN", 3030, true] call sun_switchButton;
 ["MAIN", 4010, false] call sun_switchButton;
+
+// Отключение кнопок в меню (Дин. симуляция, мины, гражданские, мед. система)
+ctrlEnable [2404, false]; // погода
+ctrlEnable [2084, false];
+ctrlEnable [2074, false];
+ctrlEnable [2064, false];
+ctrlEnable [2024, false];
+ctrlEnable [3034, false]; // животные
 //["MAIN", 3020, false] call sun_switchButton;
 
 /*

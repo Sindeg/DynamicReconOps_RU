@@ -206,9 +206,12 @@ if (player != _dialogPlayer) then {
 	ctrlEnable [6013, false];
 	ctrlEnable [6014, false];
 	ctrlEnable [6050, false];
-	ctrlEnable [6021, false];
-	ctrlEnable [6022, false];
+	
 };
+
+// Отключение кнопок начального транспорта 
+ctrlEnable [6021, false];
+ctrlEnable [6022, false];
 
 // Remove controls for AI no longer in group
 {

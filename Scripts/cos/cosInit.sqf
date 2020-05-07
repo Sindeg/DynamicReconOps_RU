@@ -105,7 +105,7 @@ if (_houses <= 140 and _houses > 70) then {
 if (_houses > 140) then {
 	_civilians=40+ round(random _randomisation);// Civilians spawned
 	_vehicles=4;// Moving Vehicles Spawned
-	_parked=6;// Parked Vehicles Spawned
+	_parked=5;// Parked Vehicles Spawned
 };
 		
 if (!COSpedestrians) then {_civilians=0;};	// If pedestrians disabled spawn 0
