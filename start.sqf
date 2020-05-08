@@ -32,7 +32,7 @@ publicVariable "topUnit";
 
 diag_log format ["DRO: topUnit = %1", topUnit];
 
-[(profileNamespace getVariable ["DRO_timeOfDay", 0])] call sun_randomTime;
+[2] call sun_randomTime;
 
 playersFaction = "";
 enemyFaction = "";
@@ -787,11 +787,6 @@ publicVariable "nameLookup";
 
 missionNameSpace setVariable ["initArsenal", 1];
 publicVariable "initArsenal";
-/*
-if (month == 0 || day == 0) then {
-	[timeOfDay] remoteExec ['sun_randomTime', 0, true];
-};
-*/
 
 // *****
 // OBJECTIVES SETUP
@@ -800,7 +795,7 @@ _scriptStartTime = time;
 // Get number of tasks
 _numObjs = 1;
 if (numObjectives == 0) then {
-	_numObjs = [1,5] call BIS_fnc_randomInt;
+	_numObjs = [3,5] call BIS_fnc_randomInt;
 } else {
 	_numObjs = numObjectives;
 };
@@ -916,6 +911,9 @@ if (civiliansEnabled == 0) then {
 		civiliansEnabled = (selectRandom [1, 3]);
 	} else {civiliansEnabled = 3};
 };
+
+// Отключение гражданских
+/* 
 if (civiliansEnabled == 1 || civiliansEnabled == 2) then {	
 	[((findDisplay 888888) displayCtrl 8889), "SPAWNING CIVILIANS"] remoteExecCall ["ctrlSetText", 0];			
 		civTrue = true;
@@ -930,7 +928,8 @@ if (civiliansEnabled == 1 || civiliansEnabled == 2) then {
 				[] execVM "sunday_system\intel\addCivilianIntel.sqf";				
 			};					
 		};
-};
+}; 
+*/
 
 missionNameSpace setVariable ["objectivesSpawned", 1, true];
 
@@ -1122,11 +1121,12 @@ if (count _flyerClasses > 0) then {
 	[centerPos, eHeliClasses, ePlaneClasses] execVM "sunday_system\generate_ao\ambientFlyBy.sqf";
 };
 
-
+/* 
 if (animalsEnabled == 0) then {
 	[centerPos] execVM "sunday_system\generate_ao\generateAnimals.sqf";
 };
-
+ */
+ 
 // Add intel items
 [] execVM "sunday_system\intel\addEnemyIntel.sqf";
 

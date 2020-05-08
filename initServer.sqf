@@ -22,11 +22,29 @@ missionNameSpace setVariable ["JamTFARMessage", 0, true];
 missionNameSpace setVariable ["airportChosen", false, true];
 missionNamespace setVariable ["airportDir", 0, true];
 
+missionNamespace setVariable ["task_HVT", false, true];
+missionNamespace setVariable ["task_destroy", false, true];
+missionNamespace setVariable ["task_POW", false, true];
+missionNamespace setVariable ["task_VEHICLE", false, true];
+missionNamespace setVariable ["task_VEHICLESTEAL", false, true];
+missionNamespace setVariable ["task_ARTY", false, true];
+missionNamespace setVariable ["task_CACHEBUILDING", false, true];
+missionNamespace setVariable ["task_HELI", false, true];
+missionNamespace setVariable ["task_CLEARLZ", false, true];
+missionNamespace setVariable ["task_CLEARBASE", false, true];
+missionNamespace setVariable ["task_INTEL", false, true];
+missionNamespace setVariable ["task_RECON", false, true];
+missionNamespace setVariable ["task_FOOTPATROL", false, true];
+missionNamespace setVariable ["task_DISARM", false, true];
+missionNamespace setVariable ["task_FORTIFY", false, true];
+missionNamespace setVariable ["task_PROTECTCIV", false, true];
+missionNamespace setVariable ["task_SEARCHHOUSES", false, true];
+
 [] execVM "start.sqf";
 
 // Отключение тепловизоров в технике
-/* 
-[] spawn 
+/*
+[] spawn
 {
 	while {TRUE} do
 	{
@@ -35,7 +53,7 @@ missionNamespace setVariable ["airportDir", 0, true];
 			_x disableTIEquipment true;
 		} foreach vehicles;
 	};
-}; 
+};
 */
 
 waituntil {!( isNil "markerColorPlayers")};
@@ -46,7 +64,3 @@ _markers = "player_markers" call BIS_fnc_getParamValue;
 if (_markers == 1) then {
 	_nil = [] execVM "scripts\playerMarkers.sqf"
 };
-	
-
-
-

@@ -66,17 +66,17 @@ _index = lbAdd [2106, "5"];
 ["MAIN", 2400, false] call sun_switchButton;
 ["MAIN", 3010, false, "TIME"] call sun_switchButton;
 ['MAIN', 3020, false] call sun_switchButtonWeather;
-["MAIN", 3030, true] call sun_switchButton;
+["MAIN", 3030, false] call sun_switchButton;
 ["MAIN", 4010, false] call sun_switchButton;
 
 // Отключение кнопок в меню (Дин. симуляция, мины, гражданские, мед. система)
 ctrlEnable [2404, false]; // погода
 ctrlEnable [2084, false];
 ctrlEnable [2074, false];
-ctrlEnable [2064, false];
+ctrlEnable [2064, false]; // Гражданские
+ctrlEnable [2054, false]; // Минные поля
 ctrlEnable [2024, false];
-ctrlEnable [3034, false]; // животные
-//["MAIN", 3020, false] call sun_switchButton;
+ctrlEnable [3034, false]; // Животные
 
 /*
 lbAdd [2117, "Enabled"];
@@ -85,10 +85,8 @@ lbAdd [2117, "Disabled"];
 //lbSetCurSel [2106, numObjectives];
 
 lbSetCurSel [2104, month];
-//lbSetCurSel [2117, animalsEnabled];
 [2301] call dro_inputDaysData;
 lbSetCurSel [2301, day];
-//lbSetCurSel [2103, timeOfDay];
 
 // Slider items
 sliderSetRange [2041, 5, 17];

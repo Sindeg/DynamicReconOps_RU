@@ -122,6 +122,7 @@ lbAdd [6009, "Выброска с вертолёта"];
 if (player == _dialogPlayer) then {
 	lbSetCurSel [6009, insertType];
 };
+ctrlEnable [6009, false];
 
 // Insert vehicle options
 if (player == _dialogPlayer) then {

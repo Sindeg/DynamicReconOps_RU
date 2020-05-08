@@ -50,13 +50,13 @@ AOLocations = [];
 AOLocations pushBack [(getPos _randomLoc), aoSize];
 _cityCenter = (getPos _randomLoc);
 
-// If secondary locations are enabled then find them
+// Дополнительные районы операции (extendedao)
 if (aoOptionSelect == 0) then {
 	_secondaryLocList = nearestLocations [[_cityCenter select 0, _cityCenter select 1], ["NameLocal","NameVillage","NameCity","NameCityCapital"], 2000];	
 	_secondaryLocList = _secondaryLocList select {((getPos _x) distance _cityCenter > (aoSize * 0.4))};
 	// Add 1 to 3 secondary locations to the pool
 	if (count _secondaryLocList > 0) then {
-		for "_i" from 1 to (([1, count _secondaryLocList] call BIS_fnc_randomInt) min 3) step 1 do {
+		for "_i" from 1 to (([1, count _secondaryLocList] call BIS_fnc_randomInt) min 4) step 1 do {
 			_thisLoc = [_secondaryLocList] call sun_selectRemove;
 			if (((getPos _thisLoc) distance logicStartPos) < 700) then {
 				_secondaryLocList pushBack _thisLoc;
@@ -268,7 +268,7 @@ _neutralChance = if (neutralTasksChosen) then {
 		_markerWarning setMarkerType "c_unknown";
 		_markerWarning setMarkerColor "ColorCivilian";
 		_markerWarning setMarkerSize [2, 2];
-		_markerWarning setMarkerAlpha 0.6;
+		_markerWarning setMarkerAlpha 0;
 		//AOMarkers pushBack _mkrName;
 	} else {
 		(AOLocations select _forEachIndex) pushBack 0;		
@@ -280,7 +280,7 @@ _neutralChance = if (neutralTasksChosen) then {
 			_markerWarning setMarkerType "mil_warning_noShadow";
 			_markerWarning setMarkerColor "ColorRed";
 			_markerWarning setMarkerSize [1.5, 1.5];
-			_markerWarning setMarkerAlpha 0.6;			
+			_markerWarning setMarkerAlpha 0;			
 			AOMarkers pushBack _mkrName;	
 		//};		
 	};

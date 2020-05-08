@@ -248,27 +248,148 @@ if (count _select == 0) then {
 diag_log format ["DRO: New task will be %1", _select];
 _scriptHandle = nil;
 
-_HVT = false;
-_destroyMortar = false;
-_destroyWreck = false;
-_destroyCache = false;
-_destroyPower = false;
-_POW = false;
-_VEHICLE = false;
-_VEHICLESTEAL = false;
-_ARTY = false;
-_CACHEBUILDING = false;
-_HELI = false;
-_CLEARLZ = false;
-_INTEL = false;
-_RECON = false;
-_FOOTPATROL = false;
-_DISARM = false;
-_FORTIFY = false;
-_PROTECTCIV = false;
-_SEARCHHOUSES = false;
+_task_HVT = missionNameSpace getVariable ["task_HVT", false];
+_task_destroy = missionNameSpace getVariable ["task_destroy", false];
+_task_POW = missionNameSpace getVariable ["task_POW", false];
+_task_VEHICLE = missionNameSpace getVariable ["task_VEHICLE", false];
+_task_VEHICLESTEAL = missionNameSpace getVariable ["task_VEHICLESTEAL", false];
+_task_ARTY = missionNameSpace getVariable ["task_ARTY", false];
+_task_CACHEBUILDING = missionNameSpace getVariable ["task_CACHEBUILDING", false];
+_task_HELI = missionNameSpace getVariable ["task_HELI", false];
+_task_CLEARLZ = missionNameSpace getVariable ["task_CLEARLZ", false];
+_task_CLEARBASE = missionNameSpace getVariable ["task_CLEARBASE", false];
+_task_INTEL = missionNameSpace getVariable ["task_INTEL", false];
+_task_RECON = missionNameSpace getVariable ["task_RECON", false];
+_task_FOOTPATROL = missionNameSpace getVariable ["task_FOOTPATROL", false];
+_task_DISARM = missionNameSpace getVariable ["task_DISARM", false];
+_task_FORTIFY = missionNameSpace getVariable ["task_FORTIFY", false];
+_task_PROTECTCIV = missionNameSpace getVariable ["task_PROTECTCIV", false];
+_task_SEARCHHOUSES = missionNameSpace getVariable ["task_SEARCHHOUSES", false];
 
-switch (_select select 1) do {
+
+_task = _select select 1;
+
+if (_task == "HVT" && !_task_HVT) exitWith {
+	_hvtInterrogate = "HVTREGULAR";
+	if (missionPreset == 2) then {"HVTREGULAR"} else {
+		if (random 1 > 999) then {_hvtInterrogate = "HVTINTERROGATE"} else {_hvtInterrogate = "HVTREGULAR"};
+		_AOHVTStyles = _AOHVTStyles - ["OUTSIDETRAVEL"];
+	};		
+	switch (_hvtInterrogate) do {		
+		case "HVTREGULAR": {_scriptHandle = [(_select select 0), (_AOHVTStyles select (_select select 0))] execVM "sunday_system\objectives\hvt.sqf";};
+		case "HVTINTERROGATE": {_scriptHandle = [(_select select 0), (_AOHVTStyles select (_select select 0))] execVM "sunday_system\objectives\hvtInterrogate.sqf";};
+	};	
+	missionNamespace setVariable ["task_HVT", true, true];
+};
+if (_task == "DESTROY" && !_task_destroy) exitWith {
+		_destroySelect = if (count (_AOPreferredDestroyStyles select (_select select 0)) > 0) then {
+		selectRandom (_AOPreferredDestroyStyles select (_select select 0))
+		} else {
+			selectRandom (_AODestroyStyles select (_select select 0))
+		};
+		switch (_destroySelect) do {
+			case "MORTAR": {
+				_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\destroyMortar.sqf";	
+			};
+			case "WRECK": {				
+				_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\destroyWreck.sqf";					
+			};
+			case "CACHE": {
+				_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\cache.sqf";					
+			};
+			case "POWER": {
+				_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\destroyPower.sqf";				
+			};
+		};
+	missionNamespace setVariable ["task_destroy", true, true];
+};
+if (_task == "POW" && !_task_POW) exitWith {
+	_scriptHandle = [(_select select 0), (_AOPOWStyles select (_select select 0))] execVM "sunday_system\objectives\pow.sqf";	
+	missionNamespace setVariable ["task_POW", true, true];
+};
+if (_task == "VEHICLE" && !_task_VEHICLE) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\vehicle.sqf";	
+	missionNamespace setVariable ["task_VEHICLE", true, true];
+};
+if (_task == "VEHICLESTEAL" && !_task_VEHICLESTEAL) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\vehicleSteal.sqf";	
+	missionNamespace setVariable ["task_VEHICLESTEAL", true, true];
+};
+if (_task == "ARTY" && !_task_ARTY) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\artillery.sqf";	
+	missionNamespace setVariable ["task_ARTY", true, true];
+};
+if (_task == "CACHEBUILDING" && !_task_CACHEBUILDING) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\cacheBuilding.sqf";	
+	missionNamespace setVariable ["task_CACHEBUILDING", true, true];
+};
+if (_task == "HELI" && !_task_HELI) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\heli.sqf";		
+	missionNamespace setVariable ["task_HELI", true, true];
+};
+if (_task == "CLEARLZ" && !_task_CLEARLZ) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\clearArea.sqf";
+	missionNamespace setVariable ["task_CLEARLZ", true, true];
+};
+if (_task == "CLEARBASE" && !_task_CLEARBASE) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\clearBase.sqf";	
+	missionNamespace setVariable ["task_CLEARBASE", true, true];
+};
+if (_task == "INTEL" && !_task_INTEL) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\intel.sqf";	
+	missionNamespace setVariable ["task_INTEL", true, true];
+};
+if (_task == "RECON" && !_task_RECON) exitWith {
+	_reconSelect = selectRandom (_AOReconStyles select (_select select 0));
+		switch (_reconSelect) do {
+			case "RECONRANGE": {
+				[(_select select 0)] execVM "sunday_system\objectives\reconRange.sqf";
+				_scriptHandle = 0 spawn {};
+			};
+			case "RECONFOOT": {
+				_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives\reconFoot.sqf";		
+			};
+		};	
+	missionNamespace setVariable ["task_RECON", true, true];
+};
+if (_task == "FOOTPATROL" && !_task_FOOTPATROL) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\footPatrol.sqf";
+	missionNamespace setVariable ["task_FOOTPATROL", true, true];
+};
+if (_task == "DISARM" && !_task_DISARM) exitWith {
+	_disarmSelect = selectRandom (_AODisarmStyles select (_select select 0));		
+	switch (_disarmSelect) do {
+		case "IED": {
+			_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\disarmIED.sqf";	
+		};
+		case "UXO": {				
+			_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\disarmUXO.sqf";					
+		};			
+	};
+	missionNamespace setVariable ["task_DISARM", true, true];
+};
+if (_task == "FORTIFY" && !_task_FORTIFY) exitWith {
+	_fortifySelect = selectRandom (_AOFortifyStyles select (_select select 0));		
+	switch (_fortifySelect) do {
+		case "OP": {
+			_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\fortify.sqf";	
+		};
+		case "BLOCKADE": {				
+			_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\blockade.sqf";					
+		};			
+	};	
+	missionNamespace setVariable ["task_FORTIFY", true, true];
+};
+if (_task == "PROTECTCIV" && !_task_PROTECTCIV) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\protectCiv.sqf";
+	missionNamespace setVariable ["task_PROTECTCIV", true, true];
+};
+if (_task == "SEARCHHOUSES" && !_task_SEARCHHOUSES) exitWith {
+	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\searchHouses.sqf";	
+	missionNamespace setVariable ["task_SEARCHHOUSES", true, true];
+};
+
+/* switch (_select select 1) do {
 	case "HVT": {
 		_hvtInterrogate = "HVTREGULAR";
 		if (missionPreset == 2) then {"HVTREGULAR"} else {
@@ -371,7 +492,7 @@ switch (_select select 1) do {
 	case "SEARCHHOUSES": {
 		_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\searchHouses.sqf";	
 	};
-};
-sleep 1;
+}; */
+[(AOLocations call BIS_fnc_randomIndex), true ] call fnc_selectObjective;
 
-//waitUntil {scriptDone _scriptHandle};
+sleep 1;

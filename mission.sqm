@@ -8,7 +8,7 @@ class EditorData
 	toggles=577;
 	class ItemIDProvider
 	{
-		nextID=1457;
+		nextID=1437;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14276.231,16.532692,13008.313};
-		dir[]={-0.93765616,-0.34736493,-0.014127529};
-		up[]={-0.34734923,0.93771857,-0.0052330904};
-		aside[]={-0.015065775,-1.2496457e-007,0.99991286};
+		pos[]={14250.667,10.598326,13010.061};
+		dir[]={0.032034855,-0.53622395,-0.84361678};
+		up[]={0.020349363,0.84400129,-0.535905};
+		aside[]={-0.99939889,-6.8890586e-007,-0.037955053};
 	};
 };
 binarizationWanted=0;
@@ -4362,7 +4362,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=1.2;
+														value=1;
 													};
 												};
 												class Item1
@@ -11202,7 +11202,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=15;
+														value=10;
 													};
 												};
 												class Item1
@@ -11247,7 +11247,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
@@ -13902,7 +13902,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=420;
+														value=480;
 													};
 												};
 												class Item1
@@ -17366,7 +17366,7 @@ class Mission
 										};
 										class value
 										{
-											items=319;
+											items=311;
 											class Item0
 											{
 												class data
@@ -20724,7 +20724,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="optic_tws";
+													value="U_B_CTRG_Soldier_urb_1_F";
 												};
 											};
 											class Item240
@@ -20738,7 +20738,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="optic_tws_mg";
+													value="U_B_CTRG_Soldier_urb_3_F";
 												};
 											};
 											class Item241
@@ -20752,7 +20752,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="rhsusf_acc_anpas13gv1";
+													value="U_B_CTRG_Soldier_urb_2_F";
 												};
 											};
 											class Item242
@@ -20766,7 +20766,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="optic_Nightstalker";
+													value="U_O_officer_noInsignia_hex_F";
 												};
 											};
 											class Item243
@@ -20780,7 +20780,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="U_B_CTRG_Soldier_urb_1_F";
+													value="ACE_personalAidKit";
 												};
 											};
 											class Item244
@@ -20794,7 +20794,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="U_B_CTRG_Soldier_urb_3_F";
+													value="I_E_AA_01_weapon_F";
 												};
 											};
 											class Item245
@@ -20808,7 +20808,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="U_B_CTRG_Soldier_urb_2_F";
+													value="O_AT_01_weapon_F";
 												};
 											};
 											class Item246
@@ -20822,7 +20822,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="U_O_officer_noInsignia_hex_F";
+													value="I_AT_01_weapon_F";
 												};
 											};
 											class Item247
@@ -20836,7 +20836,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ACE_personalAidKit";
+													value="B_AT_01_weapon_F";
 												};
 											};
 											class Item248
@@ -20850,7 +20850,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_E_AA_01_weapon_F";
+													value="I_E_AT_01_weapon_F";
 												};
 											};
 											class Item249
@@ -20864,7 +20864,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="O_AT_01_weapon_F";
+													value="I_AA_01_weapon_F";
 												};
 											};
 											class Item250
@@ -20878,7 +20878,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_AT_01_weapon_F";
+													value="O_AA_01_weapon_F";
 												};
 											};
 											class Item251
@@ -20892,7 +20892,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_AT_01_weapon_F";
+													value="B_AA_01_weapon_F";
 												};
 											};
 											class Item252
@@ -20906,7 +20906,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_E_AT_01_weapon_F";
+													value="B_Bergen_hex_F";
 												};
 											};
 											class Item253
@@ -20920,7 +20920,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_AA_01_weapon_F";
+													value="B_Bergen_tna_F";
 												};
 											};
 											class Item254
@@ -20934,7 +20934,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="O_AA_01_weapon_F";
+													value="B_Bergen_dgtl_F";
 												};
 											};
 											class Item255
@@ -20948,7 +20948,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_AA_01_weapon_F";
+													value="B_Bergen_mcamo_F";
 												};
 											};
 											class Item256
@@ -20962,7 +20962,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Bergen_hex_F";
+													value="B_Respawn_TentA_F";
 												};
 											};
 											class Item257
@@ -20976,7 +20976,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Bergen_tna_F";
+													value="B_Respawn_Sleeping_bag_F";
 												};
 											};
 											class Item258
@@ -20990,7 +20990,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Bergen_dgtl_F";
+													value="B_Respawn_Sleeping_bag_brown_F";
 												};
 											};
 											class Item259
@@ -21004,7 +21004,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Bergen_mcamo_F";
+													value="B_Respawn_TentDome_F";
 												};
 											};
 											class Item260
@@ -21018,7 +21018,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Respawn_TentA_F";
+													value="B_Patrol_Respawn_bag_F";
 												};
 											};
 											class Item261
@@ -21032,7 +21032,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Respawn_Sleeping_bag_F";
+													value="B_Respawn_Sleeping_bag_blue_F";
 												};
 											};
 											class Item262
@@ -21046,7 +21046,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Respawn_Sleeping_bag_brown_F";
+													value="B_FieldPack_ghex_F";
 												};
 											};
 											class Item263
@@ -21060,7 +21060,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Respawn_TentDome_F";
+													value="ace_compat_rhs_afrf3_2b14_carry";
 												};
 											};
 											class Item264
@@ -21074,7 +21074,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Patrol_Respawn_bag_F";
+													value="ace_csw_kordCarryTripod";
 												};
 											};
 											class Item265
@@ -21088,7 +21088,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Respawn_Sleeping_bag_blue_F";
+													value="ace_csw_kordCarryTripodLow";
 												};
 											};
 											class Item266
@@ -21102,7 +21102,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_FieldPack_ghex_F";
+													value="ace_compat_rhs_afrf3_metis_carry";
 												};
 											};
 											class Item267
@@ -21116,7 +21116,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_2b14_carry";
+													value="ace_compat_rhs_afrf3_kornet_carry";
 												};
 											};
 											class Item268
@@ -21130,7 +21130,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_kordCarryTripod";
+													value="ace_compat_rhs_afrf3_ags30_carry";
 												};
 											};
 											class Item269
@@ -21144,7 +21144,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_kordCarryTripodLow";
+													value="ace_compat_rhs_usf3_tow_carry";
 												};
 											};
 											class Item270
@@ -21158,7 +21158,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_metis_carry";
+													value="ace_compat_rhs_gref3_dshkm_carry";
 												};
 											};
 											class Item271
@@ -21172,7 +21172,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_kornet_carry";
+													value="ace_compat_rhs_afrf3_kord_carry";
 												};
 											};
 											class Item272
@@ -21186,7 +21186,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_ags30_carry";
+													value="ace_compat_rhs_usf3_m2_carry";
 												};
 											};
 											class Item273
@@ -21200,7 +21200,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_usf3_tow_carry";
+													value="ace_csw_m220CarryTripod";
 												};
 											};
 											class Item274
@@ -21214,7 +21214,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_gref3_dshkm_carry";
+													value="ace_compat_rhs_usf3_m252_carry";
 												};
 											};
 											class Item275
@@ -21228,7 +21228,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_kord_carry";
+													value="ace_csw_m3CarryTripod";
 												};
 											};
 											class Item276
@@ -21242,7 +21242,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_usf3_m2_carry";
+													value="ace_csw_m3CarryTripodLow";
 												};
 											};
 											class Item277
@@ -21256,7 +21256,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_m220CarryTripod";
+													value="ace_dragon_super";
 												};
 											};
 											class Item278
@@ -21270,7 +21270,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_usf3_m252_carry";
+													value="ace_compat_rhs_usf3_mk19_carry";
 												};
 											};
 											class Item279
@@ -21284,7 +21284,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_m3CarryTripod";
+													value="ace_csw_staticMortarCarry";
 												};
 											};
 											class Item280
@@ -21298,7 +21298,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_m3CarryTripodLow";
+													value="ace_csw_carryMortarBaseplate";
 												};
 											};
 											class Item281
@@ -21312,7 +21312,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_dragon_super";
+													value="ace_compat_rhs_afrf3_nsv_carry";
 												};
 											};
 											class Item282
@@ -21326,7 +21326,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_usf3_mk19_carry";
+													value="ace_csw_sag30CarryTripod";
 												};
 											};
 											class Item283
@@ -21340,7 +21340,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_staticMortarCarry";
+													value="ace_csw_spg9CarryTripod";
 												};
 											};
 											class Item284
@@ -21354,7 +21354,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_carryMortarBaseplate";
+													value="ace_compat_rhs_afrf3_spg9_carry";
 												};
 											};
 											class Item285
@@ -21368,7 +21368,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_nsv_carry";
+													value="ace_compat_rhs_afrf3_spg9m_carry";
 												};
 											};
 											class Item286
@@ -21382,7 +21382,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_sag30CarryTripod";
+													value="ace_csw_staticAACarry";
 												};
 											};
 											class Item287
@@ -21396,7 +21396,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_spg9CarryTripod";
+													value="ace_csw_staticATCarry";
 												};
 											};
 											class Item288
@@ -21410,7 +21410,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_spg9_carry";
+													value="ace_csw_staticGMGCarry";
 												};
 											};
 											class Item289
@@ -21424,7 +21424,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_compat_rhs_afrf3_spg9m_carry";
+													value="ace_csw_staticHMGCarry";
 												};
 											};
 											class Item290
@@ -21438,7 +21438,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_staticAACarry";
+													value="Medikit";
 												};
 											};
 											class Item291
@@ -21452,7 +21452,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_staticATCarry";
+													value="ACE_Banana";
 												};
 											};
 											class Item292
@@ -21466,7 +21466,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_staticGMGCarry";
+													value="plp_bo_w_AfterSun";
 												};
 											};
 											class Item293
@@ -21480,7 +21480,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="ace_csw_staticHMGCarry";
+													value="plp_bo_w_BeachBat";
 												};
 											};
 											class Item294
@@ -21494,7 +21494,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_ViperLightHarness_hex_F";
+													value="plp_bo_w_BocceBalls";
 												};
 											};
 											class Item295
@@ -21508,7 +21508,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_ViperLightHarness_ghex_F";
+													value="plp_bo_w_BottleBitters";
 												};
 											};
 											class Item296
@@ -21522,7 +21522,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_ViperLightHarness_oli_F";
+													value="plp_bo_w_BottleBlueCorazol";
 												};
 											};
 											class Item297
@@ -21536,7 +21536,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_ViperLightHarness_khk_F";
+													value="plp_bo_w_BottleLiqCream";
 												};
 											};
 											class Item298
@@ -21550,7 +21550,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_ViperLightHarness_blk_F";
+													value="plp_bo_w_BottleGin";
 												};
 											};
 											class Item299
@@ -21564,7 +21564,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Messenger_IDAP_F";
+													value="plp_bo_w_BottleLiqOrange";
 												};
 											};
 											class Item300
@@ -21578,7 +21578,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Messenger_Black_F";
+													value="plp_bo_w_BottleTequila";
 												};
 											};
 											class Item301
@@ -21592,7 +21592,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Messenger_Gray_F";
+													value="plp_bo_w_Cigar";
 												};
 											};
 											class Item302
@@ -21606,7 +21606,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Messenger_Olive_F";
+													value="plp_bo_w_CigarCutter";
 												};
 											};
 											class Item303
@@ -21620,7 +21620,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="B_Messenger_Coyote_F";
+													value="plp_bo_w_CigarFine";
 												};
 											};
 											class Item304
@@ -21634,7 +21634,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="C_UAV_06_backpack_F";
+													value="plp_bo_w_GlassAperitif";
 												};
 											};
 											class Item305
@@ -21648,7 +21648,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="C_IDAP_UAV_06_backpack_F";
+													value="plp_bo_w_GlassCocktail";
 												};
 											};
 											class Item306
@@ -21662,7 +21662,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="C_UAV_06_medical_backpack_F";
+													value="plp_bo_w_GlassDrink";
 												};
 											};
 											class Item307
@@ -21676,7 +21676,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_Mortar_01_support_F";
+													value="plp_bo_w_Lifebelt";
 												};
 											};
 											class Item308
@@ -21690,7 +21690,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="O_Mortar_01_support_F";
+													value="plp_bo_w_CigarBoxSealed";
 												};
 											};
 											class Item309
@@ -21704,7 +21704,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="I_Mortar_01_weapon_F";
+													value="plp_bo_w_SunBlocker";
 												};
 											};
 											class Item310
@@ -21718,119 +21718,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="O_Mortar_01_weapon_F";
-												};
-											};
-											class Item311
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="B_RadioBag_01_hex_F";
-												};
-											};
-											class Item312
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="B_RadioBag_01_eaf_F";
-												};
-											};
-											class Item313
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="B_RadioBag_01_ghex_F";
-												};
-											};
-											class Item314
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="B_RadioBag_01_digi_F";
-												};
-											};
-											class Item315
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="I_E_Mortar_01_support_F";
-												};
-											};
-											class Item316
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="I_E_Mortar_01_Weapon_F";
-												};
-											};
-											class Item317
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="LOP_US_Sidor_SVD";
-												};
-											};
-											class Item318
-											{
-												class data
-												{
-													class type
-													{
-														type[]=
-														{
-															"STRING"
-														};
-													};
-													value="LOP_AM_FalconII_Enfield";
+													value="plp_bo_w_SunMilk";
 												};
 											};
 										};
@@ -21869,7 +21757,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""ACE_personalAidKit""],[8]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""ACE_personalAidKit""],[10]],[[],[]]],false]";
 						};
 					};
 				};

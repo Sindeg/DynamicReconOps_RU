@@ -21,7 +21,7 @@ _minefieldPlaces = [];
 
 if (count _minefieldPlaces > 0) then {
 	_enemyIntelMarkers = [];
-	for "_i" from 1 to (([1,3] call BIS_fnc_randomInt) min (count _minefieldPlaces)) step 1 do {
+	for "_i" from 1 to (([2,4] call BIS_fnc_randomInt) min (count _minefieldPlaces)) step 1 do {
 		_thisPos = [_minefieldPlaces] call dro_selectRemove;
 		_grid = [_thisPos, 5, 5, 25] call sun_defineGrid;
 		

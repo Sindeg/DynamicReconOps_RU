@@ -545,9 +545,9 @@ switch (insertType) do {
 				_boxLocation = _randomStartingLocation findEmptyPosition [0, 20, "B_supplyCrate_F"];
 				if (count _boxLocation > 0) then {				
 					_box = arsenalBox;
-					clearWeaponCargoGlobal _box;
-					clearMagazineCargoGlobal _box;
-					clearItemCargoGlobal _box;
+					//clearWeaponCargoGlobal _box;
+					//clearMagazineCargoGlobal _box;
+					//clearItemCargoGlobal _box;
 					
 					_box setPos _boxLocation;
 					sleep 2;

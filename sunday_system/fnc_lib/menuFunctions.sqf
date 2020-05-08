@@ -598,7 +598,7 @@ dro_clearData = {
 	//lbSetCurSel [2116, 0];
 	["MAIN", 2020, 0] call sun_switchButtonSet;
 	["MAIN", 2030, 0] call sun_switchButtonSet;
-	["MAIN", 2050, 0] call sun_switchButtonSet;		
+	["MAIN", 2050, 1] call sun_switchButtonSet;		
 	//["MAIN", 2060, 0] call sun_switchButtonSet;
 	//["MAIN", 2070, 0] call sun_switchButtonSet;
 	//["MAIN", 2080, 0] call sun_switchButtonSet;
@@ -651,21 +651,12 @@ dro_clearData = {
 
 sun_missionPreset = {
 	params ["_preset"];
-	/*
-		lbSetCurSel [2107, aoOptionSelect];		
-		sliderSetPosition [2111, 1*10];	//AI COUNT	
-		lbSetCurSel [2113, minesEnabled];			
-		lbSetCurSel [2115, civiliansEnabled];			
-		lbSetCurSel [2119, stealthEnabled];				
-		lbSetCurSel [2103, timeOfDay];		
-		lbSetCurSel [2106, numObjectives];
-	*/
 	switch (_preset) do {
 		case 1: {					
 			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*10];
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.0";				
-			["MAIN", 2050, 0] call sun_switchButtonSet;
+			["MAIN", 2050, 1] call sun_switchButtonSet;
 			//["MAIN", 2060, 0] call sun_switchButtonSet;
 			//["MAIN", 2070, 0] call sun_switchButtonSet;
 			["MAIN", 4010, 0] call sun_switchButtonSet;				
@@ -681,7 +672,7 @@ sun_missionPreset = {
 			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 0.5*10];
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x0.5";	
-			["MAIN", 2050, 0] call sun_switchButtonSet;			
+			["MAIN", 2050, 1] call sun_switchButtonSet;			
 			//["MAIN", 2060, 0] call sun_switchButtonSet;					
 			//["MAIN", 2070, 1] call sun_switchButtonSet;	
 			lbSetCurSel [2103, (selectRandom [3, 4])];		
@@ -697,7 +688,7 @@ sun_missionPreset = {
 			//["MAIN", 2020, 0] call sun_switchButtonSet;
 			sliderSetPosition [2041, 1*12.5];	
 			((findDisplay 52525) displayCtrl 2040) ctrlSetText "Количество противника: x1.25";	
-			["MAIN", 2050, 0] call sun_switchButtonSet;
+			["MAIN", 2050, 1] call sun_switchButtonSet;
 			//["MAIN", 2060, 0] call sun_switchButtonSet;
 			//["MAIN", 2070, 0] call sun_switchButtonSet;
 			["MAIN", 4010, 0] call sun_switchButtonSet;				
