@@ -493,6 +493,6 @@ if (_task == "SEARCHHOUSES" && !_task_SEARCHHOUSES) exitWith {
 		_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\searchHouses.sqf";	
 	};
 }; */
-[(AOLocations call BIS_fnc_randomIndex), true ] call fnc_selectObjective;
+//[(AOLocations call BIS_fnc_randomIndex), true ] call fnc_selectObjective;
 
 sleep 1;

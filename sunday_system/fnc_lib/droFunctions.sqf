@@ -379,8 +379,8 @@ dro_sendProgressMessage = {
 		};
 		case "END_RTB": {			
 			_phrase = selectRandom [
-				(format ["Хорошо %1, вернитесь к %2.", playerCallsign, markerText "campMkr"]),
-				(format ["Это всё, %1, возвращайтесь к %2 прямо сейчас.", playerCallsign, markerText "campMkr"])
+				(format ["Хорошо %1, вернитесь в %2.", playerCallsign, markerText "campMkr"]),
+				(format ["На этом все, %1, возвращайтесь в %2 прямо сейчас.", playerCallsign, markerText "campMkr"])
 			];
 			dro_messageStack pushBack [
 				[

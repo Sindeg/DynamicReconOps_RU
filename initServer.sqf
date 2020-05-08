@@ -64,3 +64,40 @@ _markers = "player_markers" call BIS_fnc_getParamValue;
 if (_markers == 1) then {
 	_nil = [] execVM "scripts\playerMarkers.sqf"
 };
+
+// Добавление всех юнитов для зевсов
+/*
+0 = [] spawn {
+  while {true} do {
+		_units = (allUnits + vehicles) select {_x getVariable ["edited",false]};
+		{
+			_unit = _x;
+			{_x addCuratorEditableObjects [[_unit],true]} forEach AllCurators;
+			_unit setvariable ["edited",true]
+		} forEach _units;
+		sleep 30;
+	} 
+};
+*/
+// Справка о сервере на карте
+/*
+private _worldName = worldName;
+
+//if !(_worldName in ["Stratis","Altis","Malden","Tanoa","Enoch"]) then {_worldName = "Other"};
+
+_pos1 = nil;
+_pos2 = nil;
+_pos3 = nil;
+_pos4 = nil;
+_pos5 = nil;
+_pos6 = nil;
+
+if (_worldName == "Altis") then {
+	_pos1 = [-1.4549,32210.7];
+	_pos2 = nil;
+	_pos3 = nil;
+	_pos4 = nil;
+	_pos5 = nil;
+	_pos6 = nil;
+};
+*/

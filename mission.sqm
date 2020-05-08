@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14250.667,10.598326,13010.061};
-		dir[]={0.032034855,-0.53622395,-0.84361678};
-		up[]={0.020349363,0.84400129,-0.535905};
-		aside[]={-0.99939889,-6.8890586e-007,-0.037955053};
+		pos[]={14898.191,43.174778,16249.762};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -16407,68 +16407,68 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={265.91992,7.5036163,31238.258};
+			position[]={-1.3494263,7.569397,31010.793};
 			name="marker_59";
 			text="Discord: discord.gg/B9Z8wBC";
 			type="mil_dot";
 			colorName="ColorRed";
 			id=1194;
-			atlOffset=193.47362;
+			atlOffset=193.5394;
 		};
 		class Item2
 		{
 			dataType="Marker";
-			position[]={266.15039,29.637619,31636.832};
+			position[]={-1.1189575,29.7034,31409.367};
 			name="marker_60";
 			text="TeamSpeak 3:      voice.russia01.pingperfect.com:9988";
 			type="mil_dot";
 			colorName="ColorRed";
 			id=1195;
-			atlOffset=215.60762;
+			atlOffset=215.6734;
 		};
 		class Item3
 		{
 			dataType="Marker";
-			position[]={14666.946,-26.825684,32440.313};
+			position[]={13001.453,-26.852661,31397.881};
 			name="marker_61";
 			text="Частота КВ: 150";
 			type="mil_dot";
 			colorName="ColorWEST";
 			id=1196;
-			atlOffset=159.14432;
+			atlOffset=159.11734;
 		};
 		class Item4
 		{
 			dataType="Marker";
-			position[]={14667.858,-20.798586,32040.08};
+			position[]={13002.365,-20.825562,30997.648};
 			name="marker_62";
 			text="Частота ДВ: 50";
 			type="mil_dot";
 			colorName="ColorWEST";
 			id=1197;
-			atlOffset=165.17142;
+			atlOffset=165.14444;
 		};
 		class Item5
 		{
 			dataType="Marker";
-			position[]={265.81445,27.195999,32438.18};
+			position[]={-1.454895,27.26178,32210.715};
 			name="marker_63";
 			text="Изменение дальности прорисовки: Ctrl + \ ";
 			type="mil_dot";
 			colorName="ColorRed";
 			id=1198;
-			atlOffset=213.166;
+			atlOffset=213.23178;
 		};
 		class Item6
 		{
 			dataType="Marker";
-			position[]={266.6709,27.017776,32038.701};
+			position[]={-0.59844971,27.083557,31811.236};
 			name="marker_64";
 			text="Что бы открыть арсенал необходимо зажать Win на ящик арсенала";
 			type="mil_dot";
 			colorName="ColorRed";
 			id=1199;
-			atlOffset=212.98778;
+			atlOffset=213.05356;
 		};
 		class Item7
 		{
