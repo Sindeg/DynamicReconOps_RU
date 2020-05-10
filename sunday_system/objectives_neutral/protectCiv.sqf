@@ -20,7 +20,7 @@ if (count _buildingPositions > 0) then {
 	_thisCiv disableAI "PATH";
 };
 
-if (isNull _thisCiv) exitWith {[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective};
+if (isNull _thisCiv) exitWith {[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective};
 
 // Marker
 _markerName = format["protectMkr%1", floor(random 10000)];

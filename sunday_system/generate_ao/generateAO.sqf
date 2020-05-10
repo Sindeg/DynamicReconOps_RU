@@ -52,11 +52,11 @@ _cityCenter = (getPos _randomLoc);
 
 // Дополнительные районы операции (extendedao)
 if (aoOptionSelect == 0) then {
-	_secondaryLocList = nearestLocations [[_cityCenter select 0, _cityCenter select 1], ["NameLocal","NameVillage","NameCity","NameCityCapital"], 2000];	
+	_secondaryLocList = nearestLocations [[_cityCenter select 0, _cityCenter select 1], ["NameLocal","NameVillage","NameCity","NameCityCapital"], 2600];	
 	_secondaryLocList = _secondaryLocList select {((getPos _x) distance _cityCenter > (aoSize * 0.4))};
 	// Add 1 to 3 secondary locations to the pool
 	if (count _secondaryLocList > 0) then {
-		for "_i" from 1 to (([1, count _secondaryLocList] call BIS_fnc_randomInt) min 4) step 1 do {
+		for "_i" from 1 to (([1, count _secondaryLocList] call BIS_fnc_randomInt) min 3) step 1 do {
 			_thisLoc = [_secondaryLocList] call sun_selectRemove;
 			if (((getPos _thisLoc) distance logicStartPos) < 700) then {
 				_secondaryLocList pushBack _thisLoc;

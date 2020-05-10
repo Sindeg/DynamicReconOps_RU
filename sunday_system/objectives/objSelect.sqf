@@ -247,7 +247,7 @@ if (count _select == 0) then {
 
 diag_log format ["DRO: New task will be %1", _select];
 _scriptHandle = nil;
-
+/*
 _task_HVT = missionNameSpace getVariable ["task_HVT", false];
 _task_destroy = missionNameSpace getVariable ["task_destroy", false];
 _task_POW = missionNameSpace getVariable ["task_POW", false];
@@ -388,8 +388,8 @@ if (_task == "SEARCHHOUSES" && !_task_SEARCHHOUSES) exitWith {
 	_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\searchHouses.sqf";	
 	missionNamespace setVariable ["task_SEARCHHOUSES", true, true];
 };
-
-/* switch (_select select 1) do {
+*/
+ switch (_select select 1) do {
 	case "HVT": {
 		_hvtInterrogate = "HVTREGULAR";
 		if (missionPreset == 2) then {"HVTREGULAR"} else {
@@ -492,7 +492,7 @@ if (_task == "SEARCHHOUSES" && !_task_SEARCHHOUSES) exitWith {
 	case "SEARCHHOUSES": {
 		_scriptHandle = [(_select select 0)] execVM "sunday_system\objectives_neutral\searchHouses.sqf";	
 	};
-}; */
+};
 //[(AOLocations call BIS_fnc_randomIndex), true ] call fnc_selectObjective;
 
 sleep 1;

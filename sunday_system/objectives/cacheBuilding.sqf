@@ -46,7 +46,7 @@ _totalInf = round (5 * aiMultiplier);
 
 if (count _spawnedObjects == 0) exitWith {
 	diag_log "DRO: No valid building cache object positions found";
-	[(AOLocations call BIS_fnc_randomIndex)] call fnc_selectObjective
+	[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective
 };
 
 // Spawn enemies to guard the building

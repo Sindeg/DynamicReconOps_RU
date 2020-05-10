@@ -84,7 +84,7 @@ switch (_powStyle) do {
 };
 
 if (_break) exitWith {
-	[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective;
+	[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective;
 };
 
 _powChar setCaptive true;
@@ -253,7 +253,7 @@ if (_spawnStationary) then {
 };
 
 if (_break) exitWith {
-	[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective;
+	[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective;
 };
 
 // Setup identity

@@ -250,7 +250,7 @@ switch (_hvtStyle) do {
 	};
 };
 
-if (_break) exitWith {[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective};
+if (_break) exitWith {[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective};
 
 _markerName = format["hvtMkr%1", floor(random 10000)];	
 

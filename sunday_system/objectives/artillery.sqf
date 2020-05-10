@@ -50,7 +50,7 @@ missionNamespace setVariable [(format ["%1_taskType", _taskName]), _taskType, tr
 
 _thisVeh = _vehicleType createVehicle _thisPos;
 _thisVeh = [_thisVeh] call sun_checkVehicleSpawn;
-if (isNull _thisVeh) exitWith {[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective};		
+if (isNull _thisVeh) exitWith {[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective};		
 _thisVeh setVariable ["thisTask", _taskName, true];
 _thisVeh setVehicleLock "LOCKED";
 

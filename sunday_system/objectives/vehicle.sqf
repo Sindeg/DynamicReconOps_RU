@@ -65,7 +65,7 @@ _thisPos = [(((AOLocations select _AOIndex) select 2) select 0)] call sun_select
 
 _thisVeh = _vehicleType createVehicle _thisPos;
 _thisVeh = [_thisVeh] call sun_checkVehicleSpawn;
-if (isNull _thisVeh) exitWith {[(AOLocations call BIS_fnc_randomIndex), false] call fnc_selectObjective};
+if (isNull _thisVeh) exitWith {[(AOLocations call BIS_fnc_randomIndex), true] call fnc_selectObjective};
 
 _roads = _thisVeh nearRoads 50;
 _dir = 0;
