@@ -593,12 +593,175 @@ switch (insertType) do {
 				// Установка ящиков с колесами и гуслями
 				_repairPos = [_workerPos, 2, 2, 2, 0, 10, 0] call BIS_fnc_findSafePos;
 				_repairBox = "Land_WoodenCrate_01_stack_x3_F" createVehicle _repairPos;
+				_cargo = "Supply500" createVehicle [0,0,0];
+				_cargo attachTo [_repairBox, [0,0,0.85]];
 				
-				_repairBox enableSimulation false;
-				_repairBox allowdamage false;
-				[_repairBox, 250] call ace_cargo_fnc_setSpace;
-				[_repairBox, 60, "ACE_Track", true] call ace_repair_fnc_addSpareParts; 
-				[_repairBox, 120, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;
+				[_cargo, "repairBox"] call fnc_setVehicleName;
+				// Россия
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить 2В14-1 Поднос</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Podnos_Bipod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Podnos_Gun_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить 9к115-2 Метис-М</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Metis_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Metis_Tripod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить 9к113 Корнет</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Kornet_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Kornet_Gun_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить АГС-30</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_AGS30_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_AGS30_Gun_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить ДШКМ</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_DShkM_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_DShkM_TripodHigh_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить КОРД</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Kord_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Kord_Gun_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#d96811'>Добавить СПГ-9</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_SPG9_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_SPG9_Tripod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				// США #38a1f5
+				repairBox addAction
+				[
+					"<t color='#38a1f5'>Добавить М2</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_M2_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_M2_Tripod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#38a1f5'>Добавить Мк19</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Mk19_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Mk19_Tripod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#38a1f5'>Добавить миномет М252</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["rhs_M252_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["rhs_M252_Bipod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#38a1f5'>Добавить TOW</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["rhs_Tow_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["rhs_TOW_Tripod_Bag", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				// Нейтральные #ccc58b
+				repairBox addAction
+				[
+					"<t color='#ccc58b'>Добавить тяжелый пулемет М2 .50</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["I_E_HMG_02_support_high_F", 1]; repairBox addBackpackCargoGlobal ["I_E_HMG_02_high_weapon_F", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				repairBox addAction
+				[
+					"<t color='#ccc58b'>Добавить миномет mk6</t>",
+					{clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["I_Mortar_01_support_F", 1]; repairBox addBackpackCargoGlobal ["I_Mortar_01_weapon_F", 1];},
+					nil,
+					1.5,
+					true,
+					true,
+					"",
+					"true",
+					5
+				];
+				
+				repairBox enableSimulation false;
+				repairBox allowdamage false;
+				[repairBox, 250] call ace_cargo_fnc_setSpace;
+				[repairBox, 60, "ACE_Track", true] call ace_repair_fnc_addSpareParts; 
+				[repairBox, 120, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;
 				
 				// Установка медика на базе
 				_medicPos = [_boxLocation, 6, 20, 3, 0, 20, 0] call BIS_fnc_findSafePos;
