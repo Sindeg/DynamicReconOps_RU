@@ -255,7 +255,7 @@ fnc_playerSetup =
 	В штабе находятся:<br/><br/>
 	<font color='#DEC034' size='15'>Арсенал</font> - чтобы открыть арсенал подойдите к ящику в центре штаба, и смотря на него, зажмите клавишу <font color='#D8D4C1' size='14'>WIN</font> для открытия ACE меню<br/><br/>
 	<font color='#DEC034' size='15'>Врач</font> - полностью восстанавливает ваше здоровье.<br/><br/>
-	<font color='#DEC034' size='15'>Арсенал техники</font> - создание транспорта, включая вертолеты. Рядом с ним находится ящик, в котором вы можете взять запасные колеса / гусеницы (ACE меню), а так же через меню действий выбрать статичные установки.<br/><br/>
+	<font color='#DEC034' size='15'>Арсенал техники</font> - создание транспорта, включая вертолеты. Рядом с ним находится ящик, в котором вы можете взять запасные колеса / гусеницы (ACE меню).<br/><br/>
 	В пределах штаба находится безопасная зона, внутри которой отключен урон.
 	"]];
 
@@ -306,6 +306,166 @@ fnc_playerSetup =
 		true, 
 		"",
 		"player distance arsenalBox < 6 && call BIS_fnc_admin == 2"
+	];
+	
+	// Россия
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить 2В14-1 Поднос</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Podnos_Bipod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Podnos_Gun_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить 9к115-2 Метис-М</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Metis_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Metis_Tripod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить 9к113 Корнет</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Kornet_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Kornet_Gun_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить АГС-30</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_AGS30_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_AGS30_Gun_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить ДШКМ</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_DShkM_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_DShkM_TripodHigh_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить КОРД</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Kord_Tripod_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Kord_Gun_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#d96811'>Добавить СПГ-9</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_SPG9_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_SPG9_Tripod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	// США #38a1f5
+	repairBox addAction
+	[
+		"<t color='#38a1f5'>Добавить М2</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_M2_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_M2_Tripod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#38a1f5'>Добавить Мк19</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["RHS_Mk19_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["RHS_Mk19_Tripod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#38a1f5'>Добавить миномет М252</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["rhs_M252_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["rhs_M252_Bipod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#38a1f5'>Добавить TOW</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["rhs_Tow_Gun_Bag", 1]; repairBox addBackpackCargoGlobal ["rhs_TOW_Tripod_Bag", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	// Нейтральные #ccc58b
+	repairBox addAction
+	[
+		"<t color='#ccc58b'>Добавить тяжелый пулемет М2 .50</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["I_E_HMG_02_support_high_F", 1]; repairBox addBackpackCargoGlobal ["I_E_HMG_02_high_weapon_F", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
+	];
+	repairBox addAction
+	[
+		"<t color='#ccc58b'>Добавить миномет mk6</t>",
+		{hint "В снаряжение ящика была добавлена выбранная вами установка";clearItemCargoGlobal repairBox; clearMagazineCargoGlobal repairBox; clearWeaponCargoGlobal repairBox; clearBackpackCargoGlobal repairBox; repairBox addBackpackCargoGlobal ["I_Mortar_01_support_F", 1]; repairBox addBackpackCargoGlobal ["I_Mortar_01_weapon_F", 1];},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"true",
+		5
 	];
 	
 	systemchat("Загрузка завершена."); 
