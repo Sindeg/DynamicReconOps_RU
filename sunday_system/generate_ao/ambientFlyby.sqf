@@ -8,8 +8,8 @@ _planeClasses = _this select 2;
 
 //****************************** Настройки *******************************
 
-_timeToSpawn = 18*60; // Время перед появлением новой авиации
-_timeDifference = 3*60; // Изменение верхней и нижней границы времени появления авиации
+_timeToSpawn = 20*60; // Время перед появлением новой авиации
+_timeDifference = 5*60; // Изменение верхней и нижней границы времени появления авиации
 
 _timeToPatrol = 7*60; // Время для авиации на прилёт в зону действий и патрулирования
 _distanceRange = 7000; // Расстояние от центра операций до новой техники
@@ -50,12 +50,12 @@ _strikeAirClasses = _heliClasses + _planeClasses; // Вся авиация вр�
 _typeSpawn = [
 	"airStrike",
 	"Heli_smoke" 
-//	"Heli_ropes"
+	"Heli_ropes"
 ]; 
 
 if (count _transportHeliClasses == 0) then {
 	_typeSpawn deleteAt (_typeSpawn find "Heli_smoke")
-	//_typeSpawn deleteAt (_typeSpawn find "Heli_ropes")
+	_typeSpawn deleteAt (_typeSpawn find "Heli_ropes")
 };
 
 if (count _strikeAirClasses == 0) then {
@@ -74,6 +74,15 @@ private _flares = {
 	};
 };
 
+if (_debug) then {
+	_timeToSpawn = 12;
+	_timeDifference = 0;
+	_timeToPatrol = 40;
+	_distanceRange = 2500;
+	_typeSpawn = ["Heli_ropes"];
+	_transportHeliClasses pushBack "B_Heli_Transport_03_F";
+};
+
 // Создаём контрмеры для цикличного использования на отходе
 private _flares2 = {
 	while {alive _this && alive driver _this} do {    
@@ -88,7 +97,7 @@ while {true} do {
     sleep ([_timeToSpawn - _timeDifference, _timeToSpawn + _timeDifference] call BIS_fnc_randomInt); // Периодичность цикла
 	
 	// _center = getpos player; 
-	if ({_x distance _center < _radiusCenterToStart} count allPlayers > _numPlayersToStart) then {
+	if ({_x distance _center < _radiusCenterToStart} count allPlayers > _numPlayersToStart || _debug) then {
 		// Вычисляем общие координаты места появления будущей техники
 		_centerTemp = [_center, 2000, 2500, 0, 1, 60, 0] call BIS_fnc_findSafePos;
 		
@@ -185,7 +194,7 @@ while {true} do {
 				};
 				deleteVehicle _helipad;
 			};
-	/* 		case "Heli_ropes": {
+	 		case "Heli_ropes": {
 				if (_debug) then {systemChat "Heli_ropes"};
 				_posDropPoint = [_center, _dropDistanceMin, _dropDistanceMax, 0, 0, 20, 0] call BIS_fnc_findSafePos;
 				private _helipad = "Land_HelipadEmpty_F" createVehicle _posDropPoint; // Создаём невидимую вертолётную площадку, для точной посадки вертолёта
@@ -210,11 +219,11 @@ while {true} do {
 
 				_heli flyinheight 50;
 			   
-			   [_heli, 20, getpos _helipad] call AR_Rappel_All_Cargo;
+			   [_heli, 35, getpos _helipad] call AR_Rappel_All_Cargo;
 			   
 				waitUntil {
 					sleep 1;
-					(_heli distance2d _posDropPoint) < 1700
+					(_heli distance2d _posDropPoint) < 1700 || (!alive _heli) || (!alive driver _heli)
 				};
 			   
 				//[_heli, _posDropPoint] spawn _flares;
@@ -222,12 +231,12 @@ while {true} do {
 				 // Ждём пока все члены группы десанта покинут вертолёт
 				waitUntil {
 					sleep 1; 
-					{isTouchingGround (vehicle _x) &&_x == (vehicle _x)} forEach (_unitsCargo)
+					{isTouchingGround (vehicle _x) &&_x == (vehicle _x)} forEach (_unitsCargo) || (!alive _heli) || (!alive driver _heli)
 				};
 				
 				// Доп. проверка, что вертолёт выгрузил весь десант и поднялся на исходные 50м.
 				waitUntil {
-					sleep 1; (getPosASL _heli) select 2 > 45
+					sleep 1; (getPosASL _heli) select 2 > 45 || (!alive _heli) || (!alive driver _heli)
 				}; 
 				
 				if (_debug) then {systemChat "Все боты на земле"};
@@ -250,7 +259,7 @@ while {true} do {
 				for "_i" from count waypoints _supgroup - 1 to 0 step -1 do {deleteWaypoint [_supgroup, _i]};
 				
 				if (_debug) then {systemChat "Пехота идёт на точку"};
-				_wp =_supgroup addWaypoint [getpos player, 0];
+				_wp =_supgroup addWaypoint [_center, 0];
 				_wp setWaypointType "SAD";
 				_wp setWaypointCombatMode "RED";
 				_wp setWaypointBehaviour "AWARE";
@@ -264,7 +273,7 @@ while {true} do {
 					deleteVehicle _heli;
 				};
 				deleteVehicle _helipad;
-			}; */
+			}; 
 			case "airStrike": { 
 				if (_debug) then {systemChat "airStrike"};
 				_vehType = selectRandom _strikeAirClasses; // Случайный доступный самолёт

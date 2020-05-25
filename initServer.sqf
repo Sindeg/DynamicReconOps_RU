@@ -65,20 +65,6 @@ if (_markers == 1) then {
 	_nil = [] execVM "scripts\playerMarkers.sqf"
 };
 
-// Добавление всех юнитов для зевсов
-/*
-0 = [] spawn {
-  while {true} do {
-		_units = (allUnits + vehicles) select {_x getVariable ["edited",false]};
-		{
-			_unit = _x;
-			{_x addCuratorEditableObjects [[_unit],true]} forEach AllCurators;
-			_unit setvariable ["edited",true]
-		} forEach _units;
-		sleep 30;
-	} 
-};
-*/
 // Справка о сервере на карте
 /*
 private _worldName = worldName;
