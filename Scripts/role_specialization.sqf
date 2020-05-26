@@ -6,9 +6,8 @@ _basePos = getMarkerPos "campMkr";
 _szmkr = getMarkerPos "campMkr";
 
 //===== AT / MISSILE LAUNCHERS (excl RPG)
-_missileSoldiers = ["B_soldier_AT_F"];
-_missileSpecialisedAT = ["launch_NLAW_F","launch_RPG32_F","launch_RPG32_ghex_F","launch_RPG7_F","rhs_weap_fgm148","rhs_weap_maaws","rhs_weap_maaws_optic","launch_MRAWS_olive_F", "launch_MRAWS_olive_rail_F","launch_MRAWS_green_F","launch_MRAWS_green_rail_F","launch_MRAWS_sand_F","launch_MRAWS_sand_rail_F","rhs_weap_smaw","rhs_weap_smaw_gr_optic","rhs_weap_smaw_green","rhs_weap_smaw_optic","rhs_weap_rpg7","rhs_weap_rpg7_1pn93","rhs_weap_rpg7_pgo"];
-_missileSpecialisedAA =["rhs_weap_igla","rhs_weap_fim92"];
+_missileSpecialisedAT = ["launch_NLAW_F","launch_RPG32_F","launch_RPG32_ghex_F","launch_RPG7_F","rhs_weap_fgm148","rhs_weap_maaws","rhs_weap_maaws_optic","launch_MRAWS_olive_F", "launch_MRAWS_olive_rail_F","launch_MRAWS_green_F","launch_MRAWS_green_rail_F","launch_MRAWS_sand_F","launch_MRAWS_sand_rail_F","rhs_weap_smaw","rhs_weap_smaw_gr_optic","rhs_weap_smaw_green","rhs_weap_smaw_optic","rhs_weap_rpg7","rhs_weap_rpg7_1pn93","rhs_weap_rpg7_pgo", "launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_Titan_short_F", "launch_B_Titan_short_tna_F","launch_O_Titan_short_ghex_F","launch_B_Titan_olive_F"];
+_missileSpecialisedAA =["rhs_weap_igla","rhs_weap_fim92","launch_B_Titan_F", "launch_I_Titan_F","launch_O_Titan_F","launch_Titan_F", "launch_B_Titan_tna_F","launch_O_Titan_ghex_F","launch_I_Titan_eaf_F"];
 
 //_blacklistAT = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_O_Titan_F","launch_B_Titan_tna_F","launch_O_Titan_Short_F","launch_B_Titan_short_tna_F","launch_I_Titan_eaf_F","launch_B_Titan_olive_F","launch_O_Vorona_green_F","launch_O_Vorona_brown_F","launch_Titan_F","launch_Titan_short_F","launch_O_Titan_short_ghex_F","launch_O_Titan_ghex_F"];
 
@@ -25,14 +24,6 @@ _dropWeapon =
 	_speed = 1.5; 
 	_weaponHolder setVelocity [_speed * sin(_dir), _speed * cos(_dir),4];  
 }; 
- 
-// _eventAdded = false;
-
-// restrict_Thermal = false;
-// restrict_LMG = false;
-// restrict_sOptics = false;
-// restrict_Marksman = false;
-// restrict_mOptics = false;
  
 while {true} do 
 {

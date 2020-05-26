@@ -49,7 +49,7 @@ _strikeAirClasses = _heliClasses + _planeClasses; // Вся авиация вр�
 // Все возможные типы появления авиации
 _typeSpawn = [
 	"airStrike",
-	"Heli_smoke" 
+	"Heli_smoke", 
 	"Heli_ropes"
 ]; 
 
