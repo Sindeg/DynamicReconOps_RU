@@ -413,7 +413,7 @@ class sundayDialog {
 						class SwitchTitle: sundaySelButtonTitle
 						{			
 							idc = 2052;	
-							text = "Минные поля";
+							text = "Ограничение техники";
 						};
 						class SwitchText: sundaySelButtonSelect
 						{			
@@ -423,7 +423,7 @@ class sundayDialog {
 						class SwitchButton: sundaySelButton {
 							idc = 2054;
 							action = "['MAIN', 2050] call sun_switchButton";
-							tooltip = "Включает возможность присутствия минных полей.";
+							tooltip = "Если включено - арсенал техники в штабе будет доступен не всем игрокам, а только командиру взвода и офицеру.";
 						};
 					};		
 				};

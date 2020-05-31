@@ -42,7 +42,7 @@ objNull spawn {
 		"<t color='#11ff11'>Удалить технику",
 		"\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa",
 		"\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa",
-		"(((Stz_Atv distance baseWorker) < 80) && ((_this distance _target) < 6) && ({alive _x} count crew cursorTarget == 0) && (!(vehicle player isKindOf ""LandVehicle"")))",
+		"(((Stz_Atv distance baseWorker) < 200) && ((_this distance _target) < 6) && ({alive _x} count crew cursorTarget == 0) && (!(vehicle player isKindOf ""LandVehicle"")))",
 		"true",
 		{},
 		{},

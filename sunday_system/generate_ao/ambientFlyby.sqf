@@ -54,7 +54,7 @@ _typeSpawn = [
 ]; 
 
 if (count _transportHeliClasses == 0) then {
-	_typeSpawn deleteAt (_typeSpawn find "Heli_smoke")
+	_typeSpawn deleteAt (_typeSpawn find "Heli_smoke");
 	_typeSpawn deleteAt (_typeSpawn find "Heli_ropes")
 };
 

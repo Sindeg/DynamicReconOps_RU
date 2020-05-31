@@ -913,7 +913,7 @@ if (civiliansEnabled == 0) then {
 };
 
 // Отключение гражданских
-/* 
+ 
 if (civiliansEnabled == 1 || civiliansEnabled == 2) then {	
 	[((findDisplay 888888) displayCtrl 8889), "SPAWNING CIVILIANS"] remoteExecCall ["ctrlSetText", 0];			
 		civTrue = true;
@@ -929,7 +929,7 @@ if (civiliansEnabled == 1 || civiliansEnabled == 2) then {
 			};					
 		};
 }; 
-*/
+
 
 missionNameSpace setVariable ["objectivesSpawned", 1, true];
 
@@ -1134,9 +1134,10 @@ if (animalsEnabled == 0) then {
 // Briefing init
 [_missionName] execVM "briefing.sqf";
 
-if (minesEnabled == 1) then {
-	[centerPos] execVM "sunday_system\generate_ao\generateMinefield.sqf";
-};
+//if (minesEnabled == 1) then {
+[centerPos] execVM "sunday_system\generate_ao\generateMinefield.sqf";
+//};
+
 [] call sun_removeEnemyNVG;
 
 // Сейф зона вокруг базы

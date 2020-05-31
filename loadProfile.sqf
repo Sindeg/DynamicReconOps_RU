@@ -29,7 +29,7 @@ aoOptionSelect = profileNamespace getVariable ["DRO_aoOptionSelect", 0];
 publicVariable "aoOptionSelect";
 
 //minesEnabled = profileNamespace getVariable ["DRO_minesEnabled", 0];
-minesEnabled = 1;
+minesEnabled = 0;
 publicVariable "minesEnabled";
 
 //civiliansEnabled = profileNamespace getVariable ["DRO_civiliansEnabled", 0];

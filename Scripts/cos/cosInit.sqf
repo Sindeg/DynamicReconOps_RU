@@ -16,8 +16,8 @@ if (isnil "SERVER") then {Hint "You must ADD a object named SERVER";Player Sidec
 if (isServer) then {
 IF (!isnil ("COScomplete")) then {Hint "Check your call. COS was called twice!";}else{
 
-COS_distance = 800;//Set spawn distance
-_aerielActivation = false;// Set if flying units can activate civilian Zones
+COS_distance=700;//Set spawn distance
+_aerielActivation=true;// Set if flying units can activate civilian Zones
 
 blackListTowns = ["sagonisi"];// Remove towns from COS
 
@@ -25,25 +25,25 @@ whiteListMkrs=[];// Add Custom Markers for COS to populate
 
 DefaultSide = Civilian;// Set side of units spawned
 
-_showMarker = false;// Show COS markers on map
+_showMarker=false;// Show COS markers on map
 
 showTownLabel = false;// Show town information when entering COS zones
 
-debugCOS = false;// Show spawned units on the map
+debugCOS=false;// Show spawned units on the map
 
-COSpedestrians  =false; //Spawn pedestrians
-COScars = false;// Spawn Cars
-COSparked = true;// Spawn parked cars
+COSpedestrians=false; //Spawn pedestrians
+COScars=false;// Spawn Cars
+COSparked=true;// Spawn parked cars
 
 // Types of units that will be spawned as civilians.
-COScivPool =[];	
+COScivPool =["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_hunter_1_F","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_polo_1_F","C_man_polo_2_F","C_man_polo_3_F","C_man_polo_4_F","C_man_polo_5_F","C_man_polo_6_F","C_man_shorts_1_F","C_man_shorts_2_F","C_man_shorts_3_F","C_man_shorts_4_F","C_man_w_worker_F"];	
 COSmotPool =["LOP_AM_Landrover","C_Quadbike_01_F","LOP_UA_UAZ","C_Offroad_01_F","C_Offroad_01_covered_F","C_Van_01_transport_F","C_Van_01_box_F","C_Van_02_transport_F","C_Van_02_vehicle_F","C_Hatchback_01_F","C_Offroad_02_unarmed_F","C_SUV_01_F"];
 
-COSmaxGrps = 72;//Set Maximum group limit for COS at any one time (If limit is hit then civilians will be placed into a single group for each town)
+COSmaxGrps=72;//Set Maximum group limit for COS at any one time (If limit is hit then civilians will be placed into a single group for each town)
 
 // Browse to line 81 to customise number of civilians that spawn.
 private ["_sizeX","_sizeY","_name","_pos","_mSize","_rad","_civilians","_vehicles","_parked","_actCond"];
-vehScript_FNC=compile preprocessFileLineNumbers "scripts\cos\addScript_Vehicle.sqf";
+breakPatrol_FNC=compile preprocessFileLineNumbers "Scripts\cos\patrolFnc.sqf";unitScript_FNC=compile preprocessFileLineNumbers "Scripts\cos\addScript_Unit.sqf";vehScript_FNC=compile preprocessFileLineNumbers "Scripts\cos\addScript_Vehicle.sqf";
 COScomplete=false;publicvariable "COScomplete";publicvariable "COS_distance";populating_COS=false;
 cosMkrArray=[];
 server setvariable ["cosGrpCount",0];//Set global group count
@@ -79,38 +79,43 @@ if (({_name==_x} count blackListTowns)>0 OR (_name == "")) then {}else{
 		
 // Customise population by number of houses
 _randomisation=10;
-
-if (_houses <= 10) then {
-	_civilians=10+ round(random _randomisation);// Civilians spawned
+	if (_houses <= 10) 
+		then {
+	_civilians=0;// Civilians spawned
 	_vehicles=0;// Moving Vehicles Spawned
 	_parked=1;// Parked Vehicles Spawned
-};		
-if (_houses <= 30 and _houses > _randomisation) then {
-	_civilians=20+ round(random _randomisation);// Civilians spawned
-	_vehicles=2;// Moving Vehicles Spawned
+			};		
+ 	if (_houses <= 30 and _houses > _randomisation) 
+		then {
+	_civilians=0;// Civilians spawned
+	_vehicles=0;// Moving Vehicles Spawned
 	_parked=2;// Parked Vehicles Spawned
-};
-		
-if (_houses <= 70 and _houses > 30) then {
-	_civilians=25+ round(random _randomisation);// Civilians spawned
-	_vehicles=3;// Moving Vehicles Spawned
+			};
+			
+ 	if (_houses <= 70 and _houses > 30) 
+		then {
+	_civilians=0;// Civilians spawned
+	_vehicles=0;// Moving Vehicles Spawned
 	_parked=3;// Parked Vehicles Spawned
-};
-		
-if (_houses <= 140 and _houses > 70) then {
-	_civilians=30+ round(random _randomisation);// Civilians spawned
-	_vehicles=3;// Moving Vehicles Spawned
+			};
+			
+ 	if (_houses <= 140 and _houses > 70) 
+		then {
+	_civilians=0;// Civilians spawned
+	_vehicles=0;// Moving Vehicles Spawned
 	_parked=4;// Parked Vehicles Spawned
-};
-if (_houses > 140) then {
-	_civilians=40+ round(random _randomisation);// Civilians spawned
-	_vehicles=4;// Moving Vehicles Spawned
+			};
+ 	if (_houses > 140) 
+		then {
+	_civilians=0;// Civilians spawned
+	_vehicles=0;// Moving Vehicles Spawned
 	_parked=5;// Parked Vehicles Spawned
-};
-		
-if (!COSpedestrians) then {_civilians=0;};	// If pedestrians disabled spawn 0
-if (!COScars) then {_vehicles=0;};// If cars disabled spawn 0
-if (!COSparked) then {_parked=0;};// If parked cars disabled spawn 0
+			};
+			
+ if (!COSpedestrians) then {_civilians=0;};	// If pedestrians disabled spawn 0
+ if (!COScars) then {_vehicles=0;};// If cars disabled spawn 0
+ if (!COSparked) then {_parked=0;};// If parked cars disabled spawn 0
+ 
  
 // Create marker over town
 	_markerID=format ["COSmkrID%1",_name];
@@ -143,9 +148,9 @@ _roadPosArray resize _minPositions;
 _roadlist=_roadlist call BIS_fnc_arrayShuffle;
 
  for "_n" from 0 to _minPositions do
-	{
-		_roadPosArray set [_n, _roadlist select _n];
-	};
+		{
+     _roadPosArray set [_n, _roadlist select _n];
+		};
 	
 // Save all information
 	_information=[_civilians,_vehicles,_parked,_roadPosArray];
@@ -164,12 +169,12 @@ _roadlist=_roadlist call BIS_fnc_arrayShuffle;
 					_actCond="{vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 50} count allunits > 0";
 						};
 		_var=format["trig%1", _markerID];
-		_trigAct=format ["null= [%1] execVM ""scripts\cos\cosCore.sqf"";server setvariable [%2,true];",str _foo,str _var];
+		_trigAct=format ["null= [%1] execVM ""Scripts\cos\cosCore.sqf"";server setvariable [%2,true];",str _foo,str _var];
 		_trigDe=format ["server setvariable [%1,false];",str _var];
 		_trigger setTriggerStatements [_actCond,_trigAct,_trigDe];
 	};
 
-}foreach (nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), ["NameCityCapital","NameCity","NameVillage","CityCenter"], 25000]) + whiteListMkrs;
+}foreach (nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), ["NameCityCapital","NameCity","NameVillage","CityCenter"], 25000]) +whiteListMkrs;
 
 // All towns have been saved into cos Marker Array.
 SERVER setvariable ["COSmarkers",cosMkrArray,true];
@@ -179,7 +184,7 @@ COScomplete=true;publicvariable "COScomplete";
 // LOCAL SCRIPTS
 waituntil {COScomplete};
 _mkrs=SERVER getvariable "COSmarkers";// Use this to get all town markers
-null=[] execVM "scripts\cos\localScript.sqf";// This shows messages for players during multiplayer
+null=[] execVM "Scripts\cos\localScript.sqf";// This shows messages for players during multiplayer
 
 };
 };

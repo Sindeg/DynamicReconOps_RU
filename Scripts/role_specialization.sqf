@@ -35,7 +35,7 @@ while {true} do
 	//------------------------------------- LaunchersAT
 	if (({player hasWeapon _x} count _missileSpecialisedAT) > 0) then 
 	{
-		if (!(_playerRole isEqualTo "ПТ специалист") && !(_playerRole isEqualTo "Командир")) then 
+		if (!(_playerRole isEqualTo "ПТ специалист")) then 
 		{
 			if (_insideSafezone) then {player removeWeapon _secondaryWeapon} else {[secondaryWeapon player] call _dropWeapon};
 			hint parseText format ["<t size = '1.2' color='#FFBF00'>Внимание</t><br/><br />Только ПТ специалисты могут использовать %1. Вам доступны только базовые ПТ гранатомёты.<br/>",_secondaryName];
@@ -47,7 +47,7 @@ while {true} do
 	//------------------------------------- LaunchersAA
 	if (({player hasWeapon _x} count _missileSpecialisedAA) > 0) then 
 	{
-		if (!(_playerRole isEqualTo "ПВО специалист") && !(_playerRole isEqualTo "Командир")) then 
+		if (!(_playerRole isEqualTo "ПВО специалист")) then 
 		{
 			if (_insideSafezone) then {player removeWeapon _secondaryWeapon} else {[secondaryWeapon player] call _dropWeapon};
 			hint parseText format ["<t size = '1.2' color='#FFBF00'>Внимание</t><br/><br />Только ПВО специалисты могут использовать %1. Вам доступны только базовые ПТ гранатомёты.<br/>",_secondaryName];
@@ -88,7 +88,9 @@ while {true} do
 		{
 			case "Медик": 
 				{player assignTeam "RED";}; 
-			case "Командир": 
+			case "[Штаб] Командир взвода": 
+				{player assignTeam "RED";}; 
+			case "[Штаб] Офицер": 
 				{player assignTeam "RED";}; 
 			case "Инженер": 
 				{player assignTeam "BLUE";}; 

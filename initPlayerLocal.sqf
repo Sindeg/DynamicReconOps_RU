@@ -109,10 +109,14 @@ fnc_playerSetup =
 			{
 				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#fff705'>ПВО специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование ПЗРК.</t>"];
 			}; 
-			case "Командир": 
+			case "[Штаб] Офицер": 
+			{
+				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#fff705'>ПВО специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование ПЗРК.</t>"];
+				[] call fnc_addAction_AirportTp;
+			}; 
+			case "[Штаб] Командир взвода": 
 			{
 				player setVariable ["ace_medical_medicclass", 2, true];
-				player setVariable ["ACE_IsEngineer", 2, true];
 				//hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
 				choiceAirport = arsenalBox addAction 
 				[
@@ -149,6 +153,7 @@ fnc_playerSetup =
 		player setVariable ["ace_medical_medicclass", 2, true];
 	};
 	
+	// 3д иконка арсенала
 	addMissionEventHandler
 	[
 		"Draw3D",
@@ -156,7 +161,46 @@ fnc_playerSetup =
 			if (player distance arsenalbox < 40) then {
 				alphaText = linearConversion[5, 40, player distance arsenalbox, 1, 0, true];
 				_pos = getPosWorld arsenalbox;
-				drawIcon3D ['\A3\ui_f\data\IGUI\Cfg\Actions\takeFlag_ca.paa', [1, 0.615, 0.121, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал (зажать WIN) ", 1, 0.0315,"PuristaSemibold"];
+				drawIcon3D ['\A3\ui_f\data\IGUI\Cfg\Actions\takeFlag_ca.paa', [1, 0.615, 0.121, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал (зажать WIN)", 1, 0.0315, "PuristaSemibold"];
+			};
+		}	
+	];
+	
+	// 3д икона стационарных орудий
+	addMissionEventHandler
+	[
+		"Draw3D",
+		{
+			if (player distance repairBox < 40) then {
+				alphaText = linearConversion[5, 40, player distance repairBox, 1, 0, true];
+				_pos = getPosWorld repairBox;
+				drawIcon3D ['\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\mortar_ca.paa', [0.05, 0.63, 0.99, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Станковое оружие", 1, 0.04, "PuristaSemibold"];
+			};
+		}	
+	];
+	
+	// Отрисовка врача
+	addMissionEventHandler
+	[
+		"Draw3D",
+		{
+			if (player distance baseMedic < 40) then {
+				alphaText = linearConversion[5, 40, player distance baseMedic, 1, 0, true];
+				_pos = getPosWorld baseMedic;
+				drawIcon3D ['\A3\ui_f\data\igui\cfg\actions\heal_ca.paa', [0.89, 0.25, 0.25, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Врач", 1, 0.04, "PuristaSemibold"];
+			};
+		}	
+	];
+	
+	// Арсенал техники
+	addMissionEventHandler
+	[
+		"Draw3D",
+		{
+			if (player distance baseWorker < 60) then {
+				alphaText = linearConversion[5, 60, player distance baseWorker, 1, 0, true];
+				_pos = getPosWorld baseWorker;
+				drawIcon3D ['\A3\ui_f\data\igui\cfg\mptable\soft_ca.paa', [0.80, 0.59, 0, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал техники", 1, 0.04, "PuristaSemibold"];
 			};
 		}	
 	];
@@ -261,7 +305,8 @@ fnc_playerSetup =
 
 	player createDiaryRecord ["О миссии", ["Роли", 
 	"В зависимости от выбранного слота (специализации) вам могут быть доступны следущее снаряжение и доступные действия:<br/><br/>
-	<font color='#DA3B16' size='15'>Командир</font> - обязятельный слот при старте игры. Выбирает местоположение операций, штаба и настраивает задания. Так же может указать расположение аэропорта, куда могут перемещаться пилоты (Для выбора используйте соответствующее действие стоя на базе у арсенала).<br/><br/>
+	<font color='#DA3B16' size='15'>[Штаб] Командир взвода</font> - обязятельный слот при старте игры. Выбирает местоположение операций, штаба и настраивает задания. Так же может указать расположение аэропорта, куда могут перемещаться пилоты (Для выбора используйте соответствующее действие стоя на базе у арсенала). Специальность - медик.<br/><br/>
+	<font color='#DA3B16' size='15'>[Штаб] Офицер</font> - Инструктирует новоприбывших, находится в штабе для оказания помощи отряду. Может перемещаться в аэропорт для создания и управления БПЛА. Специальность - медик.<br/><br/>
 	<font color='#2D88EF' size='15'>Инженер</font> - возможность ремонтировать технику с помощью набора инструментов.<br/><br/>
 	<font color='#7FFF00' size='15'>ПТ специалист</font> - использование ПТ установок.<br/><br/>
 	<font color='#FCFC0F' size='15'>ПВО специалист</font> - использование ПВО установок.<br/><br/>
@@ -706,16 +751,19 @@ hintSilent "";
 cutText ["", "BLACK FADED"];
 
 // Open lobby
-_handle = CreateDialog "DRO_lobbyDialog";
-diag_log format ["DRO: Player %1 created DRO_lobbyDialog: %2", player, _handle];
-[] execVM "sunday_system\dialogs\populateLobby.sqf";
+
+if (roleDescription player == '[Штаб] Командир взвода') then {
+	_handle = CreateDialog "DRO_lobbyDialog";
+	diag_log format ["DRO: Player %1 created DRO_lobbyDialog: %2", player, _handle];
+	[] execVM "sunday_system\dialogs\populateLobby.sqf";
+};
 
 sleep 0.5;
 cutText ["", "BLACK IN", 1];
 
 _actionID = nil;
 
-if (roleDescription player == 'Командир') then {
+if (roleDescription player == '[Штаб] Командир взвода') then {
 	_actionID = player addAction ["Открыть планирование команды", 
 		{
 			_handle = CreateDialog "DRO_lobbyDialog";
@@ -762,7 +810,7 @@ closeDialog 1;
 
 1 fadeSound 0;
 
-if (roleDescription player == 'Командир') then {
+if (roleDescription player == '[Штаб] Командир взвода') then {
 	player removeAction _actionID;
 };
 

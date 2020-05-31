@@ -37,10 +37,13 @@ switch (_playerRole) do
 	{
 		player setVariable ["ACE_IsEngineer", 2, true];
 	}; 
-	case "Командир": 
+	case "[Штаб] Командир взвода": 
 	{
 		player setVariable ["ace_medical_medicclass", 2, true];
-		player setVariable ["ACE_IsEngineer", 2, true];
+	};
+	case "[Штаб] Офицер": 
+	{
+		player setVariable ["ace_medical_medicclass", 2, true];
 	};
 	case "Пилот": 
 	{
