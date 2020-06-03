@@ -10,8 +10,8 @@ allowFunctionsLog = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 1;
-corpseRemovalMinTime = 360;
-corpseRemovalMaxTime = 600;
+corpseRemovalMinTime = 500;
+corpseRemovalMaxTime = 6000;
 
 respawn = 3;
 respawnButton = 1;
@@ -234,4 +234,12 @@ class CfgDiscordRichPresence {
     defaultSmallImageKey = "";      // Small image
     defaultSmallImageText = "";     // Small image hover text
     useTimeElapsed = 1;             // Show time elapsed since the player connected (1 - true, 0 - false)
+};
+class CfgDebriefingSections 
+{
+        class acex_killTracker 	
+	{
+        title = "ACEX Killed Events";
+       variable = "acex_killTracker_outputText";
+    };
 };

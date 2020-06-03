@@ -11,7 +11,7 @@ waitUntil {!isNull player};
 
 addWeaponItemEverywhere = compileFinal " _this select 0 addPrimaryWeaponItem (_this select 1); ";
 addHandgunItemEverywhere = compileFinal " _this select 0 addHandgunItem (_this select 1); ";
-removeWeaponItemEverywhere = compileFinal "_this select 0 removePrimaryWeaponItem (_this select 1)";
+//removeWeaponItemEverywhere = compileFinal "_this select 0 removePrimaryWeaponItem (_this select 1)";
 
 if (!hasInterface || isDedicated) exitWith {};
 
@@ -66,6 +66,23 @@ fnc_addAction_AirportTp = {
 
 fnc_playerSetup = 
 {
+	// Удаление мертвых тех
+	_respawnType = "RespawnPositions" call BIS_fnc_getParamValue;
+	// if (_respawnType == 2) then {
+		// player addMPEventHandler ['MPKilled', {
+			// params ["_unit", "_killer", "_instigator", "_useEffects"]; 
+			// _unit spawn { 
+				// sleep 3;
+				// if (!isNull _unit) then {
+					// deleteVehicle _unit;
+					// systemchat "body deleted";
+				// };
+				
+				// systemchat "end";
+			// } 
+		// }
+		// ];
+	// };
 	sleep 1;
 	// Отключение каналов в игре
 	1 enableChannel false;
@@ -111,7 +128,8 @@ fnc_playerSetup =
 			}; 
 			case "[Штаб] Офицер": 
 			{
-				hint parsetext format ["<t size='1'>Ваша специальность - <t color='#fff705'>ПВО специалист.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно использование ПЗРК.</t>"];
+				hint parsetext format ["<t size='1.2'>Ваша специальность - <t color='#FA4F00'>медик.</t></t><br/><br/><t align='center' t size='1.1'>Вам доступно переливание крови другим бойцам, использование хирургического набора, аптечек и дефибриллятора.<br/><br/>Аптечки находятся в <t color='#EEB70D'>снаряжении арсенала.</t></t>"];
+				player setVariable ["ace_medical_medicclass", 2, true];
 				[] call fnc_addAction_AirportTp;
 			}; 
 			case "[Штаб] Командир взвода": 
@@ -153,6 +171,26 @@ fnc_playerSetup =
 		player setVariable ["ace_medical_medicclass", 2, true];
 	};
 	
+	// Установка точек респавна для каждой роли
+	_respawnType = "RespawnPositions" call BIS_fnc_getParamValue;
+	if (_respawnType == 2) then {
+		_playerRole = roleDescription player;
+		switch (_playerRole) do
+		{
+			case "[Штаб] Офицер": 
+			{
+				[player, "respawnBase", "Штаб"] call BIS_fnc_addRespawnPosition;
+			}; 
+			case "Пилот":
+			{
+				[player, "respawnBase", "Штаб"] call BIS_fnc_addRespawnPosition;
+			};
+			default 
+			{
+				[player, "respawn", "Отряд"] call BIS_fnc_addRespawnPosition;
+			};
+		};
+	};
 	// 3д иконка арсенала
 	addMissionEventHandler
 	[
@@ -197,8 +235,8 @@ fnc_playerSetup =
 	[
 		"Draw3D",
 		{
-			if (player distance baseWorker < 60) then {
-				alphaText = linearConversion[5, 60, player distance baseWorker, 1, 0, true];
+			if (player distance baseWorker < 80) then {
+				alphaText = linearConversion[5, 80, player distance baseWorker, 1, 0, true];
 				_pos = getPosWorld baseWorker;
 				drawIcon3D ['\A3\ui_f\data\igui\cfg\mptable\soft_ca.paa', [0.80, 0.59, 0, alphaText], [(_pos select 0),(_pos select 1), 2.5], 1, 1, 0, "Арсенал техники", 1, 0.04, "PuristaSemibold"];
 			};
@@ -350,7 +388,7 @@ fnc_playerSetup =
 		true, 
 		true, 
 		"",
-		"player distance arsenalBox < 6 && call BIS_fnc_admin == 2"
+		"player distance arsenalBox < 6 && (getPlayerUID player == '76561198034679611' || getPlayerUID player == '76561198087792460')"
 	];
 	
 	// Россия
@@ -568,7 +606,8 @@ if (_doJIP) exitWith {
 		//_class = (selectRandom unitList);
 		//[player, _class] execVM 'sunday_system\player_setup\switchUnitLoadout.sqf';
 		//sleep 1;
-		[player, _pos] call sun_jipNewUnit;
+		_posToSpawn = [getpos arsenalBox, 3, 15, 3, 0, 30, 0, [], getpos arsenalBox] call BIS_fnc_findSafePos;
+		[player, _posToSpawn] call sun_jipNewUnit;
 	};
 	_allHCs = entities "HeadlessClient_F";
 	_currentPlayers = allPlayers - _allHCs;
@@ -721,7 +760,7 @@ cam camCommitPrepared 50;
 ] spawn BIS_fnc_typeText2;
 sleep 7;
 
-if ((missionNameSpace getVariable ["lobbyComplete", 0]) == 0) then { removeAllWeapons player;}; // Удаление оружия для тех кто зашел во время создания миссии
+//if ((missionNameSpace getVariable ["lobbyComplete", 0]) == 0) then { removeAllWeapons player;}; // Удаление оружия для тех кто зашел во время создания миссии
 
 cutText ["", "BLACK OUT", 1];
 10 fademusic 0;

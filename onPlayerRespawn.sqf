@@ -4,14 +4,14 @@ waitUntil {!isNull player};
 if (!isNil "loadoutSavingStarted") then {
 	if (loadoutSavingStarted) then {
 		playerRespawning = true;
-		_loadout = player getVariable "respawnLoadout";	
-		if (!isNil "_loadout") then {
-			diag_log format ["DRO: Respawning with loadout = %1", _loadout];
-			player setUnitLoadout _loadout;
-		};
-		if (!isNil "respawnTime") then {
-			setPlayerRespawnTime respawnTime;	
-		};
+		// _loadout = player getVariable "respawnLoadout";	
+		// if (!isNil "_loadout") then {
+			// diag_log format ["DRO: Respawning with loadout = %1", _loadout];
+			// player setUnitLoadout _loadout;
+		// };
+		// if (!isNil "respawnTime") then {
+			// setPlayerRespawnTime respawnTime;	
+		// };
 		deleteVehicle (_this select 1);
 		playerRespawning = false;
 	};

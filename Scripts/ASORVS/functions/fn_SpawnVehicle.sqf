@@ -26,6 +26,20 @@ objNull spawn {
 
 	_veh setDir 20;
 	
+	_EHkilledIdx = _veh addMPEventHandler ["MPkilled",  
+	{ 
+		params ["_unit", "_killer", "_instigator", "_useEffects"];  
+		_unit spawn { 
+			waituntil {(getPosATL _this) select 2 < 10}; 
+			sleep 6; 
+			_crew = crew _this; 
+			{ 
+				moveOut _x; 
+			} forEach _crew; 
+		} 
+	} 
+	];
+	
 	// Разоружение, если игрок создаёт самолёт
 	if (ASORVS_VehicleTypes select 0 == "planes"  || ASORVS_VehicleTypes select 1 == "helicopters") then {
 		[_veh, 0] remoteExec ["setVehicleAmmo", 0, true];

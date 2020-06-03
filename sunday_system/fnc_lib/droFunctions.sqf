@@ -652,8 +652,8 @@ dro_hostageRelease = {
 	[_hostage, false] remoteExec ["setCaptive", _hostage, true];	
 	[_hostage, 'MOVE'] remoteExec ["enableAI", _hostage, true];			
 	[(_hostage getVariable 'joinTask'), 'SUCCEEDED', true] remoteExec ["BIS_fnc_taskSetState", (leader(group _player)), true];
-	["ace_captives_setHandcuffed",[_hostage,true]] call CBA_fnc_globalEvent;
 	'mkrAOC' setMarkerAlpha 1;
+	["ace_captives_setHandcuffed",[_hostage,true]] call CBA_fnc_globalEvent;
 	for "_i" from ((count taskIntel)-1) to 0 step -1 do {
 		if (((taskIntel select _i) select 0) == ([(_hostage getVariable 'joinTask')] call BIS_fnc_taskParent)) then {taskIntel deleteAt _i};
 	};
