@@ -103,13 +103,13 @@ _randomisation=10;
 		then {
 	_civilians=0;// Civilians spawned
 	_vehicles=0;// Moving Vehicles Spawned
-	_parked=4;// Parked Vehicles Spawned
+	_parked=5;// Parked Vehicles Spawned
 			};
  	if (_houses > 140) 
 		then {
 	_civilians=0;// Civilians spawned
 	_vehicles=0;// Moving Vehicles Spawned
-	_parked=5;// Parked Vehicles Spawned
+	_parked=6;// Parked Vehicles Spawned
 			};
 			
  if (!COSpedestrians) then {_civilians=0;};	// If pedestrians disabled spawn 0

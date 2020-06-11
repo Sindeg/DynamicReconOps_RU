@@ -195,7 +195,8 @@ if (count _travelPositions > 0) then {
 			[(thisTrigger getVariable 'powChar')] call sun_addResetAction;
 			[(thisTrigger getVariable 'powChar'), false] remoteExec ['setCaptive', (thisTrigger getVariable 'powChar'), true];
 			[(thisTrigger getVariable 'thisTask'), 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
-			'mkrAOC' setMarkerAlpha 1;				
+			'mkrAOC' setMarkerAlpha 1;
+			['ace_captives_setHandcuffed',[(thisTrigger getVariable 'powChar'),true]] call CBA_fnc_globalEvent;
 		", 
 		""];
 	_trgRelease setVariable ["powChar", _powChar, true];		
@@ -230,7 +231,8 @@ if (_spawnStationary) then {
 			*/
 		},
 		{
-			[(_this select 0), (_this select 1)] call dro_hostageRelease;		
+			[(_this select 0), (_this select 1)] call dro_hostageRelease;	
+			["ace_captives_setHandcuffed",[_this select 0,true]] call CBA_fnc_globalEvent; // Связать			
 		},
 		{},
 		[],

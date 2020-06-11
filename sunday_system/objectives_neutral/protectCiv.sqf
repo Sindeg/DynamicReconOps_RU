@@ -79,7 +79,7 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 		{
 			if ((_x distance _thisCiv) < 5) exitWith {
 			_str = parsetext format ["<t size='1.2'>Вы нашли <t color='#FFBF00'>%1</t>.</t>",name _thisCiv];
-			["ace_captives_setHandcuffed",[_thisCiv,true]] call CBA_fnc_globalEvent;
+			["ace_captives_setHandcuffed",[_thisCiv,true]] call CBA_fnc_globalEvent; // Связать
 			_str remoteExec ["hint", _x];
 			_findCiv = true;
 			};
@@ -93,8 +93,8 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	["PROTECT_CIV_MEET", (name (leader (grpNetId call BIS_fnc_groupFromNetId))), [name _thisCiv], false] spawn dro_sendProgressMessage;
 	
-	_thisCiv setUnitPos "DOWN";	
-	_thisCiv setCaptive false;
+	//_thisCiv setUnitPos "DOWN";	
+	//_thisCiv setCaptive false;
 	
 	[((_subTasks select 0) select 0), 'SUCCEEDED', true] spawn BIS_fnc_taskSetState;
 	missionNamespace setVariable [format ['%1Completed', ((_subTasks select 0) select 0)], 1, true];
@@ -134,8 +134,9 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 	missionNamespace setVariable [format ['%1Completed', ((_subTasks select 0) select 1)], 1, true];
 	[_taskName, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 	missionNamespace setVariable [format ['%1Completed', _taskName], 1, true];
+	["ace_captives_setHandcuffed",[_thisCiv, false]] call CBA_fnc_globalEvent;
 	
-	sleep 30;
+	sleep 15;
 	deleteVehicle _thisCiv;
 };
 

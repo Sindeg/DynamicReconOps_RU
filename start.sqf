@@ -225,10 +225,10 @@ diag_log "DRO: Waiting for factions to be chosen by host";
 waitUntil {(missionNameSpace getVariable ["factionsChosen", 0]) == 1};
 diag_log "DRO: Factions chosen";
 
-// Disable dynamic simulation if desired
-// if (dynamicSim == 1) then {
-	// enableDynamicSimulationSystem false;
-// };
+//Disable dynamic simulation if desired
+if (dynamicSim == 1) then {
+ enableDynamicSimulationSystem false;
+};
 
 if (isClass (configfile >> "CfgPatches" >> "ace_medical")) then {	
 	if (!isNil "ace_medical_enableRevive") then {

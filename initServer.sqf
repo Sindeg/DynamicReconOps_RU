@@ -41,6 +41,49 @@ missionNamespace setVariable ["task_PROTECTCIV", false, true];
 missionNamespace setVariable ["task_SEARCHHOUSES", false, true];
 
 [] execVM "start.sqf";
+// Цикл на всю технику на карте
+// Выбрасывает всех после взрыва техники
+while {true} do {
+	{
+		// В случае если на технике еще нет эвента на уничтожение и при этом эта техника не гражданская из города
+		if ((isNil {_x getvariable "addedKillEvent"}) and (isNil {_x getvariable "vehicle_is_planted"})) then {
+			_EHkilledIdx = _x addMPEventHandler ["MPkilled",  
+			{ 
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+				myFnc = {		
+					sleep 0.5;
+					
+					{ 
+						_bodyParts = ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
+						_num = [1,6] call BIS_fnc_randomInt;
+						
+						for "_i" from 1 to _num do {
+							[_x, 0.4, selectRandom _bodyParts, "explosive"] call ace_medical_fnc_addDamageToUnit; 
+						}; 
+						[_x, true, (15), true] call ace_medical_fnc_setUnconscious;
+					} forEach crew _this;
+					
+					waituntil {((getPosATL _this) select 2 < 10) and (speed _this < 10)}; 
+					
+					sleep 3;
+					
+					{ 
+						if ((isPlayer _x) or (_this isKindOf "air")) then {
+							moveOut _x;
+							_pos = [_this, 2, 5, 1, 0, 50, 0,[], getpos _x] call BIS_fnc_findSafePos;
+							_x setpos _pos;
+							sleep 0.2;
+						};
+					} forEach crew _this;
+				};
+				[_unit, "myFnc"] call BIS_fnc_spawnOrdered;
+			} 
+			];
+		};
+	} foreach vehicles;
+	sleep 10;
+};
 
 // Отключение тепловизоров в технике
 /*

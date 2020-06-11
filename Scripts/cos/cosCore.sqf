@@ -180,15 +180,15 @@ if (!(server getvariable _trigID)) exitwith {_isActive=false;};
 				};
 	
 		_tempPos=_roadPosArray select _rdCount;
+		_safePos = [_tempPos, 1, 10, 5, 0, 0, 0, [], [_tempPos]] call BIS_fnc_findSafePos;
 		_rdCount=_rdCount+1;
 		_roadConnectedTo = roadsConnectedTo _tempPos;
 		_connectedRoad = _roadConnectedTo select 0;
 		_direction = [_tempPos, _connectedRoad] call BIS_fnc_DirTo;
-			
-			_veh = createVehicle [_tempVeh, _tempPos, [], 0, "NONE"];
-			_veh setdir _direction;
-			_veh setPos [(getPos _veh select 0)-6, getPos _veh select 1, getPos _veh select 2];
-								
+
+		_veh = createVehicle [_tempVeh, _safePos, [], 0, "NONE"];
+		_veh setdir _direction;
+
 		_ParkedArray set [count _ParkedArray,_veh];
 
 	null =[_veh] execVM "Scripts\cos\addScript_Vehicle.sqf";

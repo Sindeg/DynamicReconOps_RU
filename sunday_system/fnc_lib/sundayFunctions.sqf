@@ -320,9 +320,9 @@ sun_createVehicleCrew = {
 	createVehicleCrew _vehicle;	
 	private _group = createGroup _side;
 	(crew _vehicle) joinSilent _group;
-	// if (dynamicSim == 0 && _enableDynSim) then {
-		// _group enableDynamicSimulation true;
-	// };
+	 if (dynamicSim == 0 && _enableDynSim) then {
+		 _group enableDynamicSimulation true;
+	 };
 };
 
 sun_getTrueCargo = {	
@@ -1137,9 +1137,9 @@ dro_spawnGroupWeighted = {
 		if (!isNil "aiSkill") then {			
 			[_group] call dro_setSkillAction;			
 		};
-		// if (_addToDyn && dynamicSim == 0) then {
-			// _group enableDynamicSimulation true;
-		// };
+		if (_addToDyn && dynamicSim == 0) then {
+			_group enableDynamicSimulation true;
+		};
 		deleteGroup _tempGroup;
 		_group
 	};	

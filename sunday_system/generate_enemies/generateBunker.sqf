@@ -106,10 +106,11 @@ if (count (((AOLocations select _AOIndex) select 2) select 5) > 0) then {
 			};
 		};
 		
+		// 80% что рядом с бункером будет турель
 		if (count eStaticClasses > 0) then {
-			if ((random 1) > 0.6) then {
+			if ((random 1) > 0.2) then {
 				_turretClass = selectRandom eStaticClasses;
-				_turretPos = _bunkerPos findEmptyPosition [5, 20, _turretClass];
+				_turretPos = [_bunkerPos, 9, 25, 3, 0, 0, 0] call BIS_fnc_findSafePos;
 				if (count _turretPos > 0) then {
 					_turret = _turretClass createVehicle _turretPos;
 					[_turret] call sun_createVehicleCrew;
@@ -117,14 +118,6 @@ if (count (((AOLocations select _AOIndex) select 2) select 5) > 0) then {
 				};
 			};
 		};
-			
-		
-		/*
-		_garMarker = createMarker [format["garMkr%1", random 10000], getPos _bunker];
-		_garMarker setMarkerShape "ICON";
-		_garMarker setMarkerColor "ColorOrange";
-		_garMarker setMarkerType "mil_objective";
-		*/
 		
 		// Create Marker
 		_markerName = format["bunkerMkr%1", floor(random 10000)];

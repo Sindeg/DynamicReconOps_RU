@@ -57,7 +57,7 @@ customSupports = profileNamespace getVariable ["DRO_supportPrefs", []];
 publicVariable "customSupports";
 
 //dynamicSim = profileNamespace getVariable ["DRO_dynamicSim", 0];
-dynamicSim = 1;
+dynamicSim = 0;
 
 publicVariable "dynamicSim";
 

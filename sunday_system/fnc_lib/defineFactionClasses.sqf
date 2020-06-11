@@ -245,43 +245,6 @@ _cfgVeh = configFile >> "CfgVehicles";
 							};
 						};
 						_checkSubcats = false;
-						/*
-						{
-							if ((configName _x) == "Turrets") then {						
-								_turretCfg = ([(_cfgVehName >> "Turrets"), 0, true] call BIS_fnc_returnChildren);						
-								if (count _turretCfg > 0) then {									
-									_noTurret = 0;
-									{										
-										if (((_cfgVehName >> "Turrets" >> (configName _x) >> "gun") call BIS_fnc_GetCfgData) == "mainGun") then {
-											_noTurret = 1;
-											if (_isPlayerFaction) then {
-												pCarTurretClasses pushBackUnique _cfgName;
-											};
-											if (_isEnemyFaction) then {
-												eCarTurretClasses pushBackUnique _cfgName;
-											};
-										};
-									} forEach _turretCfg;
-									if (_noTurret == 0) then {
-										if (_isPlayerFaction) then {
-											pCarNoTurretClasses pushBackUnique _cfgName;
-										};
-										if (_isEnemyFaction) then {
-											eCarNoTurretClasses pushBackUnique _cfgName;
-										};
-									};
-								} else {
-									if (_isPlayerFaction) then {
-										pCarNoTurretClasses pushBackUnique _cfgName;
-									};
-									if (_isEnemyFaction) then {
-										eCarNoTurretClasses pushBackUnique _cfgName;
-									};
-								};
-							};
-							
-						} forEach ([(configFile >> "CfgVehicles" >> _cfgName), 0, true] call BIS_fnc_returnChildren);
-						*/
 					};
 				};								
 			} else {
@@ -320,16 +283,18 @@ _cfgVeh = configFile >> "CfgVehicles";
 				};				
 				_pVars = [pMortarClasses, pStaticClasses, pStaticClasses, pAmmoClasses];
 				_eVars = [eMortarClasses, eStaticClasses, eStaticClasses, eAmmoClasses];
-				{						
-					if (_cfgName isKindOf 'StaticMortar') exitWith {
+				{
+					if ((_cfgName isKindOf 'StaticWeapon') && (_cfgName != "ACE_B_T_SpottingScope")) exitWith {
 						if (_isPlayerFaction) then {
 							(_pVars select _forEachIndex) pushBackUnique _cfgName;
+							(_pVars select 1) pushBackUnique _cfgName;
 						};
 						if (_isEnemyFaction) then {
 							(_eVars select _forEachIndex) pushBackUnique _cfgName;
+							(_eVars select 1) pushBackUnique _cfgName;
 						};
 					};
-				} forEach ["StaticMortar", "StaticMGWeapon", "StaticGrenadeLauncher", "ReammoBox_F"];			
+				} forEach ["StaticMortar", "StaticWeapon", "StaticGrenadeLauncher", "ReammoBox_F"];			
 			};
 		};
 	};
@@ -360,13 +325,13 @@ if (count _pInfClassesUnarmed > count pInfClasses) then {
 	} forEach _playerFactions;
 };
 
-if (count _eInfClassesUnarmed > count eInfClasses) then {
-	eInfClasses = eInfClasses + _eInfClassesUnarmed;
-	{	
-		(eInfClassesForWeights set [_forEachIndex, ((eInfClassesForWeights select _forEachIndex) + (eInfClassesUnarmedForWeights select _forEachIndex))]);	
-		(eInfClassWeights set [_forEachIndex, ((eInfClassWeights select _forEachIndex) + (eInfClassUnarmedWeights select _forEachIndex))]);			
-	} forEach _enemyFactions;
-};
+// if (count _eInfClassesUnarmed > count eInfClasses) then {
+	// eInfClasses = eInfClasses + _eInfClassesUnarmed;
+	// {	
+		// (eInfClassesForWeights set [_forEachIndex, ((eInfClassesForWeights select _forEachIndex) + (eInfClassesUnarmedForWeights select _forEachIndex))]);	
+		// (eInfClassWeights set [_forEachIndex, ((eInfClassWeights select _forEachIndex) + (eInfClassUnarmedWeights select _forEachIndex))]);			
+	// } forEach _enemyFactions;
+// };
 
 diag_log format ["DRO: _pInfEditorSubcats = %1", _pInfEditorSubcats];
 diag_log format ["DRO: pInfClassWeights = %1", pInfClassWeights];

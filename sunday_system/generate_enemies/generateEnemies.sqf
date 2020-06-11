@@ -163,7 +163,7 @@ if (count eCarClasses > 0) then {
 {
 	switch (_x) do {
 		case "ROADBLOCK": {						
-			_numRoadblocks = round ((([2,3] call BIS_fnc_randomInt) * aiMultiplier) * _sizeMod);
+			_numRoadblocks = round ((([2,4] call BIS_fnc_randomInt) * aiMultiplier) * _sizeMod);
 			diag_log format ["DRO: AO %1, Generate enemies - _numRoadblocks = %2", _AOIndex, _numRoadblocks];
 			if (_numRoadblocks > 0) then {
 				for "_x" from 1 to _numRoadblocks step 1 do {

@@ -10,8 +10,8 @@ allowFunctionsLog = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 1;
-corpseRemovalMinTime = 500;
-corpseRemovalMaxTime = 6000;
+corpseRemovalMinTime = 60;
+corpseRemovalMaxTime = 900;
 
 respawn = 3;
 respawnButton = 1;
@@ -227,9 +227,9 @@ class CfgFunctions
 
 class CfgDiscordRichPresence {
     applicationID = "615348713933504523";             // Provided by discord
-    defaultDetails = "discord.gg/B9Z8wBC";            // Upper text
-    defaultState = "91.122.15.41";              // Lower text
-    defaultLargeImageKey="img2";      // Large image
+    defaultDetails = "discord.gg/g3UPsvZ";            // Upper text
+    defaultState = "TS3: RCS";              // Lower text
+    defaultLargeImageKey="img22";      // Large image
     defaultLargeImageText = "";     // Large image hover text
     defaultSmallImageKey = "";      // Small image
     defaultSmallImageText = "";     // Small image hover text

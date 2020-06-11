@@ -42,3 +42,15 @@ for "_i" from 1 to _numCampObjects step 1 do {
 	_object setDir ([_spawnPos, _center] call BIS_fnc_dirTo);
 	_direction = _direction + _dirMod;
 };
+
+
+if (count eStaticClasses > 0) then {
+	if ((random 1) > 0.5) then {
+		_turretClass = selectRandom eStaticClasses;
+		_turretPos = [_center, 9, 25, 3, 0, 0, 0] call BIS_fnc_findSafePos;
+		if (count _turretPos > 0) then {
+			_turret = _turretClass createVehicle _turretPos;
+			[_turret] call sun_createVehicleCrew;
+		};
+	};
+};

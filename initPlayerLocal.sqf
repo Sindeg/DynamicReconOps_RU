@@ -145,7 +145,7 @@ fnc_playerSetup =
 					true, 
 					true, 
 					"",
-					"player distance arsenalBox < 8", // _target, _this, _originalTarget
+					"player distance arsenalBox < 8 && (isNil 'airHelipad' || {isNull airHelipad })", // _target, _this, _originalTarget
 					7,
 					false,
 					"",
