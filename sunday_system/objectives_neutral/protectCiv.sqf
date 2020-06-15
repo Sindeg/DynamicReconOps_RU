@@ -120,14 +120,6 @@ _thisCiv setVariable ["subTasks", _subTasks, true];
 		(_thisCiv distance (getMarkerPos "campMkr")) < 50
 	};
 	
-	/* if (count _allGroups > 0) then {
-		waitUntil {
-			sleep 5;
-			if (_taskName call BIS_fnc_taskCompleted) exitWith {true};
-			[_allGroups] call sun_checkAllDeadFleeing
-		};
-	}; */
-	
 	if (_taskName call BIS_fnc_taskCompleted) exitWith {};
 	["PROTECT_CIV_CLEAR", (name (leader (grpNetId call BIS_fnc_groupFromNetId))), [name _thisCiv], false] spawn dro_sendProgressMessage;
 	[((_subTasks select 0) select 1), "SUCCEEDED", true] call BIS_fnc_taskSetState;

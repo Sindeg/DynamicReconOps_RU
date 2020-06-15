@@ -41,50 +41,62 @@ missionNamespace setVariable ["task_PROTECTCIV", false, true];
 missionNamespace setVariable ["task_SEARCHHOUSES", false, true];
 
 [] execVM "start.sqf";
-// Цикл на всю технику на карте
-// Выбрасывает всех после взрыва техники
-while {true} do {
-	{
-		// В случае если на технике еще нет эвента на уничтожение и при этом эта техника не гражданская из города
-		if ((isNil {_x getvariable "addedKillEvent"}) and (isNil {_x getvariable "vehicle_is_planted"})) then {
-			_EHkilledIdx = _x addMPEventHandler ["MPkilled",  
-			{ 
-				params ["_unit", "_killer", "_instigator", "_useEffects"];
 
-				myFnc = {		
-					sleep 0.5;
-					
-					{ 
-						_bodyParts = ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
-						_num = [1,6] call BIS_fnc_randomInt;
-						
-						for "_i" from 1 to _num do {
-							[_x, 0.4, selectRandom _bodyParts, "explosive"] call ace_medical_fnc_addDamageToUnit; 
-						}; 
-						[_x, true, (15), true] call ace_medical_fnc_setUnconscious;
-					} forEach crew _this;
-					
-					waituntil {((getPosATL _this) select 2 < 10) and (speed _this < 10)}; 
-					
-					sleep 3;
-					
-					{ 
-						if ((isPlayer _x) or (_this isKindOf "air")) then {
-							moveOut _x;
-							_pos = [_this, 2, 5, 1, 0, 50, 0,[], getpos _x] call BIS_fnc_findSafePos;
-							_x setpos _pos;
-							sleep 0.2;
-						};
-					} forEach crew _this;
-				};
-				[_unit, "myFnc"] call BIS_fnc_spawnOrdered;
-			} 
-			];
-		};
-	} foreach vehicles;
-	sleep 10;
+waituntil {!( isNil "markerColorPlayers")};
+waituntil {markerColorPlayers != "ColorBlack"};
+
+// Скрипт отметок игроков на карте
+_markers = "player_markers" call BIS_fnc_getParamValue;
+if (_markers == 1) then {
+	_nil = [] execVM "scripts\playerMarkers.sqf"
 };
 
+// Цикл на всю технику на карте
+// Выбрасывает всех после взрыва техники
+[] spawn {
+	while {true} do {
+		{
+			// В случае если на технике еще нет эвента на уничтожение и при этом эта техника не гражданская из города
+			if ((isNil {_x getvariable "addedKillEvent"}) and (isNil {_x getvariable "vehicle_is_planted"})) then {
+				_x setvariable ["addedKillEvent", true, true];
+				
+				_EHkilledIdx = _x addMPEventHandler ["MPkilled",  
+				{ 
+					params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+					myFnc = {	
+						_bodyParts = ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
+						{ 
+							_num = [1,6] call BIS_fnc_randomInt;
+							
+							for "_i" from 1 to _num do {
+								[_x, 0.4, selectRandom _bodyParts, "explosive"] call ace_medical_fnc_addDamageToUnit; 
+							}; 
+							[_x, true, (15), true] call ace_medical_fnc_setUnconscious;
+						} forEach crew _this;
+						
+						waituntil {((getPosATL _this) select 2 < 10) and (speed _this < 10)}; 
+						
+						sleep 3;
+						
+						{ 
+							if ((isPlayer _x) or (_this isKindOf "air")) then {
+								moveOut _x;
+								_pos = [_this, 2, 5, 1, 0, 50, 0,[], getpos _x] call BIS_fnc_findSafePos;
+								_x setpos _pos;
+								sleep 0.2;
+							};
+						} forEach crew _this;
+					};
+					[_unit, "myFnc"] call BIS_fnc_spawnOrdered;
+					_unit removeAllMPEventHandlers "MPkilled";
+				} 
+				];
+			};
+		} foreach vehicles;
+		sleep 30;
+	};
+};
 // Отключение тепловизоров в технике
 /*
 [] spawn
@@ -98,15 +110,6 @@ while {true} do {
 	};
 };
 */
-
-waituntil {!( isNil "markerColorPlayers")};
-waituntil {markerColorPlayers != "ColorBlack"};
-
-// Скрипт отметок игроков на карте
-_markers = "player_markers" call BIS_fnc_getParamValue;
-if (_markers == 1) then {
-	_nil = [] execVM "scripts\playerMarkers.sqf"
-};
 
 // Справка о сервере на карте
 /*

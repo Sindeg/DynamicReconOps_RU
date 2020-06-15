@@ -65,7 +65,7 @@ dro_unitTaskObjective = {
 		_markerTask setMarkerShape "ICON";	
 		_markerTask setMarkerAlpha 0;	
 		
-		_taskTitle = format ["(Доп). Уничтожить %1", toLower (_thisTask select 1)];
+		_taskTitle = format ["(Доп.) Уничтожить %1", toLower (_thisTask select 1)];
 		_taskDesc = format ["Мы знаем что %1 находится в зоне операции.", toLower (_thisTask select 1)];
 		
 		if (count _groupVehicles > 0) then {

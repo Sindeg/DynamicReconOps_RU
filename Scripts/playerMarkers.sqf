@@ -1,5 +1,4 @@
 _countPlayers = 0; // Число отмеченных игроков
-
 _Color = markerColorPlayers;
 
 _createMarker = {

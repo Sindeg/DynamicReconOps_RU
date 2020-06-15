@@ -1042,9 +1042,9 @@ if (stealthEnabled == 0) then {
 }; 
 publicVariable "stealthEnabled";
 
-// Generate power units
-if (stealthEnabled == 1) then {
-	_maxPowerUnits = ([1,3] call BIS_fnc_randomInt);
+// Генераторы
+if (random 1 > 0.5) then {
+	_maxPowerUnits = ([2,3] call BIS_fnc_randomInt);
 	_p = 0;
 	while {_p <= _maxPowerUnits} do {
 		_AOIndexes = [];
@@ -1062,23 +1062,15 @@ if (stealthEnabled == 1) then {
 	};	
 }; 
 
-if (random 1 > 0.5) then {
+// random 1 > 0.5
+if (true) then {
 	[] execVM "sunday_system\objectives\destroyCommsTower.sqf";
 };
 
-// Create intro sequence
-// Collect all possible camera targets
-/*
-_introPosCollect = travelPosPOIMil + enemyPosCollection;
-{_introPosCollect pushBack (_x select 5)} forEach objData;
-for "_c" from 0 to 2 do {
-	_thisTarget = [_introPosCollect] call sun_selectRemove;
-	_randPos = [_thisTarget, 5, 15, 3, 1, 0.4, 0, [], [0,0,0]] call BIS_fnc_findSafePos;
-	if !(_randPos isEqualTo [0,0,0]) then {
-	
-	};
+if (true) then {
+	[] execVM "sunday_system\objectives\destroyCommsTower_orig.sqf";
 };
-*/
+
 missionNamespace setVariable ["dro_introCamReady", 1, true];
 
 // *****

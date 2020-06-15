@@ -53,20 +53,12 @@ switch (_powStyle) do {
 		
 		_group = [_powPos, playersSide, powClass, [], [1, 1], true, "NONE"] call dro_spawnGroupWeighted;
 		_powChar = ((units _group) select 0);
-		//_group = createGroup playersSide;
-		//_powChar = _group createUnit [powClass, _powPos, [], 0, "NONE"];
+
 		_dist = 10;
 		while {([_powChar] call sun_checkIntersect) && (_dist < 100)} do {
 			[_group, (_powPos getPos [_dist, (random 360)])] call sun_moveGroup;
 			_dist = _dist + 5;
 		};
-		/*
-		if ([_powChar] call sun_checkIntersect) then {
-			deleteVehicle _powChar;
-			_powSpawnPos = _powPos findEmptyPosition [25, 50, powClass];
-			_powChar = _group createUnit [powClass, _powSpawnPos, [], 0, "NONE"];
-		};
-		*/
 	};
 	case "INSIDE": {	
 		// If nearby building possible then move to that building and spawn guards
@@ -76,9 +68,7 @@ switch (_powStyle) do {
 		_powPos = getPos _building;
 		_group = [_powPos, playersSide, powClass, [], [1, 1], true, "NONE"] call dro_spawnGroupWeighted;
 		_powChar = ((units _group) select 0);
-		
-		//_group = createGroup playersSide;
-		//_powChar = _group createUnit [powClass, _powPos, [], 0, "NONE"];			
+				
 		_powChar setPosATL (_building buildingPos _thisBuildingPlace);	
 	};		
 };
@@ -95,10 +85,9 @@ removeHeadgear _powChar;
 removeGoggles _powChar;
 removeAllItems _powChar;
 {_powChar removeMagazine _x} forEach magazines _powChar;
-//if (powClass == "C_journalist_F" OR powClass == "C_scientist_F") then {		
-	removeVest _powChar;	
-	removeBackpack _powChar;	
-//};
+removeVest _powChar;	
+removeBackpack _powChar;	
+
 [[_powChar], "sun_aiNudge"] call BIS_fnc_MP;	
 
 
@@ -219,17 +208,8 @@ if (_spawnStationary) then {
 		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_unbind_ca.paa",
 		"(alive _target) && (_target getVariable['hostageBound', false]) && ((_this distance _target) < 3)",
 		"true",
-		{
-			
-		},
-		{
-			/*
-			if ((_this select 4) % 3 == 0) then {
-				_sound = selectRandom ["A3\Sounds_F_Characters\human-sfx\Other\medikit1.wss"];
-				playSound3D [_sound, (_this select 1)];
-			};
-			*/
-		},
+		{},
+		{},
 		{
 			[(_this select 0), (_this select 1)] call dro_hostageRelease;	
 			["ace_captives_setHandcuffed",[_this select 0,true]] call CBA_fnc_globalEvent; // Связать			
@@ -315,14 +295,7 @@ _taskDesc = switch (powClass) do {
 _taskType = "meet";
 missionNamespace setVariable [format ["%1Completed", _taskName], 0, true];
 _powChar setVariable["taskName", _taskName, true];
-/*
-{
-	_joinSubTaskName = format ["blah%1", random 100000];
-	_joinSubTaskDesc = "";
-	_joinSubTaskTitle = configName _x;
-	_subTasks pushBack [_joinSubTaskName, _joinSubTaskDesc, _joinSubTaskTitle, configName _x];	
-} forEach ("true" configClasses (configFile / "CfgTaskTypes"));
-*/
+
 // Create join subtasks	
 _joinSubTaskDesc = format ["Найдите и освободите %1.", _lastName];
 _joinSubTaskTitle = format ["Найти %1", _lastName];
@@ -331,7 +304,7 @@ _powChar setVariable ["joinTask", _joinSubTaskName, true];
 powJoinTasks pushBack _joinSubTaskName;
 
 // Create extraction subtask
-_extractSubtaskDesc = format ["Как только %1 будет под вашим контролем, вывезите его из зоны конфликта.", _lastName];
+_extractSubtaskDesc = format ["Как только %1 будет под вашим контролем, доставьте его в ШТАБ.", _lastName];
 _extractSubtaskTitle = format ["Спасти %1", _lastName];
 _subTasks pushBack [_extractSubTaskName, _extractSubtaskDesc, _extractSubtaskTitle, "exit"];
 _powChar setVariable ["extractTask", _extractSubTaskName, true];
@@ -358,12 +331,13 @@ _trgFail setVariable ["powChar", _powChar, true];
 _trgFail setVariable ["thisTask", _taskName, true];
 
 // Extract trigger
-_trgExtract = [objNull, "mkrAOC"] call BIS_fnc_triggerToMarker;
+//_trgExtract = [objNull, "mkrAOC"] call BIS_fnc_triggerToMarker;
+_trgExtract = createTrigger ["EmptyDetector", _powPos, true];
 _trgExtract setTriggerActivation ["ANY", "PRESENT", false];
 _trgExtract setTriggerStatements [
 	"
 		(alive (thisTrigger getVariable 'powChar')) && 
-		!(vehicle (thisTrigger getVariable 'powChar') in thisList) && 
+		((thisTrigger getVariable 'powChar') distance (getMarkerPos 'campMkr')) < 50 && 
 		(thisTrigger getVariable 'powChar') in (units (grpNetId call BIS_fnc_groupFromNetId))
 	",
 	"				
@@ -379,30 +353,17 @@ _trgExtract setVariable ["thisSubtask", _extractSubTaskName];
 _trgExtract setVariable ["markerName", _markerName];
 
 // Listener for extraction task completion
-[_taskName, _extractSubTaskName] spawn {
+[_taskName, _extractSubTaskName, _powChar, _trgFail] spawn {
 	waitUntil {playersReady == 1};
 	waitUntil {sleep 2; [(_this select 1)] call BIS_fnc_taskCompleted};
 	if (((_this select 1) call BIS_fnc_taskState) == "SUCCEEDED") then {
 		[(_this select 0), "SUCCEEDED", true] spawn BIS_fnc_taskSetState;	
 		missionNamespace setVariable [format ["%1Completed", (_this select 0)], 1, true];	
+		sleep 10;
+		deleteVehicle (_this select 2);
+		deleteVehicle (_this select 3);
 	};
 };
-
-/*
-_trgExecute = createTrigger ["EmptyDetector", _powPos, true];
-_trgExecute setTriggerArea [200, 200, 0, false];
-_trgExecute setTriggerActivation ["ANY", "PRESENT", false];
-_trgExecute setTriggerStatements [
-	"
-		({alive _x} count (thisTrigger getVariable 'allGuards')) < ((count (thisTrigger getVariable 'allGuards')) * 0.2)
-	",
-	"				
-		(thisTrigger getVariable 'pow') setCaptive false;				
-	", 
-	""];
-_trgExecute setVariable ["allGuards", _allGuards];
-_trgExecute setVariable ["pow", _powChar];
-*/
 
 sleep 0.5;
 

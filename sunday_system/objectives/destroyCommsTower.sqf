@@ -40,7 +40,7 @@ for "_i" from 1 to _numMark do {
 };
 
 if (!isNil "_transmitter") then {
-	enemyCommsActive = true;
+	//enemyCommsActive = true;
 	 
 	// 2 отряда вокруг вышки связи
 	for "_i" from 0 to 1 do { 
@@ -50,12 +50,23 @@ if (!isNil "_transmitter") then {
 		[_spawnedSquad, (getPos _transmitter), 20] call BIS_fnc_taskPatrol;
 	};
 	
+	if (count eStaticClasses > 0) then {
+		if ((random 1) > 0.1) then {
+			_turretClass = selectRandom eStaticClasses;
+			_turretPos = [_safePosRadar, 9, 25, 3, 0, 0, 0] call BIS_fnc_findSafePos;
+			if (count _turretPos > 0) then {
+				_turret = _turretClass createVehicle _turretPos;
+				[_turret] call sun_createVehicleCrew;
+			};
+		};
+	};
+	
 	waitUntil {(missionNameSpace getVariable ["playersReady", 0]) == 1};
 	
 	// Create Task
 	_taskName = format ["task%1", floor(random 100000)];
-	_taskTitle = "(Доп). Уничтожить вышку связи";
-	_taskDesc =	format ["Большой поток данных передается с радиопередатчика, расположенного где - то в %2. Выведите из строя коммуникационную сеть %1, чтобы лишить их возможности вызывать подкрепления, а так же восстановить собственную связь в регионе.<br/><marker name='radar2'>Одно из возможных местоположений системы РЭБ</marker>.", enemyFactionName, aoName];
+	_taskTitle = "(Доп.) Уничтожить средства РЭБ";
+	_taskDesc =	format ["%1 использует радиоэлектронное подавление в этом регионе. Найдите и уничтожьте источник РЭБ противника чтобы восстановить полную работу собственной связи (КВ и ДВ) в регионе.<br/><marker name='radar2'>Одно из возможных местоположений системы РЭБ</marker>.", enemyFactionName, aoName];
 	_task = ["commsTask", true, [_taskDesc, _taskTitle, ""], [], "CREATED", 0, true, true, "danger", true] call BIS_fnc_setTask;		
 	_transmitter setVariable ["thisTask", _taskName, true];
 	missionNamespace setVariable [(format ["%1_taskType", _taskName]), "danger", true];
@@ -68,7 +79,7 @@ if (!isNil "_transmitter") then {
 			if (!alive _transmitter) then {				
 				["commsTask", "SUCCEEDED", true] spawn BIS_fnc_taskSetState;
 				missionNamespace setVariable [format ["%1Completed", ((_this select 0) getVariable ("thisTask"))], 1, true];
-				enemyCommsActive = false;
+				//enemyCommsActive = false;
 				
 				// Удаляем все метки
 				for "_i" from 0 to _numMark do { 

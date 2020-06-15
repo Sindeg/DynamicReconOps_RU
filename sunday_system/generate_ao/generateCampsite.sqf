@@ -45,7 +45,7 @@ for "_i" from 1 to _numCampObjects step 1 do {
 
 
 if (count eStaticClasses > 0) then {
-	if ((random 1) > 0.5) then {
+	if ((random 1) > 0.8) then {
 		_turretClass = selectRandom eStaticClasses;
 		_turretPos = [_center, 9, 25, 3, 0, 0, 0] call BIS_fnc_findSafePos;
 		if (count _turretPos > 0) then {

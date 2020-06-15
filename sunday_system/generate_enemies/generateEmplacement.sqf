@@ -40,7 +40,7 @@ if (count (((AOLocations select _AOIndex) select 2) select 4) > 0) then {
 	_markerEmplace setMarkerAlpha 0;
 	
 	if (count eStaticClasses > 0) then {
-		if ((random 1) > 0.2) then {
+		if ((random 1) > 0.7) then {
 			_turretClass = selectRandom eStaticClasses;
 			_turretPos = [_pos, 9, 25, 3, 0, 0, 0] call BIS_fnc_findSafePos;
 			if (count _turretPos > 0) then {

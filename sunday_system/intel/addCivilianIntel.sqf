@@ -29,7 +29,7 @@ if (count _pos > 0) then {
 
 	_taskName = format ["civContactTask%1", (round(random 100000))];
 	_taskDesc = format ["У нас есть местный информатор в этом районе, который готов предоставить нам информацию. Нанесите визит %1, чтобы задать ему несколько вопросов.", name _contactCiv];
-	_taskTitle = "(Доп). Связаться с информатором";
+	_taskTitle = "(Доп.) Связаться с информатором";
 	_task = [_taskName, true, [_taskDesc, _taskTitle, ""], [_contactCiv, true], "CREATED", 0.5, false, true, "talk", true] call BIS_fnc_setTask;
 
 	_contactCiv allowFleeing 0;
