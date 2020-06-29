@@ -1046,7 +1046,7 @@ publicVariable "stealthEnabled";
 if (random 1 > 0.5) then {
 	_maxPowerUnits = ([2,3] call BIS_fnc_randomInt);
 	_p = 0;
-	while {_p <= _maxPowerUnits} do {
+	while {_p < _maxPowerUnits} do {
 		_AOIndexes = [];
 		{
 			_AOIndexes pushBack _forEachIndex;			
@@ -1063,11 +1063,11 @@ if (random 1 > 0.5) then {
 }; 
 
 // random 1 > 0.5
-if (true) then {
+if (random 1 > 0.5) then {
 	[] execVM "sunday_system\objectives\destroyCommsTower.sqf";
 };
 
-if (true) then {
+if (random 1 > 0.5) then {
 	[] execVM "sunday_system\objectives\destroyCommsTower_orig.sqf";
 };
 

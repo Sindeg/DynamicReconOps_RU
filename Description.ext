@@ -10,8 +10,8 @@ allowFunctionsLog = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 1;
-corpseRemovalMinTime = 60;
-corpseRemovalMaxTime = 900;
+corpseRemovalMinTime = 10;
+corpseRemovalMaxTime = 600;
 
 respawn = 3;
 respawnButton = 1;
@@ -221,6 +221,7 @@ class CfgDebriefing
 
 class CfgFunctions 
 {
+        #include "Vcom\cfgFunctions.hpp"
 	#include "Scripts\ASORVS\cfgfunctions.hpp"
 	#include "Scripts\CHVD\CfgFunctions.hpp"
 };
@@ -242,4 +243,24 @@ class CfgDebriefingSections
         title = "ACEX Killed Events";
        variable = "acex_killTracker_outputText";
     };
+};
+{
+	// List of script functions allowed to be sent from client via remoteExec
+	class Functions
+	{
+		mode = 2;
+		jip = 1;		
+		
+		class vcm_serverask { allowedTargets = 0;jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
+
+	};
+	
+	
+};
+
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
 };
