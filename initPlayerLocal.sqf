@@ -680,6 +680,10 @@ if (player != topUnit) then {
 	[toUpper "Подождите, пока идёт процесс создания миссии (обычно это занимает 1 - 2 минуты)", "objectivesSpawned", "objectivesSpawned", 1, ""] spawn sun_callLoadScreen;
 };
 
+if ((isNil "u1") && (missionNameSpace getVariable ["playersReady", 0]) == 0) then {
+	'endWrongSlot' call BIS_fnc_endMissionServer;
+};
+
 [] spawn {
 	// Turn off menu music
 	waitUntil {(missionNameSpace getVariable ["factionsChosen", 0]) == 1};

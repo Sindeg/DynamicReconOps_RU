@@ -8,7 +8,7 @@ class EditorData
 	toggles=577;
 	class ItemIDProvider
 	{
-		nextID=1628;
+		nextID=1639;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3743.6006,35.277065,11616.926};
-		dir[]={-0.034016605,-0.59872299,0.80037683};
-		up[]={-0.025420895,0.80090481,0.59822577};
-		aside[]={0.99921006,4.346748e-007,0.04245875};
+		pos[]={3794.7673,22.487225,11655.715};
+		dir[]={-0.93211937,-0.36192673,0.019888872};
+		up[]={-0.36193818,0.93215483,0.0077270828};
+		aside[]={0.02134308,-1.7051934e-006,0.99988347};
 	};
 };
 binarizationWanted=0;
@@ -41,13 +41,15 @@ addons[]=
 	"A3_Modules_F_Curator_Curator",
 	"A3_Supplies_F_Heli_CargoNets",
 	"A3_Characters_F_Orange_Facewear",
-	"ace_goggles"
+	"ace_goggles",
+	"tfar_backpacks",
+	"tfar_handhelds"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=9;
+		items=11;
 		class Item0
 		{
 			className="A3_Modules_F";
@@ -110,6 +112,18 @@ class AddonsMetaData
 			name="ACE3 - Goggles";
 			author="Команда ACE";
 			url="http://ace3mod.com/";
+		};
+		class Item9
+		{
+			className="tfar_backpacks";
+			name="tfar_backpacks";
+			url="https://github.com/michail-nikolaev/task-force-arma-3-radio";
+		};
+		class Item10
+		{
+			className="tfar_handhelds";
+			name="tfar_handhelds";
+			url="https://github.com/michail-nikolaev/task-force-arma-3-radio";
 		};
 	};
 };
@@ -23390,7 +23404,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			dataType="Logic";
@@ -24009,8 +24023,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3760.6892,15.10776,11658.453};
-				angles[]={0.0039967569,3.3194418,0.012000273};
+				position[]={3760.689,15.107823,11658.453};
+				angles[]={0.0039968039,3.3194418,0.012007865};
 			};
 			side="Empty";
 			flags=4;
@@ -24021,6 +24035,7 @@ class Mission
 			};
 			id=1323;
 			type="B_CargoNet_01_ammo_F";
+			atlOffset=-0.001999855;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24054,7 +24069,7 @@ class Mission
 										};
 										class value
 										{
-											items=317;
+											items=324;
 											class Item0
 											{
 												class data
@@ -28493,6 +28508,104 @@ class Mission
 													value="TFAR_rf7800str";
 												};
 											};
+											class Item317
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ACE_Fortify";
+												};
+											};
+											class Item318
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_antenna_mixed";
+												};
+											};
+											class Item319
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_antenna_whip";
+												};
+											};
+											class Item320
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_antenna_blade";
+												};
+											};
+											class Item321
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_PRC119_Mixed";
+												};
+											};
+											class Item322
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_PRC119_Blade_Fld";
+												};
+											};
+											class Item323
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="TRU_PRC119_Whip_Ret";
+												};
+											};
 										};
 									};
 								};
@@ -31132,6 +31245,23 @@ class Mission
 				};
 				nAttributes=3;
 			};
+		};
+		class Item12
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3774.877,14.697796,11654.938};
+				angles[]={0.0093286335,3.8316216,0.0013372133};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1638;
+			type="TFAR_NATO_Radio_Crate";
+			atlOffset=-1.4305115e-005;
 		};
 	};
 };

@@ -29,6 +29,7 @@ if (_randomFuel) then {
 	_veh setFuel _fuel;
 };
 
+// 25% что техника будет закрыта
 if (_canBeLocked) then {
 	if (random 1 > 0.75) then {
 		_veh setVehicleLock "LOCKED";
@@ -41,47 +42,63 @@ if (_canBeLocked) then {
 	};
 };
 
+// 20% что техника будет заминирована
 if (_Bombs) then {
-	if (!_locked and random 1 > 0.2) then {
+	if (!_locked and random 1 > 0.8) then {
 		_veh setvariable ["vehicle_is_planted", true, true]; // Чтобы не вызывать скрипт выброса из техники дважды
 		
-		if (_debug) then {
-			_markerstr setMarkerText "Транспорт (Заминирован)";
-			_markerstr setmarkercolor "ColorRed";
-		};
+		if (random 1 > 0.7) then {
+			// Минирование транспорта на движение рядом
+			if (_debug) then {
+				_markerstr setMarkerText "Транспорт (Заминирован на приближение)";
+				_markerstr setmarkercolor "ColorCIV";
+			};
 		
-		_veh addEventHandler [
-			"Engine", 
-			{ 
-				params ["_vehicle", "_engineOn"];
-				if(_engineOn ) then {
-					myFnc = {
-						_pos = getpos _this;
-						_bomb = "Bo_GBU12_LGB" createVehicle getpos _this;
-						_bomb setDamage 1;
-						
-						{ 
-							_bodyParts = ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
-							_num = [3,6] call BIS_fnc_randomInt;
+			_veh spawn {
+				waitUntil { { isPlayer _x && _x distance _this < 6 } count AllPlayers > 0 };
+				_bomb = "Bo_GBU12_LGB" createVehicle getpos _this;
+				_bomb setDamage 1;
+			};
+		}
+		else {
+			_veh addEventHandler [
+				"Engine", 
+				{ 
+					params ["_vehicle", "_engineOn"];
+					if(_engineOn ) then {
+						myFnc = {
+							_pos = getpos _this;
+							_bomb = "Bo_GBU12_LGB" createVehicle getpos _this;
+							_bomb setDamage 1;
 							
-							for "_i" from 1 to _num do {
-								[_x, 0.4, selectRandom _bodyParts, "explosive"] call ace_medical_fnc_addDamageToUnit; 
-							};
+							{ 
+								_bodyParts = ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
+								_num = [3,6] call BIS_fnc_randomInt;
+								
+								for "_i" from 1 to _num do {
+									[_x, 0.4, selectRandom _bodyParts, "explosive"] call ace_medical_fnc_addDamageToUnit; 
+								};
+								
+								[_x, true, (15), true] call ace_medical_fnc_setUnconscious;
+							} forEach crew _this;
 							
-							[_x, true, (15), true] call ace_medical_fnc_setUnconscious;
-						} forEach crew _this;
-						
-						sleep 5;
+							sleep 5;
 
-						{ 
-							moveOut _x;
-							_pos = [_this, 2, 5, 1, 0, 50, 0,[], getpos _x] call BIS_fnc_findSafePos;
-							_x setpos _pos;
-						} forEach crew _this;
+							{ 
+								moveOut _x;
+								_pos = [_this, 2, 5, 1, 0, 50, 0,[], getpos _x] call BIS_fnc_findSafePos;
+								_x setpos _pos;
+							} forEach crew _this;
+						};
+						[_vehicle, "myFnc"] call BIS_fnc_spawnOrdered;
 					};
-					[_vehicle, "myFnc"] call BIS_fnc_spawnOrdered;
-				};
-			}
-		];
+				}
+			]; 
+			
+			if (_debug) then {
+				_markerstr setMarkerText "Транспорт (Заминирован на двигатель)";
+				_markerstr setmarkercolor "ColorRed";
+			};
+		};
 	};
 };

@@ -73,7 +73,7 @@ _index = lbAdd [2106, "5"];
 ctrlEnable [2404, false]; // погода
 ctrlEnable [2084, false];
 ctrlEnable [2074, false];
-//ctrlEnable [2064, false]; // Гражданские
+ctrlEnable [2064, false]; // Гражданские
 //ctrlEnable [2054, false]; // Минные поля
 ctrlEnable [2024, false];
 ctrlEnable [3034, false]; // Животные

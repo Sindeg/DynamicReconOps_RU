@@ -736,10 +736,12 @@ fnc_TFARjamRadios =
 		 _distPercent = _dist / _rad;
 		_interference = 1;
 		_sendInterference = 1;
+		_slowing = false;
 
 		if (_dist < _rad) then {
 			_interference = _strength - (_distPercent * _strength) + 1;
-			_sendInterference = 1/_interference; 
+			_sendInterference = 1/_interference;
+			_slowing = true;
 		};
 		
 		if (_dist < 150) then {
@@ -752,20 +754,20 @@ fnc_TFARjamRadios =
 			player setVariable ["tf_sendingDistanceMultiplicator", _sendInterference];
 		};
 		
+		if (_slowing) then {
+			["<img size='2' image='images\slowRadio.paa'/><br />", 1.05, 1.2, 14, 0, 0, 1000] spawn bis_fnc_dynamicText;
+		}
+		else {
+			["<img size='2' image='images\FullRadio.paa'/><br />", 1.05, 1.2, 14, 0, 0, 1000] spawn bis_fnc_dynamicText;
+		};
 		
 		if (_debug) then {
 			deletemarkerLocal "CIS_DebugMarker";
-			//deletemarkerLocal "CIS_DebugMarker2";
-			
+
 			_debugMarker = createmarkerLocal ["CIS_DebugMarker", position _jammer];
 			_debugMarker setMarkerShapeLocal "ELLIPSE";
 			_debugMarker setMarkerSizeLocal [_rad, _rad];
-			
-			//_debugMarker2 = createmarkerLocal ["CIS_DebugMarker2", position _jammer];
-			//_debugMarker2 setMarkerShapeLocal "ICON";
-			//_debugMarker2 setMarkerTypeLocal "mil_dot";
-			//_debugMarker2 setMarkerTextLocal format ["%1", _jammer];
-				
+	
 			systemChat format ["Ближайшая вышка. Расстояние: %1, Процент дистанции %2, Помехи: %3, Помехи отправления: %4", _dist,  100 * _distPercent, _interference, _sendInterference];
 			systemChat format ["Активные: %1, Список всех: %2",_jammer, _jammers];
 		};

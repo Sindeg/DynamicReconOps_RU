@@ -217,11 +217,20 @@ class CfgDebriefing
 		picture = "";
 		pictureColor[] = {0.5,0.4,0.4,1};
 	};
+	class endWrongSlot
+	{
+		title = "Ошибка запуска";
+		subtitle = "Необходимо занять слот командира взвода";
+		description = "При запуске миссии необходимо, чтобы слот 'Командир взвода' был занят одним из игроков.";
+		pictureBackground = "";
+		picture = "hd_flag";
+		pictureColor[] = {0.9,0,0,1};
+	};
 };
 
 class CfgFunctions 
 {
-        #include "Vcom\cfgFunctions.hpp"
+    #include "Vcom\cfgFunctions.hpp"
 	#include "Scripts\ASORVS\cfgfunctions.hpp"
 	#include "Scripts\CHVD\CfgFunctions.hpp"
 };
@@ -244,6 +253,7 @@ class CfgDebriefingSections
        variable = "acex_killTracker_outputText";
     };
 };
+class CfgRemoteExec
 {
 	// List of script functions allowed to be sent from client via remoteExec
 	class Functions

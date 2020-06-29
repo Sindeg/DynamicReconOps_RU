@@ -901,7 +901,7 @@ _missionName = [] call dro_missionName;
 missionNameSpace setVariable ["mName", _missionName, true];
 
 // *****
-// CIVILIAN SETUP
+// CIVILIAN SETUP (Гражданские)
 // *****
 
 // Collect civilian classes
@@ -913,7 +913,7 @@ if (civiliansEnabled == 0) then {
 };
 
 // Отключение гражданских
- 
+/*
 if (civiliansEnabled == 1 || civiliansEnabled == 2) then {	
 	[((findDisplay 888888) displayCtrl 8889), "SPAWNING CIVILIANS"] remoteExecCall ["ctrlSetText", 0];			
 		civTrue = true;
@@ -929,7 +929,7 @@ if (civiliansEnabled == 1 || civiliansEnabled == 2) then {
 			};					
 		};
 }; 
-
+*/
 
 missionNameSpace setVariable ["objectivesSpawned", 1, true];
 

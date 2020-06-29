@@ -512,7 +512,7 @@ switch (insertType) do {
 					//clearWeaponCargoGlobal _box;
 					//clearMagazineCargoGlobal _box;
 					//clearItemCargoGlobal _box;
-					
+
 					_box setPos _boxLocation;
 					sleep 2;
 					_box setVectorUp [0,0,1];
@@ -602,6 +602,16 @@ switch (insertType) do {
 				"markerMedic" setMarkerColor "ColorRed";
 				"markerMedic" setMarkerType "loc_Hospital";
 				"markerMedic" setMarkerText "Врач";
+				
+				for "_i" from 1 to 5 do {
+					_boxSupplyPos = [_boxLocation, 4, 13, 1, 0, 10, 0] call BIS_fnc_findSafePos;
+					_boxSupply = "TFAR_NATO_Radio_Crate" createVehicle _boxSupplyPos;
+					
+					clearItemCargoGlobal _boxSupply;
+					clearMagazineCargoGlobal _boxSupply;
+					clearWeaponCargoGlobal _boxSupply;
+					clearBackpackCargoGlobal _boxSupply;
+				};
 			};		
 			
 			case "SEA": {				
